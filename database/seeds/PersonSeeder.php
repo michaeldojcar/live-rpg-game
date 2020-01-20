@@ -15,7 +15,8 @@ class PersonSeeder extends Seeder
         $p->name = 'Filip Vacula';
         $p->age = 12;
         $p->color_1 = 1;
-        $p->color_2 = 2;
+        $p->color_2 = 1;
+        $p->color_3 = 1;
         $p->save();
 
         $p = new \App\Person();
@@ -23,6 +24,7 @@ class PersonSeeder extends Seeder
         $p->age = 14;
         $p->color_1 = 1;
         $p->color_2 = 2;
+        $p->color_3 = 1;
         $p->save();
 
         $p = new \App\Person();
@@ -30,6 +32,7 @@ class PersonSeeder extends Seeder
         $p->age = 10;
         $p->color_1 = 1;
         $p->color_2 = 2;
+        $p->color_3 = 1;
         $p->save();
     }
 }

@@ -19,6 +19,7 @@ class CreatePersons extends Migration
             $table->integer('age');
             $table->integer('color_1');
             $table->integer('color_2');
+            $table->integer('color_3');
             $table->timestamps();
         });
     }
