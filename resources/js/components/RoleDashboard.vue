@@ -35,10 +35,20 @@
     export default {
         props: ['role'],
 
-        mounted() {
-            console.log('Component mounted.')
+        data: () => {
+            return {
+                person_selected: false,
+                person: {},
+                quests_pending: [],
+                quests_available: [],
+                quests_external_pending: []
+            }
+        },
 
-            this.loadDataForPerson(1,2,3)
+        mounted() {
+            console.log('Component mounted.');
+
+            this.loadDataForPerson(1, 1, 1)
         },
 
         methods: {
@@ -51,9 +61,11 @@
              */
             loadDataForPerson: function (color_1, color_2, color_3) {
                 axios
-                    .get('/api/role/' + this.role.id + '/color_1/' + color_1 + '/color_2/' + color_2 + '/color_3/' + color_3)
+                    .get('/api/role/' + this.role.id + '/person/color_1/' + color_1 + '/color_2/' + color_2 + '/color_3/' + color_3)
                     .then(response => {
                         console.log(response.data);
+
+                        this.pe
                     });
             }
         }
