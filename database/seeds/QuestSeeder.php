@@ -46,5 +46,22 @@ class QuestSeeder extends Seeder
         $q->save();
 
         $q->persons()->attach(Person::first(), ['status' => 3]);
+
+        $q = new Quest();
+        $q->name = '5 dřepů';
+        $q->description = 'Musí udělat 5 dřepů';
+        $q->is_mother = 0;
+        $q->mother_quest_id = 1;
+        $q->unlock_criteria = 2;
+        $q->allow_more_attempts = true;
+        $q->allow_finish_repeatedly = false;
+        $q->quest_owner_id = 1;
+        $q->reward_cash = 9;
+        $q->reward_knowledge = null;
+        $q->is_reward_public = false;
+        $q->is_dumb = false;
+        $q->save();
+
+        $q->persons()->attach(Person::first(), ['status' => 3]);
     }
 }

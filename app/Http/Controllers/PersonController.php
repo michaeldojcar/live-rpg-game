@@ -20,7 +20,7 @@ class PersonController extends Controller
         $role = Role::findOrFail($role_id);
 
         $resp = [
-            'user'                    => $person,
+            'person'                    => $person,
             'quests_pending'          => $person->pendingQuestsForRole($role)->get(),
             'quests_available'        => $person->availableQuestsForRole($role)->get(),
             'external_quests_pending' => $person->pendingSubQuestsForRole($role)->get(),
