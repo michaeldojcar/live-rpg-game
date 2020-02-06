@@ -7,11 +7,11 @@
                href="#">Role {{role.name}} ({{role.real_name}})</a>
         </nav>
         <nav v-else
-             class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+             class="navbar navbar-expand-md navbar-dark bg-dark fixed-top text-white">
             <a class="navbar-brand"
                href="#">{{person.name}}</a>
 
-            <a class="nav-link" @click="wipePerson">Vybrat dítě</a>
+            <a class="nav-link" @click="wipePerson">Zrušit</a>
         </nav>
 
 
@@ -25,30 +25,30 @@
                 <div class="card">
                     <div class="card-header">1. barva</div>
                     <div class="card-body">
-                        <a @click="setFirstColor(1)" class="btn-color">Červená</a>
-                        <a @click="setFirstColor(2)" class="btn-color">Modrá</a>
-                        <a @click="setFirstColor(3)" class="btn-color">Zelená</a>
-                        <a @click="setFirstColor(4)" class="btn-color">Žlutá</a>
+                        <a @click="setFirstColor(1)" class="btn-color text-danger">Červená</a>
+                        <a @click="setFirstColor(2)" class="btn-color text-primary">Modrá</a>
+                        <a @click="setFirstColor(3)" class="btn-color text-success">Zelená</a>
+                        <a @click="setFirstColor(4)" class="btn-color text-warning">Žlutá</a>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">2. barva</div>
                     <div class="card-body">
-                        <a @click="setSecondColor(1)" class="btn-color">Červená</a>
-                        <a @click="setSecondColor(2)" class="btn-color">Modrá</a>
-                        <a @click="setSecondColor(3)" class="btn-color">Zelená</a>
-                        <a @click="setSecondColor(4)" class="btn-color">Žlutá</a>
+                        <a @click="setSecondColor(1)" class="btn-color text-danger">Červená</a>
+                        <a @click="setSecondColor(2)" class="btn-color text-primary">Modrá</a>
+                        <a @click="setSecondColor(3)" class="btn-color text-success">Zelená</a>
+                        <a @click="setSecondColor(4)" class="btn-color text-warning">Žlutá</a>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">3. barva</div>
                     <div class="card-body">
-                        <a @click="setThirdColor(1)" class="btn-color">Červená</a>
-                        <a @click="setThirdColor(2)" class="btn-color">Modrá</a>
-                        <a @click="setThirdColor(3)" class="btn-color">Zelená</a>
-                        <a @click="setThirdColor(4)" class="btn-color">Žlutá</a>
+                        <a @click="setThirdColor(1)" class="btn-color text-danger">Červená</a>
+                        <a @click="setThirdColor(2)" class="btn-color text-primary">Modrá</a>
+                        <a @click="setThirdColor(3)" class="btn-color text-success">Zelená</a>
+                        <a @click="setThirdColor(4)" class="btn-color text-warning">Žlutá</a>
                     </div>
                 </div>
 
@@ -56,22 +56,35 @@
 
             <div v-else>
                 <div v-if="!quest_selected">
-                    <div class="card mb-3" v-if="quests_available.length">
-                        <div class="card-header">Aktivní úkol</div>
-                        <div class="card-body">
-                            <quest-icon :quest="quest" v-bind:key="quest.id" v-for="quest in quests_pending"
-                                        @click.native="chooseQuest(quest)"/>
-                            <quest-icon :quest="quest" v-bind:key="quest.id" v-for="quest in quests_external_pending"
-                                        @click.native="chooseQuest(quest)"/>
-                        </div>
+                    <div class="mb-3" v-if="quests_pending.length">
+                        <h4 class="font-weight-bold mb-2 d-inline-block">Má zadané</h4> (ode mě)
+
+                        <quest-icon :quest="quest" v-bind:key="quest.id" v-for="quest in quests_pending"
+                                    @click.native="chooseQuest(quest)"/>
+
+                        <hr>
                     </div>
 
-                    <div class="card" v-if="!quests_available.length">
-                        <div class="card-header">Úkoly ke spuštění</div>
-                        <div class="card-body">
-                            <quest-icon :quest="quest" v-bind:key="quest.id" v-for="quest in quests_available"
-                                        @click.native="chooseQuest(quest)"/>
-                        </div>
+
+                    <div class="mb-3" v-else-if="!quests_pending.length">
+                        <h4 class="font-weight-bold mb-2 d-inline-block">Dostupné úkoly</h4>  (ode mě)
+
+                        <quest-icon :quest="quest" v-bind:key="quest.id" v-for="quest in quests_available"
+                                    @click.native="chooseQuest(quest)"/>
+
+                        <br>
+                        <i v-if="!quests_available.length" class="text-warning">Aktuálně není nic k dispozici.</i>
+
+                        <hr>
+                    </div>
+
+                    <div class="mb-3" v-if="quests_external_pending.length">
+                        <h4 class="font-weight-bold mb-2 d-inline-block">Chce u mě vyřešit</h4>
+
+                        <quest-icon :quest="quest" v-bind:key="quest.id" v-for="quest in quests_external_pending"
+                                    @click.native="chooseQuest(quest)"/>
+
+                        <hr>
                     </div>
                 </div>
 
@@ -85,7 +98,7 @@
                     <div class="card">
                         <div class="card-header">Odměna</div>
                         <div class="card-body">
-                            <reward-cash :cash="quest_selected.reward_cash" />
+                            <reward-cash :cash="quest_selected.reward_cash"/>
                             {{quest_selected.reward_knowledge}}
                         </div>
                     </div>

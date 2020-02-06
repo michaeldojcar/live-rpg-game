@@ -2092,6 +2092,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -38326,7 +38339,8 @@ var render = function() {
       : _c(
           "nav",
           {
-            staticClass: "navbar navbar-expand-md navbar-dark bg-dark fixed-top"
+            staticClass:
+              "navbar navbar-expand-md navbar-dark bg-dark fixed-top text-white"
           },
           [
             _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
@@ -38336,7 +38350,7 @@ var render = function() {
             _c(
               "a",
               { staticClass: "nav-link", on: { click: _vm.wipePerson } },
-              [_vm._v("Vybrat dítě")]
+              [_vm._v("Zrušit")]
             )
           ]
         ),
@@ -38360,7 +38374,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn-color",
+                      staticClass: "btn-color text-danger",
                       on: {
                         click: function($event) {
                           return _vm.setFirstColor(1)
@@ -38373,7 +38387,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn-color",
+                      staticClass: "btn-color text-primary",
                       on: {
                         click: function($event) {
                           return _vm.setFirstColor(2)
@@ -38386,7 +38400,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn-color",
+                      staticClass: "btn-color text-success",
                       on: {
                         click: function($event) {
                           return _vm.setFirstColor(3)
@@ -38399,7 +38413,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn-color",
+                      staticClass: "btn-color text-warning",
                       on: {
                         click: function($event) {
                           return _vm.setFirstColor(4)
@@ -38418,7 +38432,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn-color",
+                      staticClass: "btn-color text-danger",
                       on: {
                         click: function($event) {
                           return _vm.setSecondColor(1)
@@ -38431,7 +38445,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn-color",
+                      staticClass: "btn-color text-primary",
                       on: {
                         click: function($event) {
                           return _vm.setSecondColor(2)
@@ -38444,7 +38458,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn-color",
+                      staticClass: "btn-color text-success",
                       on: {
                         click: function($event) {
                           return _vm.setSecondColor(3)
@@ -38457,7 +38471,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn-color",
+                      staticClass: "btn-color text-warning",
                       on: {
                         click: function($event) {
                           return _vm.setSecondColor(4)
@@ -38476,7 +38490,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn-color",
+                      staticClass: "btn-color text-danger",
                       on: {
                         click: function($event) {
                           return _vm.setThirdColor(1)
@@ -38489,7 +38503,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn-color",
+                      staticClass: "btn-color text-primary",
                       on: {
                         click: function($event) {
                           return _vm.setThirdColor(2)
@@ -38502,7 +38516,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn-color",
+                      staticClass: "btn-color text-success",
                       on: {
                         click: function($event) {
                           return _vm.setThirdColor(3)
@@ -38515,7 +38529,7 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn-color",
+                      staticClass: "btn-color text-warning",
                       on: {
                         click: function($event) {
                           return _vm.setThirdColor(4)
@@ -38530,56 +38544,50 @@ var render = function() {
           : _c("div", [
               !_vm.quest_selected
                 ? _c("div", [
-                    _vm.quests_available.length
-                      ? _c("div", { staticClass: "card mb-3" }, [
-                          _c("div", { staticClass: "card-header" }, [
-                            _vm._v("Aktivní úkol")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "card-body" },
-                            [
-                              _vm._l(_vm.quests_pending, function(quest) {
-                                return _c("quest-icon", {
-                                  key: quest.id,
-                                  attrs: { quest: quest },
-                                  nativeOn: {
-                                    click: function($event) {
-                                      return _vm.chooseQuest(quest)
-                                    }
+                    _vm.quests_pending.length
+                      ? _c(
+                          "div",
+                          { staticClass: "mb-3" },
+                          [
+                            _c(
+                              "h4",
+                              {
+                                staticClass:
+                                  "font-weight-bold mb-2 d-inline-block"
+                              },
+                              [_vm._v("Má zadané")]
+                            ),
+                            _vm._v(" (ode mě)\n\n                    "),
+                            _vm._l(_vm.quests_pending, function(quest) {
+                              return _c("quest-icon", {
+                                key: quest.id,
+                                attrs: { quest: quest },
+                                nativeOn: {
+                                  click: function($event) {
+                                    return _vm.chooseQuest(quest)
                                   }
-                                })
-                              }),
-                              _vm._v(" "),
-                              _vm._l(_vm.quests_external_pending, function(
-                                quest
-                              ) {
-                                return _c("quest-icon", {
-                                  key: quest.id,
-                                  attrs: { quest: quest },
-                                  nativeOn: {
-                                    click: function($event) {
-                                      return _vm.chooseQuest(quest)
-                                    }
-                                  }
-                                })
+                                }
                               })
-                            ],
-                            2
-                          )
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    !_vm.quests_available.length
-                      ? _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-header" }, [
-                            _vm._v("Úkoly ke spuštění")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "card-body" },
+                            }),
+                            _vm._v(" "),
+                            _c("hr")
+                          ],
+                          2
+                        )
+                      : !_vm.quests_pending.length
+                      ? _c(
+                          "div",
+                          { staticClass: "mb-3" },
+                          [
+                            _c(
+                              "h4",
+                              {
+                                staticClass:
+                                  "font-weight-bold mb-2 d-inline-block"
+                              },
+                              [_vm._v("Dostupné úkoly")]
+                            ),
+                            _vm._v("  (ode mě)\n\n                    "),
                             _vm._l(_vm.quests_available, function(quest) {
                               return _c("quest-icon", {
                                 key: quest.id,
@@ -38591,9 +38599,53 @@ var render = function() {
                                 }
                               })
                             }),
-                            1
-                          )
-                        ])
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            !_vm.quests_available.length
+                              ? _c("i", { staticClass: "text-warning" }, [
+                                  _vm._v("Aktuálně není nic k dispozici.")
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c("hr")
+                          ],
+                          2
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.quests_external_pending.length
+                      ? _c(
+                          "div",
+                          { staticClass: "mb-3" },
+                          [
+                            _c(
+                              "h4",
+                              {
+                                staticClass:
+                                  "font-weight-bold mb-2 d-inline-block"
+                              },
+                              [_vm._v("Chce u mě vyřešit")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.quests_external_pending, function(
+                              quest
+                            ) {
+                              return _c("quest-icon", {
+                                key: quest.id,
+                                attrs: { quest: quest },
+                                nativeOn: {
+                                  click: function($event) {
+                                    return _vm.chooseQuest(quest)
+                                  }
+                                }
+                              })
+                            }),
+                            _vm._v(" "),
+                            _c("hr")
+                          ],
+                          2
+                        )
                       : _vm._e()
                   ])
                 : _c("div", [
