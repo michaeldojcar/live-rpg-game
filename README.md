@@ -1,11 +1,13 @@
-## LARP RPG game system
+## LARP quests game system
 
-Web app game system for real-life role play based game.
+Web app game system for live action role play based game.
 
 ### Features
 - game operator interface for live game control
 - quests management
 - rewards
+- players
+- NPC roles
 - mobile VUE.js app for live "NPC" players
 
 ### Project status
