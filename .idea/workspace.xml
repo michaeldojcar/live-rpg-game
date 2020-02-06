@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bceee34-a6d4-44d7-844a-bebd7a4524cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/QuestIcon.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/RewardCash.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PersonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PersonController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/QuestSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/QuestSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/RoleDashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/RoleDashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,13 +42,6 @@
         <item name="@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="tabor-rpg: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="tabor-rpg: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="quests: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -212,7 +200,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@1a9e3a64" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@60f7cdd3" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
             <select />
@@ -236,6 +224,9 @@
       <workItem from="1579465518935" duration="4744000" />
       <workItem from="1579471434063" duration="6287000" />
       <workItem from="1579586256408" duration="7924000" />
+      <workItem from="1579690510954" duration="94000" />
+      <workItem from="1580554341642" duration="1007000" />
+      <workItem from="1581018966547" duration="1468000" />
     </task>
     <task id="LOCAL-00001" summary="js fixes">
       <created>1579586999701</created>
@@ -244,7 +235,28 @@
       <option name="project" value="LOCAL" />
       <updated>1579586999701</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="js fixes">
+      <created>1579690523604</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1579690523604</updated>
+    </task>
+    <task id="LOCAL-00003" summary="js fixes">
+      <created>1579690533902</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1579690533902</updated>
+    </task>
+    <task id="LOCAL-00004" summary="readme">
+      <created>1581028788333</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1581028788333</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,29 +264,46 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="js fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="js fixes" />
+    <MESSAGE value="readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579468564095">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1579468564095" />
-    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1579690521878">
+    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1581029039589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579690521878" />
+    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1581029039589" />
     <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1579590109827">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579590109827" />
+    <state width="1024" height="210" key="GridCell.Tab.0.bottom" timestamp="1581018972641">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581018972641" />
+    <state width="1024" height="210" key="GridCell.Tab.0.center" timestamp="1581018972641">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581018972641" />
+    <state width="1024" height="210" key="GridCell.Tab.0.left" timestamp="1581018972640">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581018972640" />
+    <state width="1024" height="210" key="GridCell.Tab.0.right" timestamp="1581018972641">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581018972641" />
     <state width="189" height="457" key="HiddenNamespacesPopup" timestamp="1579468570987">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1579468570987" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1579690525323">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1581029041200">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1579690525323" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1581029041200" />
     <state x="470" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1579586269669">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
