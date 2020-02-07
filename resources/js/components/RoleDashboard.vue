@@ -80,7 +80,9 @@
             },
 
             startTracking: function () {
-                this.sendTelemetrics();
+                setTimeout(() => {
+                    this.sendTelemetrics();
+                }, 5000);
 
                 setInterval(() => {
                     this.sendTelemetrics()
@@ -90,19 +92,32 @@
             sendTelemetrics: function () {
                 console.log('Sending telemetries data');
 
-                navigator.geolocation.getCurrentPosition((position) => {
-                    this.latitude = position.coords.latitude;
-                    this.longitude = position.coords.longitude;
-                });
 
-                axios
-                    .post('/api/role/' + this.role.id + '/telemetries', {
-                        latitude: this.latitude,
-                        longitude: this.longitude
-                    })
-                    .then(response => {
-                        // console.log(response.data)
+                if (navigator && navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition((position) => {
+                        alert(position.coords.latitude);
+                        alert(position.coords.longitude);
+
+                        this.latitude = position.coords.latitude;
+                        this.longitude = position.coords.longitude;
+                    }, function () {
+                        console.warn('Geolokace selhala.');
+                    }, {
+                        enableHighAccuracy: false,
+                        maximumAge: 100
                     });
+
+                    axios
+                        .post('/api/role/' + this.role.id + '/telemetries', {
+                            latitude: this.latitude,
+                            longitude: this.longitude
+                        })
+                        .then(response => {
+                            // console.log(response.data)
+                        });
+                } else {
+                    alert('Geolokace není funkční')
+                }
             }
         }
     }

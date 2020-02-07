@@ -2297,7 +2297,9 @@ __webpack_require__.r(__webpack_exports__);
     startTracking: function startTracking() {
       var _this = this;
 
-      this.sendTelemetrics();
+      setTimeout(function () {
+        _this.sendTelemetrics();
+      }, 5000);
       setInterval(function () {
         _this.sendTelemetrics();
       }, 20000);
@@ -2306,15 +2308,27 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       console.log('Sending telemetries data');
-      navigator.geolocation.getCurrentPosition(function (position) {
-        _this2.latitude = position.coords.latitude;
-        _this2.longitude = position.coords.longitude;
-      });
-      axios.post('/api/role/' + this.role.id + '/telemetries', {
-        latitude: this.latitude,
-        longitude: this.longitude
-      }).then(function (response) {// console.log(response.data)
-      });
+
+      if (navigator && navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          alert(position.coords.latitude);
+          alert(position.coords.longitude);
+          _this2.latitude = position.coords.latitude;
+          _this2.longitude = position.coords.longitude;
+        }, function () {
+          console.warn('Geolokace selhala.');
+        }, {
+          enableHighAccuracy: false,
+          maximumAge: 100
+        });
+        axios.post('/api/role/' + this.role.id + '/telemetries', {
+          latitude: this.latitude,
+          longitude: this.longitude
+        }).then(function (response) {// console.log(response.data)
+        });
+      } else {
+        alert('Geolokace není funkční');
+      }
     }
   }
 });
