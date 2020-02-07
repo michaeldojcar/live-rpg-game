@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * 1 quest
- * 
+ *
  * Class Quest
  *
  * @package App
@@ -67,6 +67,6 @@ class Quest extends Model
 
     public function persons()
     {
-        return $this->belongsToMany(Person::class);
+        return $this->belongsToMany(Person::class)->withPivot('status');
     }
 }

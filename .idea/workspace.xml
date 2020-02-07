@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bceee34-a6d4-44d7-844a-bebd7a4524cb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_07_093220_add_telemetries_to_role_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/PersonColorPicker.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/PersonDetail.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/QuestDetail.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/mobile_state.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OperatorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OperatorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PersonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PersonController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Person.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Person.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Quest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Quest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/RoleDashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/RoleDashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,13 +55,6 @@
         <item name="@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="tabor-rpg: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="tabor-rpg: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="person_quest: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -166,7 +171,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1WczhcwGhdZrfnwDwEseKeBjZxq" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -200,7 +207,17 @@
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@12bb2ffb" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -224,7 +241,7 @@
       <workItem from="1579586256408" duration="7924000" />
       <workItem from="1579690510954" duration="94000" />
       <workItem from="1580554341642" duration="1007000" />
-      <workItem from="1581018966547" duration="3860000" />
+      <workItem from="1581018966547" duration="10894000" />
     </task>
     <task id="LOCAL-00001" summary="js fixes">
       <created>1579586999701</created>
@@ -275,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581029409047</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="npc page layout">
+      <created>1581031648418</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1581031648418</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,17 +308,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="js fixes" />
     <MESSAGE value="readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme" />
+    <MESSAGE value="npc page layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="npc page layout" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579468564095">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1579468564095" />
-    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1581029408168">
+    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1581031646777">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1581029408168" />
+    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1581031646777" />
     <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1579590109827">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -319,21 +344,25 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1579468570987" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1581029409871">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1581031660953">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1581029409871" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1581031660953" />
     <state x="470" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1579586269669">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="470" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1579586269669" />
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581029514104">
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581068745209">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1581029514104" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1579590666617">
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1581068745209" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1581066306263">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1579590666617" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1581066306263" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1581069181674">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581069181674" />
   </component>
 </project>

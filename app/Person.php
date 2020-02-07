@@ -40,7 +40,7 @@ class Person extends Model
      */
     public function quests()
     {
-        return $this->belongsToMany(Quest::class);
+        return $this->belongsToMany(Quest::class)->withPivot('status');
     }
 
     public function motherQuests()

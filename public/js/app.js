@@ -1923,6 +1923,225 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PersonColorPicker.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PersonColorPicker.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mobile_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mobile_state */ "./resources/js/components/mobile_state.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "PersonColorPicker",
+  props: ['role'],
+  data: function data() {
+    return {
+      state: _mobile_state__WEBPACK_IMPORTED_MODULE_0__["default"],
+      color_1: null,
+      color_2: null,
+      color_3: null
+    };
+  },
+  methods: {
+    /**
+     * Load data and quests for person.
+     *
+     * @param color_1
+     * @param color_2
+     * @param color_3
+     */
+    loadDataForPerson: function loadDataForPerson(color_1, color_2, color_3) {
+      var _this = this;
+
+      axios.get('/api/role/' + this.role.id + '/person/color_1/' + color_1 + '/color_2/' + color_2 + '/color_3/' + color_3).then(function (response) {
+        console.log(response.data);
+        _this.state.person = response.data.person;
+        _this.state.quests_pending = response.data.quests_pending;
+        _this.state.quests_available = response.data.quests_available;
+        _this.state.quests_external_pending = response.data.external_quests_pending;
+      });
+    },
+    setFirstColor: function setFirstColor(color) {
+      this.color_1 = color;
+      this.checkColors();
+    },
+    setSecondColor: function setSecondColor(color) {
+      this.color_2 = color;
+      this.checkColors();
+    },
+    setThirdColor: function setThirdColor(color) {
+      this.color_3 = color;
+      this.checkColors();
+    },
+    checkColors: function checkColors() {
+      if (this.color_1 && this.color_2 && this.color_3) {
+        this.loadDataForPerson(this.color_1, this.color_2, this.color_3);
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PersonDetail.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PersonDetail.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _QuestIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./QuestIcon */ "./resources/js/components/QuestIcon.vue");
+/* harmony import */ var _mobile_state__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mobile_state */ "./resources/js/components/mobile_state.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "PersonDetail",
+  components: {
+    QuestIcon: _QuestIcon__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      state: _mobile_state__WEBPACK_IMPORTED_MODULE_1__["default"]
+    };
+  },
+  methods: {
+    chooseQuest: function chooseQuest(quest) {
+      this.state.quest_selected = quest;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/QuestDetail.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/QuestDetail.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mobile_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mobile_state */ "./resources/js/components/mobile_state.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "QuestDetail",
+  data: function data() {
+    return {
+      state: _mobile_state__WEBPACK_IMPORTED_MODULE_0__["default"]
+    };
+  },
+  methods: {
+    assign: function assign() {}
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/QuestIcon.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/QuestIcon.vue?vue&type=script&lang=js& ***!
@@ -1994,6 +2213,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _QuestIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./QuestIcon */ "./resources/js/components/QuestIcon.vue");
 /* harmony import */ var _RewardCash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RewardCash */ "./resources/js/components/RewardCash.vue");
+/* harmony import */ var _PersonColorPicker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PersonColorPicker */ "./resources/js/components/PersonColorPicker.vue");
+/* harmony import */ var _PersonDetail__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PersonDetail */ "./resources/js/components/PersonDetail.vue");
+/* harmony import */ var _QuestDetail__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./QuestDetail */ "./resources/js/components/QuestDetail.vue");
+/* harmony import */ var _mobile_state__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./mobile_state */ "./resources/js/components/mobile_state.js");
 //
 //
 //
@@ -2029,157 +2252,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
+    PersonDetail: _PersonDetail__WEBPACK_IMPORTED_MODULE_3__["default"],
+    QuestDetail: _QuestDetail__WEBPACK_IMPORTED_MODULE_4__["default"],
+    PersonColorPicker: _PersonColorPicker__WEBPACK_IMPORTED_MODULE_2__["default"],
     RewardCash: _RewardCash__WEBPACK_IMPORTED_MODULE_1__["default"],
     QuestIcon: _QuestIcon__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: ['role'],
   data: function data() {
     return {
-      person_selected: false,
-      person: {},
-      quests_pending: [],
-      quests_available: [],
-      quests_external_pending: [],
-      quest_selected: null,
-      color_1: null,
-      color_2: null,
-      color_3: null
+      state: _mobile_state__WEBPACK_IMPORTED_MODULE_5__["default"],
+      latitude: null,
+      longitude: null
     };
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
-    this.loadDataForPerson(1, 1, 1);
+    console.log('Mobile interface is ready.');
+    this.startTracking();
+  },
+  computed: {
+    person_selected: function person_selected() {
+      return this.state.person !== null;
+    },
+    quest_selected: function quest_selected() {
+      return this.state.quest_selected !== null;
+    }
   },
   methods: {
-    /**
-     * Load data and quests for person.
-     *
-     * @param color_1
-     * @param color_2
-     * @param color_3
-     */
-    loadDataForPerson: function loadDataForPerson(color_1, color_2, color_3) {
+    wipePerson: function wipePerson() {
+      this.state.person = null;
+      this.state.quests_pending = [];
+      this.state.quests_available = [];
+      this.state.quests_external_pending = [];
+      console.log('Person exited');
+    },
+    startTracking: function startTracking() {
       var _this = this;
 
-      axios.get('/api/role/' + this.role.id + '/person/color_1/' + color_1 + '/color_2/' + color_2 + '/color_3/' + color_3).then(function (response) {
-        console.log(response.data);
-        _this.person = response.data.person;
-        _this.quests_pending = response.data.quests_pending;
-        _this.quests_available = response.data.quests_available;
-        _this.quests_external_pending = response.data.external_quests_pending;
-        _this.person_selected = true;
+      this.sendTelemetrics();
+      setInterval(function () {
+        _this.sendTelemetrics();
+      }, 20000);
+    },
+    sendTelemetrics: function sendTelemetrics() {
+      var _this2 = this;
+
+      console.log('Sending telemetries data');
+      navigator.geolocation.getCurrentPosition(function (position) {
+        _this2.latitude = position.coords.latitude;
+        _this2.longitude = position.coords.longitude;
       });
-    },
-    setFirstColor: function setFirstColor(color) {
-      this.color_1 = color;
-      this.checkColors();
-    },
-    setSecondColor: function setSecondColor(color) {
-      this.color_2 = color;
-      this.checkColors();
-    },
-    setThirdColor: function setThirdColor(color) {
-      this.color_3 = color;
-      this.checkColors();
-    },
-    checkColors: function checkColors() {
-      if (this.color_1 && this.color_2 && this.color_3) {
-        this.loadDataForPerson(this.color_1, this.color_2, this.color_3);
-      }
-    },
-    wipePerson: function wipePerson() {
-      this.person = null;
-      this.quests_pending = [];
-      this.quests_available = [];
-      this.quests_external_pending = [];
-      this.color_1 = null;
-      this.color_2 = null;
-      this.color_3 = null;
-      this.person_selected = false;
-      console.log('Person reset');
-    },
-    chooseQuest: function chooseQuest(quest) {
-      this.quest_selected = quest;
+      axios.post('/api/role/' + this.role.id + '/telemetries', {
+        latitude: this.latitude,
+        longitude: this.longitude
+      }).then(function (response) {// console.log(response.data)
+      });
     }
   }
 });
@@ -38235,6 +38370,391 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PersonColorPicker.vue?vue&type=template&id=6bdeb261&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PersonColorPicker.vue?vue&type=template&id=6bdeb261&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h2", [_vm._v("Výběr hráče")]),
+    _vm._v(" "),
+    _c("p", [_vm._v("Vyber hráče podle barev na rukávu (zeshora dolů)")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card mb-2" }, [
+      _c("div", { staticClass: "card-header" }, [_vm._v("1. barva")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn-color text-danger",
+            on: {
+              click: function($event) {
+                return _vm.setFirstColor(1)
+              }
+            }
+          },
+          [_vm._v("Červená")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn-color text-primary",
+            on: {
+              click: function($event) {
+                return _vm.setFirstColor(2)
+              }
+            }
+          },
+          [_vm._v("Modrá")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn-color text-success",
+            on: {
+              click: function($event) {
+                return _vm.setFirstColor(3)
+              }
+            }
+          },
+          [_vm._v("Zelená")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn-color text-warning",
+            on: {
+              click: function($event) {
+                return _vm.setFirstColor(4)
+              }
+            }
+          },
+          [_vm._v("Žlutá")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card mb-2" }, [
+      _c("div", { staticClass: "card-header" }, [_vm._v("2. barva")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn-color text-danger",
+            on: {
+              click: function($event) {
+                return _vm.setSecondColor(1)
+              }
+            }
+          },
+          [_vm._v("Červená")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn-color text-primary",
+            on: {
+              click: function($event) {
+                return _vm.setSecondColor(2)
+              }
+            }
+          },
+          [_vm._v("Modrá")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn-color text-success",
+            on: {
+              click: function($event) {
+                return _vm.setSecondColor(3)
+              }
+            }
+          },
+          [_vm._v("Zelená")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn-color text-warning",
+            on: {
+              click: function($event) {
+                return _vm.setSecondColor(4)
+              }
+            }
+          },
+          [_vm._v("Žlutá")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-header" }, [_vm._v("3. barva")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn-color text-danger",
+            on: {
+              click: function($event) {
+                return _vm.setThirdColor(1)
+              }
+            }
+          },
+          [_vm._v("Červená")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn-color text-primary",
+            on: {
+              click: function($event) {
+                return _vm.setThirdColor(2)
+              }
+            }
+          },
+          [_vm._v("Modrá")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn-color text-success",
+            on: {
+              click: function($event) {
+                return _vm.setThirdColor(3)
+              }
+            }
+          },
+          [_vm._v("Zelená")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn-color text-warning",
+            on: {
+              click: function($event) {
+                return _vm.setThirdColor(4)
+              }
+            }
+          },
+          [_vm._v("Žlutá")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PersonDetail.vue?vue&type=template&id=5db3e61e&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PersonDetail.vue?vue&type=template&id=5db3e61e&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.state.quests_pending.length
+      ? _c(
+          "div",
+          { staticClass: "mb-3" },
+          [
+            _c("h4", { staticClass: "font-weight-bold mb-2 d-inline-block" }, [
+              _vm._v("Má zadané")
+            ]),
+            _vm._v(" (ode mě)\n\n        "),
+            _vm._l(_vm.state.quests_pending, function(quest) {
+              return _c("quest-icon", {
+                key: quest.id,
+                attrs: { quest: quest },
+                nativeOn: {
+                  click: function($event) {
+                    return _vm.chooseQuest(quest)
+                  }
+                }
+              })
+            }),
+            _vm._v(" "),
+            _c("hr")
+          ],
+          2
+        )
+      : _c(
+          "div",
+          { staticClass: "mb-3" },
+          [
+            _c("h4", { staticClass: "font-weight-bold mb-2 d-inline-block" }, [
+              _vm._v("Dostupné úkoly")
+            ]),
+            _vm._v(" (které můžu nabídnout)\n\n        "),
+            _vm._l(_vm.state.quests_available, function(quest) {
+              return _c("quest-icon", {
+                key: quest.id,
+                attrs: { quest: quest },
+                nativeOn: {
+                  click: function($event) {
+                    return _vm.chooseQuest(quest)
+                  }
+                }
+              })
+            }),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            !_vm.state.quests_available.length
+              ? _c("i", { staticClass: "text-warning" }, [
+                  _vm._v("Aktuálně není nic k dispozici.")
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("hr")
+          ],
+          2
+        ),
+    _vm._v(" "),
+    _vm.state.quests_external_pending.length
+      ? _c(
+          "div",
+          { staticClass: "mb-3" },
+          [
+            _c("h4", { staticClass: "font-weight-bold mb-2 d-inline-block" }, [
+              _vm._v("Chce u mě vyřešit")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.state.quests_external_pending, function(quest) {
+              return _c("quest-icon", {
+                key: quest.id,
+                attrs: { quest: quest },
+                nativeOn: {
+                  click: function($event) {
+                    return _vm.chooseQuest(quest)
+                  }
+                }
+              })
+            }),
+            _vm._v(" "),
+            _c("hr")
+          ],
+          2
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/QuestDetail.vue?vue&type=template&id=0dff4538&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/QuestDetail.vue?vue&type=template&id=0dff4538&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "a",
+      {
+        staticClass: "btn btn-outline-secondary float-right",
+        on: {
+          click: function($event) {
+            _vm.state.quest_selected = null
+          }
+        }
+      },
+      [_vm._v("Zpět")]
+    ),
+    _vm._v(" "),
+    _c("h3", [_vm._v(_vm._s(_vm.state.quest_selected.name))]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.state.quest_selected.description))]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-header" }, [_vm._v("Odměna")]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "card-body" },
+        [
+          _c("reward-cash", {
+            attrs: { cash: _vm.state.quest_selected.reward_cash }
+          }),
+          _vm._v(
+            "\n            " +
+              _vm._s(_vm.state.quest_selected.reward_knowledge) +
+              "\n        "
+          )
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticStyle: { position: "absolute", bottom: "15px" } }, [
+      _vm.state.quest_selected.pivot.status === 2
+        ? _c(
+            "a",
+            {
+              staticClass: "btn btn-success align-bottom",
+              on: { click: _vm.assign }
+            },
+            [_vm._v("Zadat")]
+          )
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/QuestIcon.vue?vue&type=template&id=7bda7d20&":
 /*!************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/QuestIcon.vue?vue&type=template&id=7bda7d20& ***!
@@ -38327,11 +38847,7 @@ var render = function() {
           [
             _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
               _vm._v(
-                "Role " +
-                  _vm._s(_vm.role.name) +
-                  " (" +
-                  _vm._s(_vm.role.real_name) +
-                  ")"
+                _vm._s(_vm.role.name) + " (" + _vm._s(_vm.role.real_name) + ")"
               )
             ])
           ]
@@ -38344,7 +38860,7 @@ var render = function() {
           },
           [
             _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-              _vm._v(_vm._s(_vm.person.name))
+              _vm._v(_vm._s(_vm.state.person.name))
             ]),
             _vm._v(" "),
             _c(
@@ -38360,336 +38876,18 @@ var render = function() {
       { staticClass: "container", staticStyle: { "margin-top": "80px" } },
       [
         !_vm.person_selected
-          ? _c("div", [
-              _c("h2", [_vm._v("Výběr hráče")]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v("Vyber hráče podle barev na rukávu (zeshora dolů)")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card" }, [
-                _c("div", { staticClass: "card-header" }, [_vm._v("1. barva")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn-color text-danger",
-                      on: {
-                        click: function($event) {
-                          return _vm.setFirstColor(1)
-                        }
-                      }
-                    },
-                    [_vm._v("Červená")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn-color text-primary",
-                      on: {
-                        click: function($event) {
-                          return _vm.setFirstColor(2)
-                        }
-                      }
-                    },
-                    [_vm._v("Modrá")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn-color text-success",
-                      on: {
-                        click: function($event) {
-                          return _vm.setFirstColor(3)
-                        }
-                      }
-                    },
-                    [_vm._v("Zelená")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn-color text-warning",
-                      on: {
-                        click: function($event) {
-                          return _vm.setFirstColor(4)
-                        }
-                      }
-                    },
-                    [_vm._v("Žlutá")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card" }, [
-                _c("div", { staticClass: "card-header" }, [_vm._v("2. barva")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn-color text-danger",
-                      on: {
-                        click: function($event) {
-                          return _vm.setSecondColor(1)
-                        }
-                      }
-                    },
-                    [_vm._v("Červená")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn-color text-primary",
-                      on: {
-                        click: function($event) {
-                          return _vm.setSecondColor(2)
-                        }
-                      }
-                    },
-                    [_vm._v("Modrá")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn-color text-success",
-                      on: {
-                        click: function($event) {
-                          return _vm.setSecondColor(3)
-                        }
-                      }
-                    },
-                    [_vm._v("Zelená")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn-color text-warning",
-                      on: {
-                        click: function($event) {
-                          return _vm.setSecondColor(4)
-                        }
-                      }
-                    },
-                    [_vm._v("Žlutá")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card" }, [
-                _c("div", { staticClass: "card-header" }, [_vm._v("3. barva")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn-color text-danger",
-                      on: {
-                        click: function($event) {
-                          return _vm.setThirdColor(1)
-                        }
-                      }
-                    },
-                    [_vm._v("Červená")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn-color text-primary",
-                      on: {
-                        click: function($event) {
-                          return _vm.setThirdColor(2)
-                        }
-                      }
-                    },
-                    [_vm._v("Modrá")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn-color text-success",
-                      on: {
-                        click: function($event) {
-                          return _vm.setThirdColor(3)
-                        }
-                      }
-                    },
-                    [_vm._v("Zelená")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn-color text-warning",
-                      on: {
-                        click: function($event) {
-                          return _vm.setThirdColor(4)
-                        }
-                      }
-                    },
-                    [_vm._v("Žlutá")]
-                  )
-                ])
-              ])
-            ])
-          : _c("div", [
-              !_vm.quest_selected
-                ? _c("div", [
-                    _vm.quests_pending.length
-                      ? _c(
-                          "div",
-                          { staticClass: "mb-3" },
-                          [
-                            _c(
-                              "h4",
-                              {
-                                staticClass:
-                                  "font-weight-bold mb-2 d-inline-block"
-                              },
-                              [_vm._v("Má zadané")]
-                            ),
-                            _vm._v(" (ode mě)\n\n                    "),
-                            _vm._l(_vm.quests_pending, function(quest) {
-                              return _c("quest-icon", {
-                                key: quest.id,
-                                attrs: { quest: quest },
-                                nativeOn: {
-                                  click: function($event) {
-                                    return _vm.chooseQuest(quest)
-                                  }
-                                }
-                              })
-                            }),
-                            _vm._v(" "),
-                            _c("hr")
-                          ],
-                          2
-                        )
-                      : !_vm.quests_pending.length
-                      ? _c(
-                          "div",
-                          { staticClass: "mb-3" },
-                          [
-                            _c(
-                              "h4",
-                              {
-                                staticClass:
-                                  "font-weight-bold mb-2 d-inline-block"
-                              },
-                              [_vm._v("Dostupné úkoly")]
-                            ),
-                            _vm._v("  (ode mě)\n\n                    "),
-                            _vm._l(_vm.quests_available, function(quest) {
-                              return _c("quest-icon", {
-                                key: quest.id,
-                                attrs: { quest: quest },
-                                nativeOn: {
-                                  click: function($event) {
-                                    return _vm.chooseQuest(quest)
-                                  }
-                                }
-                              })
-                            }),
-                            _vm._v(" "),
-                            _c("br"),
-                            _vm._v(" "),
-                            !_vm.quests_available.length
-                              ? _c("i", { staticClass: "text-warning" }, [
-                                  _vm._v("Aktuálně není nic k dispozici.")
-                                ])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c("hr")
-                          ],
-                          2
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.quests_external_pending.length
-                      ? _c(
-                          "div",
-                          { staticClass: "mb-3" },
-                          [
-                            _c(
-                              "h4",
-                              {
-                                staticClass:
-                                  "font-weight-bold mb-2 d-inline-block"
-                              },
-                              [_vm._v("Chce u mě vyřešit")]
-                            ),
-                            _vm._v(" "),
-                            _vm._l(_vm.quests_external_pending, function(
-                              quest
-                            ) {
-                              return _c("quest-icon", {
-                                key: quest.id,
-                                attrs: { quest: quest },
-                                nativeOn: {
-                                  click: function($event) {
-                                    return _vm.chooseQuest(quest)
-                                  }
-                                }
-                              })
-                            }),
-                            _vm._v(" "),
-                            _c("hr")
-                          ],
-                          2
-                        )
-                      : _vm._e()
-                  ])
-                : _c("div", [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-outline-secondary",
-                        on: {
-                          click: function($event) {
-                            _vm.quest_selected = null
-                          }
-                        }
-                      },
-                      [_vm._v("Zpět")]
-                    ),
-                    _vm._v(" "),
-                    _c("h3", [_vm._v(_vm._s(_vm.quest_selected.name))]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v(_vm._s(_vm.quest_selected.description))]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card" }, [
-                      _c("div", { staticClass: "card-header" }, [
-                        _vm._v("Odměna")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "card-body" },
-                        [
-                          _c("reward-cash", {
-                            attrs: { cash: _vm.quest_selected.reward_cash }
-                          }),
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(_vm.quest_selected.reward_knowledge) +
-                              "\n                    "
-                          )
-                        ],
-                        1
-                      )
-                    ])
-                  ])
-            ])
-      ]
+          ? _c("person-color-picker", { attrs: { role: _vm.role } })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.person_selected
+          ? _c(
+              "div",
+              [!_vm.quest_selected ? _c("person-detail") : _c("quest-detail")],
+              1
+            )
+          : _vm._e()
+      ],
+      1
     )
   ])
 }
@@ -50865,6 +51063,9 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./components/PersonColorPicker.vue": "./resources/js/components/PersonColorPicker.vue",
+	"./components/PersonDetail.vue": "./resources/js/components/PersonDetail.vue",
+	"./components/QuestDetail.vue": "./resources/js/components/QuestDetail.vue",
 	"./components/QuestIcon.vue": "./resources/js/components/QuestIcon.vue",
 	"./components/RewardCash.vue": "./resources/js/components/RewardCash.vue",
 	"./components/RoleDashboard.vue": "./resources/js/components/RoleDashboard.vue"
@@ -50974,6 +51175,213 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/PersonColorPicker.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/PersonColorPicker.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PersonColorPicker_vue_vue_type_template_id_6bdeb261_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PersonColorPicker.vue?vue&type=template&id=6bdeb261&scoped=true& */ "./resources/js/components/PersonColorPicker.vue?vue&type=template&id=6bdeb261&scoped=true&");
+/* harmony import */ var _PersonColorPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PersonColorPicker.vue?vue&type=script&lang=js& */ "./resources/js/components/PersonColorPicker.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PersonColorPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PersonColorPicker_vue_vue_type_template_id_6bdeb261_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PersonColorPicker_vue_vue_type_template_id_6bdeb261_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "6bdeb261",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PersonColorPicker.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PersonColorPicker.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/PersonColorPicker.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonColorPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PersonColorPicker.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PersonColorPicker.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonColorPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PersonColorPicker.vue?vue&type=template&id=6bdeb261&scoped=true&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/PersonColorPicker.vue?vue&type=template&id=6bdeb261&scoped=true& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonColorPicker_vue_vue_type_template_id_6bdeb261_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PersonColorPicker.vue?vue&type=template&id=6bdeb261&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PersonColorPicker.vue?vue&type=template&id=6bdeb261&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonColorPicker_vue_vue_type_template_id_6bdeb261_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonColorPicker_vue_vue_type_template_id_6bdeb261_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PersonDetail.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/PersonDetail.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PersonDetail_vue_vue_type_template_id_5db3e61e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PersonDetail.vue?vue&type=template&id=5db3e61e&scoped=true& */ "./resources/js/components/PersonDetail.vue?vue&type=template&id=5db3e61e&scoped=true&");
+/* harmony import */ var _PersonDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PersonDetail.vue?vue&type=script&lang=js& */ "./resources/js/components/PersonDetail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PersonDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PersonDetail_vue_vue_type_template_id_5db3e61e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PersonDetail_vue_vue_type_template_id_5db3e61e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "5db3e61e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PersonDetail.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PersonDetail.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/PersonDetail.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PersonDetail.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PersonDetail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PersonDetail.vue?vue&type=template&id=5db3e61e&scoped=true&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/PersonDetail.vue?vue&type=template&id=5db3e61e&scoped=true& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonDetail_vue_vue_type_template_id_5db3e61e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PersonDetail.vue?vue&type=template&id=5db3e61e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PersonDetail.vue?vue&type=template&id=5db3e61e&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonDetail_vue_vue_type_template_id_5db3e61e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonDetail_vue_vue_type_template_id_5db3e61e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/QuestDetail.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/QuestDetail.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _QuestDetail_vue_vue_type_template_id_0dff4538_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./QuestDetail.vue?vue&type=template&id=0dff4538&scoped=true& */ "./resources/js/components/QuestDetail.vue?vue&type=template&id=0dff4538&scoped=true&");
+/* harmony import */ var _QuestDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestDetail.vue?vue&type=script&lang=js& */ "./resources/js/components/QuestDetail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _QuestDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _QuestDetail_vue_vue_type_template_id_0dff4538_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _QuestDetail_vue_vue_type_template_id_0dff4538_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "0dff4538",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/QuestDetail.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/QuestDetail.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/QuestDetail.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./QuestDetail.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/QuestDetail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/QuestDetail.vue?vue&type=template&id=0dff4538&scoped=true&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/QuestDetail.vue?vue&type=template&id=0dff4538&scoped=true& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestDetail_vue_vue_type_template_id_0dff4538_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./QuestDetail.vue?vue&type=template&id=0dff4538&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/QuestDetail.vue?vue&type=template&id=0dff4538&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestDetail_vue_vue_type_template_id_0dff4538_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestDetail_vue_vue_type_template_id_0dff4538_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -51217,6 +51625,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RoleDashboard_vue_vue_type_template_id_94db893a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/mobile_state.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/mobile_state.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  person: null,
+  quests_pending: [],
+  quests_available: [],
+  quests_external_pending: [],
+  quest_selected: null
+});
 
 /***/ }),
 
