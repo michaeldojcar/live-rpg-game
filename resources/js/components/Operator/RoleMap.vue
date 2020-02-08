@@ -2,7 +2,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-2 mt-3">
-                <h4>Mapa</h4>
+                <h4>Mapa hry</h4>
+
+                <h5>Aktivní postavy</h5>
+
+                <table>
+                    <tr v-for="role in roles" :key="role.id">
+                        <td class="pr-3">{{role.name }}</td>
+                        <td class="font-italic">{{role.real_name}}</td>
+                    </tr>
+                </table>
             </div>
             <div class="col-10">
                 <l-map
@@ -19,8 +28,8 @@
                               v-for="role in roles"
                               :latLng="role.latlong"
                               :key="role.id"
-                             name="sss">
-
+                              name="sss">
+                        <l-popup>{{role.name }} - {{role.real_name}}</l-popup>
                     </l-marker>
                 </l-map>
             </div>
@@ -29,13 +38,13 @@
 </template>
 
 <script>
-    import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
+    import {LMap, LTileLayer, LMarker, LPopup} from 'vue2-leaflet';
 
 
     export default {
         name: "role-map",
 
-        components: {LMap, LTileLayer, LMarker},
+        components: {LMap, LTileLayer, LMarker, LPopup},
 
         data() {
             return {
@@ -49,9 +58,9 @@
         },
 
         mounted() {
+            this.refresh();
+
             setInterval(this.refresh, 5000);
-
-
         },
 
         methods: {
@@ -78,5 +87,7 @@
 </script>
 
 <style scoped>
+    ul {
 
+    }
 </style>

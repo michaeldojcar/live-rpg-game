@@ -2,31 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bceee34-a6d4-44d7-844a-bebd7a4524cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Navbar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/OperatorLayout.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/RoleMap.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OperatorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OperatorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/PersonColorPicker.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Role/PersonColorPicker.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/PersonDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Role/PersonDetail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/QuestDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Role/QuestDetail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/QuestIcon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Role/QuestIcon.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/RewardCash.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Role/RewardCash.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/RoleDashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Role/RoleDashboard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/mobile_state.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Role/mobile_state.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/operator.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operator.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/role.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/role.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/RoleMap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Operator/RoleMap.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,6 +185,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="C:\Users\micha\AppData\Local\JetBrains\Toolbox\apps\PhpStorm\ch-0\193.5662.63\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -263,7 +242,7 @@
       <workItem from="1579690510954" duration="94000" />
       <workItem from="1580554341642" duration="1007000" />
       <workItem from="1581018966547" duration="14097000" />
-      <workItem from="1581150024345" duration="11244000" />
+      <workItem from="1581150024345" duration="12054000" />
     </task>
     <task id="LOCAL-00001" summary="js fixes">
       <created>1579586999701</created>
@@ -335,7 +314,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581071720332</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="role location tracking">
+      <created>1581165568485</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1581165568485</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,9 +339,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1579468564095" />
-    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1581071718984">
+    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1581165565789">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581165565789" />
     <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1581071718984" />
     <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1579590109827">
       <screen x="0" y="0" width="1536" height="824" />
@@ -389,6 +376,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1579468570987" />
+    <state x="277" y="56" key="SettingsEditor" timestamp="1581166393849">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="56" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581166393849" />
     <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1581072816552">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
