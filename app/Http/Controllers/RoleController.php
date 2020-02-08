@@ -34,6 +34,6 @@ class RoleController extends Controller
             return $valid_coords && $role->isOnline();
         });
 
-        return $roles->toJson();
+        return $roles;
     }
 }
