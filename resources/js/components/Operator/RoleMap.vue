@@ -49,7 +49,7 @@
 
         data() {
             return {
-                url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 zoom: 17,
                 center: [49.482, 17.6819],
                 bounds: null,

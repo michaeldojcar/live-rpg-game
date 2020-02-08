@@ -2090,7 +2090,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       zoom: 17,
       center: [49.482, 17.6819],
       bounds: null,
@@ -2500,7 +2500,7 @@ __webpack_require__.r(__webpack_exports__);
       }, 5000);
       setInterval(function () {
         _this.sendTelemetrics();
-      }, 20000);
+      }, 10000);
     },
     sendTelemetrics: function sendTelemetrics() {
       var _this2 = this;

@@ -86,7 +86,7 @@
 
                 setInterval(() => {
                     this.sendTelemetrics()
-                }, 20000);
+                }, 10000);
             },
 
             sendTelemetrics: function () {
