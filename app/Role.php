@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -30,5 +31,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Role extends Model
 {
-    //
+    protected $dates = ['last_seen'];
+
+    /**
+     * Check if role is online.
+     */
+    public function isOnline()
+    {
+        return $this->last_seen > Carbon::now()->subSeconds(60);
+    }
 }

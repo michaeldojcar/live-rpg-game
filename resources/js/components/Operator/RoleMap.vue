@@ -4,7 +4,8 @@
             <div class="col-2 mt-3">
                 <h4>Mapa hry</h4>
 
-                <h5>Aktivní postavy</h5>
+                <h5 class="d-inline-block">Aktivní postavy</h5>
+                <span class="badge badge-success">{{roles.length}}</span>
 
                 <table>
                     <tr v-for="role in roles" :key="role.id">
@@ -48,7 +49,7 @@
 
         data() {
             return {
-                url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+                url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 zoom: 17,
                 center: [49.482, 17.6819],
                 bounds: null,

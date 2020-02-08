@@ -2078,6 +2078,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "role-map",
@@ -2089,7 +2090,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       zoom: 17,
       center: [49.482, 17.6819],
       bounds: null,
@@ -53502,7 +53503,13 @@ var render = function() {
       _c("div", { staticClass: "col-2 mt-3" }, [
         _c("h4", [_vm._v("Mapa hry")]),
         _vm._v(" "),
-        _c("h5", [_vm._v("Aktivní postavy")]),
+        _c("h5", { staticClass: "d-inline-block" }, [
+          _vm._v("Aktivní postavy")
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "badge badge-success" }, [
+          _vm._v(_vm._s(_vm.roles.length))
+        ]),
         _vm._v(" "),
         _c(
           "table",
