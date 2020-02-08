@@ -38,6 +38,6 @@ class Role extends Model
      */
     public function isOnline()
     {
-        return $this->last_seen > Carbon::now()->subSeconds(60);
+        return $this->last_seen > Carbon::now()->subSeconds(20);
     }
 }
