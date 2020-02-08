@@ -25,7 +25,7 @@
         <h1>Rozhraní táborové hry</h1>
 
 
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-header">Výběr postavy</div>
 
             <div class="card-body">
@@ -33,6 +33,13 @@
                     <a href="{{route('role.show', $role->id)}}"
                        class="btn btn-secondary">{{$role->name}} ({{$role->real_name}})</a><br><br>
                 @endforeach
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Správa</div>
+            <div class="card-body">
+                <a href="{{route('operator')}}">Administrace hry</a>
             </div>
         </div>
     </div>

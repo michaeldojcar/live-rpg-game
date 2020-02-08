@@ -6,4 +6,4 @@ Route::get('/', 'IndexController@index')->name('index');
 Route::get('/role/{id}', 'RoleController@show')->name('role.show');
 
 // Operator dashboard
-Route::get('/operator', 'OperatorController@index')->name('index');
+Route::get('/operator', 'OperatorController@index')->name('operator');

@@ -1,3 +1,5 @@
+import * as VueGoogleMaps from "vue2-google-maps";
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -24,6 +26,26 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+import { Icon }  from 'leaflet'
+import 'leaflet/dist/leaflet.css'
+
+
+// this part resolve an issue where the markers would not appear
+delete Icon.Default.prototype._getIconUrl;
+
+Icon.Default.mergeOptions({
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: require('leaflet/dist/images/marker-icon.png'),
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
+
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: "AIzaSyBP4r0ioCpRMNnU1MaJnhHNKHFffrdvdX8",
+        libraries: "places" // necessary for places input
+    }
+});
 
 const app = new Vue({
     el: '#app',

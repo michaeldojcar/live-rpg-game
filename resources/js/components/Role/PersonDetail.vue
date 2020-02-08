@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="mb-3" v-if="state.quests_pending.length">
-            <h4 class="font-weight-bold mb-2 d-inline-block">Má zadané</h4> (ode mě)
+            <h4 class="font-weight-bold mb-2 d-inline-block">Má zadané </h4>
+            <p>(ode mě)</p>
 
             <quest-icon :quest="quest" v-bind:key="quest.id" v-for="quest in state.quests_pending"
                         @click.native="chooseQuest(quest)"/>
@@ -11,7 +12,8 @@
 
 
         <div class="mb-3" v-else>
-            <h4 class="font-weight-bold mb-2 d-inline-block">Dostupné úkoly</h4> (které můžu nabídnout)
+            <h4 class="font-weight-bold mb-2 d-inline">Dostupné úkoly 🔁</h4>
+            <p>(které můžu nabídnout)</p>
 
             <quest-icon :quest="quest" v-bind:key="quest.id" v-for="quest in state.quests_available"
                         @click.native="chooseQuest(quest)"/>

@@ -13,4 +13,16 @@ class RoleController extends Controller
             'role' => Role::findOrFail($id)
         ]);
     }
+
+    public function index()
+    {
+        $roles = Role::all()->map(function ($role) {
+            $role->latlong = [$role->latitude, $role->longitude];
+            return $role;
+        });
+
+        return $roles->filter(function ($role) {
+            return $role->latitude && $role->longitude;
+        });
+    }
 }

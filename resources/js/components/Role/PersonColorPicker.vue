@@ -1,36 +1,29 @@
 <template>
     <div>
-        <h2>Výběr hráče</h2>
+        <h4>Výběr hráče</h4>
 
-        <p>Vyber hráče podle barev na rukávu (zeshora dolů)</p>
+        <p>Pro výběr hráče vyťukej jeho barvy.</p>
 
-        <div class="card mb-2">
-            <div class="card-header">1. barva</div>
-            <div class="card-body">
-                <a @click="setFirstColor(1)" class="btn-color text-danger">Červená</a>
-                <a @click="setFirstColor(2)" class="btn-color text-primary">Modrá</a>
-                <a @click="setFirstColor(3)" class="btn-color text-success">Zelená</a>
-                <a @click="setFirstColor(4)" class="btn-color text-warning">Žlutá</a>
+        <div class="wrapper">
+            <div class=" mb-2">
+                <button @click="setFirstColor(1)" class="btn-color bg-danger">Červená</button>
+                <button @click="setFirstColor(2)" class="btn-color bg-primary">Modrá</button>
+                <button @click="setFirstColor(3)" class="btn-color bg-success">Zelená</button>
+                <button @click="setFirstColor(4)" class="btn-color bg-warning">Žlutá</button>
             </div>
-        </div>
 
-        <div class="card mb-2">
-            <div class="card-header">2. barva</div>
-            <div class="card-body">
-                <a @click="setSecondColor(1)" class="btn-color text-danger">Červená</a>
-                <a @click="setSecondColor(2)" class="btn-color text-primary">Modrá</a>
-                <a @click="setSecondColor(3)" class="btn-color text-success">Zelená</a>
-                <a @click="setSecondColor(4)" class="btn-color text-warning">Žlutá</a>
+            <div class="mb-2">
+                <button @click="setSecondColor(1)" class="btn-color bg-danger">Červená</button>
+                <button @click="setSecondColor(2)" class="btn-color bg-primary">Modrá</button>
+                <button @click="setSecondColor(3)" class="btn-color bg-success">Zelená</button>
+                <button @click="setSecondColor(4)" class="btn-color bg-warning">Žlutá</button>
             </div>
-        </div>
 
-        <div class="card">
-            <div class="card-header">3. barva</div>
-            <div class="card-body">
-                <a @click="setThirdColor(1)" class="btn-color text-danger">Červená</a>
-                <a @click="setThirdColor(2)" class="btn-color text-primary">Modrá</a>
-                <a @click="setThirdColor(3)" class="btn-color text-success">Zelená</a>
-                <a @click="setThirdColor(4)" class="btn-color text-warning">Žlutá</a>
+            <div>
+                <button @click="setThirdColor(1)" class="btn-color bg-danger">Červená</button>
+                <button @click="setThirdColor(2)" class="btn-color bg-primary">Modrá</button>
+                <button @click="setThirdColor(3)" class="btn-color bg-success">Zelená</button>
+                <button @click="setThirdColor(4)" class="btn-color bg-warning">Žlutá</button>
             </div>
         </div>
     </div>
@@ -100,5 +93,18 @@
 </script>
 
 <style scoped>
+    .btn-color {
+        height: 60px;
+        box-shadow: grey 0 0 3px;
 
+        font-size: 12px;
+
+        border: none;
+    }
+
+    .wrapper {
+        position: absolute;
+        bottom: 20px;
+        width: calc(100vw - 45px);
+    }
 </style>

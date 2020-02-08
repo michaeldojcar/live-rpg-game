@@ -9,6 +9,8 @@
     <meta name="author"
           content="">
 
+    <meta name="theme-color" content="#343a40">
+
     <title>{{$role->name}} ({{$role->real_name}})</title>
 
     <!-- Bootstrap core CSS -->
@@ -21,10 +23,10 @@
 
 <body>
 
-    <div id="app">
-        <role-dashboard :role="{{$role}}"></role-dashboard>
-    </div>
+<div id="app">
+    <role-dashboard :role="{{$role}}"></role-dashboard>
+</div>
 
-    <script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

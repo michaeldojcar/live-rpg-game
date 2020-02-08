@@ -3,7 +3,7 @@
         <table>
             <tr>
                 <td>
-                    <i class="fas fa-angle-double-right"></i>
+                    <span></span>
                 </td>
                 <td>{{quest.name}}</td>
             </tr>

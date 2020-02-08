@@ -1,6 +1,6 @@
 <template>
     <p>
-        <span>{{ gold }} zl</span>
+        <span>{{ gold }} zl 💰</span>
         <span>{{silver}} stř.</span>
     </p>
 </template>

@@ -90,22 +90,12 @@
             },
 
             sendTelemetrics: function () {
-                console.log('Sending telemetries data');
+                console.log('Sending telemetries data.');
 
-
-                if (navigator && navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition((position) => {
-                        alert(position.coords.latitude);
-                        alert(position.coords.longitude);
-
-                        this.latitude = position.coords.latitude;
-                        this.longitude = position.coords.longitude;
-                    }, function () {
-                        console.warn('Geolokace selhala.');
-                    }, {
-                        enableHighAccuracy: false,
-                        maximumAge: 100
-                    });
+                // Location success callback
+                let positionSuccess = (position) => {
+                    this.latitude = position.coords.latitude;
+                    this.longitude = position.coords.longitude;
 
                     axios
                         .post('/api/role/' + this.role.id + '/telemetries', {
@@ -113,10 +103,26 @@
                             longitude: this.longitude
                         })
                         .then(response => {
-                            // console.log(response.data)
+                            console.log('Telemetries successfully sent.')
                         });
+                };
+
+                // Location failed callback
+                let positionFailed = () => {
+                    console.warn('Geolocation failed.');
+                };
+
+                // Try to get location
+                if (navigator && navigator.geolocation) {
+
+                    // Retrieve current location
+                    navigator.geolocation.getCurrentPosition(positionSuccess, positionFailed, {
+                        enableHighAccuracy: true,
+                        maximumAge: 100
+                    });
+
                 } else {
-                    alert('Geolokace není funkční')
+                    console.warn('Geolokace není funkční')
                 }
             }
         }
