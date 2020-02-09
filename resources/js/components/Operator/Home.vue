@@ -18,6 +18,18 @@
                 <td>Mince v oběhu u hráčů</td>
                 <td>3480</td>
             </tr>
+            <tr>
+                <td>Hráči</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Postavy</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>Úkoly</td>
+                <td>2</td>
+            </tr>
         </table>
     </div>
 </template>

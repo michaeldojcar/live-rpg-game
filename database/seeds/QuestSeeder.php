@@ -1,6 +1,6 @@
 <?php
 
-use App\Person;
+use App\Player;
 use App\Quest;
 use Illuminate\Database\Seeder;
 
@@ -17,7 +17,7 @@ class QuestSeeder extends Seeder
         $q->name = 'Získání hřebíků';
         $q->description = 'Potřebuju aspoň 15 hřebíků od trhovce.';
         $q->is_mother = 1;
-        $q->mother_quest_id = null;
+        $q->parent_quest_id = null;
         $q->unlock_criteria = 2;
         $q->allow_more_attempts = true;
         $q->allow_finish_repeatedly = false;
@@ -28,13 +28,13 @@ class QuestSeeder extends Seeder
         $q->is_dumb = false;
         $q->save();
 
-        $q->persons()->attach(Person::first(), ['status' => 2]);
+        $q->persons()->attach(Player::first(), ['status' => 2]);
 
         $q = new Quest();
         $q->name = 'Získání ovčího rouna';
         $q->description = 'Potřebuju velké ovčí rouno';
         $q->is_mother = 1;
-        $q->mother_quest_id = null;
+        $q->parent_quest_id = null;
         $q->unlock_criteria = 2;
         $q->allow_more_attempts = true;
         $q->allow_finish_repeatedly = false;
@@ -45,13 +45,13 @@ class QuestSeeder extends Seeder
         $q->is_dumb = false;
         $q->save();
 
-        $q->persons()->attach(Person::first(), ['status' => 3]);
+        $q->persons()->attach(Player::first(), ['status' => 3]);
 
         $q = new Quest();
         $q->name = '5 dřepů';
         $q->description = 'Musí udělat 5 dřepů';
         $q->is_mother = 0;
-        $q->mother_quest_id = 1;
+        $q->parent_quest_id = 1;
         $q->unlock_criteria = 2;
         $q->allow_more_attempts = true;
         $q->allow_finish_repeatedly = false;
@@ -62,6 +62,6 @@ class QuestSeeder extends Seeder
         $q->is_dumb = false;
         $q->save();
 
-        $q->persons()->attach(Person::first(), ['status' => 3]);
+        $q->persons()->attach(Player::first(), ['status' => 3]);
     }
 }

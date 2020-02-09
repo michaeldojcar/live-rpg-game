@@ -1,19 +1,19 @@
 <template>
     <div class="container-fluid mt-3">
-        <router-link to="#" class="btn btn-success float-right">+ Nová skupinka</router-link>
+        <router-link to="#" class="btn btn-success float-right">+ Nový hráč</router-link>
 
-        <h4>Skupinky</h4>
+        <h4>Hráči</h4>
 
         <table class="w-50 table table-bordered">
             <tr>
                 <th>Jméno</th>
-                <th>Reálné jméno</th>
+                <th>Věk</th>
             </tr>
-            <tr v-for="role in roles" :key="role.id">
+            <tr v-for="player in players" :key="player.id">
                 <td>
-                    <router-link to="#">{{role.name}}</router-link>
+                    <router-link to="#">{{player.name}}</router-link>
                 </td>
-                <td>{{role.real_name}}</td>
+                <td>{{player.age}}</td>
             </tr>
         </table>
     </div>
@@ -21,11 +21,11 @@
 
 <script>
     export default {
-        name: "RoleIndex",
+        name: "PlayerIndex",
 
         data: () => {
             return {
-                roles: [],
+                players: [],
             }
         },
 
@@ -36,11 +36,11 @@
         methods: {
             refresh() {
                 axios
-                    .get('/api/roles')
+                    .get('/api/players')
                     .then(response => {
                         console.log(response.data);
 
-                        this.roles = response.data;
+                        this.players = response.data;
                     });
             }
         }

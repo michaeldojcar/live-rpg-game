@@ -1,5 +1,7 @@
 <?php
 
+use App\Player;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class PersonSeeder extends Seeder
@@ -11,25 +13,25 @@ class PersonSeeder extends Seeder
      */
     public function run()
     {
-        $p = new \App\Person();
+        $p = new Player();
         $p->name = 'Filip Vacula';
-        $p->age = 12;
+        $p->birth_date = Carbon::now()->subYears(8);
         $p->color_1 = 1;
         $p->color_2 = 1;
         $p->color_3 = 1;
         $p->save();
 
-        $p = new \App\Person();
+        $p = new Player();
         $p->name = 'Jan Vacula';
-        $p->age = 14;
+        $p->birth_date = Carbon::now()->subYears(17);
         $p->color_1 = 1;
         $p->color_2 = 2;
         $p->color_3 = 1;
         $p->save();
 
-        $p = new \App\Person();
+        $p = new Player();
         $p->name = 'Jan Mikoška';
-        $p->age = 10;
+        $p->birth_date = Carbon::now()->subYears(12);
         $p->color_1 = 1;
         $p->color_2 = 2;
         $p->color_3 = 1;

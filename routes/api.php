@@ -13,14 +13,19 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/role/{role_id}/person/color_1/{c1}/color_2/{c2}/color_3/{c3}', 'PersonController@show');
-Route::post('/role/{role_id}/telemetries', 'PersonController@telemetries');
+/*
+ * NPC role routes
+ */
+Route::get('/role/{role_id}/person/color_1/{c1}/color_2/{c2}/color_3/{c3}', 'RoleInterfaceController@show');
+Route::post('/role/{role_id}/telemetries', 'RoleInterfaceController@telemetries');
 
 
-Route::get('/roles', 'RoleController@index');
+/*
+ * Operator API routes
+ */
 Route::get('/map', 'RoleController@mapIndex');
 
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::apiResource('roles', 'RoleController');
+Route::apiResource('players', 'PlayerController');
+Route::apiResource('groups', 'GroupController');
+Route::apiResource('quests', 'QuestController');

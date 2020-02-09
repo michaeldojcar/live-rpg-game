@@ -29,7 +29,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Quest $motherQuest
  * @property-read \App\Role $owner
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Person[] $persons
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Player[] $persons
  * @property-read int|null $persons_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Quest newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Quest newQuery()
@@ -52,9 +52,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Quest whereUnlockCriteria($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Quest whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int|null $parent_quest_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quest whereParentQuestId($value)
  */
 class Quest extends Model
 {
+    protected $guarded = [];
+
     public function motherQuest()
     {
         return $this->belongsTo(Quest::class, 'mother_quest_id');
@@ -67,6 +71,6 @@ class Quest extends Model
 
     public function persons()
     {
-        return $this->belongsToMany(Person::class)->withPivot('status');
+        return $this->belongsToMany(Player::class)->withPivot('status');
     }
 }

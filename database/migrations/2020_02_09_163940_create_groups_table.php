@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePersonQuest extends Migration
+class CreateGroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreatePersonQuest extends Migration
      */
     public function up()
     {
-        Schema::create('player_quest', function (Blueprint $table) {
+        Schema::create('groups', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('player_id');
-            $table->unsignedInteger('quest_id');
-            $table->unsignedInteger('status');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreatePersonQuest extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('player_quest');
+        Schema::dropIfExists('groups');
     }
 }

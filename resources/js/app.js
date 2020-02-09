@@ -86,7 +86,6 @@ const router = new VueRouter({
         {path: '/group/:id/edit', component: GroupEdit},
 
         {path: '/quests', component: QuestIndex},
-        {path: '/quest/new', component: QuestCreate},
         {path: '/quest/:id/edit', component: QuestEdit},
 
     ]

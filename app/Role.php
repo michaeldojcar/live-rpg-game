@@ -28,6 +28,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Role whereStory($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Role whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $latitude
+ * @property string|null $longitude
+ * @property \Illuminate\Support\Carbon|null $last_seen
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Role whereLastSeen($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Role whereLatitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Role whereLongitude($value)
  */
 class Role extends Model
 {

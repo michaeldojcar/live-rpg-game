@@ -2,18 +2,16 @@
     <div class="container-fluid mt-3">
         <router-link to="#" class="btn btn-success float-right">+ Nová skupinka</router-link>
 
-        <h4>Skupinky</h4>
+        <h4>Skupiny</h4>
 
         <table class="w-50 table table-bordered">
             <tr>
                 <th>Jméno</th>
-                <th>Reálné jméno</th>
             </tr>
-            <tr v-for="role in roles" :key="role.id">
+            <tr v-for="group in groups" :key="group.id">
                 <td>
-                    <router-link to="#">{{role.name}}</router-link>
+                    <router-link to="#">{{group.name}}</router-link>
                 </td>
-                <td>{{role.real_name}}</td>
             </tr>
         </table>
     </div>
@@ -21,11 +19,11 @@
 
 <script>
     export default {
-        name: "RoleIndex",
+        name: "GroupIndex",
 
         data: () => {
             return {
-                roles: [],
+                groups: [],
             }
         },
 
@@ -36,11 +34,11 @@
         methods: {
             refresh() {
                 axios
-                    .get('/api/roles')
+                    .get('/api/groups')
                     .then(response => {
                         console.log(response.data);
 
-                        this.roles = response.data;
+                        this.groups = response.data;
                     });
             }
         }

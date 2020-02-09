@@ -13,10 +13,10 @@ class CreatePersons extends Migration
      */
     public function up()
     {
-        Schema::create('persons', function (Blueprint $table) {
+        Schema::create('players', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('age');
+            $table->date('birth_date');
             $table->integer('color_1');
             $table->integer('color_2');
             $table->integer('color_3');
@@ -31,6 +31,6 @@ class CreatePersons extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('persons');
+        Schema::dropIfExists('players');
     }
 }

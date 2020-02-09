@@ -4,6 +4,9 @@
             <div class="col-2 mt-3">
                 <h4>Mapa hry</h4>
 
+                <a class="btn btn-outline-secondary btn-sm mb-2" @click="resetPosition">Zaměřit areál hry</a>
+
+                <br>
                 <h5 class="d-inline-block">Aktivní postavy</h5>
                 <span class="badge badge-success">{{roles.length}}</span>
 
@@ -14,9 +17,9 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-10">
+            <div class="col-10 pr-0">
                 <l-map
-                    style="height: 100vh; width: 100%"
+                    style="height: calc(100vh - 59px); width: 100%"
                     :zoom="zoom"
                     :center="center"
                     @update:zoom="zoomUpdated"
@@ -30,7 +33,6 @@
                         :visible="tileProvider.visible"
                         :url="tileProvider.url"
                         :attribution="tileProvider.attribution"
-                        :token="token"
                         layer-type="base"/>
 
                     <l-control-layers position="topright"/>
@@ -60,8 +62,8 @@
         data() {
             return {
                 url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                zoom: 17,
-                center: [49.482, 17.6819],
+                zoom: 16,
+                center: [49.4836, 17.6842],
                 bounds: null,
 
                 tileProviders: [
@@ -88,7 +90,7 @@
                         visible: false,
                         url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
                         attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-                    },{
+                    }, {
                         name: 'Thunderforest Lava',
                         visible: false,
                         url: 'https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png',
@@ -135,13 +137,14 @@
 
                         this.roles = response.data;
                     });
+            },
+
+            resetPosition() {
+                this.center = [49.4836, 17.6842];
             }
         }
     }
 </script>
 
 <style scoped>
-    ul {
-
-    }
 </style>

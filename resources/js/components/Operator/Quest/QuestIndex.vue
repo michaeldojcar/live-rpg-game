@@ -7,13 +7,14 @@
         <table class="w-50 table table-bordered">
             <tr>
                 <th>Jméno</th>
-                <th>Reálné jméno</th>
+                <th>Postava</th>
             </tr>
-            <tr v-for="role in roles" :key="role.id">
+            <tr v-for="quest in quests" :key="quest.id">
                 <td>
-                    <router-link to="#">{{role.name}}</router-link>
+                    <router-link to="#">
+                        {{quest.name}}</router-link>
                 </td>
-                <td>{{role.real_name}}</td>
+                <td>{{quest.owner.name}}</td>
             </tr>
         </table>
     </div>
@@ -25,7 +26,7 @@
 
         data: () => {
             return {
-                roles: [],
+                quests: [],
             }
         },
 
@@ -36,11 +37,11 @@
         methods: {
             refresh() {
                 axios
-                    .get('/api/roles')
+                    .get('/api/quests')
                     .then(response => {
                         console.log(response.data);
 
-                        this.roles = response.data;
+                        this.quests = response.data;
                     });
             }
         }

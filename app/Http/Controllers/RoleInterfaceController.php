@@ -2,20 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Person;
+use App\Player;
 use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
-class PersonController extends Controller
+class RoleInterfaceController extends Controller
 {
-    public function show($role_id, $c1, $c2, $c3)
+    /**
+     * Find user by color combination.
+     *
+     * @param $role_id int Opened role ID
+     * @param $color_1
+     * @param $color_2
+     * @param $color_3
+     * @return string
+     */
+    public function show($role_id, $color_1, $color_2, $color_3)
     {
         // Find person
-        $person = Person::findOrFail($role_id)
-            ->where('color_1', $c1)
-            ->where('color_2', $c2)
-            ->where('color_3', $c3)
+        $person = Player::findOrFail($role_id)
+            ->where('color_1', $color_1)
+            ->where('color_2', $color_2)
+            ->where('color_3', $color_3)
             ->firstOrFail();
 
         // Find role
@@ -31,6 +40,13 @@ class PersonController extends Controller
         return json_encode($resp);
     }
 
+    /**
+     * Save telemetry data of role. (last seen, coordinates)
+     *
+     * @param $id
+     * @param Request $request
+     * @return array
+     */
     public function telemetries($id, Request $request)
     {
 //        dd($request);

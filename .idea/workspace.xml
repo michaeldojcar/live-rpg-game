@@ -2,8 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bceee34-a6d4-44d7-844a-bebd7a4524cb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Group.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/GroupController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PlayerController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_09_163940_create_groups_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_09_164159_create_group_player_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/87768cd5-c0a3-4173-9e8e-738726cf5ce1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/87768cd5-c0a3-4173-9e8e-738726cf5ce1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PersonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoleInterfaceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Person.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Player.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Quest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Quest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_19_205712_create_quests.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_19_205712_create_quests.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_19_211735_create_persons.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_19_211735_create_persons.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_19_212537_create_person_quest.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_19_212537_create_person_quest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/PersonSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PersonSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/QuestSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/QuestSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/Group/GroupIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Operator/Group/GroupIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Operator/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/Player/PlayerIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Operator/Player/PlayerIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/Quest/QuestCreate.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/Quest/QuestIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Operator/Quest/QuestIndex.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/RoleMap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Operator/RoleMap.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +259,7 @@
       <workItem from="1579690510954" duration="94000" />
       <workItem from="1580554341642" duration="1007000" />
       <workItem from="1581018966547" duration="14097000" />
-      <workItem from="1581150024345" duration="30013000" />
+      <workItem from="1581150024345" duration="37624000" />
     </task>
     <task id="LOCAL-00001" summary="js fixes">
       <created>1579586999701</created>
@@ -377,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581259214934</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="maps https">
+      <created>1581259369119</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1581259369119</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -393,17 +424,26 @@
     <MESSAGE value="more accurate online detection" />
     <MESSAGE value=".idea ignored" />
     <MESSAGE value="maps, views" />
-    <option name="LAST_COMMIT_MESSAGE" value="maps, views" />
+    <MESSAGE value="maps https" />
+    <option name="LAST_COMMIT_MESSAGE" value="maps https" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579468564095">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1579468564095" />
-    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1581259212954">
+    <state x="414" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581262556033">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581259212954" />
+    <state x="414" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581262556033" />
+    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1581265278289">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581265278289" />
+    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1581288318050">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581288318050" />
     <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1581071718984" />
     <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1579590109827">
       <screen x="0" y="0" width="1536" height="824" />
@@ -441,19 +481,19 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="56" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581166393849" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1581259216485">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1581259370475">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581259216485" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581259370475" />
     <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1581072816552" />
     <state x="470" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1579586269669">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="470" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1579586269669" />
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581256980894">
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581261836364">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581256980894" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581261836364" />
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1581072808872" />
     <state x="462" y="10" width="611" height="804" key="find.popup" timestamp="1581251524258">
       <screen x="0" y="0" width="1536" height="824" />
@@ -463,10 +503,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1581066306263" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1581256974322">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1581265300503">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581256974322" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581265300503" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581069181674" />
   </component>
 </project>
