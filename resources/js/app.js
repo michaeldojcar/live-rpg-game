@@ -18,8 +18,8 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-const files = require.context('./', true, /\.vue$/i)
-files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+const files = require.context('./', true, /\.vue$/i);
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,9 +27,24 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import { Icon }  from 'leaflet'
+import {Icon} from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-
+import VueRouter from 'vue-router'
+import RoleMap from "./components/Operator/RoleMap";
+import Home from "./components/Operator/Home";
+import RoleIndex from "./components/Operator/Role/RoleIndex";
+import RoleCreate from "./components/Operator/Role/RoleCreate";
+import RoleEdit from "./components/Operator/Role/RoleEdit";
+import PlayerIndex from "./components/Operator/Player/PlayerIndex";
+import PlayerCreate from "./components/Operator/Player/PlayerCreate";
+import PlayerEdit from "./components/Operator/Player/PlayerEdit";
+import GroupIndex from "./components/Operator/Group/GroupIndex";
+import GroupCreate from "./components/Operator/Group/GroupCreate";
+import GroupEdit from "./components/Operator/Group/GroupEdit";
+import QuestIcon from "./components/Role/QuestIcon";
+import QuestIndex from "./components/Operator/Quest/QuestIndex";
+import QuestCreate from "./components/Operator/Quest/QuestCreate";
+import QuestEdit from "./components/Operator/Quest/QuestEdit";
 
 // this part resolve an issue where the markers would not appear
 delete Icon.Default.prototype._getIconUrl;
@@ -40,13 +55,44 @@ Icon.Default.mergeOptions({
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 
-Vue.use(VueGoogleMaps, {
-    load: {
-        key: "AIzaSyBP4r0ioCpRMNnU1MaJnhHNKHFffrdvdX8",
-        libraries: "places" // necessary for places input
-    }
+// Vue.use(VueGoogleMaps, {
+//     load: {
+//         key: "AIzaSyBP4r0ioCpRMNnU1MaJnhHNKHFffrdvdX8",
+//         libraries: "places" // necessary for places input
+//     }
+// });
+
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+    routes: [
+        {path: '/', component: Home},
+        {path: '/map', component: RoleMap},
+        {path: '/stats/players', component: RoleMap},
+        {path: '/stats/groups', component: RoleMap},
+        {path: '/game-health', component: RoleMap},
+
+        {path: '/roles', component: RoleIndex},
+        {path: '/role/new', component: RoleCreate},
+        {path: '/role/:id/edit', component: RoleEdit},
+
+        {path: '/players', component: PlayerIndex},
+        {path: '/player/new', component: PlayerCreate},
+        {path: '/player/:id/edit', component: PlayerEdit},
+
+        {path: '/groups', component: GroupIndex},
+        {path: '/group/new', component: GroupCreate},
+        {path: '/group/:id/edit', component: GroupEdit},
+
+        {path: '/quests', component: QuestIndex},
+        {path: '/quest/new', component: QuestCreate},
+        {path: '/quest/:id/edit', component: QuestEdit},
+
+    ]
 });
 
 const app = new Vue({
     el: '#app',
+    router,
 });

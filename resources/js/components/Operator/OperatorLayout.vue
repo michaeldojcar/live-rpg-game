@@ -2,7 +2,7 @@
     <div class="div">
         <navbar/>
 
-        <role-map />
+        <router-view/>
     </div>
 </template>
 

@@ -1,22 +1,24 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">RPG systém</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <router-link class="navbar-brand" to="/">LARP systém</router-link>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Hlavní přehled</a>
+                    <router-link class="nav-link" to="/">Hlavní přehled</router-link>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mapa</a>
+                    <router-link class="nav-link" to="/map">Mapa</router-link>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Statistiky
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -30,29 +32,29 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Questy</a>
+                    <router-link class="nav-link" to="/quests">Questy</router-link>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Postavy</a>
+                    <router-link class="nav-link" to="/roles">Postavy</router-link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Hráči</a>
+                    <router-link class="nav-link" to="/players">Hráči</router-link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Skupiny</a>
+                    <router-link class="nav-link" to="/groups">Skupiny</router-link>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Simulace
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
+                <!--                <li class="nav-item dropdown">-->
+                <!--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                <!--                        Simulace-->
+                <!--                    </a>-->
+                <!--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">-->
+                <!--                        <a class="dropdown-item" href="#">Action</a>-->
+                <!--                        <a class="dropdown-item" href="#">Another action</a>-->
+                <!--                        <div class="dropdown-divider"></div>-->
+                <!--                        <a class="dropdown-item" href="#">Something else here</a>-->
+                <!--                    </div>-->
+                <!--                </li>-->
             </ul>
         </div>
     </nav>

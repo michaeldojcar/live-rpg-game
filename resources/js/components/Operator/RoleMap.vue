@@ -23,7 +23,17 @@
                     @update:center="centerUpdated"
                     @update:bounds="boundsUpdated"
                 >
-                    <l-tile-layer :url="url"/>
+                    <l-tile-layer
+                        v-for="tileProvider in tileProviders"
+                        :key="tileProvider.name"
+                        :name="tileProvider.name"
+                        :visible="tileProvider.visible"
+                        :url="tileProvider.url"
+                        :attribution="tileProvider.attribution"
+                        :token="token"
+                        layer-type="base"/>
+
+                    <l-control-layers position="topright"/>
 
                     <l-marker v-if="roles.length"
                               v-for="role in roles"
@@ -39,13 +49,13 @@
 </template>
 
 <script>
-    import {LMap, LTileLayer, LMarker, LPopup} from 'vue2-leaflet';
+    import {LMap, LTileLayer, LMarker, LPopup, LControlLayers} from 'vue2-leaflet';
 
 
     export default {
         name: "role-map",
 
-        components: {LMap, LTileLayer, LMarker, LPopup},
+        components: {LMap, LTileLayer, LMarker, LPopup, LControlLayers},
 
         data() {
             return {
@@ -54,6 +64,45 @@
                 center: [49.482, 17.6819],
                 bounds: null,
 
+                tileProviders: [
+                    {
+                        name: 'OpenStreetMap FR',
+                        visible: true,
+                        attribution: '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+                        url: 'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png'
+                    },
+                    {
+                        name: 'Google satelitní',
+                        visible: false,
+                        url: 'http://mt0.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',
+                        attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                    },
+                    {
+                        name: 'OpenStreetMap.org',
+                        visible: false,
+                        attribution: '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+                        url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+                    },
+                    {
+                        name: 'OpenTopoMap',
+                        visible: false,
+                        url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+                        attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                    },{
+                        name: 'Thunderforest Lava',
+                        visible: false,
+                        url: 'https://{s}.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png',
+                        attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                    },
+                    {
+                        name: 'Thunderforest',
+                        visible: false,
+                        url: 'https://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png',
+                        attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                    }
+                ],
+
+                fetchInterval: null,
                 roles: [],
             };
         },
@@ -61,7 +110,11 @@
         mounted() {
             this.refresh();
 
-            setInterval(this.refresh, 5000);
+            this.fetchInterval = setInterval(this.refresh, 5000);
+        },
+
+        beforeDestroy() {
+            clearInterval(this.fetchInterval)
         },
 
         methods: {
@@ -76,7 +129,7 @@
             },
             refresh() {
                 axios
-                    .get('/api/roles')
+                    .get('/api/map')
                     .then(response => {
                         console.log(response.data);
 
