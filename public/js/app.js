@@ -2791,7 +2791,7 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         name: 'Google satelitní',
         visible: false,
-        url: 'http://mt0.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',
+        url: 'https://mt0.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',
         attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
       }, {
         name: 'OpenStreetMap.org',

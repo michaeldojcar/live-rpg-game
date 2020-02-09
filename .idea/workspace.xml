@@ -2,27 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bceee34-a6d4-44d7-844a-bebd7a4524cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Group/GroupCreate.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Group/GroupEdit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Group/GroupIndex.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Home.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Player/PlayerCreate.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Player/PlayerEdit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Player/PlayerIndex.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Quest/QuestCreate.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Quest/QuestEdit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Quest/QuestIndex.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Role/RoleCreate.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Role/RoleEdit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/Role/RoleIndex.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Operator/Navbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/OperatorLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Operator/OperatorLayout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/RoleMap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Operator/RoleMap.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +235,7 @@
       <workItem from="1579690510954" duration="94000" />
       <workItem from="1580554341642" duration="1007000" />
       <workItem from="1581018966547" duration="14097000" />
-      <workItem from="1581150024345" duration="29841000" />
+      <workItem from="1581150024345" duration="30013000" />
     </task>
     <task id="LOCAL-00001" summary="js fixes">
       <created>1579586999701</created>
@@ -389,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581193659822</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="maps, views">
+      <created>1581259214934</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1581259214934</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,17 +392,18 @@
     <MESSAGE value="roles inconsistency" />
     <MESSAGE value="more accurate online detection" />
     <MESSAGE value=".idea ignored" />
-    <option name="LAST_COMMIT_MESSAGE" value=".idea ignored" />
+    <MESSAGE value="maps, views" />
+    <option name="LAST_COMMIT_MESSAGE" value="maps, views" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579468564095">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1579468564095" />
-    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1581193658814">
+    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1581259212954">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581193658814" />
+    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581259212954" />
     <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1581071718984" />
     <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1579590109827">
       <screen x="0" y="0" width="1536" height="824" />
@@ -452,10 +441,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="56" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581166393849" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1581193661612">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1581259216485">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581193661612" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581259216485" />
     <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1581072816552" />
     <state x="470" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1579586269669">
       <screen x="0" y="0" width="1536" height="824" />
