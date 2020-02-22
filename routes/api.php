@@ -28,4 +28,4 @@ Route::get('/map', 'RoleController@mapIndex');
 Route::apiResource('roles', 'RoleController');
 Route::apiResource('players', 'PlayerController');
 Route::apiResource('groups', 'GroupController');
-Route::apiResource('quests', 'QuestController');
+Route::resource('quests', 'QuestController');

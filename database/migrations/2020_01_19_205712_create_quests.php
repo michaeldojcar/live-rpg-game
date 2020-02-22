@@ -17,7 +17,6 @@ class CreateQuests extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('description');
-            $table->boolean('is_mother');
             $table->unsignedInteger('parent_quest_id')->nullable();
             $table->unsignedInteger('unlock_criteria');
             $table->boolean('allow_more_attempts');

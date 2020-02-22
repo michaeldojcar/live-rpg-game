@@ -54,14 +54,40 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property int|null $parent_quest_id
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Quest whereParentQuestId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Quest[] $sub_quests
+ * @property-read int|null $sub_quests_count
+ * @property-read mixed $chain_quests
+ * @property-read \App\Quest|null $parentQuest
  */
 class Quest extends Model
 {
     protected $guarded = [];
 
+    public function parentQuest()
+    {
+        return $this->belongsTo(Quest::class, 'parent_quest_id');
+    }
+
+    /**
+     * TODO: Mother quest
+     *
+     * @return $this|\App\Quest|null
+     */
     public function motherQuest()
     {
-        return $this->belongsTo(Quest::class, 'mother_quest_id');
+        if ($this->parent_quest_id == null)
+        {
+            return Quest::find($this->id);
+        }
+
+        $parent = $this->parentQuest;
+
+        while($parent->parentQuest)
+        {
+            $parent = $parent->parentQuest;
+        }
+
+        return  $parent;
     }
 
     public function owner()
@@ -72,5 +98,43 @@ class Quest extends Model
     public function persons()
     {
         return $this->belongsToMany(Player::class)->withPivot('status');
+    }
+
+    public function sub_quests()
+    {
+        return $this->hasMany(Quest::class, 'parent_quest_id');
+    }
+
+    /**
+     * Get collection of mother and subquests.
+     *
+     * @return mixed
+     */
+    public function getChainQuestsAttribute()
+    {
+        $chain_collection = collect();
+
+        // Add mother quest
+        $mother = $this->motherQuest();
+
+//        dd($mother);
+
+        $chain_collection->add($mother);
+
+        // Add first sub-quest
+        if ($mother->sub_quests->first())
+        {
+            $sq = $mother->sub_quests()->first();  // Mother first subquest
+            $chain_collection->add($sq);
+
+            // Add more subquests
+            while ($sq->sub_quests()->count() > 0)
+            {
+                $sq = $sq->sub_quests()->first();
+                $chain_collection->add($sq);
+            }
+        }
+
+        return $chain_collection;
     }
 }

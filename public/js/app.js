@@ -2429,23 +2429,123 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "PlayerEdit",
+  name: "QuestEdit",
   data: function data() {
     return {
+      quest: {},
       roles: []
     };
+  },
+  watch: {
+    '$route.params.id': function $routeParamsId(id) {
+      this.refresh();
+      console.log('changed');
+    }
   },
   mounted: function mounted() {
     this.refresh();
   },
+  // beforeRouteUpdate(to, from, next) {
+  //     this.refresh();
+  //     next()
+  // },
   methods: {
     refresh: function refresh() {
       var _this = this;
 
-      axios.get('/api/roles').then(function (response) {
+      axios.get('/api/quests/' + this.$route.params.id + '/edit').then(function (response) {
         console.log(response.data);
-        _this.roles = response.data;
+        _this.quest = response.data.quest;
+        _this.roles = response.data.roles;
       });
     }
   }
@@ -2484,6 +2584,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoleIndex",
   data: function data() {
@@ -2492,15 +2597,23 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.refresh();
+    var _this = this;
+
+    axios.get('/api/quests').then(function (response) {
+      console.log(response.data);
+      _this.quests = response.data;
+    });
   },
   methods: {
-    refresh: function refresh() {
-      var _this = this;
+    createNew: function createNew() {
+      var _this2 = this;
 
-      axios.get('/api/quests').then(function (response) {
+      axios.post('/api/quests').then(function (response) {
         console.log(response.data);
-        _this.quests = response.data;
+        var id = response.data.id;
+        console.log(id);
+
+        _this2.$router.push('/quests/' + id + '/edit');
       });
     }
   }
@@ -54648,32 +54761,451 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
-    _c("h4", [_vm._v("Úprava skupiny")]),
+    _c("h4", { staticClass: "mb-3" }, [
+      _vm._v("Quest: " + _vm._s(_vm.quest.name))
+    ]),
     _vm._v(" "),
-    _c(
-      "table",
-      { staticClass: "w-50 table table-bordered" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.roles, function(role) {
-          return _c("tr", { key: role.id }, [
-            _c(
-              "td",
-              [
-                _c("router-link", { attrs: { to: "#" } }, [
-                  _vm._v(_vm._s(role.name))
-                ])
-              ],
-              1
-            ),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-2" },
+        _vm._l(_vm.quest.chain_quests, function(q) {
+          return _c(
+            "div",
+            {
+              key: q.id,
+              staticClass: "card mb-3",
+              class: {
+                "text-white bg-success": !q.parent_quest_id,
+                "text-white bg-light": q.parent_quest_id
+              }
+            },
+            [
+              !q.parent_quest_id
+                ? _c("div", { staticClass: "card-header" }, [
+                    _vm._v("Mateřský quest")
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "card-body" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      class: { "ml-2": q.parent_quest_id },
+                      staticStyle: { color: "black" },
+                      attrs: { to: "/quests/" + q.id + "/edit" }
+                    },
+                    [_vm._v(_vm._s(q.name))]
+                  )
+                ],
+                1
+              )
+            ]
+          )
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-4" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("\n                    Nastavení questu\n                ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Název")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quest.name,
+                    expression: "quest.name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.quest.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.quest, "name", $event.target.value)
+                  }
+                }
+              })
+            ]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(role.real_name))])
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Zadání")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quest.description,
+                    expression: "quest.description"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.quest.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.quest, "description", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Vydat odměnu hned po zadání")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quest.is_dumb,
+                      expression: "quest.is_dumb"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.quest,
+                        "is_dumb",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "0" } }, [_vm._v("Ne")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [_vm._v("Ano")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Řešitel")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quest.quest_owner_id,
+                      expression: "quest.quest_owner_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.quest,
+                        "quest_owner_id",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.roles, function(role) {
+                  return _c("option", { domProps: { value: role.id } }, [
+                    _vm._v(_vm._s(role.name))
+                  ])
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Kritérium odemknutí")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quest.name,
+                    expression: "quest.name"
+                  }
+                ],
+                attrs: { title: "" },
+                domProps: { value: _vm.quest.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.quest, "name", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Povolit více pokusů")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quest.allow_more_attempts,
+                      expression: "quest.allow_more_attempts"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.quest,
+                        "allow_more_attempts",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "1" } }, [_vm._v("Ano")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "0" } }, [
+                    _vm._v("Ne - jen jeden pokus")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Opakování")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quest.allow_finish_repeatedly,
+                      expression: "quest.allow_finish_repeatedly"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.quest,
+                        "allow_finish_repeatedly",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "0" } }, [
+                    _vm._v("Lze dokončit pouze jednou")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [
+                    _vm._v("Lze dokončit opakovaně")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Odměna je známá dopředu")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quest.is_reward_public,
+                      expression: "quest.is_reward_public"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.quest,
+                        "is_reward_public",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "0" } }, [_vm._v("Ne")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [_vm._v("Ano")])
+                ]
+              )
+            ])
           ])
-        })
-      ],
-      2
-    )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-3" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Odměna")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Stříbrňáky")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quest.reward_cash,
+                    expression: "quest.reward_cash"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "number", title: "" },
+                domProps: { value: _vm.quest.reward_cash },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.quest, "reward_cash", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Informace")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quest.reward_knowledge,
+                    expression: "quest.reward_knowledge"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.quest.reward_knowledge },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.quest, "reward_knowledge", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Odemknutí tajného questu")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quest.reward_quest_unlock_id,
+                    expression: "quest.reward_quest_unlock_id"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.quest.reward_quest_unlock_id },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.quest,
+                      "reward_quest_unlock_id",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
   ])
 }
 var staticRenderFns = [
@@ -54681,10 +55213,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("Jméno")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Reálné jméno")])
+    return _c("div", { staticClass: "col-2" }, [
+      _c("a", { staticClass: "btn btn-primary" }, [_vm._v("Uložit")])
     ])
   }
 ]
@@ -54709,45 +55239,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container-fluid mt-3" },
-    [
-      _c(
-        "router-link",
-        { staticClass: "btn btn-success float-right", attrs: { to: "#" } },
-        [_vm._v("+ Nový úkol")]
-      ),
-      _vm._v(" "),
-      _c("h4", [_vm._v("Úkoly")]),
-      _vm._v(" "),
-      _c(
-        "table",
-        { staticClass: "w-50 table table-bordered" },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._l(_vm.quests, function(quest) {
-            return _c("tr", { key: quest.id }, [
-              _c(
-                "td",
-                [
-                  _c("router-link", { attrs: { to: "#" } }, [
-                    _vm._v("\n                    " + _vm._s(quest.name))
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(quest.owner.name))])
-            ])
-          })
-        ],
-        2
+  return _c("div", { staticClass: "container-fluid mt-3" }, [
+    _c(
+      "a",
+      {
+        staticClass: "btn btn-success float-right",
+        attrs: { href: "#" },
+        on: { click: _vm.createNew }
+      },
+      [_vm._v("+ Nový úkol")]
+    ),
+    _vm._v(" "),
+    _c("h4", [_vm._v("Questy")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "alert alert-primary mt-3 w-50" }, [
+      _vm._v(
+        "\n        Zobrazeny jsou pouze mateřské questy, pod-questy lze načíst pod jednotlivými mateřskými questy.\n    "
       )
-    ],
-    1
-  )
+    ]),
+    _vm._v(" "),
+    _c(
+      "table",
+      { staticClass: "w-50 table table-bordered" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.quests, function(quest) {
+          return _c("tr", { key: quest.id }, [
+            _c(
+              "td",
+              [
+                _c(
+                  "router-link",
+                  { attrs: { to: "/quests/" + quest.id + "/edit" } },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(quest.name) +
+                        "\n                "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(quest.owner.name))])
+          ])
+        })
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -84662,8 +85205,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Operator_Group_GroupEdit__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/Operator/Group/GroupEdit */ "./resources/js/components/Operator/Group/GroupEdit.vue");
 /* harmony import */ var _components_Role_QuestIcon__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/Role/QuestIcon */ "./resources/js/components/Role/QuestIcon.vue");
 /* harmony import */ var _components_Operator_Quest_QuestIndex__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/Operator/Quest/QuestIndex */ "./resources/js/components/Operator/Quest/QuestIndex.vue");
-/* harmony import */ var _components_Operator_Quest_QuestCreate__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/Operator/Quest/QuestCreate */ "./resources/js/components/Operator/Quest/QuestCreate.vue");
-/* harmony import */ var _components_Operator_Quest_QuestEdit__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/Operator/Quest/QuestEdit */ "./resources/js/components/Operator/Quest/QuestEdit.vue");
+/* harmony import */ var _components_Operator_Quest_QuestEdit__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/Operator/Quest/QuestEdit */ "./resources/js/components/Operator/Quest/QuestEdit.vue");
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -84692,7 +85234,6 @@ files.keys().map(function (key) {
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
 
 
 
@@ -84745,35 +85286,35 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
     path: '/roles',
     component: _components_Operator_Role_RoleIndex__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
-    path: '/role/new',
+    path: '/roles/new',
     component: _components_Operator_Role_RoleCreate__WEBPACK_IMPORTED_MODULE_7__["default"]
   }, {
-    path: '/role/:id/edit',
+    path: '/roles/:id/edit',
     component: _components_Operator_Role_RoleEdit__WEBPACK_IMPORTED_MODULE_8__["default"]
   }, {
     path: '/players',
     component: _components_Operator_Player_PlayerIndex__WEBPACK_IMPORTED_MODULE_9__["default"]
   }, {
-    path: '/player/new',
+    path: '/players/new',
     component: _components_Operator_Player_PlayerCreate__WEBPACK_IMPORTED_MODULE_10__["default"]
   }, {
-    path: '/player/:id/edit',
+    path: '/players/:id/edit',
     component: _components_Operator_Player_PlayerEdit__WEBPACK_IMPORTED_MODULE_11__["default"]
   }, {
     path: '/groups',
     component: _components_Operator_Group_GroupIndex__WEBPACK_IMPORTED_MODULE_12__["default"]
   }, {
-    path: '/group/new',
+    path: '/groups/new',
     component: _components_Operator_Group_GroupCreate__WEBPACK_IMPORTED_MODULE_13__["default"]
   }, {
-    path: '/group/:id/edit',
+    path: '/groups/:id/edit',
     component: _components_Operator_Group_GroupEdit__WEBPACK_IMPORTED_MODULE_14__["default"]
   }, {
     path: '/quests',
     component: _components_Operator_Quest_QuestIndex__WEBPACK_IMPORTED_MODULE_16__["default"]
   }, {
-    path: '/quest/:id/edit',
-    component: _components_Operator_Quest_QuestEdit__WEBPACK_IMPORTED_MODULE_18__["default"]
+    path: '/quests/:id/edit',
+    component: _components_Operator_Quest_QuestEdit__WEBPACK_IMPORTED_MODULE_17__["default"]
   }]
 });
 var app = new Vue({
@@ -85464,17 +86005,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerIndex_vue_vue_type_template_id_1f4bbd73_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./resources/js/components/Operator/Quest/QuestCreate.vue":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/Operator/Quest/QuestCreate.vue ***!
-  \****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/vue-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'D:\\GIT\\tabor-rpg\\resources\\js\\components\\Operator\\Quest\\QuestCreate.vue'");
 
 /***/ }),
 
@@ -86397,8 +86927,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\GIT\tabor-rpg\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\GIT\tabor-rpg\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\GIT\Softíci\tabor-rpg\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\GIT\Softíci\tabor-rpg\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

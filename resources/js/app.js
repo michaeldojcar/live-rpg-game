@@ -43,7 +43,6 @@ import GroupCreate from "./components/Operator/Group/GroupCreate";
 import GroupEdit from "./components/Operator/Group/GroupEdit";
 import QuestIcon from "./components/Role/QuestIcon";
 import QuestIndex from "./components/Operator/Quest/QuestIndex";
-import QuestCreate from "./components/Operator/Quest/QuestCreate";
 import QuestEdit from "./components/Operator/Quest/QuestEdit";
 
 // this part resolve an issue where the markers would not appear
@@ -74,20 +73,19 @@ const router = new VueRouter({
         {path: '/game-health', component: RoleMap},
 
         {path: '/roles', component: RoleIndex},
-        {path: '/role/new', component: RoleCreate},
-        {path: '/role/:id/edit', component: RoleEdit},
+        {path: '/roles/new', component: RoleCreate},
+        {path: '/roles/:id/edit', component: RoleEdit},
 
         {path: '/players', component: PlayerIndex},
-        {path: '/player/new', component: PlayerCreate},
-        {path: '/player/:id/edit', component: PlayerEdit},
+        {path: '/players/new', component: PlayerCreate},
+        {path: '/players/:id/edit', component: PlayerEdit},
 
         {path: '/groups', component: GroupIndex},
-        {path: '/group/new', component: GroupCreate},
-        {path: '/group/:id/edit', component: GroupEdit},
+        {path: '/groups/new', component: GroupCreate},
+        {path: '/groups/:id/edit', component: GroupEdit},
 
         {path: '/quests', component: QuestIndex},
-        {path: '/quest/:id/edit', component: QuestEdit},
-
+        {path: '/quests/:id/edit', component: QuestEdit},
     ]
 });
 
