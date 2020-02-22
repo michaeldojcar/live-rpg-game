@@ -142,6 +142,10 @@
                         this.quest = response.data.quest;
                         this.roles = response.data.roles;
                     });
+            },
+
+            submit() {
+
             }
         }
     }

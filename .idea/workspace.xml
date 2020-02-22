@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bceee34-a6d4-44d7-844a-bebd7a4524cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/87768cd5-c0a3-4173-9e8e-738726cf5ce1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/87768cd5-c0a3-4173-9e8e-738726cf5ce1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Quest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Quest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_19_205712_create_quests.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_19_205712_create_quests.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/Quest/QuestEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Operator/Quest/QuestEdit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/Quest/QuestIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Operator/Quest/QuestIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +246,7 @@
       <workItem from="1580554341642" duration="1007000" />
       <workItem from="1581018966547" duration="14097000" />
       <workItem from="1581150024345" duration="38093000" />
-      <workItem from="1582394185366" duration="13057000" />
+      <workItem from="1582394185366" duration="13318000" />
     </task>
     <task id="LOCAL-00001" summary="js fixes">
       <created>1579586999701</created>
@@ -410,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581288360918</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="quest edit ui">
+      <created>1582408638350</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1582408638350</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +427,8 @@
     <MESSAGE value="maps, views" />
     <MESSAGE value="maps https" />
     <MESSAGE value="operator views" />
-    <option name="LAST_COMMIT_MESSAGE" value="operator views" />
+    <MESSAGE value="quest edit ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="quest edit ui" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579468564095">
@@ -443,11 +443,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581265278289" />
-    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1581288357544">
+    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1582408634683">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581288357544" />
-    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1581071718984" />
+    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1582408634683" />
     <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1582398270643">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -484,11 +484,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="56" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581166393849" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1581259370475">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1582408636556">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581259370475" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1581072816552" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1582408636556" />
     <state x="470" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1579586269669">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
