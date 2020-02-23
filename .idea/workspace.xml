@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bceee34-a6d4-44d7-844a-bebd7a4524cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestGroupsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/87768cd5-c0a3-4173-9e8e-738726cf5ce1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/87768cd5-c0a3-4173-9e8e-738726cf5ce1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_062815_create_quest_group_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_062815_create_quest_group_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuestGroupsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestGroupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_062147_add_age_to_quests_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_062147_add_age_to_quests_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Operator/Navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Operator/Quest/QuestEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Operator/Quest/QuestEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,13 +52,6 @@
         <item name="@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="tabor-rpg: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="tabor-rpg: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="quests: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -178,7 +180,7 @@
     <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/components/Operator" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -189,15 +191,15 @@
     <property name="ts.external.directory.path" value="C:\Users\micha\AppData\Local\JetBrains\Toolbox\apps\PhpStorm\ch-0\193.5662.63\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\GIT\tabor-rpg\resources\js\components\Role" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GIT\Softíci\tabor-rpg\resources\js\components\Operator" />
       <recent name="D:\GIT\tabor-rpg\resources\js\components\Operator\Quest" />
       <recent name="D:\GIT\tabor-rpg\resources\js\components\Operator" />
       <recent name="D:\GIT\tabor-rpg\resources\js\components\Operator\Group" />
       <recent name="D:\GIT\tabor-rpg\resources\js\components\Operator\Role" />
-      <recent name="D:\GIT\tabor-rpg\resources\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GIT\tabor-rpg\resources\js\components\Role" />
     </key>
   </component>
   <component name="RunManager">
@@ -211,7 +213,22 @@
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@587f9e9e" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@6a255dcd" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -237,7 +254,7 @@
       <workItem from="1580554341642" duration="1007000" />
       <workItem from="1581018966547" duration="14097000" />
       <workItem from="1581150024345" duration="38093000" />
-      <workItem from="1582394185366" duration="17789000" />
+      <workItem from="1582394185366" duration="21831000" />
     </task>
     <task id="LOCAL-00001" summary="js fixes">
       <created>1579586999701</created>
@@ -421,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582435945813</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="quest groups preparation">
+      <created>1582436470375</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1582436470375</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,19 +472,20 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1579468564095" />
-    <state x="414" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581262556033">
+    <state x="414" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1582457999554">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="414" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581262556033" />
+    <state x="414" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1582457999554" />
     <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1581265278289">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581265278289" />
-    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1582435943867">
+    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1582436469179">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581288357544" />
-    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1582435943867" />
+    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1582436469179" />
     <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1582398270643">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -497,11 +522,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="56" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581166393849" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1582434834407">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1582436471776">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581259370475" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1582434834407" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1582436471776" />
     <state x="470" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1579586269669">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -511,18 +536,19 @@
     </state>
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581261836364" />
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1581338448938" />
-    <state x="462" y="10" width="611" height="804" key="find.popup" timestamp="1581251524258">
+    <state x="462" y="10" width="611" height="804" key="find.popup" timestamp="1582458243090">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="462" y="10" width="611" height="804" key="find.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581251524258" />
+    <state x="462" y="10" width="611" height="804" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1582458243090" />
     <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1582434515654">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1582434515654" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1582435887241">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1582459643189">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1581288451369" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1582435887241" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1582459643189" />
   </component>
 </project>

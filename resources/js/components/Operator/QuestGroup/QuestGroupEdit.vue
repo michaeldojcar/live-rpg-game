@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid mt-3">
-        <h4 class="mb-3" v-if="quest.parent_quest_id">Sub-quest: {{quest.name}}</h4>
+        <h4 class="mb-3" v-if="quest.parent_quest_id">PodQuest: {{quest.name}}</h4>
         <h4 class="mb-3" v-else>Quest: {{quest.name}}</h4>
 
         <div class="row">

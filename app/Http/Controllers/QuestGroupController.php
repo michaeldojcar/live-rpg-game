@@ -5,26 +5,16 @@ namespace App\Http\Controllers;
 use App\QuestGroup;
 use Illuminate\Http\Request;
 
-class QuestGroupsController extends Controller
+class QuestGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \App\QuestGroup[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
-        QuestGroup::all();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+       return QuestGroup::all();
     }
 
     /**

@@ -2652,6 +2652,253 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "QuestEdit",
+  data: function data() {
+    return {
+      quest: {},
+      roles: []
+    };
+  },
+  watch: {
+    '$route.params.id': function $routeParamsId(id) {
+      this.refresh();
+      console.log('changed');
+    }
+  },
+  mounted: function mounted() {
+    this.refresh();
+  },
+  // beforeRouteUpdate(to, from, next) {
+  //     this.refresh();
+  //     next()
+  // },
+  methods: {
+    refresh: function refresh() {
+      var _this = this;
+
+      axios.get('/api/quests/' + this.$route.params.id + '/edit').then(function (response) {
+        console.log(response.data);
+        _this.quest = response.data.quest;
+        _this.roles = response.data.roles;
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
+
+      axios.patch('/api/quests/' + this.$route.params.id, this.quest).then(function (response) {
+        console.log(response.data);
+
+        _this2.refresh();
+
+        if (_this2.quest.parent_quest_id) {
+          _this2.$router.push('/quests/' + _this2.quest.parent_quest_id + '/edit');
+        } else {
+          _this2.$router.push('/quests');
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "QuestGroupIndex",
+  data: function data() {
+    return {
+      quest_groups: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/api/quest_groups').then(function (response) {
+      console.log(response.data);
+      _this.quest_groups = response.data;
+    });
+  },
+  methods: {
+    createNew: function createNew() {
+      var _this2 = this;
+
+      axios.post('/api/quest_groups').then(function (response) {
+        console.log(response.data);
+        var id = response.data.id;
+        console.log(id);
+
+        _this2.$router.push('/quests/' + id + '/edit');
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Role/RoleCreate.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/Role/RoleCreate.vue?vue&type=script&lang=js& ***!
@@ -54444,10 +54691,10 @@ var render = function() {
               [
                 _c(
                   "router-link",
-                  { staticClass: "nav-link", attrs: { to: "/quests-groups" } },
+                  { staticClass: "nav-link", attrs: { to: "/quest-groups" } },
                   [
-                    _c("i", { staticClass: "fas fa-check" }),
-                    _vm._v(" Skupiny questů")
+                    _c("i", { staticClass: "fas fa-check-double" }),
+                    _vm._v(" Větve")
                   ]
                 )
               ],
@@ -54819,7 +55066,7 @@ var render = function() {
   return _c("div", { staticClass: "container-fluid mt-3" }, [
     _vm.quest.parent_quest_id
       ? _c("h4", { staticClass: "mb-3" }, [
-          _vm._v("PodQuest: " + _vm._s(_vm.quest.name))
+          _vm._v("Sub-quest: " + _vm._s(_vm.quest.name))
         ])
       : _c("h4", { staticClass: "mb-3" }, [
           _vm._v("Quest: " + _vm._s(_vm.quest.name))
@@ -55371,6 +55618,585 @@ var staticRenderFns = [
       _c("th", [_vm._v("Jméno")]),
       _vm._v(" "),
       _c("th", [_vm._v("Postava")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue?vue&type=template&id=d449aa0e&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue?vue&type=template&id=d449aa0e&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container-fluid mt-3" }, [
+    _vm.quest.parent_quest_id
+      ? _c("h4", { staticClass: "mb-3" }, [
+          _vm._v("PodQuest: " + _vm._s(_vm.quest.name))
+        ])
+      : _c("h4", { staticClass: "mb-3" }, [
+          _vm._v("Quest: " + _vm._s(_vm.quest.name))
+        ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-2" },
+        _vm._l(_vm.quest.chain_quests, function(q) {
+          return _c("div", { key: q.id }, [
+            _c(
+              "div",
+              {
+                staticClass: "card mb-2 mt-2",
+                class: {
+                  "text-white bg-success": !q.parent_quest_id,
+                  "text-white bg-light": q.parent_quest_id
+                }
+              },
+              [
+                !q.parent_quest_id
+                  ? _c("div", { staticClass: "card-header" }, [
+                      _vm._v("Mateřský quest")
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "card-body" },
+                  [
+                    _c("small", { staticClass: "text-muted" }),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticStyle: { color: "black" },
+                        attrs: { to: "/quests/" + q.id + "/edit" }
+                      },
+                      [_vm._v(_vm._s(q.name) + "\n                        ")]
+                    )
+                  ],
+                  1
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _vm._m(0, true)
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-4" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("\n                    Nastavení questu\n                ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Název")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quest.name,
+                    expression: "quest.name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.quest.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.quest, "name", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Zadání")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quest.description,
+                    expression: "quest.description"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.quest.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.quest, "description", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Vydat odměnu hned po zadání")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quest.is_dumb,
+                      expression: "quest.is_dumb"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.quest,
+                        "is_dumb",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "0" } }, [_vm._v("Ne")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [_vm._v("Ano")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Řešitel")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quest.quest_owner_id,
+                      expression: "quest.quest_owner_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.quest,
+                        "quest_owner_id",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.roles, function(role) {
+                  return _c("option", { domProps: { value: role.id } }, [
+                    _vm._v(_vm._s(role.name))
+                  ])
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Kritérium odemknutí")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quest.name,
+                    expression: "quest.name"
+                  }
+                ],
+                attrs: { title: "" },
+                domProps: { value: _vm.quest.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.quest, "name", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Povolit více pokusů")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quest.allow_more_attempts,
+                      expression: "quest.allow_more_attempts"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.quest,
+                        "allow_more_attempts",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "1" } }, [_vm._v("Ano")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "0" } }, [
+                    _vm._v("Ne - jen jeden pokus")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Opakování")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quest.allow_finish_repeatedly,
+                      expression: "quest.allow_finish_repeatedly"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.quest,
+                        "allow_finish_repeatedly",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "0" } }, [
+                    _vm._v("Lze dokončit pouze jednou")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [
+                    _vm._v("Lze dokončit opakovaně")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Odměna je známá dopředu")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quest.is_reward_public,
+                      expression: "quest.is_reward_public"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.quest,
+                        "is_reward_public",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "0" } }, [_vm._v("Ne")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [_vm._v("Ano")])
+                ]
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-3" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Odměna")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Stříbrňáky")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quest.reward_cash,
+                    expression: "quest.reward_cash"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "number", title: "" },
+                domProps: { value: _vm.quest.reward_cash },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.quest, "reward_cash", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Informace")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quest.reward_knowledge,
+                    expression: "quest.reward_knowledge"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.quest.reward_knowledge },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.quest, "reward_knowledge", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Odemknutí tajného questu")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.quest.reward_quest_unlock_id,
+                    expression: "quest.reward_quest_unlock_id"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.quest.reward_quest_unlock_id },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.quest,
+                      "reward_quest_unlock_id",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2" }, [
+        _c("a", { staticClass: "btn btn-primary", on: { click: _vm.submit } }, [
+          _vm._v("Uložit")
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c("i", { staticClass: "fas fa-arrow-down mr-5" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fas fa-arrow-up" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue?vue&type=template&id=6741edf3&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue?vue&type=template&id=6741edf3&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container-fluid mt-3" }, [
+    _c(
+      "a",
+      {
+        staticClass: "btn btn-success float-right",
+        attrs: { href: "#" },
+        on: { click: _vm.createNew }
+      },
+      [_vm._v("+ Nový úkol")]
+    ),
+    _vm._v(" "),
+    _c("h4", [_vm._v("Větve questů")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "alert alert-primary mt-3 w-50" }, [
+      _vm._v(
+        "\n        Questy lze seskupit do souvisejících větví, v průběhu hry lze pracovat s jednotlivými větvemi - např.\n        spustit questy pouze z některé větve.\n    "
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "table",
+      { staticClass: "w-50 table table-bordered" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.quest_groups, function(quest) {
+          return _c("tr", { key: quest.id }, [
+            _c(
+              "td",
+              [
+                _c(
+                  "router-link",
+                  { attrs: { to: "/quests/" + quest.id + "/edit" } },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(quest.name) +
+                        "\n                "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(quest.owner.name))])
+          ])
+        })
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("Jméno")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Počet questů")])
     ])
   }
 ]
@@ -85212,6 +86038,8 @@ var map = {
 	"./components/Operator/Player/PlayerIndex.vue": "./resources/js/components/Operator/Player/PlayerIndex.vue",
 	"./components/Operator/Quest/QuestEdit.vue": "./resources/js/components/Operator/Quest/QuestEdit.vue",
 	"./components/Operator/Quest/QuestIndex.vue": "./resources/js/components/Operator/Quest/QuestIndex.vue",
+	"./components/Operator/QuestGroup/QuestGroupEdit.vue": "./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue",
+	"./components/Operator/QuestGroup/QuestGroupIndex.vue": "./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue",
 	"./components/Operator/Role/RoleCreate.vue": "./resources/js/components/Operator/Role/RoleCreate.vue",
 	"./components/Operator/Role/RoleEdit.vue": "./resources/js/components/Operator/Role/RoleEdit.vue",
 	"./components/Operator/Role/RoleIndex.vue": "./resources/js/components/Operator/Role/RoleIndex.vue",
@@ -85276,6 +86104,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Role_QuestIcon__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/Role/QuestIcon */ "./resources/js/components/Role/QuestIcon.vue");
 /* harmony import */ var _components_Operator_Quest_QuestIndex__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/Operator/Quest/QuestIndex */ "./resources/js/components/Operator/Quest/QuestIndex.vue");
 /* harmony import */ var _components_Operator_Quest_QuestEdit__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/Operator/Quest/QuestEdit */ "./resources/js/components/Operator/Quest/QuestEdit.vue");
+/* harmony import */ var _components_Operator_QuestGroup_QuestGroupIndex__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/Operator/QuestGroup/QuestGroupIndex */ "./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue");
+/* harmony import */ var _components_Operator_QuestGroup_QuestGroupEdit__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/Operator/QuestGroup/QuestGroupEdit */ "./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue");
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -85304,6 +86134,8 @@ files.keys().map(function (key) {
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+
 
 
 
@@ -85385,6 +86217,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
   }, {
     path: '/quests/:id/edit',
     component: _components_Operator_Quest_QuestEdit__WEBPACK_IMPORTED_MODULE_17__["default"]
+  }, {
+    path: '/quest-groups',
+    component: _components_Operator_QuestGroup_QuestGroupIndex__WEBPACK_IMPORTED_MODULE_18__["default"]
+  }, {
+    path: '/quest-groups/:id/edit',
+    component: _components_Operator_QuestGroup_QuestGroupEdit__WEBPACK_IMPORTED_MODULE_19__["default"]
   }]
 });
 var app = new Vue({
@@ -86211,6 +87049,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestIndex_vue_vue_type_template_id_0f4606cd_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestIndex_vue_vue_type_template_id_0f4606cd_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _QuestGroupEdit_vue_vue_type_template_id_d449aa0e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./QuestGroupEdit.vue?vue&type=template&id=d449aa0e&scoped=true& */ "./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue?vue&type=template&id=d449aa0e&scoped=true&");
+/* harmony import */ var _QuestGroupEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestGroupEdit.vue?vue&type=script&lang=js& */ "./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _QuestGroupEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _QuestGroupEdit_vue_vue_type_template_id_d449aa0e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _QuestGroupEdit_vue_vue_type_template_id_d449aa0e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "d449aa0e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestGroupEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./QuestGroupEdit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestGroupEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue?vue&type=template&id=d449aa0e&scoped=true&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue?vue&type=template&id=d449aa0e&scoped=true& ***!
+  \*******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestGroupEdit_vue_vue_type_template_id_d449aa0e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./QuestGroupEdit.vue?vue&type=template&id=d449aa0e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue?vue&type=template&id=d449aa0e&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestGroupEdit_vue_vue_type_template_id_d449aa0e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestGroupEdit_vue_vue_type_template_id_d449aa0e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _QuestGroupIndex_vue_vue_type_template_id_6741edf3_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./QuestGroupIndex.vue?vue&type=template&id=6741edf3&scoped=true& */ "./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue?vue&type=template&id=6741edf3&scoped=true&");
+/* harmony import */ var _QuestGroupIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestGroupIndex.vue?vue&type=script&lang=js& */ "./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _QuestGroupIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _QuestGroupIndex_vue_vue_type_template_id_6741edf3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _QuestGroupIndex_vue_vue_type_template_id_6741edf3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "6741edf3",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestGroupIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./QuestGroupIndex.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestGroupIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue?vue&type=template&id=6741edf3&scoped=true&":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue?vue&type=template&id=6741edf3&scoped=true& ***!
+  \********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestGroupIndex_vue_vue_type_template_id_6741edf3_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./QuestGroupIndex.vue?vue&type=template&id=6741edf3&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/QuestGroup/QuestGroupIndex.vue?vue&type=template&id=6741edf3&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestGroupIndex_vue_vue_type_template_id_6741edf3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestGroupIndex_vue_vue_type_template_id_6741edf3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

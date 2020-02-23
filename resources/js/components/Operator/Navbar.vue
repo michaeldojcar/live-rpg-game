@@ -36,7 +36,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <router-link class="nav-link" to="/quests-groups"><i class="fas fa-check"></i> Skupiny questů</router-link>
+                    <router-link class="nav-link" to="/quest-groups"><i class="fas fa-check-double"></i> Větve</router-link>
                 </li>
 
 

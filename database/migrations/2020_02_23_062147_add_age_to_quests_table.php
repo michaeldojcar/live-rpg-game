@@ -14,7 +14,7 @@ class AddAgeToQuestsTable extends Migration
     public function up()
     {
         Schema::table('quests', function (Blueprint $table) {
-            $table->unsignedInteger('age_from')->nullable(6);
+            $table->unsignedInteger('age_from')->default(6);
             $table->unsignedInteger('age_to')->default(15);
         });
     }
