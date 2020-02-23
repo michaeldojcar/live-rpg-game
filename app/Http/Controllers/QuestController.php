@@ -40,7 +40,9 @@ class QuestController extends Controller
 
     public function update(Quest $quest, Request $request)
     {
-        $quest->fill($request->toArray());
+        $quest->fill($request->except(['chain_quests', 'parent_quest']));
         $quest->save();
+
+        return $quest;
     }
 }

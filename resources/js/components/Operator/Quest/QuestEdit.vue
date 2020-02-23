@@ -1,14 +1,25 @@
 <template>
     <div class="container-fluid mt-3">
-        <h4 class="mb-3">Quest: {{quest.name}}</h4>
+        <h4 class="mb-3" v-if="quest.parent_quest_id">PodQuest: {{quest.name}}</h4>
+        <h4 class="mb-3" v-else>Quest: {{quest.name}}</h4>
 
         <div class="row">
             <div class="col-2">
-                <div class="card mb-3" v-for="q in quest.chain_quests" v-bind:key="q.id"
-                     :class="{'text-white bg-success': !q.parent_quest_id, 'text-white bg-light': q.parent_quest_id}">
-                    <div class="card-header" v-if="!q.parent_quest_id">Mateřský quest</div>
-                    <div class="card-body">
-                        <router-link style="color: black" :class="{'ml-2': q.parent_quest_id}":to="'/quests/' + q.id + '/edit'">{{q.name}}</router-link>
+                <div v-for="q in quest.chain_quests" v-bind:key="q.id">
+                    <div class="card mb-2 mt-2"
+                         :class="{'text-white bg-success': !q.parent_quest_id, 'text-white bg-light': q.parent_quest_id}">
+                        <div class="card-header" v-if="!q.parent_quest_id">Mateřský quest</div>
+                        <div class="card-body">
+                            <small class="text-muted"></small>
+                            <router-link style="color: black"
+                                         :to="'/quests/' + q.id + '/edit'">{{q.name}}
+                            </router-link>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <i class="fas fa-arrow-down mr-5"></i>
+                        <i class="fas fa-arrow-up"></i>
                     </div>
                 </div>
             </div>
@@ -99,7 +110,7 @@
             </div>
 
             <div class="col-2">
-                <a class="btn btn-primary">Uložit</a>
+                <a class="btn btn-primary" @click="submit">Uložit</a>
             </div>
         </div>
     </div>
@@ -145,7 +156,18 @@
             },
 
             submit() {
+                axios
+                    .patch('/api/quests/' + this.$route.params.id, this.quest)
+                    .then(response => {
+                        console.log(response.data);
+                        this.refresh();
 
+                        if (this.quest.parent_quest_id) {
+                            this.$router.push('/quests/' + this.quest.parent_quest_id + '/edit')
+                        } else {
+                            this.$router.push('/quests')
+                        }
+                    });
             }
         }
     }

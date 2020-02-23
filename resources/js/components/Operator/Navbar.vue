@@ -9,11 +9,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <router-link class="nav-link" to="/">Hlavní přehled</router-link>
+                    <router-link class="nav-link" to="/"><i class="fas fa-home"></i> Hlavní přehled</router-link>
                 </li>
 
                 <li class="nav-item">
-                    <router-link class="nav-link" to="/map">Mapa</router-link>
+                    <router-link class="nav-link" to="/map"><i class="fas fa-map-marked-alt"></i> Mapa</router-link>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -32,14 +32,14 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <router-link class="nav-link" to="/quests">Questy</router-link>
+                    <router-link class="nav-link" to="/quests"><i class="fas fa-check"></i> Questy</router-link>
                 </li>
 
                 <li class="nav-item">
-                    <router-link class="nav-link" to="/roles">Postavy</router-link>
+                    <router-link class="nav-link" to="/roles"><i class="fas fa-user-check"></i> Postavy</router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" to="/players">Hráči</router-link>
+                    <router-link class="nav-link" to="/players"><i class="fas fa-user"></i> Hráči</router-link>
                 </li>
                 <li class="nav-item">
                     <router-link class="nav-link" to="/groups">Skupiny</router-link>

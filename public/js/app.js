@@ -2517,6 +2517,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "QuestEdit",
   data: function data() {
@@ -2546,6 +2557,21 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data);
         _this.quest = response.data.quest;
         _this.roles = response.data.roles;
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
+
+      axios.patch('/api/quests/' + this.$route.params.id, this.quest).then(function (response) {
+        console.log(response.data);
+
+        _this2.refresh();
+
+        if (_this2.quest.parent_quest_id) {
+          _this2.$router.push('/quests/' + _this2.quest.parent_quest_id + '/edit');
+        } else {
+          _this2.$router.push('/quests');
+        }
       });
     }
   }
@@ -54365,7 +54391,10 @@ var render = function() {
                 _c(
                   "router-link",
                   { staticClass: "nav-link", attrs: { to: "/" } },
-                  [_vm._v("Hlavní přehled")]
+                  [
+                    _c("i", { staticClass: "fas fa-home" }),
+                    _vm._v(" Hlavní přehled")
+                  ]
                 )
               ],
               1
@@ -54378,7 +54407,10 @@ var render = function() {
                 _c(
                   "router-link",
                   { staticClass: "nav-link", attrs: { to: "/map" } },
-                  [_vm._v("Mapa")]
+                  [
+                    _c("i", { staticClass: "fas fa-map-marked-alt" }),
+                    _vm._v(" Mapa")
+                  ]
                 )
               ],
               1
@@ -54395,7 +54427,7 @@ var render = function() {
                 _c(
                   "router-link",
                   { staticClass: "nav-link", attrs: { to: "/quests" } },
-                  [_vm._v("Questy")]
+                  [_c("i", { staticClass: "fas fa-check" }), _vm._v(" Questy")]
                 )
               ],
               1
@@ -54408,7 +54440,10 @@ var render = function() {
                 _c(
                   "router-link",
                   { staticClass: "nav-link", attrs: { to: "/roles" } },
-                  [_vm._v("Postavy")]
+                  [
+                    _c("i", { staticClass: "fas fa-user-check" }),
+                    _vm._v(" Postavy")
+                  ]
                 )
               ],
               1
@@ -54421,7 +54456,7 @@ var render = function() {
                 _c(
                   "router-link",
                   { staticClass: "nav-link", attrs: { to: "/players" } },
-                  [_vm._v("Hráči")]
+                  [_c("i", { staticClass: "fas fa-user" }), _vm._v(" Hráči")]
                 )
               ],
               1
@@ -54761,50 +54796,58 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
-    _c("h4", { staticClass: "mb-3" }, [
-      _vm._v("Quest: " + _vm._s(_vm.quest.name))
-    ]),
+    _vm.quest.parent_quest_id
+      ? _c("h4", { staticClass: "mb-3" }, [
+          _vm._v("PodQuest: " + _vm._s(_vm.quest.name))
+        ])
+      : _c("h4", { staticClass: "mb-3" }, [
+          _vm._v("Quest: " + _vm._s(_vm.quest.name))
+        ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
         { staticClass: "col-2" },
         _vm._l(_vm.quest.chain_quests, function(q) {
-          return _c(
-            "div",
-            {
-              key: q.id,
-              staticClass: "card mb-3",
-              class: {
-                "text-white bg-success": !q.parent_quest_id,
-                "text-white bg-light": q.parent_quest_id
-              }
-            },
-            [
-              !q.parent_quest_id
-                ? _c("div", { staticClass: "card-header" }, [
-                    _vm._v("Mateřský quest")
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "card-body" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      class: { "ml-2": q.parent_quest_id },
-                      staticStyle: { color: "black" },
-                      attrs: { to: "/quests/" + q.id + "/edit" }
-                    },
-                    [_vm._v(_vm._s(q.name))]
-                  )
-                ],
-                1
-              )
-            ]
-          )
+          return _c("div", { key: q.id }, [
+            _c(
+              "div",
+              {
+                staticClass: "card mb-2 mt-2",
+                class: {
+                  "text-white bg-success": !q.parent_quest_id,
+                  "text-white bg-light": q.parent_quest_id
+                }
+              },
+              [
+                !q.parent_quest_id
+                  ? _c("div", { staticClass: "card-header" }, [
+                      _vm._v("Mateřský quest")
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "card-body" },
+                  [
+                    _c("small", { staticClass: "text-muted" }),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticStyle: { color: "black" },
+                        attrs: { to: "/quests/" + q.id + "/edit" }
+                      },
+                      [_vm._v(_vm._s(q.name) + "\n                        ")]
+                    )
+                  ],
+                  1
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _vm._m(0, true)
+          ])
         }),
         0
       ),
@@ -55204,7 +55247,11 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "col-2" }, [
+        _c("a", { staticClass: "btn btn-primary", on: { click: _vm.submit } }, [
+          _vm._v("Uložit")
+        ])
+      ])
     ])
   ])
 }
@@ -55213,8 +55260,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2" }, [
-      _c("a", { staticClass: "btn btn-primary" }, [_vm._v("Uložit")])
+    return _c("div", { staticClass: "text-center" }, [
+      _c("i", { staticClass: "fas fa-arrow-down mr-5" }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fas fa-arrow-up" })
     ])
   }
 ]
