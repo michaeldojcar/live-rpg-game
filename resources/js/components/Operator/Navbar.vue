@@ -36,13 +36,18 @@
                 </li>
 
                 <li class="nav-item">
+                    <router-link class="nav-link" to="/quests-groups"><i class="fas fa-check"></i> Skupiny questů</router-link>
+                </li>
+
+
+                <li class="nav-item">
                     <router-link class="nav-link" to="/roles"><i class="fas fa-user-check"></i> Postavy</router-link>
                 </li>
                 <li class="nav-item">
                     <router-link class="nav-link" to="/players"><i class="fas fa-user"></i> Hráči</router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" to="/groups">Skupiny</router-link>
+                    <router-link class="nav-link" to="/groups"><i class="fas fa-users"></i> Skupiny</router-link>
                 </li>
                 <!--                <li class="nav-item dropdown">-->
                 <!--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->

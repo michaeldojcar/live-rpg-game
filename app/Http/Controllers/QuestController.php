@@ -40,7 +40,7 @@ class QuestController extends Controller
 
     public function update(Quest $quest, Request $request)
     {
-        $quest->fill($request->except(['chain_quests', 'parent_quest']));
+        $quest->fill($request->except(['chain_quests', 'parent_quest','id']));
         $quest->save();
 
         return $quest;

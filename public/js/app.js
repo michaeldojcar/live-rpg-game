@@ -2206,6 +2206,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Navbar"
 });
@@ -54439,6 +54444,22 @@ var render = function() {
               [
                 _c(
                   "router-link",
+                  { staticClass: "nav-link", attrs: { to: "/quests-groups" } },
+                  [
+                    _c("i", { staticClass: "fas fa-check" }),
+                    _vm._v(" Skupiny questů")
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "router-link",
                   { staticClass: "nav-link", attrs: { to: "/roles" } },
                   [
                     _c("i", { staticClass: "fas fa-user-check" }),
@@ -54469,7 +54490,7 @@ var render = function() {
                 _c(
                   "router-link",
                   { staticClass: "nav-link", attrs: { to: "/groups" } },
-                  [_vm._v("Skupiny")]
+                  [_c("i", { staticClass: "fas fa-users" }), _vm._v(" Skupiny")]
                 )
               ],
               1

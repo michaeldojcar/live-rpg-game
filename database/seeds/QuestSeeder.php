@@ -16,7 +16,6 @@ class QuestSeeder extends Seeder
         $q = new Quest();
         $q->name = 'Získání hřebíků';
         $q->description = 'Potřebuju aspoň 15 hřebíků od trhovce.';
-        $q->is_mother = 1;
         $q->parent_quest_id = null;
         $q->unlock_criteria = 2;
         $q->allow_more_attempts = true;
@@ -33,7 +32,6 @@ class QuestSeeder extends Seeder
         $q = new Quest();
         $q->name = 'Získání ovčího rouna';
         $q->description = 'Potřebuju velké ovčí rouno';
-        $q->is_mother = 1;
         $q->parent_quest_id = null;
         $q->unlock_criteria = 2;
         $q->allow_more_attempts = true;
@@ -50,7 +48,6 @@ class QuestSeeder extends Seeder
         $q = new Quest();
         $q->name = '5 dřepů';
         $q->description = 'Musí udělat 5 dřepů';
-        $q->is_mother = 0;
         $q->parent_quest_id = 1;
         $q->unlock_criteria = 2;
         $q->allow_more_attempts = true;

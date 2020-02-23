@@ -124,14 +124,14 @@ class Quest extends Model
         // Add first sub-quest
         if ($mother->sub_quests->first())
         {
-            $sq = $mother->sub_quests()->first();  // Mother first subquest
-            $chain_collection->add($sq);
+            $subquest = $mother->sub_quests()->first();  // Mother first subquest
+            $chain_collection->add($subquest);
 
             // Add more subquests
-            while ($sq->sub_quests()->count() > 0)
+            while ($subquest->sub_quests()->count() > 0)
             {
-                $sq = $sq->sub_quests()->first();
-                $chain_collection->add($sq);
+                $subquest = $subquest->sub_quests()->first();
+                $chain_collection->add($subquest);
             }
         }
 
