@@ -16,6 +16,7 @@ class CreateQuestGroupTable extends Migration
         Schema::create('quest_groups', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->boolean('active');
             $table->timestamps();
         });
 
