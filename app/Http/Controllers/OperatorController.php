@@ -21,8 +21,9 @@ class OperatorController extends Controller
         return response(
             [
                 'active_quest_groups' => QuestGroup::whereActive(true)->get(),
-                'quest_count'         => Quest::count(),
-                'player_count'          => Player::count(),
+                'quest_count'         => Quest::where('parent_quest_id', '=', null)->count(),
+                'sub_quest_count'     => Quest::where('parent_quest_id', '!=', null)->count(),
+                'player_count'        => Player::count(),
                 'role_count'          => Role::count(),
             ]
         );

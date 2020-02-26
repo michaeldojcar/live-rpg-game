@@ -31,8 +31,8 @@
                 <td>{{role_count}}</td>
             </tr>
             <tr>
-                <td>Úkoly</td>
-                <td>{{quest_count}}</td>
+                <td>Questy</td>
+                <td>{{quest_count}} + {{sub_quest_count}} pod-questy</td>
             </tr>
         </table>
     </div>
@@ -50,6 +50,7 @@
                 role_count: 0,
                 player_count: 0,
                 quest_count: 0,
+                sub_quest_count: 0,
             }
         },
 
@@ -61,6 +62,7 @@
 
                     this.active_quest_groups = response.data.active_quest_groups;
                     this.quest_count = response.data.quest_count;
+                    this.sub_quest_count = response.data.sub_quest_count;
                     this.player_count = response.data.player_count;
                     this.role_count = response.data.role_count;
                 });

@@ -2136,7 +2136,8 @@ __webpack_require__.r(__webpack_exports__);
       active_quest_groups: [],
       role_count: 0,
       player_count: 0,
-      quest_count: 0
+      quest_count: 0,
+      sub_quest_count: 0
     };
   },
   mounted: function mounted() {
@@ -2146,6 +2147,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(response.data);
       _this.active_quest_groups = response.data.active_quest_groups;
       _this.quest_count = response.data.quest_count;
+      _this.sub_quest_count = response.data.sub_quest_count;
       _this.player_count = response.data.player_count;
       _this.role_count = response.data.role_count;
     });
@@ -54586,9 +54588,16 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("tr", [
-        _c("td", [_vm._v("Úkoly")]),
+        _c("td", [_vm._v("Questy")]),
         _vm._v(" "),
-        _c("td", [_vm._v(_vm._s(_vm.quest_count))])
+        _c("td", [
+          _vm._v(
+            _vm._s(_vm.quest_count) +
+              " + " +
+              _vm._s(_vm.sub_quest_count) +
+              " pod-questy"
+          )
+        ])
       ])
     ])
   ])
