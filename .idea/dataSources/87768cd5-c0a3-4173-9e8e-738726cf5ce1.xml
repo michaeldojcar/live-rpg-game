@@ -1311,6 +1311,8 @@
     <column id="304" parent="238" name="age_from">
       <Position>16</Position>
       <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>6</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="305" parent="238" name="age_to">

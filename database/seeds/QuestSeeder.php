@@ -25,6 +25,7 @@ class QuestSeeder extends Seeder
         $q->reward_knowledge = null;
         $q->is_reward_public = false;
         $q->is_dumb = false;
+        $q->quest_group_id = 1;
         $q->save();
 
         $q->persons()->attach(Player::first(), ['status' => 2]);
@@ -41,6 +42,7 @@ class QuestSeeder extends Seeder
         $q->reward_knowledge = null;
         $q->is_reward_public = false;
         $q->is_dumb = false;
+        $q->quest_group_id = 1;
         $q->save();
 
         $q->persons()->attach(Player::first(), ['status' => 3]);
@@ -57,6 +59,7 @@ class QuestSeeder extends Seeder
         $q->reward_knowledge = null;
         $q->is_reward_public = false;
         $q->is_dumb = false;
+        $q->quest_group_id = 1;
         $q->save();
 
         $q->persons()->attach(Player::first(), ['status' => 3]);
