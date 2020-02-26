@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Quest;
+use App\QuestGroup;
 use App\Role;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,7 @@ class QuestController extends Controller
         $quest->quest_owner_id          = Role::first()->id;
         $quest->is_reward_public        = false;
         $quest->is_dumb                 = false;
+        $quest->quest_group_id          = 1;
         $quest->save();
 
         return $quest;
@@ -32,14 +34,15 @@ class QuestController extends Controller
     public function edit($id)
     {
         return [
-            'quest' => Quest::findOrFail($id)->append(['chain_quests']),
-            'roles' => Role::all(),
+            'quest'        => Quest::findOrFail($id)->append(['chain_quests']),
+            'roles'        => Role::all(),
+            'quest_groups' => QuestGroup::all(),
         ];
     }
 
     public function update(Quest $quest, Request $request)
     {
-        $quest->fill($request->except(['chain_quests', 'parent_quest','id']));
+        $quest->fill($request->except(['chain_quests', 'parent_quest', 'id']));
         $quest->save();
 
         return $quest;

@@ -1,7 +1,10 @@
 <template>
     <div class="container-fluid mt-3">
+        <a class="btn btn-primary float-right" @click="submit">Uložit</a>
+
         <h4 class="mb-3" v-if="quest.parent_quest_id">Sub-quest: {{quest.name}}</h4>
         <h4 class="mb-3" v-else>Quest: {{quest.name}}</h4>
+
 
         <div class="row">
             <div class="col-2">
@@ -48,17 +51,11 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            <label>Řešitel</label>
-                            <select class="form-control" v-model="quest.quest_owner_id">
-                                <option v-for="role in roles" :value="role.id">{{role.name}}</option>
-                            </select>
-                        </div>
 
-                        <div class="form-group">
-                            <label>Kritérium odemknutí</label>
-                            <input v-model="quest.name" title="">
-                        </div>
+                        <!--                        <div class="form-group">-->
+                        <!--                            <label>Kritérium odemknutí</label>-->
+                        <!--                            <input v-model="quest.name" title="">-->
+                        <!--                        </div>-->
 
                         <div class="form-group">
                             <label>Povolit více pokusů</label>
@@ -109,8 +106,37 @@
                 </div>
             </div>
 
-            <div class="col-2">
-                <a class="btn btn-primary" @click="submit">Uložit</a>
+            <div class="col-3">
+                <div class="card mb-3">
+                    <div class="card-header">Kritéria přidělení</div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Postava</label>
+                            <select class="form-control" v-model="quest.quest_owner_id">
+                                <option v-for="role in roles" :value="role.id">{{role.name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Větev questů</label>
+                            <select class="form-control" v-model="quest.quest_group_id">
+                                <option v-for="group in quest_groups" :value="group.id">{{group.name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" v-if="!quest.parent_quest_id">
+                            <label>Minimální věk</label>
+                            <input type="number" class="form-control" v-model="quest.age_from" title="">
+                        </div>
+
+                        <div class="form-group" v-if="!quest.parent_quest_id">
+                            <label>Maximální věk</label>
+                            <input type="number" class="form-control" v-model="quest.age_to" title="">
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -123,25 +149,20 @@
         data: () => {
             return {
                 quest: {},
-                roles: []
+                roles: [],
+                quest_groups: [],
             }
         },
 
         watch: {
             '$route.params.id': function (id) {
-                this.refresh()
-                console.log('changed');
+                this.refresh();
             }
         },
 
         mounted() {
             this.refresh();
         },
-
-        // beforeRouteUpdate(to, from, next) {
-        //     this.refresh();
-        //     next()
-        // },
 
         methods: {
             refresh() {
@@ -152,6 +173,7 @@
 
                         this.quest = response.data.quest;
                         this.roles = response.data.roles;
+                        this.quest_groups = response.data.quest_groups;
                     });
             },
 

@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Player;
+use App\Quest;
+use App\QuestGroup;
+use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 
 class OperatorController extends Controller
@@ -11,8 +16,15 @@ class OperatorController extends Controller
         return view('operator');
     }
 
-    public function map()
+    public function overview()
     {
-
+        return response(
+            [
+                'active_quest_groups' => QuestGroup::whereActive(true)->get(),
+                'quest_count'         => Quest::count(),
+                'player_count'          => Player::count(),
+                'role_count'          => Role::count(),
+            ]
+        );
     }
 }

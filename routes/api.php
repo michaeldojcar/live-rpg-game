@@ -23,6 +23,7 @@ Route::post('/role/{role_id}/telemetries', 'RoleInterfaceController@telemetries'
 /*
  * Operator API routes
  */
+Route::get('/overview', 'OperatorController@overview');
 Route::get('/map', 'RoleController@mapIndex');
 
 Route::apiResource('roles', 'RoleController');

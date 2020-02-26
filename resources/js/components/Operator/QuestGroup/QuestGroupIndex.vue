@@ -11,8 +11,8 @@
 
         <table class="w-50 table table-bordered">
             <tr>
-                <th>Jméno</th>
-                <th>Počet questů</th>
+                <th>Jméno větve</th>
+                <th>Stav</th>
             </tr>
             <tr v-for="quest in quest_groups" :key="quest.id">
                 <td>
@@ -20,7 +20,10 @@
                         {{quest.name}}
                     </router-link>
                 </td>
-                <td>{{quest.owner.name}}</td>
+                <td>
+                    <span v-if="quest.active" class="text-success font-weight-bold">Aktivní</span>
+                    <span v-else>Neaktivní</span>
+                </td>
             </tr>
         </table>
     </div>
