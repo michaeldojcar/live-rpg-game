@@ -3080,6 +3080,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoleIndex",
   data: function data() {
@@ -56493,7 +56495,9 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(role.real_name))])
+              _c("td", [_vm._v(_vm._s(role.real_name))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(role.quests_count))])
             ])
           })
         ],
@@ -56511,7 +56515,9 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", [_vm._v("Jméno")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Reálné jméno")])
+      _c("th", [_vm._v("Reálné jméno")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Úkoly")])
     ])
   }
 ]
@@ -88073,8 +88079,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\GIT\Softíci\tabor-rpg\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\GIT\Softíci\tabor-rpg\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

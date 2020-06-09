@@ -8,12 +8,14 @@
             <tr>
                 <th>Jméno</th>
                 <th>Reálné jméno</th>
+                <th>Úkoly</th>
             </tr>
             <tr v-for="role in roles" :key="role.id">
                 <td>
                     <router-link to="#">{{role.name}}</router-link>
                 </td>
                 <td>{{role.real_name}}</td>
+                <td>{{role.quests_count}}</td>
             </tr>
         </table>
     </div>
