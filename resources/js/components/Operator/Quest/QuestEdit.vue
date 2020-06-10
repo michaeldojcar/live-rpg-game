@@ -27,7 +27,7 @@
                 </div>
                 <div class="card my-2"
                      style="border: 1px dashed white !important; background-color: transparent!important;">
-                    <div class="card-body">
+                    <div class="card-body" @click="createSubRequest">
                         Přidat nový quest
                     </div>
                 </div>
@@ -195,6 +195,19 @@
                         } else {
                             this.$router.push('/quests')
                         }
+                    });
+            },
+
+            createSubRequest() {
+                axios
+                    .post('/api/quests/' + this.$route.params.id + '/sub-quest')
+                    .then(response => {
+                        console.log(response.data);
+
+
+                        this.$router.push('/quests/' + response.data.id + '/edit')
+
+                        this.refresh();
                     });
             }
         }

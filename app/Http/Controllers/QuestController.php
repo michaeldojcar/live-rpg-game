@@ -6,6 +6,7 @@ use App\Quest;
 use App\QuestGroup;
 use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class QuestController extends Controller
 {
@@ -76,5 +77,14 @@ class QuestController extends Controller
         $quest->save();
 
         return $quest;
+    }
+
+    public function destroy($id)
+    {
+        $quest = Quest::findOrFail($id);
+
+        $quest->delete();
+
+        return response(null, 204);
     }
 }

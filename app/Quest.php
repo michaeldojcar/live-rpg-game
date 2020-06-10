@@ -70,7 +70,7 @@ class Quest extends Model
 {
     protected $guarded = [];
 
-    public function parentQuest()
+    public function parent_quest()
     {
         return $this->belongsTo(Quest::class, 'parent_quest_id');
     }
@@ -87,11 +87,11 @@ class Quest extends Model
             return Quest::find($this->id);
         }
 
-        $parent = $this->parentQuest;
+        $parent = $this->parent_quest;
 
-        while ($parent->parentQuest)
+        while ($parent->parent_quest)
         {
-            $parent = $parent->parentQuest;
+            $parent = $parent->parent_quest;
         }
 
         return $parent;
@@ -105,7 +105,7 @@ class Quest extends Model
     public function getLastSubQuest(): Quest
     {
         // 1. Quest is the last quest
-        if ($this->sub_quests_count == 0)
+        if ($this->sub_quest === null)
         {
             return Quest::find($this->id);
         }

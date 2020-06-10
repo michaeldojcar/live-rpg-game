@@ -2673,6 +2673,17 @@ __webpack_require__.r(__webpack_exports__);
           _this2.$router.push('/quests');
         }
       });
+    },
+    createSubRequest: function createSubRequest() {
+      var _this3 = this;
+
+      axios.post('/api/quests/' + this.$route.params.id + '/sub-quest').then(function (response) {
+        console.log(response.data);
+
+        _this3.$router.push('/quests/' + response.data.id + '/edit');
+
+        _this3.refresh();
+      });
     }
   }
 });
@@ -54860,7 +54871,7 @@ var render = function() {
     { staticClass: "navbar navbar-expand-lg navbar-dark bg-primary" },
     [
       _c("router-link", { staticClass: "navbar-brand", attrs: { to: "/" } }, [
-        _vm._v("LARP systém")
+        _vm._v("Řízení hry")
       ]),
       _vm._v(" "),
       _vm._m(0),
@@ -55520,7 +55531,30 @@ var render = function() {
             ])
           }),
           _vm._v(" "),
-          _vm._m(1)
+          _c(
+            "div",
+            {
+              staticClass: "card my-2",
+              staticStyle: {
+                border: "1px dashed white !important",
+                "background-color": "transparent!important"
+              }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "card-body",
+                  on: { click: _vm.createSubRequest }
+                },
+                [
+                  _vm._v(
+                    "\n                    Přidat nový quest\n                "
+                  )
+                ]
+              )
+            ]
+          )
         ],
         2
       ),
@@ -56019,26 +56053,6 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("i", { staticClass: "fas fa-arrow-up text-success" })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "card my-2",
-        staticStyle: {
-          border: "1px dashed white !important",
-          "background-color": "transparent!important"
-        }
-      },
-      [
-        _c("div", { staticClass: "card-body" }, [
-          _vm._v("\n                    Přidat nový quest\n                ")
-        ])
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -88712,8 +88726,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Weby\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Weby\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
