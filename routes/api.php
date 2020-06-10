@@ -29,5 +29,8 @@ Route::get('/map', 'RoleController@mapIndex');
 Route::apiResource('roles', 'RoleController');
 Route::apiResource('players', 'PlayerController');
 Route::apiResource('groups', 'GroupController');
+
 Route::resource('quests', 'QuestController');
+Route::post('/quests/{id}/sub-quest', 'QuestController@storeSubQuest');
+
 Route::resource('quest_groups', 'QuestGroupController');
