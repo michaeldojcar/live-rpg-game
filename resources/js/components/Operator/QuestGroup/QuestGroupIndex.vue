@@ -4,30 +4,29 @@
 
         <h4>Větve questů</h4>
 
-        <div class="alert alert-primary mt-3 w-50">
+        <div class="alert alert-primary mt-3 w-75">
             Questy lze seskupit do souvisejících větví, v průběhu hry lze pracovat s jednotlivými větvemi - např.
             spustit questy pouze z některé větve.
         </div>
-        <table class="table w-50 mt-4">
-            <div style="padding: 10px 15px">
-                <tr class="w-100">
-                    <th class="w-50" scope="col" style="border: none">Jméno větve</th>
-                    <th style="border: none"></th>
-                    <th class="w-50" scope="col" style="border: none">Stav</th>
-                </tr>
-                <tr v-for="quest in quest_groups" :key="quest.id">
-                    <td>
-                        <router-link :to="'/quests/' + quest.id + '/edit'">
-                            {{quest.name}}
-                        </router-link>
-                    </td>
-                    <td></td>
-                    <td>
-                        <span v-if="quest.active" class="text-success font-weight-bold">Aktivní</span>
-                        <span v-else class="text-danger">Neaktivní</span>
-                    </td>
-                </tr>
-            </div>
+
+        <table class="table w-75 mt-4">
+            <tr>
+                <th>Jméno větve</th>
+                <th style="border: none">Počet questů</th>
+                <th style="border: none">Stav</th>
+            </tr>
+            <tr v-for="quest in quest_groups" :key="quest.id">
+                <td>
+                    <router-link :to="'/quests/' + quest.id + '/edit'">
+                        {{quest.name}}
+                    </router-link>
+                </td>
+                <td>{{quest.quests_count}}</td>
+                <td>
+                    <span v-if="quest.active" class="text-success font-weight-bold">Aktivní</span>
+                    <span v-else class="text-danger">Neaktivní</span>
+                </td>
+            </tr>
         </table>
     </div>
 </template>

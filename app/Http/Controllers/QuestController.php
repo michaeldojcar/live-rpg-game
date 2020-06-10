@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Quest;
 use App\QuestGroup;
 use App\Role;
+use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 
 class QuestController extends Controller
 {
@@ -79,12 +81,28 @@ class QuestController extends Controller
         return $quest;
     }
 
+    /**
+     * Destroy sub-quest.
+     *
+     * @param $id
+     *
+     * @return Application|ResponseFactory|\Illuminate\Http\Response
+     * @throws Exception
+     */
     public function destroy($id)
     {
         $quest = Quest::findOrFail($id);
 
+        if ($quest->sub_quest)
+        {
+            $quest->sub_quest->parent_quest_id = $quest->parent_quest_id;
+            $quest->sub_quest->save();
+        }
+
         $quest->delete();
 
-        return response(null, 204);
+        $response = ['parent_quest_id' => $quest->parent_quest_id];
+
+        return response($response, 200);
     }
 }

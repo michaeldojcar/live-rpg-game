@@ -14,7 +14,7 @@ class QuestGroupController extends Controller
      */
     public function index()
     {
-       return QuestGroup::all();
+       return QuestGroup::withCount(['quests'])->get();
     }
 
     /**
