@@ -2143,6 +2143,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "home",
   components: {},
@@ -8300,6 +8334,17 @@ __webpack_require__.r(__webpack_exports__);
 })));
 //# sourceMappingURL=bootstrap.js.map
 
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Home.vue?vue&type=style&index=0&id=142cc3a2&scoped=true&lang=scss&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/Home.vue?vue&type=style&index=0&id=142cc3a2&scoped=true&lang=scss& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\n\r\n            font-family: ;\r\n                    ^\r\n      Expected expression.\n    ╷\n134 │         font-family: ;\n    │                      ^\n    ╵\n  stdin 134:22  root stylesheet\r\n      in C:\\Weby\\live-rpg-game\\resources\\js\\components\\Operator\\Home.vue (line 134, column 22)");
 
 /***/ }),
 
@@ -53475,6 +53520,36 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Home.vue?vue&type=style&index=0&id=142cc3a2&scoped=true&lang=scss&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/Home.vue?vue&type=style&index=0&id=142cc3a2&scoped=true&lang=scss& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=style&index=0&id=142cc3a2&scoped=true&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Home.vue?vue&type=style&index=0&id=142cc3a2&scoped=true&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/RoleMap.vue?vue&type=style&index=0&id=c4917134&scoped=true&lang=scss&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/RoleMap.vue?vue&type=style&index=0&id=c4917134&scoped=true&lang=scss& ***!
@@ -54640,41 +54715,34 @@ var render = function() {
       _vm._v(" "),
       _c("h4", [_vm._v("Skupiny")]),
       _vm._v(" "),
-      _c(
-        "table",
-        {
-          staticClass: "w-50 table mt-4",
-          staticStyle: { "border-radius": "0.25rem!important" }
-        },
-        [
-          _c(
-            "div",
-            { staticStyle: { padding: "10px 15px" } },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._l(_vm.groups, function(group) {
-                return _c("tr", { key: group.id }, [
-                  _c(
-                    "td",
-                    [
-                      _c("router-link", { attrs: { to: "#" } }, [
-                        _vm._v(_vm._s(group.name))
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td")
-                ])
-              })
-            ],
-            2
-          )
-        ]
-      )
+      _c("table", { staticClass: "w-50 table mt-4" }, [
+        _c(
+          "div",
+          { staticStyle: { padding: "10px 15px" } },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._l(_vm.groups, function(group) {
+              return _c("tr", { key: group.id }, [
+                _c(
+                  "td",
+                  [
+                    _c("router-link", { attrs: { to: "#" } }, [
+                      _vm._v(_vm._s(group.name))
+                    ])
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("td"),
+                _vm._v(" "),
+                _c("td")
+              ])
+            })
+          ],
+          2
+        )
+      ])
     ],
     1
   )
@@ -54729,97 +54797,142 @@ var render = function() {
   return _c("div", { staticClass: "container-fluid mt-3" }, [
     _c("h4", { staticClass: "mb-4" }, [_vm._v("Hlavní přehled")]),
     _vm._v(" "),
-    _c("h5", { staticClass: "mb-2" }, [_vm._v("Aktuální stav hry")]),
+    _vm._m(0),
     _vm._v(" "),
-    _c(
-      "table",
-      {
-        staticClass: "table w-50 mt-4",
-        staticStyle: { "border-radius": "0.25rem!important" }
-      },
-      [
-        _c("div", { staticStyle: { padding: "10px 15px" } }, [
-          _c("tr", { staticClass: "w-100" }, [
-            _c(
-              "th",
-              {
-                staticClass: "w-50",
-                staticStyle: { border: "none" },
-                attrs: { scope: "col" }
-              },
-              [_vm._v("Aktivní větev úkolů")]
-            ),
-            _vm._v(" "),
-            _c("th", { staticStyle: { border: "none" } }),
-            _vm._v(" "),
-            _c(
-              "th",
-              {
-                staticClass: "w-50",
-                staticStyle: { border: "none" },
-                attrs: { scope: "col" }
-              },
-              [
-                _vm._l(_vm.active_quest_groups, function(group) {
-                  return _c("div", [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(group.name) +
-                        "\n                    "
-                    )
+    _c("table", { staticClass: "table w-50 mt-4" }, [
+      _c("div", { staticStyle: { padding: "10px 15px" } }, [
+        _c("tr", { staticClass: "w-100" }, [
+          _c(
+            "th",
+            {
+              staticClass: "w-50",
+              staticStyle: { border: "none" },
+              attrs: { scope: "col" }
+            },
+            [_vm._v("Aktivní větev úkolů")]
+          ),
+          _vm._v(" "),
+          _c("th", { staticStyle: { border: "none" } }),
+          _vm._v(" "),
+          _c(
+            "th",
+            {
+              staticClass: "w-50",
+              staticStyle: { border: "none" },
+              attrs: { scope: "col" }
+            },
+            [
+              _vm._l(_vm.active_quest_groups, function(group) {
+                return _c("div", [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(group.name) +
+                      "\n                    "
+                  )
+                ])
+              }),
+              _vm._v(" "),
+              !_vm.active_quest_groups.length
+                ? _c("div", { staticClass: "text-muted" }, [
+                    _vm._v("žádná větev není aktivní")
                   ])
-                }),
-                _vm._v(" "),
-                !_vm.active_quest_groups.length
-                  ? _c("div", { staticClass: "text-muted" }, [
-                      _vm._v("žádná větev není aktivní")
-                    ])
-                  : _vm._e()
-              ],
-              2
+                : _vm._e()
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Hráči")]),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(_vm.player_count))])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Postavy")]),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(_vm.role_count))])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Questy")]),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td", [
+            _vm._v(
+              _vm._s(_vm.quest_count) +
+                " + " +
+                _vm._s(_vm.sub_quest_count) +
+                " pod-questy"
             )
-          ]),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Hráči")]),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.player_count))])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Postavy")]),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.role_count))])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Questy")]),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v(
-                _vm._s(_vm.quest_count) +
-                  " + " +
-                  _vm._s(_vm.sub_quest_count) +
-                  " pod-questy"
-              )
-            ])
           ])
         ])
-      ]
-    )
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-7" }, [
+        _c("h5", { staticClass: "mb-4" }, [_vm._v("Aktuální stav hry")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-5" }, [
+        _c("h5", { staticClass: "mb-4" }, [_vm._v("Novinky")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-7" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "box light" }, [
+            _c("h4", [_vm._v("Postavy")]),
+            _vm._v(" "),
+            _c("h1", [_vm._v("8")]),
+            _vm._v(" "),
+            _c("h6", [_vm._v("Online")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "box dark" }, [
+            _c("h4", [_vm._v("Hráči")]),
+            _vm._v(" "),
+            _c("h1", [_vm._v("26")]),
+            _vm._v(" "),
+            _c("h6", [_vm._v("Online")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "box light" }, [
+            _c("h4", [_vm._v("Questy")]),
+            _vm._v(" "),
+            _c("h1", [_vm._v("39")]),
+            _vm._v(" "),
+            _c("h6", [_vm._v("spuštěny")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "box dark" }, [
+            _c("h4", [_vm._v("Dnes")]),
+            _vm._v(" "),
+            _c("h1", [_vm._v("26")]),
+            _vm._v(" "),
+            _c("h6", [_vm._v("Splněných questů")])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-5" })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -55382,41 +55495,34 @@ var render = function() {
       _vm._v(" "),
       _c("h4", [_vm._v("Hráči")]),
       _vm._v(" "),
-      _c(
-        "table",
-        {
-          staticClass: "w-50 table mt-4",
-          staticStyle: { "border-radius": "0.25rem!important" }
-        },
-        [
-          _c(
-            "div",
-            { staticStyle: { padding: "10px 15px" } },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._l(_vm.players, function(player) {
-                return _c("tr", { key: player.id }, [
-                  _c(
-                    "td",
-                    [
-                      _c("router-link", { attrs: { to: "#" } }, [
-                        _vm._v(_vm._s(player.name))
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(player.age))])
-                ])
-              })
-            ],
-            2
-          )
-        ]
-      )
+      _c("table", { staticClass: "w-50 table mt-4" }, [
+        _c(
+          "div",
+          { staticStyle: { padding: "10px 15px" } },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._l(_vm.players, function(player) {
+              return _c("tr", { key: player.id }, [
+                _c(
+                  "td",
+                  [
+                    _c("router-link", { attrs: { to: "#" } }, [
+                      _vm._v(_vm._s(player.name))
+                    ])
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("td"),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(player.age))])
+              ])
+            })
+          ],
+          2
+        )
+      ])
     ],
     1
   )
@@ -55545,6 +55651,10 @@ var render = function() {
                 "div",
                 {
                   staticClass: "card-body",
+                  staticStyle: {
+                    "box-shadow": "inset 0 0 0 transparent",
+                    padding: "10px"
+                  },
                   on: { click: _vm.createSubRequest }
                 },
                 [
@@ -56095,49 +56205,42 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c(
-      "table",
-      {
-        staticClass: "w-50 table mt-4",
-        staticStyle: { "border-radius": "0.25rem!important" }
-      },
-      [
-        _c(
-          "div",
-          { staticStyle: { padding: "10px 15px" } },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(_vm.quests, function(quest) {
-              return _c("tr", { key: quest.id }, [
-                _c(
-                  "td",
-                  [
-                    _c(
-                      "router-link",
-                      { attrs: { to: "/quests/" + quest.id + "/edit" } },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(quest.name) +
-                            "\n                    "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("td"),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(quest.owner.name))])
-              ])
-            })
-          ],
-          2
-        )
-      ]
-    )
+    _c("table", { staticClass: "w-50 table mt-4" }, [
+      _c(
+        "div",
+        { staticStyle: { padding: "10px 15px" } },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.quests, function(quest) {
+            return _c("tr", { key: quest.id }, [
+              _c(
+                "td",
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: "/quests/" + quest.id + "/edit" } },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(quest.name) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("td"),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(quest.owner.name))])
+            ])
+          })
+        ],
+        2
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -56703,59 +56806,52 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c(
-      "table",
-      {
-        staticClass: "table w-50 mt-4",
-        staticStyle: { "border-radius": "0.25rem!important" }
-      },
-      [
-        _c(
-          "div",
-          { staticStyle: { padding: "10px 15px" } },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(_vm.quest_groups, function(quest) {
-              return _c("tr", { key: quest.id }, [
-                _c(
-                  "td",
-                  [
-                    _c(
-                      "router-link",
-                      { attrs: { to: "/quests/" + quest.id + "/edit" } },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(quest.name) +
-                            "\n                    "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("td"),
-                _vm._v(" "),
-                _c("td", [
-                  quest.active
-                    ? _c(
-                        "span",
-                        { staticClass: "text-success font-weight-bold" },
-                        [_vm._v("Aktivní")]
+    _c("table", { staticClass: "table w-50 mt-4" }, [
+      _c(
+        "div",
+        { staticStyle: { padding: "10px 15px" } },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.quest_groups, function(quest) {
+            return _c("tr", { key: quest.id }, [
+              _c(
+                "td",
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: "/quests/" + quest.id + "/edit" } },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(quest.name) +
+                          "\n                    "
                       )
-                    : _c("span", { staticClass: "text-danger" }, [
-                        _vm._v("Neaktivní")
-                      ])
-                ])
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("td"),
+              _vm._v(" "),
+              _c("td", [
+                quest.active
+                  ? _c(
+                      "span",
+                      { staticClass: "text-success font-weight-bold" },
+                      [_vm._v("Aktivní")]
+                    )
+                  : _c("span", { staticClass: "text-danger" }, [
+                      _vm._v("Neaktivní")
+                    ])
               ])
-            })
-          ],
-          2
-        )
-      ]
-    )
+            ])
+          })
+        ],
+        2
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -57078,42 +57174,35 @@ var render = function() {
       _vm._v(" "),
       _c("h4", [_vm._v("Postavy")]),
       _vm._v(" "),
-      _c(
-        "table",
-        {
-          staticClass: "table w-50 mt-4",
-          staticStyle: { "border-radius": "0.25rem!important" }
-        },
-        [
-          _c(
-            "div",
-            { staticStyle: { padding: "10px 15px" } },
-            [
-              _vm._m(0),
-              _vm._l(_vm.roles, function(role) {
-                return _c("tr", { key: role.id }, [
-                  _c(
-                    "td",
-                    [
-                      _c(
-                        "router-link",
-                        { attrs: { to: "/roles/" + role.id + "/edit" } },
-                        [_vm._v(_vm._s(role.name))]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(role.real_name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(role.quests_count))])
-                ])
-              })
-            ],
-            2
-          )
-        ]
-      )
+      _c("table", { staticClass: "table w-50 mt-4" }, [
+        _c(
+          "div",
+          { staticStyle: { padding: "10px 15px" } },
+          [
+            _vm._m(0),
+            _vm._l(_vm.roles, function(role) {
+              return _c("tr", { key: role.id }, [
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: "/roles/" + role.id + "/edit" } },
+                      [_vm._v(_vm._s(role.name))]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(role.real_name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(role.quests_count))])
+              ])
+            })
+          ],
+          2
+        )
+      ])
     ],
     1
   )
@@ -87248,7 +87337,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Home_vue_vue_type_template_id_142cc3a2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home.vue?vue&type=template&id=142cc3a2&scoped=true& */ "./resources/js/components/Operator/Home.vue?vue&type=template&id=142cc3a2&scoped=true&");
 /* harmony import */ var _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home.vue?vue&type=script&lang=js& */ "./resources/js/components/Operator/Home.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _Home_vue_vue_type_style_index_0_id_142cc3a2_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home.vue?vue&type=style&index=0&id=142cc3a2&scoped=true&lang=scss& */ "./resources/js/components/Operator/Home.vue?vue&type=style&index=0&id=142cc3a2&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -87256,7 +87347,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Home_vue_vue_type_template_id_142cc3a2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Home_vue_vue_type_template_id_142cc3a2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -87285,6 +87376,22 @@ component.options.__file = "resources/js/components/Operator/Home.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Home.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Operator/Home.vue?vue&type=style&index=0&id=142cc3a2&scoped=true&lang=scss&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/Operator/Home.vue?vue&type=style&index=0&id=142cc3a2&scoped=true&lang=scss& ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_style_index_0_id_142cc3a2_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=style&index=0&id=142cc3a2&scoped=true&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Home.vue?vue&type=style&index=0&id=142cc3a2&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_style_index_0_id_142cc3a2_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_style_index_0_id_142cc3a2_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_style_index_0_id_142cc3a2_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_style_index_0_id_142cc3a2_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_style_index_0_id_142cc3a2_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -88726,8 +88833,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Weby\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Weby\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

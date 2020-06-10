@@ -1,8 +1,42 @@
 <template>
     <div class="container-fluid mt-3">
         <h4 class="mb-4">Hlavní přehled</h4>
+        <div class="row">
+            <div class="col-7">
+                <h5 class="mb-4">Aktuální stav hry</h5>
+            </div>
+            <div class="col-5">
+                <h5 class="mb-4">Novinky</h5>
+            </div>
+            <div class="col-7">
+                <div class="row">
+                    <div class="box light">
+                        <h4>Postavy</h4>
+                        <h1>8</h1>
+                        <h6>Online</h6>
+                    </div>
+                    <div class="box dark">
+                        <h4>Hráči</h4>
+                        <h1>26</h1>
+                        <h6>Online</h6>
+                    </div>
+                    <div class="box light">
+                        <h4>Questy</h4>
+                        <h1>39</h1>
+                        <h6>spuštěny</h6>
+                    </div>
+                    <div class="box dark">
+                        <h4>Dnes</h4>
+                        <h1>26</h1>
+                        <h6>Splněných questů</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
 
-        <h5 class="mb-2">Aktuální stav hry</h5>
+
+            </div>
+        </div>
 
         <table class="table w-50 mt-4">
             <div style="padding: 10px 15px">
@@ -79,6 +113,53 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    .box {
+        padding: 20px 25px;
+        width: 180px;
+        height: 180px;
+        border: 0.5px solid rgb(38, 158, 175, 0.3);
+        outline: 3px solid rgb(38, 158, 175);
+        /*-moz-outline-radius: 0.25rem;*/
+        outline-offset: -13px;
+        margin: 0 15px;
+
+        h1 {
+            color: white;
+            text-align: left;
+            font-size: 60px;
+            padding-top: 0;
+            padding-bottom: 20px;
+            line-height: 60px;
+            font-family: ;
+        }
+
+        h4 {
+            color: rgb(38, 158, 175);
+            margin-bottom: 0px;
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        h6 {
+            color: orange;
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 12px;
+            position: relative;
+            bottom: -10px;
+        }
+    }
+
+    .light {
+        background-color: rgba(38, 158, 175, 0.40);
+        /*border: 2px solid rgb(38, 158, 175);*/
+    }
+
+    .dark {
+        background-color: transparent;
+        /*border: 2px solid rgb(38, 158, 175);*/
+    }
 
 </style>
