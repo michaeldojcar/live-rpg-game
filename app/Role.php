@@ -34,6 +34,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Role whereLastSeen($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Role whereLatitude($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Role whereLongitude($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Quest[] $quests
+ * @property-read int|null $quests_count
  */
 class Role extends Model
 {

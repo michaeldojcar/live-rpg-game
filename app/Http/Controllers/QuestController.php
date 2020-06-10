@@ -17,7 +17,35 @@ class QuestController extends Controller
     public function store(Request $request)
     {
         $quest                          = new Quest();
-        $quest->name                    = 'nový quest';
+        $quest->name                    = 'nový úkol';
+        $quest->description             = 'doplnit';
+        $quest->unlock_criteria         = 1;
+        $quest->allow_more_attempts     = true;
+        $quest->allow_finish_repeatedly = false;
+        $quest->quest_owner_id          = Role::first()->id;
+        $quest->is_reward_public        = false;
+        $quest->is_dumb                 = false;
+        $quest->quest_group_id          = 1;
+        $quest->save();
+
+        return $quest;
+    }
+
+    /**
+     * Create sub-quest after last sub-quest or quest.
+     *
+     * @param $existing_quest_id
+     * @param  Request  $request
+     *
+     * @return Quest
+     */
+    public function storeSubQuest($existing_quest_id, Request $request)
+    {
+        $selected_quest = Quest::findOrFail($existing_quest_id);
+        $selected_quest->getLastSubQuest();
+
+        $quest                          = new Quest();
+        $quest->name                    = 'podúkol';
         $quest->description             = 'doplnit';
         $quest->unlock_criteria         = 1;
         $quest->allow_more_attempts     = true;

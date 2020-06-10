@@ -58,6 +58,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $sub_quests_count
  * @property-read mixed $chain_quests
  * @property-read \App\Quest|null $parentQuest
+ * @property int $age_from
+ * @property int $age_to
+ * @property int $quest_group_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quest whereAgeFrom($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quest whereAgeTo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Quest whereQuestGroupId($value)
+ * @property-read \App\Quest $sub_quest
  */
 class Quest extends Model
 {
@@ -69,7 +76,7 @@ class Quest extends Model
     }
 
     /**
-     * TODO: Mother quest
+     * Mother quest
      *
      * @return $this|\App\Quest|null
      */
@@ -82,12 +89,30 @@ class Quest extends Model
 
         $parent = $this->parentQuest;
 
-        while($parent->parentQuest)
+        while ($parent->parentQuest)
         {
             $parent = $parent->parentQuest;
         }
 
-        return  $parent;
+        return $parent;
+    }
+
+    public function getLastSubQuest()
+    {
+        // 1. Quest is the last quest
+        if ($this->sub_quests_count == 0)
+        {
+            return Quest::find($this->id);
+        }
+
+        $sub_quest = $this->sub_quest;
+
+        while ($sub_quest->sub_quest)
+        {
+            $sub_quest = $sub_quest->sub_quest;
+        }
+
+        return $sub_quest;
     }
 
     public function owner()
@@ -103,6 +128,11 @@ class Quest extends Model
     public function sub_quests()
     {
         return $this->hasMany(Quest::class, 'parent_quest_id');
+    }
+
+    public function sub_quest()
+    {
+        return $this->hasOne(Quest::class, 'parent_quest_id');
     }
 
     /**
