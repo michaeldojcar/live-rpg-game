@@ -2631,6 +2631,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "QuestEdit",
   data: function data() {
@@ -2683,6 +2686,21 @@ __webpack_require__.r(__webpack_exports__);
         _this3.$router.push('/quests/' + response.data.id + '/edit');
 
         _this3.refresh();
+      });
+    },
+    destroy: function destroy() {
+      var _this4 = this;
+
+      if (!confirm("Do you really want to delete?")) {
+        return false;
+      }
+
+      axios["delete"]('/api/quests/' + this.$route.params.id).then(function (response) {
+        console.log(response.data);
+
+        _this4.$router.push('/quests');
+
+        _this4.refresh();
       });
     }
   }
@@ -54640,41 +54658,34 @@ var render = function() {
       _vm._v(" "),
       _c("h4", [_vm._v("Skupiny")]),
       _vm._v(" "),
-      _c(
-        "table",
-        {
-          staticClass: "w-50 table mt-4",
-          staticStyle: { "border-radius": "0.25rem!important" }
-        },
-        [
-          _c(
-            "div",
-            { staticStyle: { padding: "10px 15px" } },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._l(_vm.groups, function(group) {
-                return _c("tr", { key: group.id }, [
-                  _c(
-                    "td",
-                    [
-                      _c("router-link", { attrs: { to: "#" } }, [
-                        _vm._v(_vm._s(group.name))
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td")
-                ])
-              })
-            ],
-            2
-          )
-        ]
-      )
+      _c("table", { staticClass: "w-50 table mt-4" }, [
+        _c(
+          "div",
+          { staticStyle: { padding: "10px 15px" } },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._l(_vm.groups, function(group) {
+              return _c("tr", { key: group.id }, [
+                _c(
+                  "td",
+                  [
+                    _c("router-link", { attrs: { to: "#" } }, [
+                      _vm._v(_vm._s(group.name))
+                    ])
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("td"),
+                _vm._v(" "),
+                _c("td")
+              ])
+            })
+          ],
+          2
+        )
+      ])
     ],
     1
   )
@@ -54731,92 +54742,85 @@ var render = function() {
     _vm._v(" "),
     _c("h5", { staticClass: "mb-2" }, [_vm._v("Aktuální stav hry")]),
     _vm._v(" "),
-    _c(
-      "table",
-      {
-        staticClass: "table w-50 mt-4",
-        staticStyle: { "border-radius": "0.25rem!important" }
-      },
-      [
-        _c("div", { staticStyle: { padding: "10px 15px" } }, [
-          _c("tr", { staticClass: "w-100" }, [
-            _c(
-              "th",
-              {
-                staticClass: "w-50",
-                staticStyle: { border: "none" },
-                attrs: { scope: "col" }
-              },
-              [_vm._v("Aktivní větev úkolů")]
-            ),
-            _vm._v(" "),
-            _c("th", { staticStyle: { border: "none" } }),
-            _vm._v(" "),
-            _c(
-              "th",
-              {
-                staticClass: "w-50",
-                staticStyle: { border: "none" },
-                attrs: { scope: "col" }
-              },
-              [
-                _vm._l(_vm.active_quest_groups, function(group) {
-                  return _c("div", [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(group.name) +
-                        "\n                    "
-                    )
+    _c("table", { staticClass: "table w-50 mt-4" }, [
+      _c("div", { staticStyle: { padding: "10px 15px" } }, [
+        _c("tr", { staticClass: "w-100" }, [
+          _c(
+            "th",
+            {
+              staticClass: "w-50",
+              staticStyle: { border: "none" },
+              attrs: { scope: "col" }
+            },
+            [_vm._v("Aktivní větev úkolů")]
+          ),
+          _vm._v(" "),
+          _c("th", { staticStyle: { border: "none" } }),
+          _vm._v(" "),
+          _c(
+            "th",
+            {
+              staticClass: "w-50",
+              staticStyle: { border: "none" },
+              attrs: { scope: "col" }
+            },
+            [
+              _vm._l(_vm.active_quest_groups, function(group) {
+                return _c("div", [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(group.name) +
+                      "\n                    "
+                  )
+                ])
+              }),
+              _vm._v(" "),
+              !_vm.active_quest_groups.length
+                ? _c("div", { staticClass: "text-muted" }, [
+                    _vm._v("žádná větev není aktivní")
                   ])
-                }),
-                _vm._v(" "),
-                !_vm.active_quest_groups.length
-                  ? _c("div", { staticClass: "text-muted" }, [
-                      _vm._v("žádná větev není aktivní")
-                    ])
-                  : _vm._e()
-              ],
-              2
+                : _vm._e()
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Hráči")]),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(_vm.player_count))])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Postavy")]),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(_vm.role_count))])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Questy")]),
+          _vm._v(" "),
+          _c("td"),
+          _vm._v(" "),
+          _c("td", [
+            _vm._v(
+              _vm._s(_vm.quest_count) +
+                " + " +
+                _vm._s(_vm.sub_quest_count) +
+                " pod-questy"
             )
-          ]),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Hráči")]),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.player_count))])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Postavy")]),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.role_count))])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Questy")]),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v(
-                _vm._s(_vm.quest_count) +
-                  " + " +
-                  _vm._s(_vm.sub_quest_count) +
-                  " pod-questy"
-              )
-            ])
           ])
         ])
-      ]
-    )
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -55382,41 +55386,34 @@ var render = function() {
       _vm._v(" "),
       _c("h4", [_vm._v("Hráči")]),
       _vm._v(" "),
-      _c(
-        "table",
-        {
-          staticClass: "w-50 table mt-4",
-          staticStyle: { "border-radius": "0.25rem!important" }
-        },
-        [
-          _c(
-            "div",
-            { staticStyle: { padding: "10px 15px" } },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._l(_vm.players, function(player) {
-                return _c("tr", { key: player.id }, [
-                  _c(
-                    "td",
-                    [
-                      _c("router-link", { attrs: { to: "#" } }, [
-                        _vm._v(_vm._s(player.name))
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(player.age))])
-                ])
-              })
-            ],
-            2
-          )
-        ]
-      )
+      _c("table", { staticClass: "w-50 table mt-4" }, [
+        _c(
+          "div",
+          { staticStyle: { padding: "10px 15px" } },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._l(_vm.players, function(player) {
+              return _c("tr", { key: player.id }, [
+                _c(
+                  "td",
+                  [
+                    _c("router-link", { attrs: { to: "#" } }, [
+                      _vm._v(_vm._s(player.name))
+                    ])
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("td"),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(player.age))])
+              ])
+            })
+          ],
+          2
+        )
+      ])
     ],
     1
   )
@@ -55473,6 +55470,17 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
+    _vm.quest.parent_quest_id
+      ? _c(
+          "a",
+          {
+            staticClass: "btn btn-primary float-right",
+            on: { click: _vm.destroy }
+          },
+          [_vm._v("Odebrat")]
+        )
+      : _vm._e(),
+    _vm._v(" "),
     _c(
       "a",
       { staticClass: "btn btn-primary float-right", on: { click: _vm.submit } },
@@ -55545,6 +55553,10 @@ var render = function() {
                 "div",
                 {
                   staticClass: "card-body",
+                  staticStyle: {
+                    "box-shadow": "inset 0 0 0 transparent",
+                    padding: "10px"
+                  },
                   on: { click: _vm.createSubRequest }
                 },
                 [
@@ -56095,49 +56107,42 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c(
-      "table",
-      {
-        staticClass: "w-50 table mt-4",
-        staticStyle: { "border-radius": "0.25rem!important" }
-      },
-      [
-        _c(
-          "div",
-          { staticStyle: { padding: "10px 15px" } },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(_vm.quests, function(quest) {
-              return _c("tr", { key: quest.id }, [
-                _c(
-                  "td",
-                  [
-                    _c(
-                      "router-link",
-                      { attrs: { to: "/quests/" + quest.id + "/edit" } },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(quest.name) +
-                            "\n                    "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("td"),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(quest.owner.name))])
-              ])
-            })
-          ],
-          2
-        )
-      ]
-    )
+    _c("table", { staticClass: "w-50 table mt-4" }, [
+      _c(
+        "div",
+        { staticStyle: { padding: "10px 15px" } },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.quests, function(quest) {
+            return _c("tr", { key: quest.id }, [
+              _c(
+                "td",
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: "/quests/" + quest.id + "/edit" } },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(quest.name) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("td"),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(quest.owner.name))])
+            ])
+          })
+        ],
+        2
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -56703,59 +56708,52 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c(
-      "table",
-      {
-        staticClass: "table w-50 mt-4",
-        staticStyle: { "border-radius": "0.25rem!important" }
-      },
-      [
-        _c(
-          "div",
-          { staticStyle: { padding: "10px 15px" } },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(_vm.quest_groups, function(quest) {
-              return _c("tr", { key: quest.id }, [
-                _c(
-                  "td",
-                  [
-                    _c(
-                      "router-link",
-                      { attrs: { to: "/quests/" + quest.id + "/edit" } },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(quest.name) +
-                            "\n                    "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("td"),
-                _vm._v(" "),
-                _c("td", [
-                  quest.active
-                    ? _c(
-                        "span",
-                        { staticClass: "text-success font-weight-bold" },
-                        [_vm._v("Aktivní")]
+    _c("table", { staticClass: "table w-50 mt-4" }, [
+      _c(
+        "div",
+        { staticStyle: { padding: "10px 15px" } },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.quest_groups, function(quest) {
+            return _c("tr", { key: quest.id }, [
+              _c(
+                "td",
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: "/quests/" + quest.id + "/edit" } },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(quest.name) +
+                          "\n                    "
                       )
-                    : _c("span", { staticClass: "text-danger" }, [
-                        _vm._v("Neaktivní")
-                      ])
-                ])
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("td"),
+              _vm._v(" "),
+              _c("td", [
+                quest.active
+                  ? _c(
+                      "span",
+                      { staticClass: "text-success font-weight-bold" },
+                      [_vm._v("Aktivní")]
+                    )
+                  : _c("span", { staticClass: "text-danger" }, [
+                      _vm._v("Neaktivní")
+                    ])
               ])
-            })
-          ],
-          2
-        )
-      ]
-    )
+            ])
+          })
+        ],
+        2
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -57078,42 +57076,35 @@ var render = function() {
       _vm._v(" "),
       _c("h4", [_vm._v("Postavy")]),
       _vm._v(" "),
-      _c(
-        "table",
-        {
-          staticClass: "table w-50 mt-4",
-          staticStyle: { "border-radius": "0.25rem!important" }
-        },
-        [
-          _c(
-            "div",
-            { staticStyle: { padding: "10px 15px" } },
-            [
-              _vm._m(0),
-              _vm._l(_vm.roles, function(role) {
-                return _c("tr", { key: role.id }, [
-                  _c(
-                    "td",
-                    [
-                      _c(
-                        "router-link",
-                        { attrs: { to: "/roles/" + role.id + "/edit" } },
-                        [_vm._v(_vm._s(role.name))]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(role.real_name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(role.quests_count))])
-                ])
-              })
-            ],
-            2
-          )
-        ]
-      )
+      _c("table", { staticClass: "table w-50 mt-4" }, [
+        _c(
+          "div",
+          { staticStyle: { padding: "10px 15px" } },
+          [
+            _vm._m(0),
+            _vm._l(_vm.roles, function(role) {
+              return _c("tr", { key: role.id }, [
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: "/roles/" + role.id + "/edit" } },
+                      [_vm._v(_vm._s(role.name))]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(role.real_name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(role.quests_count))])
+              ])
+            })
+          ],
+          2
+        )
+      ])
     ],
     1
   )

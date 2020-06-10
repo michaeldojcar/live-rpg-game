@@ -1,6 +1,9 @@
 <template>
     <div class="container-fluid mt-3">
-        <a class="btn btn-primary float-right" @click="submit">Uložit</a>
+        <a class="btn btn-primary float-right" @click="destroy" v-if="quest.parent_quest_id">Odebrat</a>
+
+        <a class="btn btn-primary float-right"
+           @click="submit">Uložit</a>
 
         <h4 class="mb-3" v-if="quest.parent_quest_id">Pod-quest: {{quest.name}}</h4>
         <h4 class="mb-3" v-else>Quest: {{quest.name}}</h4>
@@ -206,6 +209,22 @@
 
 
                         this.$router.push('/quests/' + response.data.id + '/edit')
+
+                        this.refresh();
+                    });
+            },
+
+            destroy() {
+                if (!confirm("Do you really want to delete?")) {
+                    return false;
+                }
+
+                axios
+                    .delete('/api/quests/' + this.$route.params.id)
+                    .then(response => {
+                        console.log(response.data);
+
+                        this.$router.push('/quests')
 
                         this.refresh();
                     });
