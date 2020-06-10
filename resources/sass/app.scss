@@ -14,7 +14,7 @@ $green: #00d25b;
 $red: #fc424a;
 $yellow: #ffab00;
 
-$light: #269EAF;
+$light: rgb(38, 158, 175);
 $dark: rgba(26, 73, 99, 0.6);
 $darkest: #122128;
 
@@ -37,22 +37,29 @@ body {
     table, .card {
         //border-color: $blue !important;
         background-color: $dark !important;
-        border-radius: 0.25rem !important;
+        //border-radius: 0.25rem !important;
+        border-radius: 0 !important;
         border: 1px solid rgba(0, 0, 0, 0.125) !important;
         color: white !important;
     }
 }
 
+//.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+//    border: 0.5px solid $light;
+//    padding: 40px;
+//}
+
 .card-header {
     //background-color: $dark !important;
-    padding-top: 20px;
+    padding-top: 15px;
     text-transform: uppercase;
-    border-top: 4px solid $light;
+    border-top: 6px solid $light;
     border-bottom: 0 !important;
+    border-radius: 0 !important;
 }
 
 .card-body {
-    margin: 20px;
+    margin: 10px;
     //background-color: transparent !important;
 
     background-color: #122128;
@@ -64,15 +71,16 @@ body {
 }
 
 .navbar {
-    background-color: $light !important;
+    background-color: $dark !important;
     //border-bottom: 1px solid;
+    margin-bottom: 30px;
 }
 
 .nav-link {
-    color: #6c7293 !important;
+    color: white !important;
 
     &:hover {
-        color: white !important;
+        color: $light !important;
     }
 }
 
