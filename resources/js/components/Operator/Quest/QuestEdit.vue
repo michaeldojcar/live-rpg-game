@@ -30,8 +30,9 @@
                 </div>
                 <div class="card my-2"
                      style="border: 1px dashed white !important; background-color: transparent!important;">
-                    <div class="card-body" @click="createSubRequest" style="box-shadow: inset 0 0 0 transparent; padding: 10px">
-                        Přidat nový quest
+                    <div class="card-body" @click="createSubRequest"
+                         style="box-shadow: inset 0 0 0 transparent; padding: 10px">
+                        Přidat nový pod-quest
                     </div>
                 </div>
             </div>
@@ -50,14 +51,6 @@
                         <div class="form-group">
                             <label>Zadání</label>
                             <textarea class="form-control" v-model="quest.description" title=""/>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Vydat odměnu hned po zadání</label>
-                            <select v-model="quest.is_dumb">
-                                <option value="0">Ne</option>
-                                <option value="1">Ano</option>
-                            </select>
                         </div>
 
 
@@ -81,14 +74,6 @@
                                 <option value="1">Lze dokončit opakovaně</option>
                             </select>
                         </div>
-
-                        <div class="form-group">
-                            <label>Odměna je známá dopředu</label>
-                            <select v-model="quest.is_reward_public">
-                                <option value="0">Ne</option>
-                                <option value="1">Ano</option>
-                            </select>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -97,6 +82,22 @@
                 <div class="card my-2">
                     <div class="card-header">Odměna</div>
                     <div class="card-body">
+                        <div class="form-group">
+                            <label>Vydat odměnu hned po zadání</label>
+                            <select v-model="quest.is_dumb">
+                                <option value="0">Ne</option>
+                                <option value="1">Ano</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Odměna je známá dopředu</label>
+                            <select v-model="quest.is_reward_public">
+                                <option value="0">Ne</option>
+                                <option value="1">Ano</option>
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <label>Stříbrňáky</label>
                             <input type="number" class="form-control" v-model="quest.reward_cash" title="">
@@ -224,7 +225,7 @@
                     .then(response => {
                         console.log(response.data);
 
-                        this.$router.push('/quests')
+                        this.$router.push('/quests/' + response.data.parent_quest_id + '/edit')
 
                         this.refresh();
                     });

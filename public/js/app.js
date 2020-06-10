@@ -2634,6 +2634,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "QuestEdit",
   data: function data() {
@@ -2698,7 +2699,7 @@ __webpack_require__.r(__webpack_exports__);
       axios["delete"]('/api/quests/' + this.$route.params.id).then(function (response) {
         console.log(response.data);
 
-        _this4.$router.push('/quests');
+        _this4.$router.push('/quests/' + response.data.parent_quest_id + '/edit');
 
         _this4.refresh();
       });
@@ -55561,7 +55562,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                    Přidat nový quest\n                "
+                    "\n                    Přidat nový pod-quest\n                "
                   )
                 ]
               )
@@ -55628,48 +55629,6 @@ var render = function() {
                   }
                 }
               })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Vydat odměnu hned po zadání")]),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.quest.is_dumb,
-                      expression: "quest.is_dumb"
-                    }
-                  ],
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.quest,
-                        "is_dumb",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                [
-                  _c("option", { attrs: { value: "0" } }, [_vm._v("Ne")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "1" } }, [_vm._v("Ano")])
-                ]
-              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
@@ -55760,6 +55719,56 @@ var render = function() {
                   ])
                 ]
               )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-3" }, [
+        _c("div", { staticClass: "card my-2" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Odměna")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Vydat odměnu hned po zadání")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quest.is_dumb,
+                      expression: "quest.is_dumb"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.quest,
+                        "is_dumb",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "0" } }, [_vm._v("Ne")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [_vm._v("Ano")])
+                ]
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
@@ -55802,16 +55811,8 @@ var render = function() {
                   _c("option", { attrs: { value: "1" } }, [_vm._v("Ano")])
                 ]
               )
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-3" }, [
-        _c("div", { staticClass: "card my-2" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Odměna")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
+            ]),
+            _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("label", [_vm._v("Stříbrňáky")]),
               _vm._v(" "),
