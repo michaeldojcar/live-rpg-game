@@ -42,7 +42,7 @@ class QuestController extends Controller
     public function storeSubQuest($existing_quest_id, Request $request)
     {
         $selected_quest = Quest::findOrFail($existing_quest_id);
-        $selected_quest->getLastSubQuest();
+        $parent         = $selected_quest->getLastSubQuest();
 
         $quest                          = new Quest();
         $quest->name                    = 'podúkol';
@@ -53,7 +53,8 @@ class QuestController extends Controller
         $quest->quest_owner_id          = Role::first()->id;
         $quest->is_reward_public        = false;
         $quest->is_dumb                 = false;
-        $quest->quest_group_id          = 1;
+        $quest->quest_group_id          = $parent->quest_group_id;
+        $quest->parent_quest_id         = $parent->id;
         $quest->save();
 
         return $quest;
