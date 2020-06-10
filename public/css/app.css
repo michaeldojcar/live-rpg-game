@@ -12026,6 +12026,10 @@ body .card {
   background-color: #14161e !important;
 }
 
+.card-body.a {
+  color: white;
+}
+
 .navbar {
   background-color: #191c24 !important;
 }

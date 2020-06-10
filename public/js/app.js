@@ -2312,6 +2312,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoleCreate",
   data: function data() {
@@ -2455,6 +2481,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -55072,7 +55104,136 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
-    _c("h4", [_vm._v("Nová skupina")]),
+    _c("h4", [_vm._v("Nový hráč")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Jméno")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.name,
+            expression: "name"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { type: "text" },
+        domProps: { value: _vm.name },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.name = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Věk")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.birth_date,
+            expression: "birth_date"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { type: "date" },
+        domProps: { value: _vm.birth_date },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.birth_date = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Barva 1")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.color_1,
+            expression: "color_1"
+          }
+        ],
+        staticClass: "form-control",
+        domProps: { value: _vm.color_1 },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.color_1 = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Barva 2")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.color_2,
+            expression: "color_2"
+          }
+        ],
+        staticClass: "form-control",
+        domProps: { value: _vm.color_2 },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.color_2 = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Barva 3")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.color_3,
+            expression: "color_3"
+          }
+        ],
+        staticClass: "form-control",
+        domProps: { value: _vm.color_3 },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.color_3 = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("p", { on: { click: _vm.submit } }, [_vm._v("Odeslat")]),
     _vm._v(" "),
     _c(
       "table",
@@ -55201,7 +55362,10 @@ var render = function() {
     [
       _c(
         "router-link",
-        { staticClass: "btn btn-success float-right", attrs: { to: "#" } },
+        {
+          staticClass: "btn btn-success float-right",
+          attrs: { to: "/players/new" }
+        },
         [_vm._v("+ Nový hráč")]
       ),
       _vm._v(" "),
@@ -55316,48 +55480,49 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-2" },
-        _vm._l(_vm.quest.chain_quests, function(q) {
-          return _c("div", { key: q.id }, [
-            _c(
-              "div",
-              {
-                staticClass: "card mb-2 mt-2",
-                class: {
-                  "text-white bg-success": !q.parent_quest_id,
-                  "text-white bg-light": q.parent_quest_id
-                }
-              },
-              [
-                !q.parent_quest_id
-                  ? _c("div", { staticClass: "card-header" }, [
-                      _vm._v("Mateřský quest")
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "card-body" },
-                  [
-                    _c("small", { staticClass: "text-muted" }),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      {
-                        staticStyle: { color: "black" },
-                        attrs: { to: "/quests/" + q.id + "/edit" }
-                      },
-                      [_vm._v(_vm._s(q.name) + "\n                        ")]
-                    )
-                  ],
-                  1
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _vm._m(0, true)
-          ])
-        }),
-        0
+        [
+          _vm._l(_vm.quest.chain_quests, function(q) {
+            return _c("div", { key: q.id }, [
+              _c(
+                "div",
+                {
+                  staticClass: "card mb-2 mt-2",
+                  class: {
+                    "text-white bg-success": !q.parent_quest_id,
+                    "text-white bg-light": q.parent_quest_id
+                  }
+                },
+                [
+                  !q.parent_quest_id
+                    ? _c("div", { staticClass: "card-header" }, [
+                        _vm._v("Mateřský quest")
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "card-body" },
+                    [
+                      _c("small", { staticClass: "text-muted" }),
+                      _vm._v(" "),
+                      _c(
+                        "router-link",
+                        { attrs: { to: "/quests/" + q.id + "/edit" } },
+                        [_vm._v(_vm._s(q.name) + "\n                        ")]
+                      )
+                    ],
+                    1
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(0, true)
+            ])
+          }),
+          _vm._v(" "),
+          _vm._m(1)
+        ],
+        2
       ),
       _vm._v(" "),
       _c("div", { staticClass: "col-4" }, [
@@ -55852,6 +56017,26 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("i", { staticClass: "fas fa-arrow-up text-success" })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "card my-2",
+        staticStyle: {
+          border: "1px dashed white !important",
+          "background-color": "transparent!important"
+        }
+      },
+      [
+        _c("div", { staticClass: "card-body" }, [
+          _vm._v("\n                    Přidat nový quest\n                ")
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

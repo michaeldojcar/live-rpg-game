@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid mt-3">
-        <router-link to="#" class="btn btn-success float-right">+ Nový hráč</router-link>
+        <router-link to="/players/new" class="btn btn-success float-right">+ Nový hráč</router-link>
 
         <h4>Hráči</h4>
 

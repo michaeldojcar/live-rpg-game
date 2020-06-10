@@ -14,8 +14,8 @@
                         <div class="card-header" v-if="!q.parent_quest_id">Mateřský quest</div>
                         <div class="card-body">
                             <small class="text-muted"></small>
-                            <router-link style="color: black"
-                                         :to="'/quests/' + q.id + '/edit'">{{q.name}}
+                            <router-link
+                                :to="'/quests/' + q.id + '/edit'">{{q.name}}
                             </router-link>
                         </div>
                     </div>
@@ -23,6 +23,12 @@
                     <div class="text-center">
                         <i class="fas fa-arrow-down mr-5 text-danger"></i>
                         <i class="fas fa-arrow-up text-success"></i>
+                    </div>
+                </div>
+                <div class="card my-2"
+                     style="border: 1px dashed white !important; background-color: transparent!important;">
+                    <div class="card-body">
+                        Přidat nový quest
                     </div>
                 </div>
             </div>

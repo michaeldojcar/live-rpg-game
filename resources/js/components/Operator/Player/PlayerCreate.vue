@@ -1,7 +1,33 @@
 <template>
     <div class="container-fluid mt-3">
-        <h4>Nová skupina</h4>
+        <h4>Nový hráč</h4>
 
+        <div class="form-group">
+            <label>Jméno</label>
+            <input type="text" class="form-control" v-model="name">
+        </div>
+
+        <div class="form-group">
+            <label>Věk</label>
+            <input type="date" class="form-control" v-model="birth_date">
+        </div>
+
+        <div class="form-group">
+            <label>Barva 1</label>
+            <input class="form-control" v-model="color_1">
+        </div>
+
+        <div class="form-group">
+            <label>Barva 2</label>
+            <input class="form-control" v-model="color_2">
+        </div>
+
+        <div class="form-group">
+            <label>Barva 3</label>
+            <input class="form-control" v-model="color_3">
+        </div>
+
+        <p @click="submit">Odeslat</p>
         <table class="w-50 table table-bordered">
             <tr>
                 <th>Jméno</th>
