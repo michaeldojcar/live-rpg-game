@@ -3001,7 +3001,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "QuestGroupIndex",
   data: function data() {
@@ -56703,58 +56702,54 @@ var render = function() {
     _vm._v(" "),
     _c("h4", [_vm._v("Větve questů")]),
     _vm._v(" "),
-    _c("div", { staticClass: "alert alert-primary mt-3 w-50" }, [
+    _c("div", { staticClass: "alert alert-primary mt-3 w-75" }, [
       _vm._v(
         "\n        Questy lze seskupit do souvisejících větví, v průběhu hry lze pracovat s jednotlivými větvemi - např.\n        spustit questy pouze z některé větve.\n    "
       )
     ]),
     _vm._v(" "),
-    _c("table", { staticClass: "table w-50 mt-4" }, [
-      _c(
-        "div",
-        { staticStyle: { padding: "10px 15px" } },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._l(_vm.quest_groups, function(quest) {
-            return _c("tr", { key: quest.id }, [
-              _c(
-                "td",
-                [
-                  _c(
-                    "router-link",
-                    { attrs: { to: "/quests/" + quest.id + "/edit" } },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(quest.name) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("td"),
-              _vm._v(" "),
-              _c("td", [
-                quest.active
-                  ? _c(
-                      "span",
-                      { staticClass: "text-success font-weight-bold" },
-                      [_vm._v("Aktivní")]
+    _c(
+      "table",
+      { staticClass: "table w-75 mt-4" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.quest_groups, function(quest) {
+          return _c("tr", { key: quest.id }, [
+            _c(
+              "td",
+              [
+                _c(
+                  "router-link",
+                  { attrs: { to: "/quests/" + quest.id + "/edit" } },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(quest.name) +
+                        "\n                "
                     )
-                  : _c("span", { staticClass: "text-danger" }, [
-                      _vm._v("Neaktivní")
-                    ])
-              ])
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(quest.quests_count))]),
+            _vm._v(" "),
+            _c("td", [
+              quest.active
+                ? _c("span", { staticClass: "text-success font-weight-bold" }, [
+                    _vm._v("Aktivní")
+                  ])
+                : _c("span", { staticClass: "text-danger" }, [
+                    _vm._v("Neaktivní")
+                  ])
             ])
-          })
-        ],
-        2
-      )
-    ])
+          ])
+        })
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = [
@@ -56762,28 +56757,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", { staticClass: "w-100" }, [
-      _c(
-        "th",
-        {
-          staticClass: "w-50",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Jméno větve")]
-      ),
+    return _c("tr", [
+      _c("th", [_vm._v("Jméno větve")]),
       _vm._v(" "),
-      _c("th", { staticStyle: { border: "none" } }),
+      _c("th", { staticStyle: { border: "none" } }, [_vm._v("Počet questů")]),
       _vm._v(" "),
-      _c(
-        "th",
-        {
-          staticClass: "w-50",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Stav")]
-      )
+      _c("th", { staticStyle: { border: "none" } }, [_vm._v("Stav")])
     ])
   }
 ]

@@ -24,5 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class QuestGroup extends Model
 {
-    //
+    public function quests()
+    {
+        return $this->hasMany(Quest::class);
+    }
 }
