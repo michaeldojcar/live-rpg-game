@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid mt-3">
-        <router-link to="#" class="btn btn-success float-right">+ Nová postava</router-link>
+        <router-link to="/roles/new" class="btn btn-success float-right">+ Nová postava</router-link>
 
         <h4>Postavy</h4>
 
@@ -33,20 +33,17 @@
         },
 
         mounted() {
-            this.refresh();
+
+            axios
+                .get('/api/roles')
+                .then(response => {
+                    console.log(response.data);
+
+                    this.roles = response.data;
+                });
         },
 
-        methods: {
-            refresh() {
-                axios
-                    .get('/api/roles')
-                    .then(response => {
-                        console.log(response.data);
-
-                        this.roles = response.data;
-                    });
-            }
-        }
+        methods: {}
     }
 </script>
 

@@ -3004,19 +3004,19 @@ __webpack_require__.r(__webpack_exports__);
   name: "RoleCreate",
   data: function data() {
     return {
-      roles: []
+      name: null,
+      real_name: null
     };
   },
-  mounted: function mounted() {
-    this.refresh();
-  },
+  mounted: function mounted() {},
   methods: {
-    refresh: function refresh() {
-      var _this = this;
-
-      axios.get('/api/roles').then(function (response) {
-        console.log(response.data);
-        _this.roles = response.data;
+    submit: function submit() {
+      console.log('Storing role.');
+      axios.post('/api/roles', {
+        name: this.name,
+        real_name: this.real_name
+      }).then(function (response) {
+        console.log("Successfully created.");
       });
     }
   }
@@ -3117,18 +3117,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.refresh();
-  },
-  methods: {
-    refresh: function refresh() {
-      var _this = this;
+    var _this = this;
 
-      axios.get('/api/roles').then(function (response) {
-        console.log(response.data);
-        _this.roles = response.data;
-      });
-    }
-  }
+    axios.get('/api/roles').then(function (response) {
+      console.log(response.data);
+      _this.roles = response.data;
+    });
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -8244,7 +8240,7 @@ exports.push([module.i, ".btn-color {\n  width: 23%;\n  padding: 0;\n  display: 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css?66f3":
 /*!*******************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/leaflet/dist/leaflet.css ***!
   \*******************************************************************************************************************************/
@@ -33217,7 +33213,7 @@ window.L = exports;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./leaflet.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./leaflet.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css?66f3");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -56527,44 +56523,62 @@ var render = function() {
   return _c("div", { staticClass: "container-fluid mt-3" }, [
     _c("h4", [_vm._v("Nová postava")]),
     _vm._v(" "),
-    _c(
-      "table",
-      { staticClass: "w-50 table table-bordered" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.roles, function(role) {
-          return _c("tr", { key: role.id }, [
-            _c(
-              "td",
-              [
-                _c("router-link", { attrs: { to: "#" } }, [
-                  _vm._v(_vm._s(role.name))
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(role.real_name))])
-          ])
-        })
-      ],
-      2
-    )
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Jméno postavy")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.name,
+            expression: "name"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { type: "text" },
+        domProps: { value: _vm.name },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.name = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Skutečné jméno")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.real_name,
+            expression: "real_name"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { type: "text" },
+        domProps: { value: _vm.real_name },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.real_name = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("p", { on: { click: _vm.submit } }, [_vm._v("Odeslat")])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("Jméno")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Reálné jméno")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -56654,7 +56668,10 @@ var render = function() {
     [
       _c(
         "router-link",
-        { staticClass: "btn btn-success float-right", attrs: { to: "#" } },
+        {
+          staticClass: "btn btn-success float-right",
+          attrs: { to: "/roles/new" }
+        },
         [_vm._v("+ Nová postava")]
       ),
       _vm._v(" "),

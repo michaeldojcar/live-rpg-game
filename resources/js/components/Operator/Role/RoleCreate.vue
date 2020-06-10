@@ -2,18 +2,18 @@
     <div class="container-fluid mt-3">
         <h4>Nová postava</h4>
 
-        <table class="w-50 table table-bordered">
-            <tr>
-                <th>Jméno</th>
-                <th>Reálné jméno</th>
-            </tr>
-            <tr v-for="role in roles" :key="role.id">
-                <td>
-                    <router-link to="#">{{role.name}}</router-link>
-                </td>
-                <td>{{role.real_name}}</td>
-            </tr>
-        </table>
+
+        <div class="form-group">
+            <label>Jméno postavy</label>
+            <input type="text" class="form-control" v-model="name">
+        </div>
+
+        <div class="form-group">
+        <label>Skutečné jméno</label>
+        <input type="text" class="form-control" v-model="real_name">
+        </div>
+
+        <p @click="submit">Odeslat</p>
     </div>
 </template>
 
@@ -23,22 +23,26 @@
 
         data: () => {
             return {
-                roles: [],
+                name: null,
+                real_name: null
             }
         },
 
         mounted() {
-            this.refresh();
+
         },
 
         methods: {
-            refresh() {
-                axios
-                    .get('/api/roles')
-                    .then(response => {
-                        console.log(response.data);
+            submit() {
+                console.log('Storing role.');
 
-                        this.roles = response.data;
+                axios
+                    .post('/api/roles', {
+                        name: this.name,
+                        real_name: this.real_name
+                    })
+                    .then(response => {
+                        console.log("Successfully created.");
                     });
             }
         }

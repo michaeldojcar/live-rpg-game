@@ -41,4 +41,17 @@ class RoleController extends Controller
 
         return $roles->values();
     }
+
+    public function store(Request $request)
+    {
+        $role = new Role();
+        $role->name = $request->input('name');
+        $role->real_name = $request->input('real_name');
+        $role->story = null;
+        $role->action_recommends = null;
+        $role->place_recommends = null;
+        $role->save();
+
+        return $role;
+    }
 }
