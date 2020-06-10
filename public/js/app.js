@@ -8342,9 +8342,17 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/Home.vue?vue&type=style&index=0&id=142cc3a2&scoped=true&lang=scss& ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\n\r\n            font-family: ;\r\n                    ^\r\n      Expected expression.\n    ╷\n134 │         font-family: ;\n    │                      ^\n    ╵\n  stdin 134:22  root stylesheet\r\n      in C:\\Weby\\live-rpg-game\\resources\\js\\components\\Operator\\Home.vue (line 134, column 22)");
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".box[data-v-142cc3a2] {\n  padding: 20px 25px;\n  width: 180px;\n  height: 180px;\n  border: 0.5px solid rgba(38, 158, 175, 0.3);\n  outline: 3px solid #269eaf;\n  /*-moz-outline-radius: 0.25rem;*/\n  outline-offset: -13px;\n  margin: 0 15px;\n}\n.box h1[data-v-142cc3a2] {\n  color: white;\n  text-align: left;\n  font-size: 60px;\n  padding-top: 0;\n  padding-bottom: 20px;\n  line-height: 60px;\n  font-family: \"DM Mono\", monospace;\n  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);\n}\n.box h1 span[data-v-142cc3a2] {\n  font-size: 20px;\n  /*color: rgb(38, 158, 175);*/\n  line-height: 60px;\n}\n.box h4[data-v-142cc3a2] {\n  color: #269eaf;\n  margin-bottom: 0px;\n  text-align: left;\n  text-transform: uppercase;\n  font-size: 20px;\n}\n.box h6[data-v-142cc3a2] {\n  color: #00ae00;\n  text-align: left;\n  text-transform: uppercase;\n  font-size: 12px;\n  position: relative;\n  bottom: 0px;\n}\n.light[data-v-142cc3a2] {\n  background-color: rgba(38, 158, 175, 0.4);\n  /*border: 2px solid rgb(38, 158, 175);*/\n}\n.dark[data-v-142cc3a2] {\n  background-color: transparent;\n  /*border: 2px solid rgb(38, 158, 175);*/\n}", ""]);
+
+// exports
+
 
 /***/ }),
 
@@ -54899,7 +54907,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "box light" }, [
             _c("h4", [_vm._v("Postavy")]),
             _vm._v(" "),
-            _c("h1", [_vm._v("8")]),
+            _c("h1", [_vm._v("8"), _c("span", [_vm._v("/23")])]),
             _vm._v(" "),
             _c("h6", [_vm._v("Online")])
           ]),
@@ -54907,7 +54915,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "box dark" }, [
             _c("h4", [_vm._v("Hráči")]),
             _vm._v(" "),
-            _c("h1", [_vm._v("26")]),
+            _c("h1", [_vm._v("26"), _c("span", [_vm._v("/54")])]),
             _vm._v(" "),
             _c("h6", [_vm._v("Online")])
           ]),
@@ -54915,7 +54923,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "box light" }, [
             _c("h4", [_vm._v("Questy")]),
             _vm._v(" "),
-            _c("h1", [_vm._v("39")]),
+            _c("h1", [_vm._v("39"), _c("span", [_vm._v("/1125")])]),
             _vm._v(" "),
             _c("h6", [_vm._v("spuštěny")])
           ]),
@@ -54923,7 +54931,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "box dark" }, [
             _c("h4", [_vm._v("Dnes")]),
             _vm._v(" "),
-            _c("h1", [_vm._v("26")]),
+            _c("h1", [_vm._v("26"), _c("span")]),
             _vm._v(" "),
             _c("h6", [_vm._v("Splněných questů")])
           ])

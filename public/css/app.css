@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);/* required styles */
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;
+
+400;500&display=swap);/* required styles */
 
 .leaflet-pane,
 .leaflet-tile,
@@ -640,7 +642,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
 :root {
   --blue: #007bff;
   --indigo: #6610f2;

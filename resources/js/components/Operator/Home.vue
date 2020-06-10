@@ -12,22 +12,22 @@
                 <div class="row">
                     <div class="box light">
                         <h4>Postavy</h4>
-                        <h1>8</h1>
+                        <h1>8<span>/23</span></h1>
                         <h6>Online</h6>
                     </div>
                     <div class="box dark">
                         <h4>Hráči</h4>
-                        <h1>26</h1>
+                        <h1>26<span>/54</span></h1>
                         <h6>Online</h6>
                     </div>
                     <div class="box light">
                         <h4>Questy</h4>
-                        <h1>39</h1>
+                        <h1>39<span>/1125</span></h1>
                         <h6>spuštěny</h6>
                     </div>
                     <div class="box dark">
                         <h4>Dnes</h4>
-                        <h1>26</h1>
+                        <h1>26<span> </span></h1>
                         <h6>Splněných questů</h6>
                     </div>
                 </div>
@@ -131,7 +131,14 @@
             padding-top: 0;
             padding-bottom: 20px;
             line-height: 60px;
-            font-family: ;
+            font-family: "DM Mono", monospace;
+            text-shadow: 5px 5px 5px rgb(0,0,0,0.5);
+
+            span {
+                font-size: 20px;
+                /*color: rgb(38, 158, 175);*/
+                line-height: 60px;
+            }
         }
 
         h4 {
@@ -143,12 +150,12 @@
         }
 
         h6 {
-            color: orange;
+            color: #00ae00;
             text-align: left;
             text-transform: uppercase;
             font-size: 12px;
             position: relative;
-            bottom: -10px;
+            bottom: 0px;
         }
     }
 
