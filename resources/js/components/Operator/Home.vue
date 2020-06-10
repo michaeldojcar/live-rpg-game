@@ -1,39 +1,48 @@
 <template>
     <div class="container-fluid mt-3">
-        <h4>Hlavní přehled</h4>
+        <h4 class="mb-4">Hlavní přehled</h4>
 
-        <h5>Aktuální stav hry</h5>
+        <h5 class="mb-2">Aktuální stav hry</h5>
 
-        <table class="table table-bordered w-50">
-            <tr>
-                <td>Aktivní větev úkolů</td>
-                <td>
-                    <div v-for="group in active_quest_groups">
-                        {{group.name}}
-                    </div>
-                    <div v-if="!active_quest_groups.length" class="text-muted">žádná větev není aktivní</div>
-                </td>
-            </tr>
-            <tr>
-                <td>Celkem splněno úkolů</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>Mince v oběhu u hráčů</td>
-                <td>3480</td>
-            </tr>
-            <tr>
-                <td>Hráči</td>
-                <td>{{player_count}}</td>
-            </tr>
-            <tr>
-                <td>Postavy</td>
-                <td>{{role_count}}</td>
-            </tr>
-            <tr>
-                <td>Questy</td>
-                <td>{{quest_count}} + {{sub_quest_count}} pod-questy</td>
-            </tr>
+        <table class="table w-50 mt-4" style="border-radius: 0.25rem!important;">
+            <div style="padding: 10px 15px">
+                <tr class="w-100">
+                    <th class="w-50" scope="col" style="border: none">Aktivní větev úkolů</th>
+                    <th style="border: none"></th>
+                    <th class="w-50" scope="col" style="border: none">
+                        <div v-for="group in active_quest_groups">
+                            {{group.name}}
+                        </div>
+                        <div v-if="!active_quest_groups.length" class="text-muted">žádná větev není aktivní</div>
+                    </th>
+                </tr>
+                <tr>
+                    <td>Celkem splněno úkolů</td>
+                    <td></td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>Mince v oběhu u hráčů</td>
+                    <td></td>
+                    <td>3480</td>
+                </tr>
+                <tr>
+                    <td>Hráči</td>
+                    <td></td>
+                    <td>{{player_count}}</td>
+                </tr>
+                <tr>
+                    <td>Postavy</td>
+                    <td></td>
+                    <td>{{role_count}}</td>
+                </tr>
+                <tr>
+                    <td>Questy</td>
+                    <td></td>
+                    <td>{{quest_count}} + {{sub_quest_count}} pod-questy</td>
+                </tr>
+            </div>
+
         </table>
     </div>
 </template>
@@ -69,3 +78,7 @@
         },
     }
 </script>
+
+<style scoped>
+
+</style>

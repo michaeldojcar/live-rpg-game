@@ -8,23 +8,26 @@
             Questy lze seskupit do souvisejících větví, v průběhu hry lze pracovat s jednotlivými větvemi - např.
             spustit questy pouze z některé větve.
         </div>
-
-        <table class="w-50 table table-bordered">
-            <tr>
-                <th>Jméno větve</th>
-                <th>Stav</th>
-            </tr>
-            <tr v-for="quest in quest_groups" :key="quest.id">
-                <td>
-                    <router-link :to="'/quests/' + quest.id + '/edit'">
-                        {{quest.name}}
-                    </router-link>
-                </td>
-                <td>
-                    <span v-if="quest.active" class="text-success font-weight-bold">Aktivní</span>
-                    <span v-else>Neaktivní</span>
-                </td>
-            </tr>
+        <table class="table w-50 mt-4" style="border-radius: 0.25rem!important;">
+            <div style="padding: 10px 15px">
+                <tr class="w-100">
+                    <th class="w-50" scope="col" style="border: none">Jméno větve</th>
+                    <th style="border: none"></th>
+                    <th class="w-50" scope="col" style="border: none">Stav</th>
+                </tr>
+                <tr v-for="quest in quest_groups" :key="quest.id">
+                    <td>
+                        <router-link :to="'/quests/' + quest.id + '/edit'">
+                            {{quest.name}}
+                        </router-link>
+                    </td>
+                    <td></td>
+                    <td>
+                        <span v-if="quest.active" class="text-success font-weight-bold">Aktivní</span>
+                        <span v-else class="text-danger">Neaktivní</span>
+                    </td>
+                </tr>
+            </div>
         </table>
     </div>
 </template>

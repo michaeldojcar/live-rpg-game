@@ -8,19 +8,23 @@
             Zobrazeny jsou pouze mateřské questy, pod-questy lze načíst pod jednotlivými mateřskými questy.
         </div>
 
-        <table class="w-50 table table-bordered">
-            <tr>
-                <th>Jméno</th>
-                <th>Postava</th>
-            </tr>
-            <tr v-for="quest in quests" :key="quest.id">
-                <td>
-                    <router-link :to="'/quests/'+quest.id+'/edit'">
-                        {{quest.name}}
-                    </router-link>
-                </td>
-                <td>{{quest.owner.name}}</td>
-            </tr>
+        <table class="w-50 table mt-4" style="border-radius: 0.25rem!important;">
+            <div style="padding: 10px 15px">
+                <tr class="w-100">
+                    <th scope="col" class="w-50" style="border: none">Jméno</th>
+                    <th scope="col" style="border: none"></th>
+                    <th scope="col" class="w-50" style="border: none">Postava</th>
+                </tr>
+                <tr v-for="quest in quests" :key="quest.id">
+                    <td>
+                        <router-link :to="'/quests/'+quest.id+'/edit'">
+                            {{quest.name}}
+                        </router-link>
+                    </td>
+                    <td></td>
+                    <td>{{quest.owner.name}}</td>
+                </tr>
+            </div>
         </table>
     </div>
 </template>
@@ -55,7 +59,7 @@
                         let id = response.data.id;
                         console.log(id);
 
-                        this.$router.push('/quests/'+ id + '/edit')
+                        this.$router.push('/quests/' + id + '/edit')
                     });
             }
         }

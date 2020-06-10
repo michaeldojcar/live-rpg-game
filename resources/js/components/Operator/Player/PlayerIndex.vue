@@ -4,17 +4,21 @@
 
         <h4>Hráči</h4>
 
-        <table class="w-50 table table-bordered">
-            <tr>
-                <th>Jméno</th>
-                <th>Věk</th>
-            </tr>
-            <tr v-for="player in players" :key="player.id">
-                <td>
-                    <router-link to="#">{{player.name}}</router-link>
-                </td>
-                <td>{{player.age}}</td>
-            </tr>
+        <table class="w-50 table mt-4" style="border-radius: 0.25rem!important;">
+            <div style="padding: 10px 15px">
+                <tr class="w-100">
+                    <th scope="col" class="w-75" style="border: none">Jméno</th>
+                    <th scope="col" style="border: none"></th>
+                    <th scope="col" class="w-50" style="border: none">Věk</th>
+                </tr>
+                <tr v-for="player in players" :key="player.id">
+                    <td>
+                        <router-link to="#">{{player.name}}</router-link>
+                    </td>
+                    <td></td>
+                    <td>{{player.age}}</td>
+                </tr>
+            </div>
         </table>
     </div>
 </template>

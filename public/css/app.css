@@ -11990,3 +11990,76 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background-color: black;
+  color: white;
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  color: white;
+}
+
+body p,
+body li,
+body ul,
+body td,
+body tr,
+body a {
+  color: white;
+  border-color: #6c7293 !important;
+}
+
+body table,
+body .card {
+  background-color: #191c24 !important;
+  border-radius: 0.25rem !important;
+  border: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
+.navbar {
+  background-color: #191c24 !important;
+}
+
+.nav-link {
+  color: #6c7293 !important;
+}
+
+.nav-link:hover {
+  color: white !important;
+}
+
+.text-success {
+  color: #00d25b;
+}
+
+.text-warning {
+  color: #fc424a;
+}
+
+.text-danger {
+  color: #ffab00;
+}
+
+.alert {
+  border-radius: 0.25rem !important;
+  border: none !important;
+}
+
+.alert-primary {
+  background-color: rgba(0, 144, 231, 0.81);
+  color: white;
+}
+
+.btn-primary {
+  background-color: #0090e7;
+}
+
+.btn-success {
+  background-color: #00d25b;
+}
+

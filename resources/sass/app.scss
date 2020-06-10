@@ -1,7 +1,85 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
 @import '~leaflet/dist/leaflet.css';
+
+//Layout
+
+$dark: black;
+$light: #191c24;
+$blue: #0090e7;
+$green: #00d25b;
+$red: #fc424a;
+$yellow: #ffab00;
+
+body {
+    background-color: black;
+    color: white;
+
+    h1, h2, h3, h4, h5, h6 {
+        color: white;
+    }
+
+    p, li, ul, td, tr, a {
+        color: white;
+        border-color: #6c7293 !important;
+    }
+
+    table, .card {
+        //border-color: $blue !important;
+        background-color: $light !important;
+        border-radius: 0.25rem !important;
+        border: 1px solid rgba(0, 0, 0, 0.125) !important;
+    }
+}
+
+.navbar {
+    background-color: $light !important;
+    //border-bottom: 1px solid;
+}
+
+.nav-link {
+    color: #6c7293 !important;
+
+    &:hover {
+        color: white !important;
+    }
+}
+
+.text-success {
+    color: $green;
+}
+
+.text-warning {
+    color: $red;
+}
+
+.text-danger {
+    color: $yellow;
+}
+
+//.w-md-100 {
+//    width: 50%;
+//    @include media-breakpoint-down(md) {
+//        width: 100% !important;
+//    }
+//}
+
+.alert {
+    border-radius: 0.25rem !important;
+    border: none !important;
+}
+
+.alert-primary {
+    background-color: rgba(0, 144, 231, 0.81);
+    color: white;
+}
+
+.btn-primary {
+    background-color: $blue;
+}
+
+.btn-success {
+    background-color: $green;
+}
