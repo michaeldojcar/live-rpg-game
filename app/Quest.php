@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * 1 quest
- *
+ * 
  * Class Quest
  *
  * @package App
@@ -65,6 +65,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Quest whereAgeTo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Quest whereQuestGroupId($value)
  * @property-read \App\Quest $sub_quest
+ * @property-read \App\Quest|null $parent_quest
  */
 class Quest extends Model
 {

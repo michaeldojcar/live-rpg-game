@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Player;
+use App\Repositories\LogRepository;
 use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -61,6 +62,10 @@ class RoleInterfaceController extends Controller
             'quests_available'        => $quests_available,
             'external_quests_pending' => $player->pendingSubQuestsForRole($role)->get(),
         ];
+
+        // Log player logged
+        $lr = new LogRepository();
+        $lr->playerLogged($player, $role);
 
         return json_encode($resp);
     }

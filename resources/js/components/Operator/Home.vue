@@ -4,11 +4,7 @@
         <div class="row">
             <div class="col-7">
                 <h5 class="mb-4">Aktuální stav hry</h5>
-            </div>
-            <div class="col-5">
-                <h5 class="mb-4">Novinky</h5>
-            </div>
-            <div class="col-7">
+
                 <div class="row">
                     <div class="box light">
                         <h4>Postavy</h4>
@@ -33,8 +29,11 @@
                 </div>
             </div>
             <div class="col-5">
+                <h5 class="mb-4">Nejnovější změny</h5>
 
-
+                <table class="table">
+                    <log-detail v-for="log in latest_logs" :log="log"></log-detail>
+                </table>
             </div>
         </div>
 
@@ -82,10 +81,12 @@
 </template>
 
 <script>
+    import LogDetail from "./Logs/LogDetail";
+
     export default {
         name: "home",
 
-        components: {},
+        components: {LogDetail},
 
         data() {
             return {
@@ -94,6 +95,7 @@
                 player_count: 0,
                 quest_count: 0,
                 sub_quest_count: 0,
+                latest_logs: [],
             }
         },
 
@@ -108,6 +110,7 @@
                     this.sub_quest_count = response.data.sub_quest_count;
                     this.player_count = response.data.player_count;
                     this.role_count = response.data.role_count;
+                    this.latest_logs = response.data.latest_logs;
                 });
         },
     }
@@ -132,7 +135,7 @@
             padding-bottom: 20px;
             line-height: 60px;
             font-family: "DM Mono", monospace;
-            text-shadow: 5px 5px 5px rgb(0,0,0,0.5);
+            text-shadow: 5px 5px 5px rgb(0, 0, 0, 0.5);
 
             span {
                 font-size: 20px;

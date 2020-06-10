@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Log;
 use App\Player;
 use App\Quest;
 use App\QuestGroup;
 use App\Role;
-use App\User;
-use Illuminate\Http\Request;
 
 class OperatorController extends Controller
 {
@@ -25,6 +24,7 @@ class OperatorController extends Controller
                 'sub_quest_count'     => Quest::where('parent_quest_id', '!=', null)->count(),
                 'player_count'        => Player::count(),
                 'role_count'          => Role::count(),
+                'latest_logs'         => Log::latest()->limit(10)->get()->load(['player', 'role', 'quest']),
             ]
         );
     }

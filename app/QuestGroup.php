@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\QuestGroup whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\QuestGroup whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Quest[] $quests
+ * @property-read int|null $quests_count
  */
 class QuestGroup extends Model
 {
