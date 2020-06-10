@@ -16,11 +16,11 @@ class RoleController extends Controller
 
     public function index()
     {
-        return Role::all()->values();
+        return Role::withCount(['quests'])->get()->values();
     }
 
     /**
-     * Roles for map.
+     * Roles for OSM map view.
      *
      * @return string
      */

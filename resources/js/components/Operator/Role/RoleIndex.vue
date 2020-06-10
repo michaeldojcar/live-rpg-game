@@ -4,21 +4,19 @@
 
         <h4>Postavy</h4>
 
-        <table class="w-50 table mt-4" style="border-radius: 0.25rem!important;">
-            <div style="padding: 10px 15px">
-                <tr class="w-100">
-                    <th scope="col" class="w-50" style="border: none">Jméno</th>
-                    <th scope="col" style="border: none"></th>
-                    <th scope="col" class="w-50" style="border: none">Reálné jméno</th>
-                </tr>
-                <tr v-for="role in roles" :key="role.id">
-                    <td>
-                        <router-link to="#">{{role.name}}</router-link>
-                    </td>
-                    <td></td>
-                    <td>{{role.real_name}}</td>
-                </tr>
-            </div>
+        <table class="w-50 table table-bordered">
+            <tr>
+                <th>Jméno</th>
+                <th>Reálné jméno</th>
+                <th>Úkoly</th>
+            </tr>
+            <tr v-for="role in roles" :key="role.id">
+                <td>
+                    <router-link to="#">{{role.name}}</router-link>
+                </td>
+                <td>{{role.real_name}}</td>
+                <td>{{role.quests_count}}</td>
+            </tr>
         </table>
     </div>
 </template>

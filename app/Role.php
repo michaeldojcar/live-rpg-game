@@ -46,4 +46,9 @@ class Role extends Model
     {
         return $this->last_seen > Carbon::now()->subSeconds(20);
     }
+
+    public function quests()
+    {
+        return $this->hasMany(Quest::class, 'quest_owner_id');
+    }
 }

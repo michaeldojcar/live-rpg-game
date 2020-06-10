@@ -2055,12 +2055,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "GroupIndex",
   data: function data() {
@@ -2094,15 +2088,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2418,10 +2403,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PlayerIndex",
   data: function data() {
@@ -2656,10 +2637,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
 //
 //
 //
@@ -2937,9 +2914,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "QuestGroupIndex",
   data: function data() {
@@ -3085,8 +3059,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -54516,38 +54488,25 @@ var render = function() {
       _vm._v(" "),
       _c(
         "table",
-        {
-          staticClass: "w-50 table mt-4",
-          staticStyle: { "border-radius": "0.25rem!important" }
-        },
+        { staticClass: "w-50 table table-bordered" },
         [
-          _c(
-            "div",
-            { staticStyle: { padding: "10px 15px" } },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._l(_vm.groups, function(group) {
-                return _c("tr", { key: group.id }, [
-                  _c(
-                    "td",
-                    [
-                      _c("router-link", { attrs: { to: "#" } }, [
-                        _vm._v(_vm._s(group.name))
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td")
-                ])
-              })
-            ],
-            2
-          )
-        ]
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.groups, function(group) {
+            return _c("tr", { key: group.id }, [
+              _c(
+                "td",
+                [
+                  _c("router-link", { attrs: { to: "#" } }, [
+                    _vm._v(_vm._s(group.name))
+                  ])
+                ],
+                1
+              )
+            ])
+          })
+        ],
+        2
       )
     ],
     1
@@ -54558,25 +54517,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", { staticClass: "w-100" }, [
-      _c(
-        "th",
-        {
-          staticClass: "w-55",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Jméno skupinky")]
-      ),
-      _vm._v(" "),
-      _c("th", { staticStyle: { border: "none" }, attrs: { scope: "col" } }),
-      _vm._v(" "),
-      _c("th", {
-        staticClass: "w-50",
-        staticStyle: { border: "none" },
-        attrs: { scope: "col" }
-      })
-    ])
+    return _c("tr", [_c("th", [_vm._v("Jméno")])])
   }
 ]
 render._withStripped = true
@@ -54585,10 +54526,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Home.vue?vue&type=template&id=142cc3a2&scoped=true&":
-/*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/Home.vue?vue&type=template&id=142cc3a2&scoped=true& ***!
-  \****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Home.vue?vue&type=template&id=142cc3a2&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/Home.vue?vue&type=template&id=142cc3a2& ***!
+  \****************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -54601,96 +54542,66 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
-    _c("h4", { staticClass: "mb-4" }, [_vm._v("Hlavní přehled")]),
+    _c("h4", [_vm._v("Hlavní přehled")]),
     _vm._v(" "),
-    _c("h5", { staticClass: "mb-2" }, [_vm._v("Aktuální stav hry")]),
+    _c("h5", [_vm._v("Aktuální stav hry")]),
     _vm._v(" "),
-    _c(
-      "table",
-      {
-        staticClass: "table w-50 mt-4",
-        staticStyle: { "border-radius": "0.25rem!important" }
-      },
-      [
-        _c("div", { staticStyle: { padding: "10px 15px" } }, [
-          _c("tr", { staticClass: "w-100" }, [
-            _c(
-              "th",
-              {
-                staticClass: "w-50",
-                staticStyle: { border: "none" },
-                attrs: { scope: "col" }
-              },
-              [_vm._v("Aktivní větev úkolů")]
-            ),
+    _c("table", { staticClass: "table table-bordered w-50" }, [
+      _c("tr", [
+        _c("td", [_vm._v("Aktivní větev úkolů")]),
+        _vm._v(" "),
+        _c(
+          "td",
+          [
+            _vm._l(_vm.active_quest_groups, function(group) {
+              return _c("div", [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(group.name) +
+                    "\n                "
+                )
+              ])
+            }),
             _vm._v(" "),
-            _c("th", { staticStyle: { border: "none" } }),
-            _vm._v(" "),
-            _c(
-              "th",
-              {
-                staticClass: "w-50",
-                staticStyle: { border: "none" },
-                attrs: { scope: "col" }
-              },
-              [
-                _vm._l(_vm.active_quest_groups, function(group) {
-                  return _c("div", [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(group.name) +
-                        "\n                    "
-                    )
-                  ])
-                }),
-                _vm._v(" "),
-                !_vm.active_quest_groups.length
-                  ? _c("div", { staticClass: "text-muted" }, [
-                      _vm._v("žádná větev není aktivní")
-                    ])
-                  : _vm._e()
-              ],
-              2
-            )
-          ]),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Hráči")]),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.player_count))])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Postavy")]),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.role_count))])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("Questy")]),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v(
-                _vm._s(_vm.quest_count) +
-                  " + " +
-                  _vm._s(_vm.sub_quest_count) +
-                  " pod-questy"
-              )
-            ])
-          ])
+            !_vm.active_quest_groups.length
+              ? _c("div", { staticClass: "text-muted" }, [
+                  _vm._v("žádná větev není aktivní")
+                ])
+              : _vm._e()
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("Hráči")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(_vm._s(_vm.player_count))])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("Postavy")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(_vm._s(_vm.role_count))])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("Questy")]),
+        _vm._v(" "),
+        _c("td", [
+          _vm._v(
+            _vm._s(_vm.quest_count) +
+              " + " +
+              _vm._s(_vm.sub_quest_count) +
+              " pod-questy"
+          )
         ])
-      ]
-    )
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -54701,8 +54612,6 @@ var staticRenderFns = [
     return _c("tr", [
       _c("td", [_vm._v("Celkem splněno úkolů")]),
       _vm._v(" "),
-      _c("td"),
-      _vm._v(" "),
       _c("td", [_vm._v("0")])
     ])
   },
@@ -54712,8 +54621,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("tr", [
       _c("td", [_vm._v("Mince v oběhu u hráčů")]),
-      _vm._v(" "),
-      _c("td"),
       _vm._v(" "),
       _c("td", [_vm._v("3480")])
     ])
@@ -55126,38 +55033,27 @@ var render = function() {
       _vm._v(" "),
       _c(
         "table",
-        {
-          staticClass: "w-50 table mt-4",
-          staticStyle: { "border-radius": "0.25rem!important" }
-        },
+        { staticClass: "w-50 table table-bordered" },
         [
-          _c(
-            "div",
-            { staticStyle: { padding: "10px 15px" } },
-            [
-              _vm._m(0),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.players, function(player) {
+            return _c("tr", { key: player.id }, [
+              _c(
+                "td",
+                [
+                  _c("router-link", { attrs: { to: "#" } }, [
+                    _vm._v(_vm._s(player.name))
+                  ])
+                ],
+                1
+              ),
               _vm._v(" "),
-              _vm._l(_vm.players, function(player) {
-                return _c("tr", { key: player.id }, [
-                  _c(
-                    "td",
-                    [
-                      _c("router-link", { attrs: { to: "#" } }, [
-                        _vm._v(_vm._s(player.name))
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(player.age))])
-                ])
-              })
-            ],
-            2
-          )
-        ]
+              _c("td", [_vm._v(_vm._s(player.age))])
+            ])
+          })
+        ],
+        2
       )
     ],
     1
@@ -55168,28 +55064,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", { staticClass: "w-100" }, [
-      _c(
-        "th",
-        {
-          staticClass: "w-75",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Jméno")]
-      ),
+    return _c("tr", [
+      _c("th", [_vm._v("Jméno")]),
       _vm._v(" "),
-      _c("th", { staticStyle: { border: "none" }, attrs: { scope: "col" } }),
-      _vm._v(" "),
-      _c(
-        "th",
-        {
-          staticClass: "w-50",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Věk")]
-      )
+      _c("th", [_vm._v("Věk")])
     ])
   }
 ]
@@ -55813,46 +55691,35 @@ var render = function() {
     _vm._v(" "),
     _c(
       "table",
-      {
-        staticClass: "w-50 table mt-4",
-        staticStyle: { "border-radius": "0.25rem!important" }
-      },
+      { staticClass: "w-50 table table-bordered" },
       [
-        _c(
-          "div",
-          { staticStyle: { padding: "10px 15px" } },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(_vm.quests, function(quest) {
-              return _c("tr", { key: quest.id }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.quests, function(quest) {
+          return _c("tr", { key: quest.id }, [
+            _c(
+              "td",
+              [
                 _c(
-                  "td",
+                  "router-link",
+                  { attrs: { to: "/quests/" + quest.id + "/edit" } },
                   [
-                    _c(
-                      "router-link",
-                      { attrs: { to: "/quests/" + quest.id + "/edit" } },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(quest.name) +
-                            "\n                    "
-                        )
-                      ]
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(quest.name) +
+                        "\n                "
                     )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("td"),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(quest.owner.name))])
-              ])
-            })
-          ],
-          2
-        )
-      ]
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(quest.owner.name))])
+          ])
+        })
+      ],
+      2
     )
   ])
 }
@@ -55861,28 +55728,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", { staticClass: "w-100" }, [
-      _c(
-        "th",
-        {
-          staticClass: "w-50",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Jméno")]
-      ),
+    return _c("tr", [
+      _c("th", [_vm._v("Jméno")]),
       _vm._v(" "),
-      _c("th", { staticStyle: { border: "none" }, attrs: { scope: "col" } }),
-      _vm._v(" "),
-      _c(
-        "th",
-        {
-          staticClass: "w-50",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Postava")]
-      )
+      _c("th", [_vm._v("Postava")])
     ])
   }
 ]
@@ -56421,56 +56270,41 @@ var render = function() {
     _vm._v(" "),
     _c(
       "table",
-      {
-        staticClass: "table w-50 mt-4",
-        staticStyle: { "border-radius": "0.25rem!important" }
-      },
+      { staticClass: "w-50 table table-bordered" },
       [
-        _c(
-          "div",
-          { staticStyle: { padding: "10px 15px" } },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(_vm.quest_groups, function(quest) {
-              return _c("tr", { key: quest.id }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.quest_groups, function(quest) {
+          return _c("tr", { key: quest.id }, [
+            _c(
+              "td",
+              [
                 _c(
-                  "td",
+                  "router-link",
+                  { attrs: { to: "/quests/" + quest.id + "/edit" } },
                   [
-                    _c(
-                      "router-link",
-                      { attrs: { to: "/quests/" + quest.id + "/edit" } },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(quest.name) +
-                            "\n                    "
-                        )
-                      ]
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(quest.name) +
+                        "\n                "
                     )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("td"),
-                _vm._v(" "),
-                _c("td", [
-                  quest.active
-                    ? _c(
-                        "span",
-                        { staticClass: "text-success font-weight-bold" },
-                        [_vm._v("Aktivní")]
-                      )
-                    : _c("span", { staticClass: "text-danger" }, [
-                        _vm._v("Neaktivní")
-                      ])
-                ])
-              ])
-            })
-          ],
-          2
-        )
-      ]
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("td", [
+              quest.active
+                ? _c("span", { staticClass: "text-success font-weight-bold" }, [
+                    _vm._v("Aktivní")
+                  ])
+                : _c("span", [_vm._v("Neaktivní")])
+            ])
+          ])
+        })
+      ],
+      2
     )
   ])
 }
@@ -56479,28 +56313,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", { staticClass: "w-100" }, [
-      _c(
-        "th",
-        {
-          staticClass: "w-50",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Jméno větve")]
-      ),
+    return _c("tr", [
+      _c("th", [_vm._v("Jméno větve")]),
       _vm._v(" "),
-      _c("th", { staticStyle: { border: "none" } }),
-      _vm._v(" "),
-      _c(
-        "th",
-        {
-          staticClass: "w-50",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Stav")]
-      )
+      _c("th", [_vm._v("Stav")])
     ])
   }
 ]
@@ -56663,38 +56479,29 @@ var render = function() {
       _vm._v(" "),
       _c(
         "table",
-        {
-          staticClass: "w-50 table mt-4",
-          staticStyle: { "border-radius": "0.25rem!important" }
-        },
+        { staticClass: "w-50 table table-bordered" },
         [
-          _c(
-            "div",
-            { staticStyle: { padding: "10px 15px" } },
-            [
-              _vm._m(0),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.roles, function(role) {
+            return _c("tr", { key: role.id }, [
+              _c(
+                "td",
+                [
+                  _c("router-link", { attrs: { to: "#" } }, [
+                    _vm._v(_vm._s(role.name))
+                  ])
+                ],
+                1
+              ),
               _vm._v(" "),
-              _vm._l(_vm.roles, function(role) {
-                return _c("tr", { key: role.id }, [
-                  _c(
-                    "td",
-                    [
-                      _c("router-link", { attrs: { to: "#" } }, [
-                        _vm._v(_vm._s(role.name))
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(role.real_name))])
-                ])
-              })
-            ],
-            2
-          )
-        ]
+              _c("td", [_vm._v(_vm._s(role.real_name))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(role.quests_count))])
+            ])
+          })
+        ],
+        2
       )
     ],
     1
@@ -56705,28 +56512,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", { staticClass: "w-100" }, [
-      _c(
-        "th",
-        {
-          staticClass: "w-50",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Jméno")]
-      ),
+    return _c("tr", [
+      _c("th", [_vm._v("Jméno")]),
       _vm._v(" "),
-      _c("th", { staticStyle: { border: "none" }, attrs: { scope: "col" } }),
+      _c("th", [_vm._v("Reálné jméno")]),
       _vm._v(" "),
-      _c(
-        "th",
-        {
-          staticClass: "w-50",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Reálné jméno")]
-      )
+      _c("th", [_vm._v("Úkoly")])
     ])
   }
 ]
@@ -86826,7 +86617,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Home_vue_vue_type_template_id_142cc3a2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home.vue?vue&type=template&id=142cc3a2&scoped=true& */ "./resources/js/components/Operator/Home.vue?vue&type=template&id=142cc3a2&scoped=true&");
+/* harmony import */ var _Home_vue_vue_type_template_id_142cc3a2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home.vue?vue&type=template&id=142cc3a2& */ "./resources/js/components/Operator/Home.vue?vue&type=template&id=142cc3a2&");
 /* harmony import */ var _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home.vue?vue&type=script&lang=js& */ "./resources/js/components/Operator/Home.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
@@ -86838,11 +86629,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Home_vue_vue_type_template_id_142cc3a2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Home_vue_vue_type_template_id_142cc3a2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Home_vue_vue_type_template_id_142cc3a2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Home_vue_vue_type_template_id_142cc3a2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "142cc3a2",
+  null,
   null
   
 )
@@ -86868,19 +86659,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Operator/Home.vue?vue&type=template&id=142cc3a2&scoped=true&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/components/Operator/Home.vue?vue&type=template&id=142cc3a2&scoped=true& ***!
-  \**********************************************************************************************/
+/***/ "./resources/js/components/Operator/Home.vue?vue&type=template&id=142cc3a2&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/Operator/Home.vue?vue&type=template&id=142cc3a2& ***!
+  \**********************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_142cc3a2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=template&id=142cc3a2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Home.vue?vue&type=template&id=142cc3a2&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_142cc3a2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_142cc3a2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=template&id=142cc3a2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Home.vue?vue&type=template&id=142cc3a2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_142cc3a2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_142cc3a2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_142cc3a2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -88288,8 +88079,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Weby\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Weby\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
