@@ -27,7 +27,7 @@
                 </div>
                 <div class="card my-2"
                      style="border: 1px dashed white !important; background-color: transparent!important;">
-                    <div class="card-body">
+                    <div class="card-body" style="box-shadow: inset 0 0 0 transparent; padding: 10px">
                         Přidat nový quest
                     </div>
                 </div>

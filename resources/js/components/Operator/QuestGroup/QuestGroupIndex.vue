@@ -8,7 +8,7 @@
             Questy lze seskupit do souvisejících větví, v průběhu hry lze pracovat s jednotlivými větvemi - např.
             spustit questy pouze z některé větve.
         </div>
-        <table class="table w-50 mt-4" style="border-radius: 0.25rem!important;">
+        <table class="table w-50 mt-4">
             <div style="padding: 10px 15px">
                 <tr class="w-100">
                     <th class="w-50" scope="col" style="border: none">Jméno větve</th>

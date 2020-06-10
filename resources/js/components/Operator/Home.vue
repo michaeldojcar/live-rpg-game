@@ -4,7 +4,7 @@
 
         <h5 class="mb-2">Aktuální stav hry</h5>
 
-        <table class="table w-50 mt-4" style="border-radius: 0.25rem!important;">
+        <table class="table w-50 mt-4">
             <div style="padding: 10px 15px">
                 <tr class="w-100">
                     <th class="w-50" scope="col" style="border: none">Aktivní větev úkolů</th>

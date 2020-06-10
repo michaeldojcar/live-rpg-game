@@ -8,7 +8,7 @@
             Zobrazeny jsou pouze mateřské questy, pod-questy lze načíst pod jednotlivými mateřskými questy.
         </div>
 
-        <table class="w-50 table mt-4" style="border-radius: 0.25rem!important;">
+        <table class="w-50 table mt-4">
             <div style="padding: 10px 15px">
                 <tr class="w-100">
                     <th scope="col" class="w-50" style="border: none">Jméno</th>

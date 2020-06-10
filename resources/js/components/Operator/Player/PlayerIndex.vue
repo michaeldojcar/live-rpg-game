@@ -4,7 +4,7 @@
 
         <h4>Hráči</h4>
 
-        <table class="w-50 table mt-4" style="border-radius: 0.25rem!important;">
+        <table class="w-50 table mt-4">
             <div style="padding: 10px 15px">
                 <tr class="w-100">
                     <th scope="col" class="w-75" style="border: none">Jméno</th>
