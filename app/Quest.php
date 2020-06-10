@@ -97,7 +97,12 @@ class Quest extends Model
         return $parent;
     }
 
-    public function getLastSubQuest()
+    /**
+     * Find the lowest sub-quest of this quest.
+     *
+     * @return Quest
+     */
+    public function getLastSubQuest(): Quest
     {
         // 1. Quest is the last quest
         if ($this->sub_quests_count == 0)
