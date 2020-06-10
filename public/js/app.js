@@ -8240,7 +8240,7 @@ exports.push([module.i, ".btn-color {\n  width: 23%;\n  padding: 0;\n  display: 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css?66f3":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css":
 /*!*******************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/leaflet/dist/leaflet.css ***!
   \*******************************************************************************************************************************/
@@ -33213,7 +33213,7 @@ window.L = exports;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./leaflet.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css?66f3");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./leaflet.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -55273,7 +55273,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "col-4" }, [
-        _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card my-2" }, [
           _c("div", { staticClass: "card-header" }, [
             _vm._v("\n                    Nastavení questu\n                ")
           ]),
@@ -55509,7 +55509,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-3" }, [
-        _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card my-2" }, [
           _c("div", { staticClass: "card-header" }, [_vm._v("Odměna")]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -55599,7 +55599,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-3" }, [
-        _c("div", { staticClass: "card mb-3" }, [
+        _c("div", { staticClass: "card my-2" }, [
           _c("div", { staticClass: "card-header" }, [
             _vm._v("Kritéria přidělení")
           ]),
@@ -55760,9 +55760,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "text-center" }, [
-      _c("i", { staticClass: "fas fa-arrow-down mr-5" }),
+      _c("i", { staticClass: "fas fa-arrow-down mr-5 text-danger" }),
       _vm._v(" "),
-      _c("i", { staticClass: "fas fa-arrow-up" })
+      _c("i", { staticClass: "fas fa-arrow-up text-success" })
     ])
   }
 ]

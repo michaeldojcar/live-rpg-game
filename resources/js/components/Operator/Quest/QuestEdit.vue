@@ -1,4 +1,4 @@
-<template>
+a<template>
     <div class="container-fluid mt-3">
         <a class="btn btn-primary float-right" @click="submit">Uložit</a>
 
@@ -21,13 +21,13 @@
                     </div>
 
                     <div class="text-center">
-                        <i class="fas fa-arrow-down mr-5"></i>
-                        <i class="fas fa-arrow-up"></i>
+                        <i class="fas fa-arrow-down mr-5 text-danger"></i>
+                        <i class="fas fa-arrow-up text-success"></i>
                     </div>
                 </div>
             </div>
             <div class="col-4">
-                <div class="card">
+                <div class="card my-2">
                     <div class="card-header">
                         Nastavení questu
                     </div>
@@ -85,7 +85,7 @@
             </div>
 
             <div class="col-3">
-                <div class="card">
+                <div class="card my-2">
                     <div class="card-header">Odměna</div>
                     <div class="card-body">
                         <div class="form-group">
@@ -107,7 +107,7 @@
             </div>
 
             <div class="col-3">
-                <div class="card mb-3">
+                <div class="card my-2">
                     <div class="card-header">Kritéria přidělení</div>
                     <div class="card-body">
                         <div class="form-group">
