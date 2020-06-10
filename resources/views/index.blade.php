@@ -24,10 +24,8 @@
 </head>
 
 <body>
-
     <div class="container mt-5">
         <h1>Rozhraní táborové hry</h1>
-
 
         <div class="card mb-2">
             <div class="card-header">Výběr postavy</div>
@@ -41,13 +39,12 @@
         </div>
 
         <div class="card">
-            <div class="card-header">Správa</div>
+            <div class="card-header">Řízení hry</div>
             <div class="card-body">
                 <a href="{{route('operator')}}">Administrace hry</a>
             </div>
         </div>
     </div>
-
 
 </body>
 </html>

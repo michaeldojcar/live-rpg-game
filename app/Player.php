@@ -55,12 +55,12 @@ class Player extends Model
 
     public function motherQuests()
     {
-        return $this->quests()->where('is_mother', true);
+        return $this->quests()->where('parent_quest_id', '=', null);
     }
 
     public function subQuests()
     {
-        return $this->quests()->where('is_mother', false);
+        return $this->quests()->where('parent_quest_id', '!=', null);
     }
 
     public function pendingQuestsForRole(Role $role)
