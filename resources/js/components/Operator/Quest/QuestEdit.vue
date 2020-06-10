@@ -117,7 +117,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" v-if="!quest.parent_quest_id">
                             <label>Větev questů</label>
                             <select class="form-control" v-model="quest.quest_group_id">
                                 <option v-for="group in quest_groups" :value="group.id">{{group.name}}</option>

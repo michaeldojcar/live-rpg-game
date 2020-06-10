@@ -55737,49 +55737,51 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Větev questů")]),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
+            !_vm.quest.parent_quest_id
+              ? _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Větev questů")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.quest.quest_group_id,
-                      expression: "quest.quest_group_id"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.quest,
-                        "quest_group_id",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                _vm._l(_vm.quest_groups, function(group) {
-                  return _c("option", { domProps: { value: group.id } }, [
-                    _vm._v(_vm._s(group.name))
-                  ])
-                }),
-                0
-              )
-            ]),
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.quest.quest_group_id,
+                          expression: "quest.quest_group_id"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.quest,
+                            "quest_group_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.quest_groups, function(group) {
+                      return _c("option", { domProps: { value: group.id } }, [
+                        _vm._v(_vm._s(group.name))
+                      ])
+                    }),
+                    0
+                  )
+                ])
+              : _vm._e(),
             _vm._v(" "),
             !_vm.quest.parent_quest_id
               ? _c("div", { staticClass: "form-group" }, [
@@ -88525,8 +88527,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Weby\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Weby\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
