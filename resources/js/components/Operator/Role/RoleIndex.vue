@@ -12,7 +12,7 @@
                     <th class="w-25" scope="col" style="border: none">Úkoly</th>
                 <tr v-for="role in roles" :key="role.id">
                     <td>
-                        <router-link to="#">{{role.name}}</router-link>
+                        <router-link :to="'/roles/'+role.id+'/edit'">{{role.name}}</router-link>
                     </td>
                     <td>{{role.real_name}}</td>
                     <td>{{role.quests_count}}</td>

@@ -9,9 +9,7 @@ class RoleController extends Controller
 {
     public function show($id)
     {
-        return view('role', [
-            'role' => Role::findOrFail($id)
-        ]);
+        return Role::findOrFail($id);
     }
 
     public function index()
@@ -50,6 +48,14 @@ class RoleController extends Controller
         $role->story = null;
         $role->action_recommends = null;
         $role->place_recommends = null;
+        $role->save();
+
+        return $role;
+    }
+
+    public function update(Role $role, Request $request)
+    {
+        $role->fill($request->toArray());
         $role->save();
 
         return $role;

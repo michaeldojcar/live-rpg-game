@@ -9,6 +9,14 @@ use Illuminate\Support\Carbon;
 
 class RoleInterfaceController extends Controller
 {
+    public function index($id)
+    {
+        return view('role', [
+            'role' => Role::findOrFail($id)
+        ]);
+    }
+
+
     /**
      * Find user by color combination.
      *

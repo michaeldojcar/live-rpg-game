@@ -39,6 +39,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Role extends Model
 {
+    protected $fillable = ['name','real_name', 'story', 'action_recommends', 'place_recommends'];
+
     protected $dates = ['last_seen'];
 
     /**

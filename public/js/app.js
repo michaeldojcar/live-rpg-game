@@ -3052,11 +3052,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoleEdit",
   data: function data() {
     return {
-      roles: []
+      role: {}
     };
   },
   mounted: function mounted() {
@@ -3066,9 +3089,25 @@ __webpack_require__.r(__webpack_exports__);
     refresh: function refresh() {
       var _this = this;
 
-      axios.get('/api/roles').then(function (response) {
-        console.log(response.data);
-        _this.roles = response.data;
+      axios.get('/api/roles/' + this.$route.params.id).then(function (response) {
+        //  console.log(response.data);
+        _this.role = response.data;
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
+
+      console.log('Storing role.');
+      axios.patch('/api/roles/' + this.role.id, {
+        name: this.role.name,
+        real_name: this.role.real_name,
+        story: this.role.story,
+        action_recommends: this.role.action_recommends,
+        place_recommends: this.role.place_recommends
+      }).then(function (response) {
+        console.log("Successfully updated.");
+
+        _this2.$router.push('/roles');
       });
     }
   }
@@ -56601,46 +56640,158 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
+    _c(
+      "a",
+      { staticClass: "btn btn-primary float-right", on: { click: _vm.submit } },
+      [_vm._v("Uložit")]
+    ),
+    _vm._v(" "),
     _c("h4", [_vm._v("Úprava postavy")]),
     _vm._v(" "),
-    _c(
-      "table",
-      { staticClass: "w-50 table table-bordered" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.roles, function(role) {
-          return _c("tr", { key: role.id }, [
-            _c(
-              "td",
-              [
-                _c("router-link", { attrs: { to: "#" } }, [
-                  _vm._v(_vm._s(role.name))
-                ])
-              ],
-              1
-            ),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-8" }, [
+        _c("div", { staticClass: "card my-2" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("\n                    Úprava postavy\n                ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Jméno postavy")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.role.name,
+                    expression: "role.name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.role.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.role, "name", $event.target.value)
+                  }
+                }
+              })
+            ]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(role.real_name))])
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Skutečné jméno")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.role.real_name,
+                    expression: "role.real_name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.role.real_name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.role, "real_name", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Charakteristika")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.role.story,
+                    expression: "role.story"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.role.story },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.role, "story", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Typické činnosti")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.role.action_recommends,
+                    expression: "role.action_recommends"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.role.action_recommends },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.role, "action_recommends", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Obvyklé umístění")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.role.place_recommends,
+                    expression: "role.place_recommends"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.role.place_recommends },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.role, "place_recommends", $event.target.value)
+                  }
+                }
+              })
+            ])
           ])
-        })
-      ],
-      2
-    )
+        ])
+      ])
+    ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("Jméno")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Reálné jméno")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -56694,9 +56845,11 @@ var render = function() {
                   _c(
                     "td",
                     [
-                      _c("router-link", { attrs: { to: "#" } }, [
-                        _vm._v(_vm._s(role.name))
-                      ])
+                      _c(
+                        "router-link",
+                        { attrs: { to: "/roles/" + role.id + "/edit" } },
+                        [_vm._v(_vm._s(role.name))]
+                      )
                     ],
                     1
                   ),
@@ -88305,8 +88458,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Weby\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Weby\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
