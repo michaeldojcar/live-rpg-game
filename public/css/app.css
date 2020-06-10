@@ -12010,7 +12010,7 @@ body ul,
 body td,
 body tr,
 body a {
-  color: white !important;
+  color: white;
   border-color: #6c7293 !important;
 }
 

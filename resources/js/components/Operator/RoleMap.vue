@@ -17,7 +17,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-10 pr-0">
+            <div class="col-10 pr-0 text-black">
                 <l-map
                     style="height: calc(100vh - 59px); width: 100%"
                     :zoom="zoom"
@@ -146,5 +146,15 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    .text-black {
+        p, a {
+            color: black !important;
+
+            .leaflet-control-zoom-in, .leaflet-control-zoom-out {
+                color: black !important;
+            }
+
+        }
+    }
 </style>
