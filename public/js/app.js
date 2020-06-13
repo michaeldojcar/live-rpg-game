@@ -3485,6 +3485,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PersonColorPicker",
@@ -8517,7 +8519,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.btn-color[data-v-cb227724] {\n    height: 60px;\n    box-shadow: grey 0 0 3px;\n\n    font-size: 12px;\n\n    border: none;\n}\n.wrapper[data-v-cb227724] {\n    position: absolute;\n    bottom: 20px;\n    width: calc(100vw - 45px);\n}\n", ""]);
+exports.push([module.i, "\n.btn-color[data-v-cb227724] {\n    height: 60px;\n    box-shadow: grey 0 0 3px;\n\n    font-size: 12px;\n\n    border: none;\n}\n.wrapper[data-v-cb227724] {\n    position: absolute;\n    bottom: 20px;\n    width: calc(100vw - 45px);\n}\n.selected[data-v-cb227724] {\n    border: 5px dashed red;\n}\n", ""]);
 
 // exports
 
@@ -57495,13 +57497,14 @@ var render = function() {
           "button",
           {
             staticClass: "btn-color bg-danger",
+            class: { selected: _vm.color_1 === 1 },
             on: {
               click: function($event) {
                 return _vm.setFirstColor(1)
               }
             }
           },
-          [_vm._v("Červená")]
+          [_vm._v("\n                Červená\n            ")]
         ),
         _vm._v(" "),
         _c(

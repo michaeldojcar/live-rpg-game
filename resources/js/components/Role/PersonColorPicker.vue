@@ -6,7 +6,9 @@
 
         <div class="wrapper">
             <div class=" mb-2">
-                <button @click="setFirstColor(1)" class="btn-color bg-danger">Červená</button>
+                <button @click="setFirstColor(1)" class="btn-color bg-danger" :class="{selected: color_1 === 1 }">
+                    Červená
+                </button>
                 <button @click="setFirstColor(2)" class="btn-color bg-primary">Modrá</button>
                 <button @click="setFirstColor(3)" class="btn-color bg-success">Zelená</button>
                 <button @click="setFirstColor(4)" class="btn-color bg-warning">Žlutá</button>
@@ -106,5 +108,9 @@
         position: absolute;
         bottom: 20px;
         width: calc(100vw - 45px);
+    }
+
+    .selected {
+        border: 5px dashed red;
     }
 </style>
