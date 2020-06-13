@@ -3640,6 +3640,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "QuestDetail",
@@ -57806,11 +57807,20 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-6" }, [
-        _c("button", { staticClass: "btn btn-success w-100 text-center" }, [
-          _vm._v("Splněno")
-        ]),
+        _vm.state.quest_selected.pivot.status === 2
+          ? _c("button", { staticClass: "btn btn-warning w-100 text-center" }, [
+              _vm._v("Zadat")
+            ])
+          : _vm._e(),
         _vm._v(" "),
-        !_vm.state.quest_selected.allow_more_attempts
+        _vm.state.quest_selected.pivot.status === 3
+          ? _c("button", { staticClass: "btn btn-success w-100 text-center" }, [
+              _vm._v("Dokončit")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.state.quest_selected.allow_more_attempts &&
+        _vm.state.quest_selected.pivot.status === 3
           ? _c(
               "button",
               { staticClass: "btn btn-danger w-100 text-center mt-3" },

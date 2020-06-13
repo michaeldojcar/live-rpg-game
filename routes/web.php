@@ -1,5 +1,6 @@
 <?php
 
+
 Route::get('/', 'IndexController@index')->name('index');
 
 // Role mobile show

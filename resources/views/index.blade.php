@@ -24,27 +24,29 @@
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h1>Rozhraní táborové hry</h1>
+<div class="container mt-5">
+    <h1>Rozhraní hry</h1>
 
-        <div class="card mb-2">
-            <div class="card-header">Výběr postavy</div>
+    <div class="card mb-2">
+        <div class="card-header">Přihlášení postavy</div>
 
-            <div class="card-body">
+        <div class="card-body">
+            <table class="table">
+                <th>Postava</th>
+                <th>Jméno</th>
+                <th>Přihlášení</th>
                 @foreach($roles as $role)
-                    <a href="{{route('role.show', $role->id)}}"
-                       class="btn btn-secondary">{{$role->name}} ({{$role->real_name}})</a><br><br>
-                @endforeach
-            </div>
-        </div>
+                    <tr>
+                        <td><a href="{{route('role.show', $role->id)}}">{{$role->name}}</a></td>
 
-        <div class="card">
-            <div class="card-header">Řízení hry</div>
-            <div class="card-body">
-                <a href="{{route('operator')}}">Administrace hry</a>
-            </div>
+                        <td>{{$role->real_name}}</td>
+                        <td><a href="{{route('role.show', $role->id)}}" class="btn btn-primary">Přihlásit</a></td>
+                    </tr>
+                @endforeach
+            </table>
         </div>
     </div>
+</div>
 
 </body>
 </html>

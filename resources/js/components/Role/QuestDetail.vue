@@ -32,8 +32,9 @@
                 </button>
             </div>
             <div class="col-6">
-                <button class="btn btn-success w-100 text-center">Splněno</button>
-                <button class="btn btn-danger w-100 text-center mt-3" v-if="!state.quest_selected.allow_more_attempts">Nesplněno</button>
+                <button class="btn btn-warning w-100 text-center" v-if="state.quest_selected.pivot.status === 2">Zadat</button>
+                <button class="btn btn-success w-100 text-center" v-if="state.quest_selected.pivot.status === 3">Dokončit</button>
+                <button class="btn btn-danger w-100 text-center mt-3" v-if="!state.quest_selected.allow_more_attempts && state.quest_selected.pivot.status === 3">Nesplněno</button>
             </div>
         </div>
 

@@ -151,4 +151,19 @@ class RoleInterfaceController extends Controller
             return true;
         });
     }
+
+    public function setPending($quest_id)
+    {
+        // TODO:
+    }
+
+    public function setDone($quest_id)
+    {
+        // TODO:
+    }
+
+    public function setFailed($quest_id)
+    {
+        // TODO:
+    }
 }
