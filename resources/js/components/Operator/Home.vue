@@ -8,22 +8,22 @@
                 <div class="row">
                     <div class="box light">
                         <h4>Postavy</h4>
-                        <h1>8<span>/23</span></h1>
+                        <h1>{{roles_online_count}}<span>/{{roles_count}}</span></h1>
                         <h6>Online</h6>
                     </div>
                     <div class="box dark">
                         <h4>Hráči</h4>
-                        <h1>26<span>/54</span></h1>
+                        <h1>{{players_online_count}}<span>/{{players_count}}</span></h1>
                         <h6>Online</h6>
                     </div>
                     <div class="box light">
                         <h4>Questy</h4>
-                        <h1>39<span>/1125</span></h1>
+                        <h1>{{pending_quests_count}}<span>/{{quests_count}}</span></h1>
                         <h6>spuštěny</h6>
                     </div>
                     <div class="box dark">
                         <h4>Dnes</h4>
-                        <h1>26<span> </span></h1>
+                        <h1>{{today_completed_quests}}<span> </span></h1>
                         <h6>Splněných questů</h6>
                     </div>
                 </div>
@@ -36,47 +36,6 @@
                 </table>
             </div>
         </div>
-
-        <table class="table w-50 mt-4">
-            <div style="padding: 10px 15px">
-                <tr class="w-100">
-                    <th class="w-50" scope="col" style="border: none">Aktivní větev úkolů</th>
-                    <th style="border: none"></th>
-                    <th class="w-50" scope="col" style="border: none">
-                        <div v-for="group in active_quest_groups">
-                            {{group.name}}
-                        </div>
-                        <div v-if="!active_quest_groups.length" class="text-muted">žádná větev není aktivní</div>
-                    </th>
-                </tr>
-                <tr>
-                    <td>Celkem splněno úkolů</td>
-                    <td></td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>Mince v oběhu u hráčů</td>
-                    <td></td>
-                    <td>3480</td>
-                </tr>
-                <tr>
-                    <td>Hráči</td>
-                    <td></td>
-                    <td>{{player_count}}</td>
-                </tr>
-                <tr>
-                    <td>Postavy</td>
-                    <td></td>
-                    <td>{{role_count}}</td>
-                </tr>
-                <tr>
-                    <td>Questy</td>
-                    <td></td>
-                    <td>{{quest_count}} + {{sub_quest_count}} pod-questy</td>
-                </tr>
-            </div>
-
-        </table>
     </div>
 </template>
 
@@ -91,11 +50,16 @@
         data() {
             return {
                 active_quest_groups: [],
-                role_count: 0,
-                player_count: 0,
-                quest_count: 0,
+                roles_count: 0,
+                roles_online_count: 0,
+                players_count: 0,
+                players_online_count: 0,
+                quests_count: 0,
+                pending_quests_count: 0,
                 sub_quest_count: 0,
                 latest_logs: [],
+
+                today_completed_quests: 0,
 
                 interval: null
             }
@@ -121,11 +85,18 @@
                         console.log(response.data);
 
                         this.active_quest_groups = response.data.active_quest_groups;
-                        this.quest_count = response.data.quest_count;
+                        this.quests_count = response.data.quests_count;
+                        this.pending_quests_count = response.data.pending_quests_count;
                         this.sub_quest_count = response.data.sub_quest_count;
-                        this.player_count = response.data.player_count;
-                        this.role_count = response.data.role_count;
+
+                        this.players_count = response.data.players_count;
+                        this.players_online_count = response.data.players_online_count;
+
+                        this.roles_count = response.data.roles_count;
+                        this.roles_online_count = response.data.roles_online_count;
                         this.latest_logs = response.data.latest_logs;
+
+                        this.today_completed_quests = response.data.today_completed_quests
                     });
             }
         }

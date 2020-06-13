@@ -2136,47 +2136,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "home",
@@ -2186,11 +2145,15 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       active_quest_groups: [],
-      role_count: 0,
-      player_count: 0,
-      quest_count: 0,
+      roles_count: 0,
+      roles_online_count: 0,
+      players_count: 0,
+      players_online_count: 0,
+      quests_count: 0,
+      pending_quests_count: 0,
       sub_quest_count: 0,
       latest_logs: [],
+      today_completed_quests: 0,
       interval: null
     };
   },
@@ -2212,11 +2175,15 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/overview').then(function (response) {
         console.log(response.data);
         _this2.active_quest_groups = response.data.active_quest_groups;
-        _this2.quest_count = response.data.quest_count;
+        _this2.quests_count = response.data.quests_count;
+        _this2.pending_quests_count = response.data.pending_quests_count;
         _this2.sub_quest_count = response.data.sub_quest_count;
-        _this2.player_count = response.data.player_count;
-        _this2.role_count = response.data.role_count;
+        _this2.players_count = response.data.players_count;
+        _this2.players_online_count = response.data.players_online_count;
+        _this2.roles_count = response.data.roles_count;
+        _this2.roles_online_count = response.data.roles_online_count;
         _this2.latest_logs = response.data.latest_logs;
+        _this2.today_completed_quests = response.data.today_completed_quests;
       });
     }
   }
@@ -3697,6 +3664,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -54935,7 +54909,52 @@ var render = function() {
     _c("h4", { staticClass: "mb-4" }, [_vm._v("Hlavní přehled")]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "col-7" }, [
+        _c("h5", { staticClass: "mb-4" }, [_vm._v("Aktuální stav hry")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "box light" }, [
+            _c("h4", [_vm._v("Postavy")]),
+            _vm._v(" "),
+            _c("h1", [
+              _vm._v(_vm._s(_vm.roles_online_count)),
+              _c("span", [_vm._v("/" + _vm._s(_vm.roles_count))])
+            ]),
+            _vm._v(" "),
+            _c("h6", [_vm._v("Online")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "box dark" }, [
+            _c("h4", [_vm._v("Hráči")]),
+            _vm._v(" "),
+            _c("h1", [
+              _vm._v(_vm._s(_vm.players_online_count)),
+              _c("span", [_vm._v("/" + _vm._s(_vm.players_count))])
+            ]),
+            _vm._v(" "),
+            _c("h6", [_vm._v("Online")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "box light" }, [
+            _c("h4", [_vm._v("Questy")]),
+            _vm._v(" "),
+            _c("h1", [
+              _vm._v(_vm._s(_vm.pending_quests_count)),
+              _c("span", [_vm._v("/" + _vm._s(_vm.quests_count))])
+            ]),
+            _vm._v(" "),
+            _c("h6", [_vm._v("spuštěny")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "box dark" }, [
+            _c("h4", [_vm._v("Dnes")]),
+            _vm._v(" "),
+            _c("h1", [_vm._v(_vm._s(_vm.today_completed_quests)), _c("span")]),
+            _vm._v(" "),
+            _c("h6", [_vm._v("Splněných questů")])
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-5" }, [
         _c("h5", { staticClass: "mb-4" }, [_vm._v("Nejnovější změny")]),
@@ -54949,157 +54968,10 @@ var render = function() {
           1
         )
       ])
-    ]),
-    _vm._v(" "),
-    _c("table", { staticClass: "table w-50 mt-4" }, [
-      _c("div", { staticStyle: { padding: "10px 15px" } }, [
-        _c("tr", { staticClass: "w-100" }, [
-          _c(
-            "th",
-            {
-              staticClass: "w-50",
-              staticStyle: { border: "none" },
-              attrs: { scope: "col" }
-            },
-            [_vm._v("Aktivní větev úkolů")]
-          ),
-          _vm._v(" "),
-          _c("th", { staticStyle: { border: "none" } }),
-          _vm._v(" "),
-          _c(
-            "th",
-            {
-              staticClass: "w-50",
-              staticStyle: { border: "none" },
-              attrs: { scope: "col" }
-            },
-            [
-              _vm._l(_vm.active_quest_groups, function(group) {
-                return _c("div", [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(group.name) +
-                      "\n                    "
-                  )
-                ])
-              }),
-              _vm._v(" "),
-              !_vm.active_quest_groups.length
-                ? _c("div", { staticClass: "text-muted" }, [
-                    _vm._v("žádná větev není aktivní")
-                  ])
-                : _vm._e()
-            ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Hráči")]),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td", [_vm._v(_vm._s(_vm.player_count))])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Postavy")]),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td", [_vm._v(_vm._s(_vm.role_count))])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Questy")]),
-          _vm._v(" "),
-          _c("td"),
-          _vm._v(" "),
-          _c("td", [
-            _vm._v(
-              _vm._s(_vm.quest_count) +
-                " + " +
-                _vm._s(_vm.sub_quest_count) +
-                " pod-questy"
-            )
-          ])
-        ])
-      ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-7" }, [
-      _c("h5", { staticClass: "mb-4" }, [_vm._v("Aktuální stav hry")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "box light" }, [
-          _c("h4", [_vm._v("Postavy")]),
-          _vm._v(" "),
-          _c("h1", [_vm._v("8"), _c("span", [_vm._v("/23")])]),
-          _vm._v(" "),
-          _c("h6", [_vm._v("Online")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "box dark" }, [
-          _c("h4", [_vm._v("Hráči")]),
-          _vm._v(" "),
-          _c("h1", [_vm._v("26"), _c("span", [_vm._v("/54")])]),
-          _vm._v(" "),
-          _c("h6", [_vm._v("Online")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "box light" }, [
-          _c("h4", [_vm._v("Questy")]),
-          _vm._v(" "),
-          _c("h1", [_vm._v("39"), _c("span", [_vm._v("/1125")])]),
-          _vm._v(" "),
-          _c("h6", [_vm._v("spuštěny")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "box dark" }, [
-          _c("h4", [_vm._v("Dnes")]),
-          _vm._v(" "),
-          _c("h1", [_vm._v("26"), _c("span")]),
-          _vm._v(" "),
-          _c("h6", [_vm._v("Splněných questů")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [_vm._v("Celkem splněno úkolů")]),
-      _vm._v(" "),
-      _c("td"),
-      _vm._v(" "),
-      _c("td", [_vm._v("0")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [_vm._v("Mince v oběhu u hráčů")]),
-      _vm._v(" "),
-      _c("td"),
-      _vm._v(" "),
-      _c("td", [_vm._v("3480")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -57971,7 +57843,22 @@ var render = function() {
       _c("tr", [
         _vm._m(0),
         _vm._v(" "),
-        _c("td", [_vm._v(_vm._s(_vm.quest.name))])
+        _c("td", [_vm._v(_vm._s(_vm.quest.name))]),
+        _vm._v(" "),
+        _c("td", [
+          _vm._v("\n                -\n                "),
+          _vm.quest.pivot.status === 3
+            ? _c("span", { staticClass: "text-warning font-weight-bold" }, [
+                _vm._v("probíhá")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.quest.pivot.status === 2
+            ? _c("span", { staticClass: "text-primary font-weight-bold" }, [
+                _vm._v("k dispozici")
+              ])
+            : _vm._e()
+        ])
       ])
     ])
   ])

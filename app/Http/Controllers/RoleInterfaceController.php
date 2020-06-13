@@ -67,6 +67,8 @@ class RoleInterfaceController extends Controller
         $lr = new LogRepository();
         $lr->playerLogged($player, $role);
 
+        $player->refreshLastSeen();
+
         return json_encode($resp);
     }
 

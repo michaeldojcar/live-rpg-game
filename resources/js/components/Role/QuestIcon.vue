@@ -6,6 +6,13 @@
                     <span></span>
                 </td>
                 <td>{{quest.name}}</td>
+                <td>
+                    -
+                    <span v-if="quest.pivot.status === 3"
+                          class="text-warning font-weight-bold">probíhá</span>
+                    <span v-if="quest.pivot.status === 2"
+                          class="text-primary font-weight-bold">k dispozici</span>
+                </td>
             </tr>
         </table>
     </div>

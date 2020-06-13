@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -37,7 +38,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Player extends Model
 {
-    protected $dates = ['birth_date'];
+    protected $dates = [
+        'birth_date',
+        'last_seen'
+    ];
 
     public function group()
     {
@@ -82,5 +86,19 @@ class Player extends Model
     }
 
     protected $appends = ['age'];
+
+    /**
+     * Check if role is online.
+     */
+    public function isOnline()
+    {
+        return $this->last_seen > Carbon::now()->subSeconds(20);
+    }
+
+    public function refreshLastSeen()
+    {
+        $this->last_seen = Carbon::now();
+        $this->save();
+    }
 
 }
