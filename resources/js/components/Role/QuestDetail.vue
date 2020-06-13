@@ -9,6 +9,7 @@
             </div>
             <div class="card-body">
                 <p>{{state.quest_selected.description}}</p>
+                <p class="text-success text-bold" v-if="state.quest_selected.is_dumb === 1">Bez úkolu</p>
                 <p class="text-danger text-bold" v-if="!state.quest_selected.allow_more_attempts">Pouze jeden pokus!</p>
             </div>
         </div>
@@ -21,6 +22,8 @@
                     <reward-cash :cash="state.quest_selected.reward_cash"/>
                 </div>
                 {{state.quest_selected.reward_knowledge}}
+                <p class="text-danger text-bold" v-if="state.quest_selected.is_reward_public === 1">Sdělit odměnu dopředu!</p>
+                <p class="text-success text-bold" v-if="state.quest_selected.is_dumb === 1">Vydat hned!</p>
             </div>
         </div>
         <div class="row">
@@ -30,7 +33,7 @@
             </div>
             <div class="col-6">
                 <button class="btn btn-success w-100 text-center">Splněno</button>
-                <button class="btn btn-danger w-100 text-center mt-3">Nesplněno</button>
+                <button class="btn btn-danger w-100 text-center mt-3" v-if="!state.quest_selected.allow_more_attempts">Nesplněno</button>
             </div>
         </div>
 

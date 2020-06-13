@@ -2190,21 +2190,35 @@ __webpack_require__.r(__webpack_exports__);
       player_count: 0,
       quest_count: 0,
       sub_quest_count: 0,
-      latest_logs: []
+      latest_logs: [],
+      interval: null
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/api/overview').then(function (response) {
-      console.log(response.data);
-      _this.active_quest_groups = response.data.active_quest_groups;
-      _this.quest_count = response.data.quest_count;
-      _this.sub_quest_count = response.data.sub_quest_count;
-      _this.player_count = response.data.player_count;
-      _this.role_count = response.data.role_count;
-      _this.latest_logs = response.data.latest_logs;
-    });
+    this.loadData();
+    this.interval = setInterval(function () {
+      _this.loadData();
+    }, 7000);
+  },
+  beforeDestroy: function beforeDestroy() {
+    clearInterval(this.interval);
+  },
+  methods: {
+    loadData: function loadData() {
+      var _this2 = this;
+
+      axios.get('/api/overview').then(function (response) {
+        console.log(response.data);
+        _this2.active_quest_groups = response.data.active_quest_groups;
+        _this2.quest_count = response.data.quest_count;
+        _this2.sub_quest_count = response.data.sub_quest_count;
+        _this2.player_count = response.data.player_count;
+        _this2.role_count = response.data.role_count;
+        _this2.latest_logs = response.data.latest_logs;
+      });
+    }
   }
 });
 
@@ -3619,6 +3633,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mobile_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mobile_state */ "./resources/js/components/Role/mobile_state.js");
+//
+//
+//
 //
 //
 //
@@ -54937,7 +54954,7 @@ var render = function() {
           "table",
           { staticClass: "table" },
           _vm._l(_vm.latest_logs, function(log) {
-            return _c("log-detail", { attrs: { log: log } })
+            return _c("log-detail", { key: log.id, attrs: { log: log } })
           }),
           1
         )
@@ -57881,6 +57898,12 @@ var render = function() {
       _c("div", { staticClass: "card-body" }, [
         _c("p", [_vm._v(_vm._s(_vm.state.quest_selected.description))]),
         _vm._v(" "),
+        _vm.state.quest_selected.is_dumb === 1
+          ? _c("p", { staticClass: "text-success text-bold" }, [
+              _vm._v("Bez úkolu")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         !_vm.state.quest_selected.allow_more_attempts
           ? _c("p", { staticClass: "text-danger text-bold" }, [
               _vm._v("Pouze jeden pokus!")
@@ -57907,8 +57930,19 @@ var render = function() {
         _vm._v(
           "\n            " +
             _vm._s(_vm.state.quest_selected.reward_knowledge) +
-            "\n        "
-        )
+            "\n            "
+        ),
+        _vm.state.quest_selected.is_reward_public === 1
+          ? _c("p", { staticClass: "text-danger text-bold" }, [
+              _vm._v("Sdělit odměnu dopředu!")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.state.quest_selected.is_dumb === 1
+          ? _c("p", { staticClass: "text-success text-bold" }, [
+              _vm._v("Vydat hned!")
+            ])
+          : _vm._e()
       ])
     ]),
     _vm._v(" "),
@@ -57928,26 +57962,23 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "col-6" }, [
+        _c("button", { staticClass: "btn btn-success w-100 text-center" }, [
+          _vm._v("Splněno")
+        ]),
+        _vm._v(" "),
+        !_vm.state.quest_selected.allow_more_attempts
+          ? _c(
+              "button",
+              { staticClass: "btn btn-danger w-100 text-center mt-3" },
+              [_vm._v("Nesplněno")]
+            )
+          : _vm._e()
+      ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-6" }, [
-      _c("button", { staticClass: "btn btn-success w-100 text-center" }, [
-        _vm._v("Splněno")
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-danger w-100 text-center mt-3" }, [
-        _vm._v("Nesplněno")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
