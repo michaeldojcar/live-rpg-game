@@ -9,23 +9,23 @@
                 <button @click="setFirstColor(1)" class="btn-color bg-danger" :class="{selected: color_1 === 1 }">
                     Červená
                 </button>
-                <button @click="setFirstColor(2)" class="btn-color bg-primary">Modrá</button>
-                <button @click="setFirstColor(3)" class="btn-color bg-success">Zelená</button>
-                <button @click="setFirstColor(4)" class="btn-color bg-warning">Žlutá</button>
+                <button @click="setFirstColor(2)" class="btn-color bg-primary" :class="{selected: color_1 === 2 }">Modrá</button>
+                <button @click="setFirstColor(3)" class="btn-color bg-success" :class="{selected: color_1 === 3 }">Zelená</button>
+                <button @click="setFirstColor(4)" class="btn-color bg-warning" :class="{selected: color_1 === 4 }">Žlutá</button>
             </div>
 
             <div class="mb-2">
-                <button @click="setSecondColor(1)" class="btn-color bg-danger">Červená</button>
-                <button @click="setSecondColor(2)" class="btn-color bg-primary">Modrá</button>
-                <button @click="setSecondColor(3)" class="btn-color bg-success">Zelená</button>
-                <button @click="setSecondColor(4)" class="btn-color bg-warning">Žlutá</button>
+                <button @click="setSecondColor(1)" class="btn-color bg-danger" :class="{selected: color_2 === 1 }">Červená</button>
+                <button @click="setSecondColor(2)" class="btn-color bg-primary" :class="{selected: color_2 === 2 }">Modrá</button>
+                <button @click="setSecondColor(3)" class="btn-color bg-success" :class="{selected: color_2 === 3 }">Zelená</button>
+                <button @click="setSecondColor(4)" class="btn-color bg-warning" :class="{selected: color_2 === 4 }">Žlutá</button>
             </div>
 
             <div>
-                <button @click="setThirdColor(1)" class="btn-color bg-danger">Červená</button>
-                <button @click="setThirdColor(2)" class="btn-color bg-primary">Modrá</button>
-                <button @click="setThirdColor(3)" class="btn-color bg-success">Zelená</button>
-                <button @click="setThirdColor(4)" class="btn-color bg-warning">Žlutá</button>
+                <button @click="setThirdColor(1)" class="btn-color bg-danger" :class="{selected: color_3 === 1 }">Červená</button>
+                <button @click="setThirdColor(2)" class="btn-color bg-primary" :class="{selected: color_3 === 2 }">Modrá</button>
+                <button @click="setThirdColor(3)" class="btn-color bg-success" :class="{selected: color_3 === 3 }">Zelená</button>
+                <button @click="setThirdColor(4)" class="btn-color bg-warning" :class="{selected: color_3 === 4 }">Žlutá</button>
             </div>
         </div>
     </div>
@@ -111,6 +111,7 @@
     }
 
     .selected {
-        border: 5px dashed red;
+        font-weight: 700;
+        border: 2px solid black;
     }
 </style>
