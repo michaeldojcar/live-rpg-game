@@ -39,12 +39,6 @@ class Player extends Model
 {
     protected $dates = ['birth_date'];
 
-    public const STATUS_LOCKED = 1;
-    public const STATUS_AVAILABLE = 2;
-    public const STATUS_PENDING = 3;
-    public const STATUS_DONE = 4;
-    public const STATUS_FAILED = 5;
-
     public function group()
     {
         return $this->belongsToMany(Group::class)->first();
@@ -71,21 +65,21 @@ class Player extends Model
     public function pendingQuestsForRole(Role $role)
     {
         return $this->motherQuests()
-                    ->wherePivot('status', self::STATUS_PENDING)
+                    ->wherePivot('status', Quest::STATUS_PENDING)
                     ->where('quest_owner_id', $role->id);
     }
 
     public function availableQuestsForRole(Role $role)
     {
         return $this->motherQuests()
-                    ->wherePivot('status', self::STATUS_AVAILABLE)
+                    ->wherePivot('status', Quest::STATUS_AVAILABLE)
                     ->where('quest_owner_id', $role->id);
     }
 
     public function pendingSubQuestsForRole(Role $role)
     {
         return $this->subQuests()
-                    ->wherePivot('status', self::STATUS_PENDING)
+                    ->wherePivot('status', Quest::STATUS_PENDING)
                     ->where('quest_owner_id', $role->id);
     }
 

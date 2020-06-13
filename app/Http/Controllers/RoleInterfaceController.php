@@ -48,17 +48,18 @@ class RoleInterfaceController extends Controller
         $role = Role::findOrFail($role_id);
 
         // Pending quest
-        $role_pending_quest = $player->availableQuestsForRole($role)->first();
+        $role_pending_quests = $player->pendingQuestsForRole($role);
 
         // If there is no available quest, try to find one
-        if ( ! $role_pending_quest)
+        if ( ! $role_pending_quests->count())
         {
-            $role_pending_quest = $this->tryToAssignNewQuest($role, $player);
+            $new_selected_quest  = $this->tryToAssignNewQuest($role, $player);
+            $role_pending_quests = collect($new_selected_quest);
         }
 
         $resp = [
             'person'                  => $player,
-            'quest_pending'           => $player->pendingQuestsForRole($role)->get(),
+            'quests_pending'          => $role_pending_quests,
             'external_quests_pending' => $player->pendingSubQuestsForRole($role)->get(),
         ];
 
@@ -99,17 +100,29 @@ class RoleInterfaceController extends Controller
      */
     private function tryToAssignNewQuest(Role $role, Player $player): ?Quest
     {
-        # TODO: Find all not done quests
-        $quest = $player->motherQuests()
-                        ->wherePivot('status', 2)
-                        ->where('quest_owner_id', $role->id)->get()->random();
+        // Find suitable quests.
+        $player_age = $player->getAgeAttribute();
 
-        if ( ! $quest)
+        $quests = $player->motherQuests()
+                         ->where('quest_owner_id', $role->id) // Owner of quest is selected role
+                         ->where('age_from', '<=', $player_age)
+                         ->where('age_to', '>=', $player_age)
+                         ->wherePivot('status', '!=', Quest::STATUS_PENDING)
+                         ->wherePivot('status', '!=', Quest::STATUS_FAILED)
+                         ->wherePivot('status', '!=', Quest::STATUS_DONE)
+                         ->get();
+
+        if ( ! $quests->count())
         {
             return null;
         }
 
-        // TODO: change pivot to pending
+        // Get random quest from suitable quests.
+        $quest = $quests->random();
+
+        // Set quest status to pending for selected player.
+        $quest->pivot->status = Quest::STATUS_PENDING;
+        $quest->pivot->save();
 
 
         return $quest;

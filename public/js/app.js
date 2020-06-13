@@ -3528,7 +3528,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data);
         _this.state.person = response.data.person;
         _this.state.quests_pending = response.data.quests_pending;
-        _this.state.quests_available = response.data.quests_available;
         _this.state.quests_external_pending = response.data.external_quests_pending;
       });
     },
@@ -3565,20 +3564,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _QuestIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./QuestIcon */ "./resources/js/components/Role/QuestIcon.vue");
 /* harmony import */ var _mobile_state__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mobile_state */ "./resources/js/components/Role/mobile_state.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3844,7 +3829,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     wipePerson: function wipePerson() {
       this.state.person = null;
-      this.state.quest_pending = [];
+      this.state.quests_pending = [];
       this.state.quests_external_pending = [];
       console.log('Person exited');
     },
@@ -57801,40 +57786,7 @@ var render = function() {
           ],
           2
         )
-      : _c(
-          "div",
-          { staticClass: "mb-3" },
-          [
-            _c("h4", { staticClass: "font-weight-bold mb-2 d-inline" }, [
-              _vm._v("Dostupné úkoly 🔁")
-            ]),
-            _vm._v(" "),
-            _c("p", [_vm._v("(které můžu nabídnout)")]),
-            _vm._v(" "),
-            _vm._l(_vm.state.quests_available, function(quest) {
-              return _c("quest-icon", {
-                key: quest.id,
-                attrs: { quest: quest },
-                nativeOn: {
-                  click: function($event) {
-                    return _vm.chooseQuest(quest)
-                  }
-                }
-              })
-            }),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            !_vm.state.quests_available.length
-              ? _c("i", { staticClass: "text-warning" }, [
-                  _vm._v("Aktuálně není nic k dispozici.")
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("hr")
-          ],
-          2
-        ),
+      : _vm._e(),
     _vm._v(" "),
     _vm.state.quests_external_pending.length
       ? _c(
@@ -89132,7 +89084,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   person: null,
-  quest_pending: [],
+  quests_pending: [],
   quests_external_pending: [],
   quest_selected: null
 });
@@ -89157,8 +89109,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Weby\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Weby\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

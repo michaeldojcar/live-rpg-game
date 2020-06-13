@@ -65,7 +65,6 @@
 
                         this.state.person = response.data.person;
                         this.state.quests_pending = response.data.quests_pending;
-                        this.state.quests_available = response.data.quests_available;
                         this.state.quests_external_pending = response.data.external_quests_pending;
                     });
             },

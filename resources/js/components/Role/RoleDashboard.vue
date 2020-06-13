@@ -72,7 +72,7 @@
         methods: {
             wipePerson: function () {
                 this.state.person = null;
-                this.state.quest_pending = [];
+                this.state.quests_pending = [];
                 this.state.quests_external_pending = [];
 
                 console.log('Person exited');

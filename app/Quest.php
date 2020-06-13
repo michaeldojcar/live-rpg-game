@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * 1 quest
- * 
+ *
  * Class Quest
  *
  * @package App
@@ -69,6 +69,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Quest extends Model
 {
+    public const STATUS_LOCKED = 1;
+    public const STATUS_AVAILABLE = 2;
+    public const STATUS_PENDING = 3;
+    public const STATUS_DONE = 4;
+    public const STATUS_FAILED = 5;
+
+
     protected $guarded = [];
 
     public function parent_quest()
