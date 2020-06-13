@@ -124,7 +124,7 @@ class RoleInterfaceController extends Controller
         $quest = $quests->random();
 
         // Set quest status to pending for selected player.
-        $player->quests()->attach($quest, ['status' => Quest::STATUS_PENDING]);
+        $player->quests()->attach($quest, ['status' => Quest::STATUS_AVAILABLE]);
 
         return $quest;
     }

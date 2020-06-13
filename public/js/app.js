@@ -3649,7 +3649,12 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    assign: function assign() {}
+    setPending: function setPending() {// TODO:
+    },
+    setDone: function setDone() {// TODO:
+    },
+    setFailed: function setFailed() {// TODO:
+    }
   }
 });
 

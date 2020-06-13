@@ -60,8 +60,16 @@
         },
 
         methods: {
-            assign: function () {
+            setPending() {
+                // TODO:
+            },
 
+            setDone(){
+              // TODO:
+            },
+
+            setFailed(){
+                // TODO:
             }
         }
     }
