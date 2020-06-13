@@ -2190,21 +2190,35 @@ __webpack_require__.r(__webpack_exports__);
       player_count: 0,
       quest_count: 0,
       sub_quest_count: 0,
-      latest_logs: []
+      latest_logs: [],
+      interval: null
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/api/overview').then(function (response) {
-      console.log(response.data);
-      _this.active_quest_groups = response.data.active_quest_groups;
-      _this.quest_count = response.data.quest_count;
-      _this.sub_quest_count = response.data.sub_quest_count;
-      _this.player_count = response.data.player_count;
-      _this.role_count = response.data.role_count;
-      _this.latest_logs = response.data.latest_logs;
-    });
+    this.loadData();
+    this.interval = setInterval(function () {
+      _this.loadData();
+    }, 7000);
+  },
+  beforeDestroy: function beforeDestroy() {
+    clearInterval(this.interval);
+  },
+  methods: {
+    loadData: function loadData() {
+      var _this2 = this;
+
+      axios.get('/api/overview').then(function (response) {
+        console.log(response.data);
+        _this2.active_quest_groups = response.data.active_quest_groups;
+        _this2.quest_count = response.data.quest_count;
+        _this2.sub_quest_count = response.data.sub_quest_count;
+        _this2.player_count = response.data.player_count;
+        _this2.role_count = response.data.role_count;
+        _this2.latest_logs = response.data.latest_logs;
+      });
+    }
   }
 });
 
@@ -3809,8 +3823,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     wipePerson: function wipePerson() {
       this.state.person = null;
-      this.state.quests_pending = [];
-      this.state.quests_available = [];
+      this.state.quest_pending = [];
       this.state.quests_external_pending = [];
       console.log('Person exited');
     },
@@ -54870,7 +54883,7 @@ var render = function() {
           "table",
           { staticClass: "table" },
           _vm._l(_vm.latest_logs, function(log) {
-            return _c("log-detail", { attrs: { log: log } })
+            return _c("log-detail", { key: log.id, attrs: { log: log } })
           }),
           1
         )
@@ -88984,8 +88997,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   person: null,
-  quests_pending: [],
-  quests_available: [],
+  quest_pending: [],
   quests_external_pending: [],
   quest_selected: null
 });

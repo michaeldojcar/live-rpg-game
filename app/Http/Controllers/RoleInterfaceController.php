@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Player;
+use App\Quest;
 use App\Repositories\LogRepository;
 use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 
 /**
  * API for Role mobile interface.
@@ -47,19 +47,18 @@ class RoleInterfaceController extends Controller
         // Find role
         $role = Role::findOrFail($role_id);
 
-        // Available quests
-        $quests_available = $player->availableQuestsForRole($role)->get();
+        // Pending quest
+        $role_pending_quest = $player->availableQuestsForRole($role)->first();
 
         // If there is no available quest, try to find one
-        if ( ! $quests_available)
+        if ( ! $role_pending_quest)
         {
-            $quests_available = $this->tryToAssignNewQuest($role, $player);
+            $role_pending_quest = $this->tryToAssignNewQuest($role, $player);
         }
 
         $resp = [
             'person'                  => $player,
-            'quests_pending'          => $player->pendingQuestsForRole($role)->get(),
-            'quests_available'        => $quests_available,
+            'quest_pending'           => $player->pendingQuestsForRole($role)->get(),
             'external_quests_pending' => $player->pendingSubQuestsForRole($role)->get(),
         ];
 
@@ -92,11 +91,27 @@ class RoleInterfaceController extends Controller
         return $request->toArray();
     }
 
-    private function tryToAssignNewQuest(Role $role, Player $player): ?Collection
+    /**
+     * @param  Role  $role
+     * @param  Player  $player
+     *
+     * @return Quest|null
+     */
+    private function tryToAssignNewQuest(Role $role, Player $player): ?Quest
     {
         # TODO: Find all not done quests
-        return $player->motherQuests()
-                      ->wherePivot('status', 2)
-                      ->where('quest_owner_id', $role->id)->get()->random();
+        $quest = $player->motherQuests()
+                        ->wherePivot('status', 2)
+                        ->where('quest_owner_id', $role->id)->get()->random();
+
+        if ( ! $quest)
+        {
+            return null;
+        }
+
+        // TODO: change pivot to pending
+
+
+        return $quest;
     }
 }
