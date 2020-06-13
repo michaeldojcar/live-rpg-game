@@ -133,7 +133,7 @@ class Quest extends Model
         return $this->belongsTo(Role::class, 'quest_owner_id');
     }
 
-    public function persons()
+    public function players()
     {
         return $this->belongsToMany(Player::class)->withPivot('status');
     }

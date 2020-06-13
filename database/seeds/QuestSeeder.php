@@ -28,7 +28,7 @@ class QuestSeeder extends Seeder
         $q->quest_group_id = 1;
         $q->save();
 
-        $q->persons()->attach(Player::first(), ['status' => 2]);
+        $q->players()->attach(Player::first(), ['status' => 2]);
 
         $q = new Quest();
         $q->name = 'Získání ovčího rouna';
@@ -45,7 +45,7 @@ class QuestSeeder extends Seeder
         $q->quest_group_id = 1;
         $q->save();
 
-        $q->persons()->attach(Player::first(), ['status' => 3]);
+        $q->players()->attach(Player::first(), ['status' => 3]);
 
         $q = new Quest();
         $q->name = '5 dřepů';
@@ -62,6 +62,6 @@ class QuestSeeder extends Seeder
         $q->quest_group_id = 1;
         $q->save();
 
-        $q->persons()->attach(Player::first(), ['status' => 3]);
+        $q->players()->attach(Player::first(), ['status' => 3]);
     }
 }

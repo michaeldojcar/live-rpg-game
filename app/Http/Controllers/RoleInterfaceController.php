@@ -6,6 +6,7 @@ use App\Player;
 use App\Quest;
 use App\Repositories\LogRepository;
 use App\Role;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -38,8 +39,7 @@ class RoleInterfaceController extends Controller
     public function show($role_id, $color_1, $color_2, $color_3)
     {
         // Find person
-        $player = Player::findOrFail($role_id)
-                        ->where('color_1', $color_1)
+        $player = Player::where('color_1', $color_1)
                         ->where('color_2', $color_2)
                         ->where('color_3', $color_3)
                         ->firstOrFail();
@@ -53,13 +53,13 @@ class RoleInterfaceController extends Controller
         // If there is no available quest, try to find one
         if ( ! $role_pending_quests->count())
         {
-            $new_selected_quest  = $this->tryToAssignNewQuest($role, $player);
-            $role_pending_quests = collect($new_selected_quest);
+            $this->tryToAssignNewQuest($role, $player);
+            $role_pending_quests = $player->pendingQuestsForRole($role);
         }
 
         $resp = [
             'person'                  => $player,
-            'quests_pending'          => $role_pending_quests,
+            'quests_pending'          => $role_pending_quests->get(),
             'external_quests_pending' => $player->pendingSubQuestsForRole($role)->get(),
         ];
 
@@ -94,23 +94,24 @@ class RoleInterfaceController extends Controller
 
     /**
      * @param  Role  $role
-     * @param  Player  $player
+     * @param  Player|Model  $player
      *
      * @return Quest|null
      */
-    private function tryToAssignNewQuest(Role $role, Player $player): ?Quest
+    public function tryToAssignNewQuest(Role $role, Player $player): ?Quest
     {
         // Find suitable quests.
         $player_age = $player->getAgeAttribute();
 
-        $quests = $player->motherQuests()
-                         ->where('quest_owner_id', $role->id) // Owner of quest is selected role
-                         ->where('age_from', '<=', $player_age)
-                         ->where('age_to', '>=', $player_age)
-                         ->wherePivot('status', '!=', Quest::STATUS_PENDING)
-                         ->wherePivot('status', '!=', Quest::STATUS_FAILED)
-                         ->wherePivot('status', '!=', Quest::STATUS_DONE)
-                         ->get();
+        // Filter
+        $quests = Quest::where('parent_quest_id', '=', null)
+                       ->where('quest_owner_id', $role->id) // Owner of quest is selected role
+                       ->where('age_from', '<=', $player_age)
+                       ->where('age_to', '>=', $player_age)
+                       ->get();
+
+        // Filter only quests that user never played
+        $quests = $this->filterOnlyNewQuestsForUser($quests, $player);
 
         if ( ! $quests->count())
         {
@@ -121,10 +122,31 @@ class RoleInterfaceController extends Controller
         $quest = $quests->random();
 
         // Set quest status to pending for selected player.
-        $quest->pivot->status = Quest::STATUS_PENDING;
-        $quest->pivot->save();
-
+        $player->quests()->attach($quest, ['status' => Quest::STATUS_PENDING]);
 
         return $quest;
+    }
+
+    private function filterOnlyNewQuestsForUser($quests, $player)
+    {
+        return $quests->filter(function (Quest $quest) use ($player)
+        {
+            /** @var Quest $quest_with_pivot */
+            $quest_with_pivot = $player->quests()->withPivot('status')->find($quest);
+
+            if ( ! $quest_with_pivot)
+            {
+                return true;
+            }
+
+            $status = $quest_with_pivot->pivot->status;
+
+            if ($status == Quest::STATUS_PENDING || $status == Quest::STATUS_FAILED || $status == Quest::STATUS_DONE)
+            {
+                return false;
+            }
+
+            return true;
+        });
     }
 }

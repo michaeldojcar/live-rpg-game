@@ -69,13 +69,6 @@ class Player extends Model
                     ->where('quest_owner_id', $role->id);
     }
 
-    public function availableQuestsForRole(Role $role)
-    {
-        return $this->motherQuests()
-                    ->wherePivot('status', Quest::STATUS_AVAILABLE)
-                    ->where('quest_owner_id', $role->id);
-    }
-
     public function pendingSubQuestsForRole(Role $role)
     {
         return $this->subQuests()

@@ -3587,6 +3587,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -57813,6 +57819,15 @@ var render = function() {
           ],
           2
         )
+      : _vm._e(),
+    _vm._v(" "),
+    !_vm.state.quests_external_pending.length &&
+    !_vm.state.quests_pending.length
+      ? _c("div", { staticClass: "mb-3" }, [
+          _c("p", [_vm._v("Hráč aktuálně u Tebe nemá nic, co by mohl dělat.")]),
+          _vm._v(" "),
+          _c("hr")
+        ])
       : _vm._e()
   ])
 }
