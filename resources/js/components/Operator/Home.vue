@@ -32,7 +32,7 @@
                 <h5 class="mb-4">Nejnovější změny</h5>
 
                 <table class="table">
-                    <log-detail v-for="log in latest_logs" :log="log"></log-detail>
+                    <log-detail v-for="log in latest_logs" :log="log" :key="log.id"></log-detail>
                 </table>
             </div>
         </div>
@@ -96,23 +96,39 @@
                 quest_count: 0,
                 sub_quest_count: 0,
                 latest_logs: [],
+
+                interval: null
             }
         },
 
         mounted() {
-            axios
-                .get('/api/overview')
-                .then(response => {
-                    console.log(response.data);
+            this.loadData()
 
-                    this.active_quest_groups = response.data.active_quest_groups;
-                    this.quest_count = response.data.quest_count;
-                    this.sub_quest_count = response.data.sub_quest_count;
-                    this.player_count = response.data.player_count;
-                    this.role_count = response.data.role_count;
-                    this.latest_logs = response.data.latest_logs;
-                });
+            this.interval = setInterval(() => {
+                this.loadData()
+            }, 7000)
         },
+
+        beforeDestroy() {
+            clearInterval(this.interval)
+        },
+
+        methods: {
+            loadData() {
+                axios
+                    .get('/api/overview')
+                    .then(response => {
+                        console.log(response.data);
+
+                        this.active_quest_groups = response.data.active_quest_groups;
+                        this.quest_count = response.data.quest_count;
+                        this.sub_quest_count = response.data.sub_quest_count;
+                        this.player_count = response.data.player_count;
+                        this.role_count = response.data.role_count;
+                        this.latest_logs = response.data.latest_logs;
+                    });
+            }
+        }
     }
 </script>
 
