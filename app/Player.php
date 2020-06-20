@@ -70,6 +70,7 @@ class Player extends Model
     {
         return $this->motherQuests()
                     ->wherePivot('status', PlayerQuest::STATUS_PENDING)
+                    ->orWherePivot('status', PlayerQuest::STATUS_AVAILABLE)
                     ->where('quest_owner_id', $role->id);
     }
 
@@ -77,6 +78,7 @@ class Player extends Model
     {
         return $this->subQuests()
                     ->wherePivot('status', PlayerQuest::STATUS_PENDING)
+                    ->orWherePivot('status', PlayerQuest::STATUS_AVAILABLE)
                     ->where('quest_owner_id', $role->id);
     }
 
