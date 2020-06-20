@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Option;
 use App\Player;
+use App\PlayerQuest;
 use App\Quest;
 use App\Repositories\LogRepository;
 use App\Role;
@@ -127,7 +128,7 @@ class RoleInterfaceController extends Controller
         $quest = $quests->random();
 
         // Set quest status to pending for selected player.
-        $player->quests()->attach($quest, ['status' => Quest::STATUS_AVAILABLE]);
+        $player->quests()->attach($quest, ['status' => PlayerQuest::STATUS_AVAILABLE]);
 
         return $quest;
     }
@@ -146,7 +147,7 @@ class RoleInterfaceController extends Controller
 
             $status = $quest_with_pivot->pivot->status;
 
-            if ($status == Quest::STATUS_PENDING || $status == Quest::STATUS_FAILED || $status == Quest::STATUS_DONE)
+            if ($status == PlayerQuest::STATUS_PENDING || $status == PlayerQuest::STATUS_FAILED || $status == PlayerQuest::STATUS_DONE)
             {
                 return false;
             }
@@ -155,18 +156,51 @@ class RoleInterfaceController extends Controller
         });
     }
 
-    public function setPending($quest_id)
+    public function setPending(Role $role, Quest $quest)
     {
-        // TODO:
+        /* @var \App\PlayerQuest */
+        $quest_record = PlayerQuest::where('role_id', $role->id)->where('quest_id', $quest->id)->firstOrFail();
+
+        if ($quest_record->status == PlayerQuest::STATUS_AVAILABLE)
+        {
+            $quest_record->status = PlayerQuest::STATUS_PENDING;
+            $quest_record->save();
+
+            return response(201, $quest_record);
+        }
+
+        return response(412, 'Quest must be set as available.');
     }
 
-    public function setDone($quest_id)
+    public function setDone(Role $role, Quest $quest)
     {
-        // TODO:
+        /* @var \App\PlayerQuest */
+        $quest_record = PlayerQuest::where('role_id', $role->id)->where('quest_id', $quest->id)->firstOrFail();
+
+        if ($quest_record->status == PlayerQuest::STATUS_PENDING)
+        {
+            $quest_record->status = PlayerQuest::STATUS_DONE;
+            $quest_record->save();
+
+            return response(201, $quest_record);
+        }
+
+        return response(412, 'Quest must be set as pending.');
     }
 
-    public function setFailed($quest_id)
+    public function setFailed(Role $role, Quest $quest)
     {
-        // TODO:
+        /* @var \App\PlayerQuest */
+        $quest_record = PlayerQuest::where('role_id', $role->id)->where('quest_id', $quest->id)->firstOrFail();
+
+        if ($quest_record->status == PlayerQuest::STATUS_PENDING)
+        {
+            $quest_record->status = PlayerQuest::STATUS_FAILED;
+            $quest_record->save();
+
+            return response(201, $quest_record);
+        }
+
+        return response(412, 'Quest must be set as available.');
     }
 }

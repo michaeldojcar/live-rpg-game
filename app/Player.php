@@ -69,14 +69,14 @@ class Player extends Model
     public function pendingQuestsForRole(Role $role)
     {
         return $this->motherQuests()
-                    ->wherePivot('status', Quest::STATUS_PENDING)
+                    ->wherePivot('status', PlayerQuest::STATUS_PENDING)
                     ->where('quest_owner_id', $role->id);
     }
 
     public function pendingSubQuestsForRole(Role $role)
     {
         return $this->subQuests()
-                    ->wherePivot('status', Quest::STATUS_PENDING)
+                    ->wherePivot('status', PlayerQuest::STATUS_PENDING)
                     ->where('quest_owner_id', $role->id);
     }
 
