@@ -11,15 +11,22 @@
             <a class="navbar-brand"
                href="#">{{state.person.name}}</a>
 
-            <a class="nav-link" @click="wipePerson">Zrušit</a>
+            <a class="nav-link"
+               @click="wipePerson">Zrušit</a>
         </nav>
 
 
         <div class="container"
              style="margin-top: 80px;">
 
+            <div class="alert alert-warning font-weight-bold"
+                 v-if="admin_message">Zpráva z ústředí hry: {{admin_message}}
+            </div>
+
+
             <!-- Person picker -->
-            <person-color-picker v-if="!person_selected" :role="role"/>
+            <person-color-picker v-if="!person_selected"
+                                 :role="role"/>
 
             <div v-if="person_selected">
                 <person-detail v-if="!quest_selected"/>
@@ -50,6 +57,7 @@
                 state: mobile_state,
                 latitude: null,
                 longitude: null,
+                admin_message: null
             }
         },
 
@@ -103,6 +111,8 @@
                         })
                         .then(response => {
                             console.log('Telemetries successfully sent.')
+
+                            this.admin_message = response.data.admin_message
                         });
                 };
 

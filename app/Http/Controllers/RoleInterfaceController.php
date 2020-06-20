@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Option;
 use App\Player;
 use App\Quest;
 use App\Repositories\LogRepository;
@@ -82,8 +83,6 @@ class RoleInterfaceController extends Controller
      */
     public function telemetries($id, Request $request)
     {
-//        dd($request);
-
         $role = Role::findOrFail($id);
 
         $role->latitude  = $request->input('latitude');
@@ -91,7 +90,11 @@ class RoleInterfaceController extends Controller
         $role->last_seen = Carbon::now();
         $role->save();
 
-        return $request->toArray();
+        return [
+            'latitude'      => $request->input('latitude'),
+            'longitude'     => $request->input('longitude'),
+            'admin_message' => Option::getValue('admin_message')
+        ];
     }
 
     /**

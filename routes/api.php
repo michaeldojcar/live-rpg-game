@@ -33,4 +33,7 @@ Route::apiResource('groups', 'GroupController');
 Route::resource('quests', 'QuestController');
 Route::post('/quests/{id}/sub-quest', 'QuestController@storeSubQuest');
 
+Route::post('/options/admin_message', 'OptionController@storeMessage');
+Route::get('/options', 'OptionController@index');
+
 Route::resource('quest_groups', 'QuestGroupController');

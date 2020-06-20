@@ -46,6 +46,7 @@ import QuestIndex from "./components/Operator/Quest/QuestIndex";
 import QuestEdit from "./components/Operator/Quest/QuestEdit";
 import QuestGroupIndex from "./components/Operator/QuestGroup/QuestGroupIndex";
 import QuestGroupEdit from "./components/Operator/QuestGroup/QuestGroupEdit";
+import Options from "./components/Operator/Options";
 
 // this part resolve an issue where the markers would not appear
 delete Icon.Default.prototype._getIconUrl;
@@ -91,6 +92,8 @@ const router = new VueRouter({
 
         {path: '/quest-groups', component: QuestGroupIndex},
         {path: '/quest-groups/:id/edit', component: QuestGroupEdit},
+
+        {path: '/options', component: Options},
     ]
 });
 

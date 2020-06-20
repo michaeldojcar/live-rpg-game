@@ -29,6 +29,10 @@
                         <a class="dropdown-item" href="#">Potenciální problémy</a>
                     </div>
                 </li>
+
+                <li class="nav-item">
+                    <router-link class="nav-link" to="/options"><i class="fas fa-cog"></i> Nastavení</router-link>
+                </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
