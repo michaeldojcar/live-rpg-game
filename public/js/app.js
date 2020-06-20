@@ -2858,6 +2858,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoleIndex",
   data: function data() {
@@ -3700,6 +3710,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "QuestDetail",
@@ -3709,11 +3733,46 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    setPending: function setPending() {// TODO:
+    setPending: function setPending() {
+      var _this = this;
+
+      axios.post('/api/role/' + this.state.role.id + '/quest/' + this.state.quest_selected.id + '/pending').then(function (response) {
+        _this.loadDataForPerson();
+
+        _this.state.quest_selected = null;
+      });
     },
-    setDone: function setDone() {// TODO:
+    setDone: function setDone() {
+      var _this2 = this;
+
+      axios.post('/api/role/' + this.state.role.id + '/quest/' + this.state.quest_selected.id + '/done').then(function (response) {
+        _this2.loadDataForPerson();
+
+        _this2.state.quest_selected = null;
+      });
     },
-    setFailed: function setFailed() {// TODO:
+    setFailed: function setFailed() {
+      var _this3 = this;
+
+      axios.post('/api/role/' + this.state.role.id + '/quest/' + this.state.quest_selected.id + '/failed').then(function (response) {
+        _this3.loadDataForPerson();
+
+        _this3.state.quest_selected = null;
+      });
+    },
+
+    /**
+     * Load data and quests for person.
+     */
+    loadDataForPerson: function loadDataForPerson() {
+      var _this4 = this;
+
+      axios.get('/api/role/' + this.state.role.id + '/person/by_id/' + this.state.person.id).then(function (response) {
+        console.log(response.data);
+        _this4.state.person = response.data.person;
+        _this4.state.quests_pending = response.data.quests_pending;
+        _this4.state.quests_external_pending = response.data.external_quests_pending;
+      });
     }
   }
 });
@@ -3870,6 +3929,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('Mobile interface is ready.');
     this.startTracking();
+    this.state.role = this.role;
   },
   computed: {
     person_selected: function person_selected() {
@@ -12416,7 +12476,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.text-bold[data-v-b355b5f6] {\nfont-weight: 700;\n}\n", ""]);
+exports.push([module.i, "\n.text-bold[data-v-b355b5f6] {\n    font-weight: 700;\n}\n", ""]);
 
 // exports
 
@@ -60218,7 +60278,7 @@ var staticRenderFns = [
           staticStyle: { border: "none" },
           attrs: { scope: "col" }
         },
-        [_vm._v("Jméno")]
+        [_vm._v("Jméno\n                ")]
       ),
       _vm._v(" "),
       _c("th", { staticStyle: { border: "none" }, attrs: { scope: "col" } }),
@@ -60230,7 +60290,7 @@ var staticRenderFns = [
           staticStyle: { border: "none" },
           attrs: { scope: "col" }
         },
-        [_vm._v("Postava")]
+        [_vm._v("Postava\n                ")]
       )
     ])
   }
@@ -61692,23 +61752,36 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-6" }, [
         _vm.state.quest_selected.pivot.status === 2
-          ? _c("button", { staticClass: "btn btn-warning w-100 text-center" }, [
-              _vm._v("Zadat")
-            ])
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-warning w-100 text-center",
+                on: { click: _vm.setPending }
+              },
+              [_vm._v("Zadat\n            ")]
+            )
           : _vm._e(),
         _vm._v(" "),
         _vm.state.quest_selected.pivot.status === 3
-          ? _c("button", { staticClass: "btn btn-success w-100 text-center" }, [
-              _vm._v("Dokončit")
-            ])
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-success w-100 text-center",
+                on: { click: _vm.setDone }
+              },
+              [_vm._v("Dokončit\n            ")]
+            )
           : _vm._e(),
         _vm._v(" "),
         !_vm.state.quest_selected.allow_more_attempts &&
         _vm.state.quest_selected.pivot.status === 3
           ? _c(
               "button",
-              { staticClass: "btn btn-danger w-100 text-center mt-3" },
-              [_vm._v("Nesplněno")]
+              {
+                staticClass: "btn btn-danger w-100 text-center mt-3",
+                on: { click: _vm.setFailed }
+              },
+              [_vm._v("Nesplněno\n            ")]
             )
           : _vm._e()
       ])
@@ -61858,12 +61931,9 @@ var render = function() {
       { staticClass: "container", staticStyle: { "margin-top": "80px" } },
       [
         _vm.admin_message
-          ? _c("div", { staticClass: "alert alert-warning font-weight-bold" }, [
-              _vm._v(
-                "Zpráva z ústředí hry: " +
-                  _vm._s(_vm.admin_message) +
-                  "\n        "
-              )
+          ? _c("div", { staticClass: "alert alert-warning" }, [
+              _c("b", [_vm._v("Zpráva z ústředí hry:")]),
+              _vm._v(" " + _vm._s(_vm.admin_message) + "\n        ")
             ])
           : _vm._e(),
         _vm._v(" "),
@@ -92970,6 +93040,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   person: null,
+  role: null,
   quests_pending: [],
   quests_external_pending: [],
   quest_selected: null

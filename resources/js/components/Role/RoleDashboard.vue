@@ -19,8 +19,8 @@
         <div class="container"
              style="margin-top: 80px;">
 
-            <div class="alert alert-warning font-weight-bold"
-                 v-if="admin_message">Zpráva z ústředí hry: {{admin_message}}
+            <div class="alert alert-warning"
+                 v-if="admin_message"><b>Zpráva z ústředí hry:</b> {{admin_message}}
             </div>
 
 
@@ -65,6 +65,8 @@
             console.log('Mobile interface is ready.');
 
             this.startTracking()
+
+            this.state.role = this.role;
         },
 
         computed: {

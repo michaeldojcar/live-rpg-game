@@ -50,12 +50,12 @@ class OperatorController extends Controller
 
     private function getPendingQuestsCount()
     {
-        return PlayerQuest::where('status', Quest::STATUS_PENDING)->count();
+        return PlayerQuest::where('status', PlayerQuest::STATUS_PENDING)->count();
     }
 
     private function getTodayCompletedQuests()
     {
-        return PlayerQuest::where('status', Quest::STATUS_DONE)
+        return PlayerQuest::where('status', PlayerQuest::STATUS_DONE)
                           ->whereDate('created_at', Carbon::today())
                           ->count();
     }

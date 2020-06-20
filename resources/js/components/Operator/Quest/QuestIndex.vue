@@ -1,6 +1,8 @@
 <template>
     <div class="container-fluid mt-3">
-        <a href="#" @click="createNew" class="btn btn-success float-right">+ Nový úkol</a>
+        <a href="#"
+           @click="createNew"
+           class="btn btn-success float-right">+ Nový úkol</a>
 
         <h4>Questy</h4>
 
@@ -11,11 +13,19 @@
         <table class="w-50 table mt-4">
             <div style="padding: 10px 15px">
                 <tr class="w-100">
-                    <th scope="col" class="w-50" style="border: none">Jméno</th>
-                    <th scope="col" style="border: none"></th>
-                    <th scope="col" class="w-50" style="border: none">Postava</th>
+                    <th scope="col"
+                        class="w-50"
+                        style="border: none">Jméno
+                    </th>
+                    <th scope="col"
+                        style="border: none"></th>
+                    <th scope="col"
+                        class="w-50"
+                        style="border: none">Postava
+                    </th>
                 </tr>
-                <tr v-for="quest in quests" :key="quest.id">
+                <tr v-for="quest in quests"
+                    :key="quest.id">
                     <td>
                         <router-link :to="'/quests/'+quest.id+'/edit'">
                             {{quest.name}}
