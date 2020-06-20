@@ -16,6 +16,6 @@ class OptionController extends Controller
     {
         Option::setValue('admin_message', $request->input('admin_message'));
 
-        return response(null, 201);
+        return response(null, 204);
     }
 }

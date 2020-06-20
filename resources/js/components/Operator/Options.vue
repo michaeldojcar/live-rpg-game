@@ -13,9 +13,10 @@
                                    class="form-control">
 
                             <div class="float-right mt-3">
-                                <a class="btn btn-danger ml-2">Odebrat zprávu</a>
+                                <a class="btn btn-danger ml-2" @click="wipeAndSubmit">Odebrat zprávu</a>
 
-                                <a class="btn btn-primary ">Uložit</a>
+                                <a class="btn btn-primary"
+                                   @click="submit">Uložit</a>
                             </div>
 
                         </div>
@@ -52,7 +53,17 @@
         },
 
         methods: {
-         //   submit()
+            submit() {
+                axios.post('/api/options/admin_message', {
+                    admin_message: this.admin_message
+                })
+            },
+
+            wipeAndSubmit() {
+                this.admin_message = null;
+
+                this.submit();
+            }
         }
     }
 </script>

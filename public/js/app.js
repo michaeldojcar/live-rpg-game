@@ -2379,6 +2379,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Options",
@@ -2395,7 +2396,16 @@ __webpack_require__.r(__webpack_exports__);
       _this.admin_message = new collect_js__WEBPACK_IMPORTED_MODULE_0__["Collection"](response.data).where('key', '=', 'admin_message').first().value;
     });
   },
-  methods: {//   submit()
+  methods: {
+    submit: function submit() {
+      axios.post('/api/options/admin_message', {
+        admin_message: this.admin_message
+      });
+    },
+    wipeAndSubmit: function wipeAndSubmit() {
+      this.admin_message = null;
+      this.submit();
+    }
   }
 });
 
@@ -59222,7 +59232,22 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _vm._m(0)
+              _c("div", { staticClass: "float-right mt-3" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-danger ml-2",
+                    on: { click: _vm.wipeAndSubmit }
+                  },
+                  [_vm._v("Odebrat zprávu")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "btn btn-primary", on: { click: _vm.submit } },
+                  [_vm._v("Uložit")]
+                )
+              ])
             ])
           ])
         ])
@@ -59230,20 +59255,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "float-right mt-3" }, [
-      _c("a", { staticClass: "btn btn-danger ml-2" }, [
-        _vm._v("Odebrat zprávu")
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "btn btn-primary " }, [_vm._v("Uložit")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -34,14 +34,14 @@ class Option extends Model
      *
      * @return bool
      */
-    public static function setValue(string $key, string $value): bool
+    public static function setValue(string $key, ?string $value): bool
     {
         $option = Option::where('key', $key)->firstOrFail();
 
         $option->value = $value;
         $option->save();
 
-        return $option->value;
+        return true;
     }
 
 }
