@@ -1,19 +1,12 @@
 <template>
     <div class="container-fluid mt-3">
-        <h4>Úprava skupiny</h4>
+        <div class="card">
+            <div class="card-body">
+                <h4>Úprava hráče</h4>
 
-        <table class="w-50 table table-bordered">
-            <tr>
-                <th>Jméno</th>
-                <th>Reálné jméno</th>
-            </tr>
-            <tr v-for="role in roles" :key="role.id">
-                <td>
-                    <router-link to="#">{{role.name}}</router-link>
-                </td>
-                <td>{{role.real_name}}</td>
-            </tr>
-        </table>
+            </div>
+        </div>
+
     </div>
 </template>
 

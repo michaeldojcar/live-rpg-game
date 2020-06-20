@@ -2444,44 +2444,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "RoleCreate",
+  name: "PlayerCreate",
   data: function data() {
     return {
-      roles: []
+      name: null,
+      birth_date: null
     };
   },
-  mounted: function mounted() {
-    this.refresh();
-  },
+  mounted: function mounted() {},
   methods: {
-    refresh: function refresh() {
-      var _this = this;
-
-      axios.get('/api/roles').then(function (response) {
+    submit: function submit() {
+      axios.post('/api/players', {
+        name: this.name,
+        birth_date: this.birth_date,
+        last_seen: null
+      }).then(function (response) {
         console.log(response.data);
-        _this.roles = response.data;
       });
     }
   }
@@ -2498,13 +2477,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -59278,175 +59250,74 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
-    _c("h4", [_vm._v("Nový hráč")]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("Jméno")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.name,
-            expression: "name"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { type: "text" },
-        domProps: { value: _vm.name },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.name = $event.target.value
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("Věk")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.birth_date,
-            expression: "birth_date"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { type: "date" },
-        domProps: { value: _vm.birth_date },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.birth_date = $event.target.value
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("Barva 1")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.color_1,
-            expression: "color_1"
-          }
-        ],
-        staticClass: "form-control",
-        domProps: { value: _vm.color_1 },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.color_1 = $event.target.value
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("Barva 2")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.color_2,
-            expression: "color_2"
-          }
-        ],
-        staticClass: "form-control",
-        domProps: { value: _vm.color_2 },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.color_2 = $event.target.value
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("Barva 3")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.color_3,
-            expression: "color_3"
-          }
-        ],
-        staticClass: "form-control",
-        domProps: { value: _vm.color_3 },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.color_3 = $event.target.value
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("p", { on: { click: _vm.submit } }, [_vm._v("Odeslat")]),
-    _vm._v(" "),
-    _c(
-      "table",
-      { staticClass: "w-50 table table-bordered" },
-      [
-        _vm._m(0),
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-body" }, [
+        _c("h4", [_vm._v("Nový hráč")]),
         _vm._v(" "),
-        _vm._l(_vm.roles, function(role) {
-          return _c("tr", { key: role.id }, [
-            _c(
-              "td",
-              [
-                _c("router-link", { attrs: { to: "#" } }, [
-                  _vm._v(_vm._s(role.name))
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(role.real_name))])
-          ])
-        })
-      ],
-      2
-    )
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v("Jméno")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.name,
+                expression: "name"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.name = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v("Datum narození")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.birth_date,
+                expression: "birth_date"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "date" },
+            domProps: { value: _vm.birth_date },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.birth_date = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-right" }, [
+          _c(
+            "p",
+            { staticClass: "btn btn-primary", on: { click: _vm.submit } },
+            [_vm._v("Odeslat")]
+          )
+        ])
+      ])
+    ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("Jméno")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Reálné jméno")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -59468,44 +59339,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid mt-3" }, [
-    _c("h4", [_vm._v("Úprava skupiny")]),
-    _vm._v(" "),
-    _c(
-      "table",
-      { staticClass: "w-50 table table-bordered" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.roles, function(role) {
-          return _c("tr", { key: role.id }, [
-            _c(
-              "td",
-              [
-                _c("router-link", { attrs: { to: "#" } }, [
-                  _vm._v(_vm._s(role.name))
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(role.real_name))])
-          ])
-        })
-      ],
-      2
-    )
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("Jméno")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Reálné jméno")])
+    return _c("div", { staticClass: "container-fluid mt-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("h4", [_vm._v("Úprava hráče")])
+        ])
+      ])
     ])
   }
 ]
@@ -93094,8 +92940,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Martin\PhpstormProjects\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Martin\PhpstormProjects\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
