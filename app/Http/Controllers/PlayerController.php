@@ -15,6 +15,11 @@ class PlayerController extends Controller
         return Player::all();
     }
 
+    public function show($id)
+    {
+        $player = Player::findOrFail($id);
+        return $player;
+    }
     public function store(Request $request)
     {
         $player = new Player();
