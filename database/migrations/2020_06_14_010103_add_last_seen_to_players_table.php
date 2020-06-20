@@ -14,7 +14,7 @@ class AddLastSeenToPlayersTable extends Migration
     public function up()
     {
         Schema::table('players', function (Blueprint $table) {
-            $table->timestamp('last_seen');
+            $table->timestamp('last_seen')->nullable();
         });
     }
 
