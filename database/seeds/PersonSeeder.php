@@ -19,6 +19,7 @@ class PersonSeeder extends Seeder
         $p->color_1 = 1;
         $p->color_2 = 1;
         $p->color_3 = 1;
+        $p->last_seen = Carbon::now();
         $p->save();
 
         $p = new Player();
@@ -27,6 +28,7 @@ class PersonSeeder extends Seeder
         $p->color_1 = 1;
         $p->color_2 = 2;
         $p->color_3 = 1;
+        $p->last_seen = Carbon::now();
         $p->save();
 
         $p = new Player();
@@ -35,6 +37,7 @@ class PersonSeeder extends Seeder
         $p->color_1 = 1;
         $p->color_2 = 2;
         $p->color_3 = 1;
+        $p->last_seen = Carbon::now();
         $p->save();
     }
 }
