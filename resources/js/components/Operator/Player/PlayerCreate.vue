@@ -47,6 +47,9 @@
                     })
                     .then(response => {
                         console.log(response.data);
+
+                        console.log("Successfully updated.");
+                        this.$router.push('/players');
                     })
             }
         }
