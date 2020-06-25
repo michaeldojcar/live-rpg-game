@@ -19,7 +19,7 @@
             </div>
             <div class="col-10 pr-0 text-black">
                 <l-map
-                    style="height: calc(100vh - 59px); width: 100%"
+                    style="height: calc(100vh - 59px); width: 100%; margin-top: -30px;"
                     :zoom="zoom"
                     :center="center"
                     @update:zoom="zoomUpdated"
