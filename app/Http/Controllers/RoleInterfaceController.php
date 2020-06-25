@@ -8,6 +8,7 @@ use App\PlayerQuest;
 use App\Quest;
 use App\Repositories\LogRepository;
 use App\Repositories\PlayerQuestRepository;
+use App\Repositories\PlayerRepository;
 use App\Role;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -29,9 +30,15 @@ class RoleInterfaceController extends Controller
      */
     private $player_quest_repository;
 
+    /**
+     * @var PlayerRepository
+     */
+    private $player_repository;
+
     public function __construct()
     {
         $this->player_quest_repository = new PlayerQuestRepository();
+        $this->player_repository       = new PlayerRepository();
     }
 
     public function index($id)
@@ -119,13 +126,11 @@ class RoleInterfaceController extends Controller
         }
 
         // Response array
-        $response = [
+        return [
             'person'                  => $player,
             'quests_pending'          => $role_pending_quests->get(),
             'external_quests_pending' => $player->pendingSubQuestsForRole($role)->get(),
         ];
-
-        return $response;
     }
 
     /**
@@ -247,6 +252,9 @@ class RoleInterfaceController extends Controller
         if ($quest_record->status == PlayerQuest::STATUS_PENDING)
         {
             $this->player_quest_repository->setQuestWithAllChildsDone($quest, $player);
+
+            // Give rewards to player
+            $this->player_repository->addQuestRewardsToPlayer($player, $quest);
 
             return response($quest_record, Response::HTTP_OK);
         }
