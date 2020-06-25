@@ -2455,12 +2455,17 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {},
   methods: {
     submit: function submit() {
+      var _this = this;
+
       axios.post('/api/players', {
         name: this.name,
         birth_date: this.birth_date,
         last_seen: null
       }).then(function (response) {
         console.log(response.data);
+        console.log("Successfully updated.");
+
+        _this.$router.push('/players');
       });
     }
   }
@@ -2497,12 +2502,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PlayerEdit",
   data: function data() {
     return {
-      name: null,
-      birth_date: null
+      // name: null,
+      // birth_date: null
+      player: {}
     };
   },
   mounted: function mounted() {
@@ -2513,9 +2525,32 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/players/' + this.$route.params.id).then(function (response) {
-        console.log(response.data);
-        _this.name = response.data.name;
-        _this.birth_date = response.data.birth_date;
+        // console.log(response.data);
+        _this.player = response.data; // this.name = response.data.name;
+        // this.birth_date = response.data.birth_date;
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
+
+      console.log('Storing player.');
+      axios.patch('/api/players/' + this.player.id, {
+        name: this.player.name,
+        birth_date: this.player.birth_date
+      }).then(function (response) {
+        console.log("Successfully updated.");
+
+        _this2.$router.push('/players');
+      });
+    },
+    discard: function discard() {
+      var _this3 = this;
+
+      console.log('Deleting player.');
+      axios["delete"]('/api/players/' + this.player.id, {}).then(function (response) {
+        console.log("Successfully deleted.");
+
+        _this3.$router.push('/players');
       });
     }
   }
@@ -59289,6 +59324,23 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
+    _c(
+      "a",
+      { staticClass: "btn btn-primary float-right", on: { click: _vm.submit } },
+      [_vm._v("Uložit")]
+    ),
+    _vm._v(" "),
+    _c(
+      "a",
+      {
+        staticClass: "btn btn-primary float-right",
+        on: { click: _vm.discard }
+      },
+      [_vm._v("Smazat")]
+    ),
+    _vm._v(" "),
+    _c("h4", [_vm._v("Úprava hráče")]),
+    _vm._v(" "),
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-body" }, [
         _c("h4", [_vm._v("Úprava hráče")]),
@@ -59301,19 +59353,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.name,
-                expression: "name"
+                value: _vm.player.name,
+                expression: "player.name"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text" },
-            domProps: { value: _vm.name },
+            domProps: { value: _vm.player.name },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.name = $event.target.value
+                _vm.$set(_vm.player, "name", $event.target.value)
               }
             }
           })
@@ -59327,19 +59379,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.birth_date,
-                expression: "birth_date"
+                value: _vm.player.birth_date,
+                expression: "player.birth_date"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "date" },
-            domProps: { value: _vm.birth_date },
+            domProps: { value: _vm.player.birth_date },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.birth_date = $event.target.value
+                _vm.$set(_vm.player, "birth_date", $event.target.value)
               }
             }
           })
@@ -59397,9 +59449,11 @@ var render = function() {
                 _c(
                   "td",
                   [
-                    _c("router-link", { attrs: { to: "#" } }, [
-                      _vm._v(_vm._s(player.name))
-                    ])
+                    _c(
+                      "router-link",
+                      { attrs: { to: "/players/" + player.id + "/edit" } },
+                      [_vm._v(_vm._s(player.name))]
+                    )
                   ],
                   1
                 ),
