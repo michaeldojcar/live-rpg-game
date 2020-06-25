@@ -39,4 +39,8 @@ Route::post('/quests/{id}/sub-quest', 'QuestController@storeSubQuest');
 Route::post('/options/admin_message', 'OptionController@storeMessage');
 Route::get('/options', 'OptionController@index');
 
+Route::get('/stats/players');
+Route::get('/stats/groups');
+Route::get('/stats/users');
+
 Route::resource('quest_groups', 'QuestGroupController');
