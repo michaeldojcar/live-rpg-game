@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Helper\ColorCombination;
+use App\Http\Requests\PlayerStoreRequest;
+use App\Http\Requests\PlayerUpdateRequest;
 use App\Player;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PlayerController extends Controller
 {
@@ -18,18 +23,20 @@ class PlayerController extends Controller
     public function show($id)
     {
         $player = Player::findOrFail($id);
+
         return $player;
     }
-    public function store(Request $request)
+
+    public function store(PlayerStoreRequest $request)
     {
-        $player = new Player();
-        $player->name = $request->input('name');
+        $player             = new Player();
+        $player->name       = $request->input('name');
         $player->birth_date = $request->input('birth_date');
 
         $colorCombination = $this->getUnusedColorCombination();
-        $player->color_1 = $colorCombination->color1;
-        $player->color_2 = $colorCombination->color2;
-        $player->color_3 = $colorCombination->color3;
+        $player->color_1  = $colorCombination->color1;
+        $player->color_2  = $colorCombination->color2;
+        $player->color_3  = $colorCombination->color3;
 
         $player->save();
     }
@@ -81,5 +88,45 @@ class PlayerController extends Controller
         }
 
         return true;
+    }
+
+    public function update($id, PlayerUpdateRequest $request)
+    {
+        // Parse birth date
+        $birth_date = Carbon::parse($request->input('birth_date'));
+
+        // Update model
+        $player = $this->findById($id);
+
+        $player->name       = $request->input('name');
+        $player->birth_date = $birth_date;
+        $player->save();
+
+        return response($player, Response::HTTP_OK);
+    }
+
+    public function destroy($id)
+    {
+        $player = $this->findById($id);
+
+        // Detach related records
+        $player->quests()->detach();
+        $player->group_id = null;
+
+        $player->delete();
+
+        return response('Player was deleted.', Response::HTTP_NO_CONTENT);
+    }
+
+    /**
+     * Find model by id.
+     *
+     * @param $id
+     *
+     * @return Player|Player[]|Collection|Model
+     */
+    private function findById($id): Player
+    {
+        return Player::findOrFail($id);
     }
 }
