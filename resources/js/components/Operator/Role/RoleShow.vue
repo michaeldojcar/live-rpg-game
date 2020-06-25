@@ -1,7 +1,17 @@
 <template>
     <div class="container-fluid">
-        <h4>{{ role.name }}</h4>
-        <p>Herní postava</p>
+
+        <div class="row">
+            <div class="col-6">
+                <h3>{{ role.name }}</h3>
+                <p>Herní postava</p>
+            </div>
+            <div class="col-6 text-right">
+                <router-link :to="'/roles/' + role.id + '/edit'"
+                             class="btn btn-primary">Upravit postavu
+                </router-link>
+            </div>
+        </div>
 
 
         <div class="row">
@@ -17,7 +27,27 @@
 
                             <tr>
                                 <td>Stav</td>
-                                <td></td>
+                                <td>{{role.is_online}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Příběh</td>
+                                <td>{{role.story}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Běžný výskyt</td>
+                                <td>{{role.place_recommends}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Doporučené akce</td>
+                                <td>{{role.action_recommends}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Naposledy spatřen</td>
+                                <td>{{role.last_seen}}</td>
                             </tr>
 
                             <tr>

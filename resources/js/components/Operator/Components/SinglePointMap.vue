@@ -34,7 +34,7 @@
         data: () => {
             return {
                 url: 'https://mt0.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',
-                zoom: 17,
+                zoom: 18,
                 center: [0, 0],
                 bounds: null,
 

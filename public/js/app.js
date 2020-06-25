@@ -1970,7 +1970,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       url: 'https://mt0.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',
-      zoom: 17,
+      zoom: 18,
       center: [0, 0],
       bounds: null,
       tileProviders: [{
@@ -3460,6 +3460,36 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_SinglePointMap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Components/SinglePointMap */ "./resources/js/components/Operator/Components/SinglePointMap.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -61498,9 +61528,29 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
-    _c("h4", [_vm._v(_vm._s(_vm.role.name))]),
-    _vm._v(" "),
-    _c("p", [_vm._v("Herní postava")]),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c("h3", [_vm._v(_vm._s(_vm.role.name))]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Herní postava")])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-6 text-right" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { to: "/roles/" + _vm.role.id + "/edit" }
+            },
+            [_vm._v("Upravit postavu\n            ")]
+          )
+        ],
+        1
+      )
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-sm-6" }, [
@@ -61517,7 +61567,35 @@ var render = function() {
                 _c("td", [_vm._v(_vm._s(_vm.role.real_name))])
               ]),
               _vm._v(" "),
-              _vm._m(0),
+              _c("tr", [
+                _c("td", [_vm._v("Stav")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(_vm.role.is_online))])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Příběh")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(_vm.role.story))])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Běžný výskyt")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(_vm.role.place_recommends))])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Doporučené akce")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(_vm.role.action_recommends))])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Naposledy spatřen")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(_vm.role.last_seen))])
+              ]),
               _vm._v(" "),
               _c("tr", [
                 _c("td", [_vm._v("Počet questů")]),
@@ -61551,14 +61629,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [_c("td", [_vm._v("Stav")]), _vm._v(" "), _c("td")])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -9,7 +9,7 @@ class RoleController extends Controller
 {
     public function show($id)
     {
-        return Role::findOrFail($id);
+        return Role::findOrFail($id)->append(['is_online']);
     }
 
     public function index()
@@ -24,17 +24,20 @@ class RoleController extends Controller
      */
     public function mapIndex()
     {
-        $roles = Role::all()->map(function ($role) {
+        $roles = Role::all()->map(function ($role)
+        {
             $role->latlong = [$role->latitude, $role->longitude];
+
             return $role;
         });
 
-        $roles = $roles->filter(function (Role $role) {
+        $roles = $roles->filter(function (Role $role)
+        {
 
 
             $valid_coords = $role->latitude && $role->longitude;
 
-            return $valid_coords && $role->isOnline();
+            return $valid_coords && $role->getIsOnlineAttribute();
         });
 
         return $roles->values();
@@ -42,12 +45,12 @@ class RoleController extends Controller
 
     public function store(Request $request)
     {
-        $role = new Role();
-        $role->name = $request->input('name');
-        $role->real_name = $request->input('real_name');
-        $role->story = null;
+        $role                    = new Role();
+        $role->name              = $request->input('name');
+        $role->real_name         = $request->input('real_name');
+        $role->story             = null;
         $role->action_recommends = null;
-        $role->place_recommends = null;
+        $role->place_recommends  = null;
         $role->save();
 
         return $role;

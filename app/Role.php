@@ -46,7 +46,7 @@ class Role extends Model
     /**
      * Check if role is online.
      */
-    public function isOnline()
+    public function getIsOnlineAttribute()
     {
         return $this->last_seen > Carbon::now()->subSeconds(20);
     }
