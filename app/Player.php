@@ -103,4 +103,9 @@ class Player extends Model
         $this->save();
     }
 
+    public function doneQuests()
+    {
+        return $this->quests()->wherePivot('status', PlayerQuest::STATUS_DONE);
+    }
+
 }

@@ -176,8 +176,12 @@ class Quest extends Model
 
     public function getSpreadAttribute()
     {
-        return $this->players()
-                    ->wherePivot('status', PlayerQuest::STATUS_DONE)
-                    ->count();
+        $player_count = Player::count();
+
+        $spread_count = $this->players()
+                             ->wherePivot('status', PlayerQuest::STATUS_DONE)
+                             ->count();
+
+        return $spread_count / $player_count;
     }
 }
