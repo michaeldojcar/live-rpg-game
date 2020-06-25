@@ -24,7 +24,8 @@ class QuestGroupUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'   => 'required|string',
+            'active' => 'required|bool'
         ];
     }
 }
