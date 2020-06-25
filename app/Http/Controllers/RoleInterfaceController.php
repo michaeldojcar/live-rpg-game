@@ -8,6 +8,8 @@ use App\PlayerQuest;
 use App\Quest;
 use App\Repositories\LogRepository;
 use App\Role;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -41,48 +43,51 @@ class RoleInterfaceController extends Controller
      */
     public function show($role_id, $color_1, $color_2, $color_3)
     {
-        // Find person
+        // Find player
         $player = Player::where('color_1', $color_1)
                         ->where('color_2', $color_2)
                         ->where('color_3', $color_3)
                         ->firstOrFail();
 
+        $player->refreshLastSeen();
+
         // Find role
         $role = Role::findOrFail($role_id);
 
-        // Pending quest
-        $role_pending_quests = $player->pendingQuestsForRole($role);
+        $response = $this->showCurrentForPlayerAndRole($player, $role);
 
-        // If there is no available quest, try to find one
-        if ( ! $role_pending_quests->count())
-        {
-            $this->tryToAssignNewQuest($role, $player);
-            $role_pending_quests = $player->pendingQuestsForRole($role);
-        }
-
-        $resp = [
-            'person'                  => $player,
-            'quests_pending'          => $role_pending_quests->get(),
-            'external_quests_pending' => $player->pendingSubQuestsForRole($role)->get(),
-        ];
-
-        // Log player logged
-        $lr = new LogRepository();
-        $lr->playerLogged($player, $role);
-
-        $player->refreshLastSeen();
-
-        return json_encode($resp);
+        return json_encode($response);
     }
 
+    /**
+     * @param $role_id
+     * @param $player_id
+     *
+     * @return Application|ResponseFactory|Response
+     */
     public function showById($role_id, $player_id)
     {
-        // Find person
+        // Find player
         $player = Player::findOrFail($player_id);
+
+        $player->refreshLastSeen();
 
         // Find role
         $role = Role::findOrFail($role_id);
 
+        $response = $this->showCurrentForPlayerAndRole($player, $role);
+
+        return response($response);
+    }
+
+    /**
+     * @param  Player|Model  $player
+     * @param  Role|Model  $role
+     *
+     * @return array
+     */
+    private function showCurrentForPlayerAndRole(Player $player, Role $role): array
+    {
         // Pending quest
         $role_pending_quests = $player->pendingQuestsForRole($role);
 
@@ -93,20 +98,17 @@ class RoleInterfaceController extends Controller
             $role_pending_quests = $player->pendingQuestsForRole($role);
         }
 
-        $resp = [
+        $response = [
             'person'                  => $player,
             'quests_pending'          => $role_pending_quests->get(),
             'external_quests_pending' => $player->pendingSubQuestsForRole($role)->get(),
-
         ];
 
         // Log player logged
         $lr = new LogRepository();
         $lr->playerLogged($player, $role);
 
-        $player->refreshLastSeen();
-
-        return json_encode($resp);
+        return $response;
     }
 
     /**
@@ -194,9 +196,9 @@ class RoleInterfaceController extends Controller
     public function setPending($player_id, $quest_id)
     {
         $player = Player::findOrFail($player_id);
-        $quest = Quest::findOrFail($quest_id);
+        $quest  = Quest::findOrFail($quest_id);
 
-        /* @var \App\PlayerQuest */
+        /* @var PlayerQuest */
         $quest_record = PlayerQuest::where('player_id', $player->id)->where('quest_id', $quest->id)->firstOrFail();
 
         if ($quest_record->status == PlayerQuest::STATUS_AVAILABLE)
@@ -213,9 +215,9 @@ class RoleInterfaceController extends Controller
     public function setDone($player_id, $quest_id)
     {
         $player = Player::findOrFail($player_id);
-        $quest = Quest::findOrFail($quest_id);
+        $quest  = Quest::findOrFail($quest_id);
 
-        /* @var \App\PlayerQuest */
+        /* @var PlayerQuest */
         $quest_record = PlayerQuest::where('player_id', $player->id)->where('quest_id', $quest->id)->firstOrFail();
 
         if ($quest_record->status == PlayerQuest::STATUS_PENDING)
@@ -232,9 +234,9 @@ class RoleInterfaceController extends Controller
     public function setFailed($player_id, $quest_id)
     {
         $player = Player::findOrFail($player_id);
-        $quest = Quest::findOrFail($quest_id);
+        $quest  = Quest::findOrFail($quest_id);
 
-        /* @var \App\PlayerQuest */
+        /* @var PlayerQuest */
         $quest_record = PlayerQuest::where('player_id', $player->id)->where('quest_id', $quest->id)->firstOrFail();
 
         if ($quest_record->status == PlayerQuest::STATUS_PENDING)

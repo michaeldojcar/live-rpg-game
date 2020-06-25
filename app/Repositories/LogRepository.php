@@ -8,6 +8,7 @@ use App\Log;
 use App\Player;
 use App\Quest;
 use App\Role;
+use Illuminate\Database\Eloquent\Model;
 
 class LogRepository
 {
@@ -36,7 +37,7 @@ class LogRepository
     /**
      * Log that player has been logged by some role.
      *
-     * @param  Player  $player
+     * @param  Player|Model  $player
      * @param  Role  $role
      *
      * @return bool
