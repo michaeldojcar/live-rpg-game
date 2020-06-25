@@ -173,4 +173,11 @@ class Quest extends Model
 
         return $chain_collection;
     }
+
+    public function getSpreadAttribute()
+    {
+        return $this->players()
+                    ->wherePivot('status', PlayerQuest::STATUS_DONE)
+                    ->count();
+    }
 }

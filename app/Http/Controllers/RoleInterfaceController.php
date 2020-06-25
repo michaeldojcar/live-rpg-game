@@ -7,6 +7,7 @@ use App\Player;
 use App\PlayerQuest;
 use App\Quest;
 use App\Repositories\LogRepository;
+use App\Repositories\PlayerQuestRepository;
 use App\Role;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -23,6 +24,16 @@ use Illuminate\Support\Carbon;
  */
 class RoleInterfaceController extends Controller
 {
+    /**
+     * @var PlayerQuestRepository
+     */
+    private $player_quest_repository;
+
+    public function __construct()
+    {
+        $this->player_quest_repository = new PlayerQuestRepository();
+    }
+
     public function index($id)
     {
         return view('role', [
@@ -54,7 +65,11 @@ class RoleInterfaceController extends Controller
         // Find role
         $role = Role::findOrFail($role_id);
 
-        $response = $this->showCurrentForPlayerAndRole($player, $role);
+        // Log player logged at the person
+        $lr = new LogRepository();
+        $lr->playerLogged($player, $role);
+
+        $response = $this->getPlayerQuestsForRole($player, $role);
 
         return json_encode($response);
     }
@@ -75,38 +90,40 @@ class RoleInterfaceController extends Controller
         // Find role
         $role = Role::findOrFail($role_id);
 
-        $response = $this->showCurrentForPlayerAndRole($player, $role);
+        $response = $this->getPlayerQuestsForRole($player, $role);
 
         return response($response);
     }
 
     /**
+     * Get player quests for this role.
+     *
+     * If there is no available quest for the role,
+     * try to assign new one available.
+     *
      * @param  Player|Model  $player
      * @param  Role|Model  $role
      *
      * @return array
      */
-    private function showCurrentForPlayerAndRole(Player $player, Role $role): array
+    private function getPlayerQuestsForRole(Player $player, Role $role): array
     {
-        // Pending quest
+        // Pending quests
         $role_pending_quests = $player->pendingQuestsForRole($role);
 
-        // If there is no available quest, try to find one
+        // If there is no available quest, try to assign new one
         if ( ! $role_pending_quests->count())
         {
             $this->tryToAssignNewQuest($role, $player);
             $role_pending_quests = $player->pendingQuestsForRole($role);
         }
 
+        // Response array
         $response = [
             'person'                  => $player,
             'quests_pending'          => $role_pending_quests->get(),
             'external_quests_pending' => $player->pendingSubQuestsForRole($role)->get(),
         ];
-
-        // Log player logged
-        $lr = new LogRepository();
-        $lr->playerLogged($player, $role);
 
         return $response;
     }
@@ -199,7 +216,7 @@ class RoleInterfaceController extends Controller
         $quest  = Quest::findOrFail($quest_id);
 
         /* @var PlayerQuest */
-        $quest_record = PlayerQuest::where('player_id', $player->id)->where('quest_id', $quest->id)->firstOrFail();
+        $quest_record = $this->player_quest_repository->getQuestState($quest, $player);
 
         if ($quest_record->status == PlayerQuest::STATUS_AVAILABLE)
         {
@@ -207,6 +224,13 @@ class RoleInterfaceController extends Controller
             $quest_record->save();
 
             return response($quest_record, Response::HTTP_OK);
+        }
+
+        // If there is related sub-quest, make it available
+        if ($quest->sub_quest)
+        {
+            $this->player_quest_repository->setUserQuestState($quest->sub_quest, $player,
+                PlayerQuest::STATUS_AVAILABLE);
         }
 
         return response('Quest must be set as available.', Response::HTTP_PRECONDITION_FAILED);
@@ -218,12 +242,11 @@ class RoleInterfaceController extends Controller
         $quest  = Quest::findOrFail($quest_id);
 
         /* @var PlayerQuest */
-        $quest_record = PlayerQuest::where('player_id', $player->id)->where('quest_id', $quest->id)->firstOrFail();
+        $quest_record = $this->player_quest_repository->getQuestState($quest, $player);
 
         if ($quest_record->status == PlayerQuest::STATUS_PENDING)
         {
-            $quest_record->status = PlayerQuest::STATUS_DONE;
-            $quest_record->save();
+            $this->player_quest_repository->setQuestWithAllChildsDone($quest, $player);
 
             return response($quest_record, Response::HTTP_OK);
         }
@@ -237,12 +260,11 @@ class RoleInterfaceController extends Controller
         $quest  = Quest::findOrFail($quest_id);
 
         /* @var PlayerQuest */
-        $quest_record = PlayerQuest::where('player_id', $player->id)->where('quest_id', $quest->id)->firstOrFail();
+        $quest_record = $this->player_quest_repository->getQuestState($quest, $player);
 
         if ($quest_record->status == PlayerQuest::STATUS_PENDING)
         {
-            $quest_record->status = PlayerQuest::STATUS_FAILED;
-            $quest_record->save();
+            $this->player_quest_repository->setQuestWithAllChildsFailed($quest, $player);
 
             return response($quest_record, Response::HTTP_OK);
         }
