@@ -15,7 +15,7 @@
 
 
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-7">
                 <div class="card">
                     <div class="card-header">Informace o postavě</div>
                     <div class="card-body">
@@ -57,9 +57,22 @@
                         </table>
                     </div>
                 </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">Questy</div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tr v-for="quest in role.quests" :key="quest.id">
+                                <td>
+                                    <router-link :to="'/quests/'+quest.id+'/edit'">{{quest.name}}</router-link>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-5">
                 <div class="card">
                     <div class="card-body">
                         <single-point-map v-if="role.latitude && role.longitude"
