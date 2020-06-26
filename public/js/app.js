@@ -2260,9 +2260,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "GroupShow",
   data: function data() {
@@ -59332,24 +59329,12 @@ var render = function() {
       _c("div", { staticClass: "col-7" }, [
         _c(
           "table",
-          { staticClass: "w-50 table table-bordered" },
+          { staticClass: "table" },
           [
             _vm._m(0),
             _vm._v(" "),
-            _vm._l(_vm.roles, function(role) {
-              return _c("tr", { key: role.id }, [
-                _c(
-                  "td",
-                  [
-                    _c("router-link", { attrs: { to: "#" } }, [
-                      _vm._v(_vm._s(role.name))
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(role.real_name))])
-              ])
+            _vm._l(_vm.group.members, function(player) {
+              return _c("tr", [_c("td", [_vm._v(_vm._s(player.name))])])
             })
           ],
           2
@@ -59365,11 +59350,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("Jméno")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Reálné jméno")])
-    ])
+    return _c("tr", [_c("th", [_vm._v("Jméno")])])
   }
 ]
 render._withStripped = true

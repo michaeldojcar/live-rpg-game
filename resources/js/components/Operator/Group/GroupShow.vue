@@ -5,19 +5,16 @@
 
         <div class="row">
             <div class="col-7">
-                <table class="w-50 table table-bordered">
-                    <tr>
-                        <th>Jméno</th>
-                        <th>Reálné jméno</th>
-                    </tr>
-                    <tr v-for="role in roles"
-                        :key="role.id">
-                        <td>
-                            <router-link to="#">{{role.name}}</router-link>
-                        </td>
-                        <td>{{role.real_name}}</td>
-                    </tr>
-                </table>
+             <table class="table">
+                 <tr>
+                 <th>Jméno</th>
+                 </tr>
+
+                 <tr v-for="player in group.members">
+                     <td>{{player.name}}</td>
+                 </tr>
+
+             </table>
             </div>
             <div class="col-5">
 

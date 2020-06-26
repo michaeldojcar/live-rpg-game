@@ -16,7 +16,7 @@ class GroupController extends Controller
 
     public function show($id)
     {
-        $group = $this->findById($id);
+        $group = $this->findById($id)->load(['players']);
 
         return response($group);
     }
