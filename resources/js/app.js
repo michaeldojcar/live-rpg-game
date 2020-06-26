@@ -41,13 +41,13 @@ import PlayerEdit from "./components/Operator/Player/PlayerEdit";
 import GroupIndex from "./components/Operator/Group/GroupIndex";
 import GroupCreate from "./components/Operator/Group/GroupCreate";
 import GroupEdit from "./components/Operator/Group/GroupEdit";
-import QuestIcon from "./components/Role/QuestIcon";
 import QuestIndex from "./components/Operator/Quest/QuestIndex";
 import QuestEdit from "./components/Operator/Quest/QuestEdit";
 import QuestGroupIndex from "./components/Operator/QuestGroup/QuestGroupIndex";
 import QuestGroupEdit from "./components/Operator/QuestGroup/QuestGroupEdit";
 import Options from "./components/Operator/Options";
 import RoleShow from "./components/Operator/Role/RoleShow";
+import GroupShow from "./components/Operator/Group/GroupShow";
 
 // this part resolve an issue where the markers would not appear
 delete Icon.Default.prototype._getIconUrl;
@@ -57,14 +57,6 @@ Icon.Default.mergeOptions({
     iconUrl: require('leaflet/dist/images/marker-icon.png'),
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
-
-// Vue.use(VueGoogleMaps, {
-//     load: {
-//         key: "AIzaSyBP4r0ioCpRMNnU1MaJnhHNKHFffrdvdX8",
-//         libraries: "places" // necessary for places input
-//     }
-// });
-
 
 Vue.use(VueRouter);
 
@@ -87,6 +79,7 @@ const router = new VueRouter({
 
         {path: '/groups', component: GroupIndex},
         {path: '/groups/new', component: GroupCreate},
+        {path: '/groups/:id', component: GroupShow},
         {path: '/groups/:id/edit', component: GroupEdit},
 
         {path: '/quests', component: QuestIndex},

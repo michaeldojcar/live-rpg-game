@@ -19,11 +19,11 @@
 
 <script>
     export default {
-        name: "RoleEdit",
+        name: "GroupEdit",
 
         data: () => {
             return {
-                roles: [],
+                group: {},
             }
         },
 
@@ -34,12 +34,26 @@
         methods: {
             refresh() {
                 axios
-                    .get('/api/roles')
+                    .get('/api/groups/' + this.$route.params.id)
                     .then(response => {
-                        console.log(response.data);
 
-                        this.roles = response.data;
+                        this.group = response.data;
                     });
+            },
+
+            submit() {
+                console.log('Storing role.');
+
+                axios
+                    .patch('/api/groups/' + this.group.id, {
+                        name: this.role.name,
+                    })
+                    .then(response => {
+                        console.log("Successfully updated.");
+                        this.$router.push('/roles');
+                    });
+
+
             }
         }
     }

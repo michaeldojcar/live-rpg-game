@@ -1,17 +1,26 @@
 <template>
     <div class="container-fluid mt-3">
-        <router-link to="#" class="btn btn-success float-right">+ Nová skupinka</router-link>
+        <router-link to="/groups/new"
+                     class="btn btn-success float-right">+ Nová skupina
+        </router-link>
 
         <h4>Skupiny</h4>
 
         <table class="w-50 table mt-4">
             <div style="padding: 10px 15px">
                 <tr class="w-100">
-                    <th scope="col" class="w-55" style="border: none">Jméno skupinky</th>
-                    <th scope="col" style="border: none"></th>
-                    <th scope="col" class="w-50" style="border: none"></th>
+                    <th scope="col"
+                        class="w-55"
+                        style="border: none">Jméno skupiny
+                    </th>
+                    <th scope="col"
+                        style="border: none"></th>
+                    <th scope="col"
+                        class="w-50"
+                        style="border: none"></th>
                 </tr>
-                <tr v-for="group in groups" :key="group.id">
+                <tr v-for="group in groups"
+                    :key="group.id">
                     <td>
                         <router-link to="#">{{group.name}}</router-link>
                     </td>

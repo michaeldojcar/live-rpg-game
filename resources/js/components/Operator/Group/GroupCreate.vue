@@ -1,19 +1,25 @@
 <template>
     <div class="container-fluid mt-3">
-        <h4>Nová skupina</h4>
+        <h3>Nová skupina</h3>
 
-        <table class="w-50 table table-bordered">
-            <tr>
-                <th>Jméno</th>
-                <th>Reálné jméno</th>
-            </tr>
-            <tr v-for="role in roles" :key="role.id">
-                <td>
-                    <router-link to="#">{{role.name}}</router-link>
-                </td>
-                <td>{{role.real_name}}</td>
-            </tr>
-        </table>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="alert alert-primary">Skupiny jsou celky, do kterých lze seskupit hráče.
+                    Každý hráč hraje za stejnou skupinu.
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Informace o skupině</div>
+                    <div class="card-body">
+                        <label>Jméno</label>
+                        <input type="text"
+                               class="form-control" v-model="name">
+
+                        <a class="btn btn-primary float-right mt-3" @click="submit">Uložit skupinu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -23,22 +29,20 @@
 
         data: () => {
             return {
-                roles: [],
+                name: null
             }
         },
 
-        mounted() {
-            this.refresh();
-        },
-
         methods: {
-            refresh() {
+            submit() {
                 axios
-                    .get('/api/roles')
+                    .post('/api/groups', {
+                        name: this.name,
+                    })
                     .then(response => {
-                        console.log(response.data);
+                        console.log("Successfully created.");
 
-                        this.roles = response.data;
+                        this.$router.push('/groups/' + response.data.id)
                     });
             }
         }
