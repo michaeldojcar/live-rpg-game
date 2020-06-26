@@ -2683,6 +2683,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PlayerIndex",
   data: function data() {
@@ -2700,6 +2701,112 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/players').then(function (response) {
         console.log(response.data);
         _this.players = response.data;
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Player/PlayerShow.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/Player/PlayerShow.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// import SinglePointMap from "../Components/SinglePointMap";
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "PlayerShow",
+  // components: {SinglePointMap},
+  data: function data() {
+    return {
+      player: {}
+    };
+  },
+  mounted: function mounted() {
+    this.refresh();
+  },
+  methods: {
+    refresh: function refresh() {
+      var _this = this;
+
+      axios.get('/api/players/' + this.$route.params.id).then(function (response) {
+        _this.player = response.data;
       });
     }
   }
@@ -8840,7 +8947,7 @@ module.exports = {
    * @returns {boolean}
    */
   isObject: function isObject(item) {
-    return (typeof item === 'undefined' ? 'undefined' : _typeof(item)) === 'object' && Array.isArray(item) === false && item !== null;
+    return (typeof item === 'undefined' ? 'undefined' : _typeof(item)) === 'object' && item !== null;
   },
 
   /**
@@ -8877,8 +8984,7 @@ module.exports = function nestedValue(mainObject, key) {
       return obj[property];
     }, mainObject);
   } catch (err) {
-    // If we end up here, we're not working with an object, and @var mainObject is the value itself
-    return mainObject;
+    return null;
   }
 };
 
@@ -8993,7 +9099,7 @@ Collection.prototype.toJSON = function toJSON() {
 
 Collection.prototype.all = __webpack_require__(/*! ./methods/all */ "./node_modules/collect.js/dist/methods/all.js");
 Collection.prototype.average = __webpack_require__(/*! ./methods/average */ "./node_modules/collect.js/dist/methods/average.js");
-Collection.prototype.avg = __webpack_require__(/*! ./methods/avg */ "./node_modules/collect.js/dist/methods/avg.js");
+Collection.prototype.avg = __webpack_require__(/*! ./methods/average */ "./node_modules/collect.js/dist/methods/average.js");
 Collection.prototype.chunk = __webpack_require__(/*! ./methods/chunk */ "./node_modules/collect.js/dist/methods/chunk.js");
 Collection.prototype.collapse = __webpack_require__(/*! ./methods/collapse */ "./node_modules/collect.js/dist/methods/collapse.js");
 Collection.prototype.combine = __webpack_require__(/*! ./methods/combine */ "./node_modules/collect.js/dist/methods/combine.js");
@@ -9066,11 +9172,9 @@ Collection.prototype.reverse = __webpack_require__(/*! ./methods/reverse */ "./n
 Collection.prototype.search = __webpack_require__(/*! ./methods/search */ "./node_modules/collect.js/dist/methods/search.js");
 Collection.prototype.shift = __webpack_require__(/*! ./methods/shift */ "./node_modules/collect.js/dist/methods/shift.js");
 Collection.prototype.shuffle = __webpack_require__(/*! ./methods/shuffle */ "./node_modules/collect.js/dist/methods/shuffle.js");
-Collection.prototype.skip = __webpack_require__(/*! ./methods/skip */ "./node_modules/collect.js/dist/methods/skip.js");
 Collection.prototype.slice = __webpack_require__(/*! ./methods/slice */ "./node_modules/collect.js/dist/methods/slice.js");
-Collection.prototype.some = __webpack_require__(/*! ./methods/some */ "./node_modules/collect.js/dist/methods/some.js");
+Collection.prototype.some = __webpack_require__(/*! ./methods/contains */ "./node_modules/collect.js/dist/methods/contains.js");
 Collection.prototype.sort = __webpack_require__(/*! ./methods/sort */ "./node_modules/collect.js/dist/methods/sort.js");
-Collection.prototype.sortDesc = __webpack_require__(/*! ./methods/sortDesc */ "./node_modules/collect.js/dist/methods/sortDesc.js");
 Collection.prototype.sortBy = __webpack_require__(/*! ./methods/sortBy */ "./node_modules/collect.js/dist/methods/sortBy.js");
 Collection.prototype.sortByDesc = __webpack_require__(/*! ./methods/sortByDesc */ "./node_modules/collect.js/dist/methods/sortByDesc.js");
 Collection.prototype.sortKeys = __webpack_require__(/*! ./methods/sortKeys */ "./node_modules/collect.js/dist/methods/sortKeys.js");
@@ -9100,8 +9204,6 @@ Collection.prototype.whereIn = __webpack_require__(/*! ./methods/whereIn */ "./n
 Collection.prototype.whereInstanceOf = __webpack_require__(/*! ./methods/whereInstanceOf */ "./node_modules/collect.js/dist/methods/whereInstanceOf.js");
 Collection.prototype.whereNotBetween = __webpack_require__(/*! ./methods/whereNotBetween */ "./node_modules/collect.js/dist/methods/whereNotBetween.js");
 Collection.prototype.whereNotIn = __webpack_require__(/*! ./methods/whereNotIn */ "./node_modules/collect.js/dist/methods/whereNotIn.js");
-Collection.prototype.whereNull = __webpack_require__(/*! ./methods/whereNull */ "./node_modules/collect.js/dist/methods/whereNull.js");
-Collection.prototype.whereNotNull = __webpack_require__(/*! ./methods/whereNotNull */ "./node_modules/collect.js/dist/methods/whereNotNull.js");
 Collection.prototype.wrap = __webpack_require__(/*! ./methods/wrap */ "./node_modules/collect.js/dist/methods/wrap.js");
 Collection.prototype.zip = __webpack_require__(/*! ./methods/zip */ "./node_modules/collect.js/dist/methods/zip.js");
 
@@ -9112,7 +9214,6 @@ var collect = function collect(collection) {
 module.exports = collect;
 module.exports.collect = collect;
 module.exports.default = collect;
-module.exports.Collection = Collection;
 
 /***/ }),
 
@@ -9149,22 +9250,6 @@ module.exports = function average(key) {
 
   return new this.constructor(this.items).pluck(key).sum() / this.items.length;
 };
-
-/***/ }),
-
-/***/ "./node_modules/collect.js/dist/methods/avg.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/collect.js/dist/methods/avg.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var average = __webpack_require__(/*! ./average */ "./node_modules/collect.js/dist/methods/average.js");
-
-module.exports = average;
 
 /***/ }),
 
@@ -9726,7 +9811,9 @@ var values = __webpack_require__(/*! ../helpers/values */ "./node_modules/collec
 module.exports = function every(fn) {
   var items = values(this.items);
 
-  return items.every(fn);
+  return items.map(function (item, index) {
+    return fn(item, index);
+  }).indexOf(false) === -1;
 };
 
 /***/ }),
@@ -11035,9 +11122,7 @@ module.exports = function pipe(fn) {
 "use strict";
 
 
-var _require = __webpack_require__(/*! ../helpers/is */ "./node_modules/collect.js/dist/helpers/is.js"),
-    isArray = _require.isArray,
-    isObject = _require.isObject;
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var nestedValue = __webpack_require__(/*! ../helpers/nestedValue */ "./node_modules/collect.js/dist/helpers/nestedValue.js");
 
@@ -11046,13 +11131,9 @@ var buildKeyPathMap = function buildKeyPathMap(items) {
 
   items.forEach(function (item, index) {
     function buildKeyPath(val, keyPath) {
-      if (isObject(val)) {
+      if ((typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object') {
         Object.keys(val).forEach(function (prop) {
           buildKeyPath(val[prop], keyPath + '.' + prop);
-        });
-      } else if (isArray(val)) {
-        val.forEach(function (v, i) {
-          buildKeyPath(v, keyPath + '.' + i);
         });
       }
 
@@ -11466,43 +11547,47 @@ module.exports = function reverse() {
 "use strict";
 
 
-/* eslint-disable eqeqeq */
-
 var _require = __webpack_require__(/*! ../helpers/is */ "./node_modules/collect.js/dist/helpers/is.js"),
-    isArray = _require.isArray,
-    isObject = _require.isObject,
     isFunction = _require.isFunction;
 
 module.exports = function search(valueOrFunction, strict) {
   var _this = this;
 
-  var result = void 0;
+  var valueFn = valueOrFunction;
 
-  var find = function find(item, key) {
-    if (isFunction(valueOrFunction)) {
-      return valueOrFunction(_this.items[key], key);
-    }
-
-    if (strict) {
-      return _this.items[key] === valueOrFunction;
-    }
-
-    return _this.items[key] == valueOrFunction;
-  };
-
-  if (isArray(this.items)) {
-    result = this.items.findIndex(find);
-  } else if (isObject(this.items)) {
-    result = Object.keys(this.items).find(function (key) {
-      return find(_this.items[key], key);
+  if (isFunction(valueOrFunction)) {
+    valueFn = this.items.find(function (value, key) {
+      return valueOrFunction(value, key);
     });
   }
 
-  if (result === undefined || result < 0) {
+  var index = false;
+
+  if (Array.isArray(this.items)) {
+    var itemKey = this.items.filter(function (item) {
+      if (strict === true) {
+        return item === valueFn;
+      }
+
+      return item === Number(valueFn) || item === String(valueFn);
+    })[0];
+
+    index = this.items.indexOf(itemKey);
+  } else {
+    return Object.keys(this.items).filter(function (prop) {
+      if (strict === true) {
+        return _this.items[prop] === valueFn;
+      }
+
+      return _this.items[prop] === Number(valueFn) || _this.items[prop] === valueFn.toString();
+    })[0] || false;
+  }
+
+  if (index === -1) {
     return false;
   }
 
-  return result;
+  return index;
 };
 
 /***/ }),
@@ -11568,37 +11653,6 @@ module.exports = function shuffle() {
 
 /***/ }),
 
-/***/ "./node_modules/collect.js/dist/methods/skip.js":
-/*!******************************************************!*\
-  !*** ./node_modules/collect.js/dist/methods/skip.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _require = __webpack_require__(/*! ../helpers/is */ "./node_modules/collect.js/dist/helpers/is.js"),
-    isObject = _require.isObject;
-
-module.exports = function skip(number) {
-  var _this = this;
-
-  if (isObject(this.items)) {
-    return new this.constructor(Object.keys(this.items).reduce(function (accumulator, key, index) {
-      if (index + 1 > number) {
-        accumulator[key] = _this.items[key];
-      }
-
-      return accumulator;
-    }, {}));
-  }
-
-  return new this.constructor(this.items.slice(number));
-};
-
-/***/ }),
-
 /***/ "./node_modules/collect.js/dist/methods/slice.js":
 /*!*******************************************************!*\
   !*** ./node_modules/collect.js/dist/methods/slice.js ***!
@@ -11618,22 +11672,6 @@ module.exports = function slice(remove, limit) {
 
   return new this.constructor(collection);
 };
-
-/***/ }),
-
-/***/ "./node_modules/collect.js/dist/methods/some.js":
-/*!******************************************************!*\
-  !*** ./node_modules/collect.js/dist/methods/some.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var contains = __webpack_require__(/*! ./contains */ "./node_modules/collect.js/dist/methods/contains.js");
-
-module.exports = contains;
 
 /***/ }),
 
@@ -11732,22 +11770,6 @@ module.exports = function sortBy(valueOrFunction) {
 
 module.exports = function sortByDesc(valueOrFunction) {
   return this.sortBy(valueOrFunction).reverse();
-};
-
-/***/ }),
-
-/***/ "./node_modules/collect.js/dist/methods/sortDesc.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/collect.js/dist/methods/sortDesc.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function sortDesc() {
-  return this.sort().reverse();
 };
 
 /***/ }),
@@ -11873,19 +11895,19 @@ module.exports = function sum(key) {
 
   if (key === undefined) {
     for (var i = 0, length = items.length; i < length; i += 1) {
-      total += parseFloat(items[i]);
+      total += items[i];
     }
   } else if (isFunction(key)) {
     for (var _i = 0, _length = items.length; _i < _length; _i += 1) {
-      total += parseFloat(key(items[_i]));
+      total += key(items[_i]);
     }
   } else {
     for (var _i2 = 0, _length2 = items.length; _i2 < _length2; _i2 += 1) {
-      total += parseFloat(items[_i2][key]);
+      total += items[_i2][key];
     }
   }
 
-  return parseFloat(total.toPrecision(12));
+  return total;
 };
 
 /***/ }),
@@ -12484,42 +12506,6 @@ module.exports = function whereNotIn(key, values) {
   });
 
   return new this.constructor(collection);
-};
-
-/***/ }),
-
-/***/ "./node_modules/collect.js/dist/methods/whereNotNull.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/collect.js/dist/methods/whereNotNull.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function whereNotNull() {
-  var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-  return this.where(key, '!==', null);
-};
-
-/***/ }),
-
-/***/ "./node_modules/collect.js/dist/methods/whereNull.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/collect.js/dist/methods/whereNull.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function whereNull() {
-  var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-  return this.where(key, '===', null);
 };
 
 /***/ }),
@@ -59839,7 +59825,7 @@ var render = function() {
                   [
                     _c(
                       "router-link",
-                      { attrs: { to: "/players/" + player.id + "/edit" } },
+                      { attrs: { to: "/players/" + player.id } },
                       [_vm._v(_vm._s(player.name))]
                     )
                   ],
@@ -59886,6 +59872,137 @@ var staticRenderFns = [
         },
         [_vm._v("Věk")]
       )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Player/PlayerShow.vue?vue&type=template&id=61ea26ec&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/Player/PlayerShow.vue?vue&type=template&id=61ea26ec&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c("h3", [_vm._v(_vm._s(_vm.player.name))]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Skupinka")])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-6 text-right" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { to: "/players/" + _vm.player.id + "/edit" }
+            },
+            [_vm._v("Upravit postavu\n                ")]
+          )
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-6" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("Informace o hráči")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("table", { staticClass: "table" }, [
+              _c("tr", [
+                _c("td", [_vm._v("Jméno")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(_vm.player.name))])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Věk")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(_vm.player.age))])
+              ]),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _vm._m(4)
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [_c("td", [_vm._v("Skupinka")]), _vm._v(" "), _c("td")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("Počet splněných questů")]),
+      _vm._v(" "),
+      _c("td")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("Počet zlaťáků")]),
+      _vm._v(" "),
+      _c("td")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("Počet obsidiánů")]),
+      _vm._v(" "),
+      _c("td")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("Naposledy spatřen")]),
+      _vm._v(" "),
+      _c("td")
     ])
   }
 ]
@@ -91398,6 +91515,7 @@ var map = {
 	"./components/Operator/Player/PlayerCreate.vue": "./resources/js/components/Operator/Player/PlayerCreate.vue",
 	"./components/Operator/Player/PlayerEdit.vue": "./resources/js/components/Operator/Player/PlayerEdit.vue",
 	"./components/Operator/Player/PlayerIndex.vue": "./resources/js/components/Operator/Player/PlayerIndex.vue",
+	"./components/Operator/Player/PlayerShow.vue": "./resources/js/components/Operator/Player/PlayerShow.vue",
 	"./components/Operator/Quest/QuestEdit.vue": "./resources/js/components/Operator/Quest/QuestEdit.vue",
 	"./components/Operator/Quest/QuestIndex.vue": "./resources/js/components/Operator/Quest/QuestIndex.vue",
 	"./components/Operator/QuestGroup/QuestGroupEdit.vue": "./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue",
@@ -91471,6 +91589,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Operator_QuestGroup_QuestGroupEdit__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/Operator/QuestGroup/QuestGroupEdit */ "./resources/js/components/Operator/QuestGroup/QuestGroupEdit.vue");
 /* harmony import */ var _components_Operator_Options__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/Operator/Options */ "./resources/js/components/Operator/Options.vue");
 /* harmony import */ var _components_Operator_Role_RoleShow__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/Operator/Role/RoleShow */ "./resources/js/components/Operator/Role/RoleShow.vue");
+/* harmony import */ var _components_Operator_Player_PlayerShow__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/Operator/Player/PlayerShow */ "./resources/js/components/Operator/Player/PlayerShow.vue");
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -91499,6 +91618,7 @@ files.keys().map(function (key) {
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
 
 
 
@@ -91569,6 +91689,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
   }, {
     path: '/players/new',
     component: _components_Operator_Player_PlayerCreate__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }, {
+    path: '/players/:id',
+    component: _components_Operator_Player_PlayerShow__WEBPACK_IMPORTED_MODULE_22__["default"]
   }, {
     path: '/players/:id/edit',
     component: _components_Operator_Player_PlayerEdit__WEBPACK_IMPORTED_MODULE_11__["default"]
@@ -92491,6 +92614,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerIndex_vue_vue_type_template_id_1f4bbd73_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerIndex_vue_vue_type_template_id_1f4bbd73_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Operator/Player/PlayerShow.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/Operator/Player/PlayerShow.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PlayerShow_vue_vue_type_template_id_61ea26ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlayerShow.vue?vue&type=template&id=61ea26ec&scoped=true& */ "./resources/js/components/Operator/Player/PlayerShow.vue?vue&type=template&id=61ea26ec&scoped=true&");
+/* harmony import */ var _PlayerShow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlayerShow.vue?vue&type=script&lang=js& */ "./resources/js/components/Operator/Player/PlayerShow.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PlayerShow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PlayerShow_vue_vue_type_template_id_61ea26ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PlayerShow_vue_vue_type_template_id_61ea26ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "61ea26ec",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Operator/Player/PlayerShow.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Operator/Player/PlayerShow.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/Operator/Player/PlayerShow.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerShow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./PlayerShow.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Player/PlayerShow.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerShow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Operator/Player/PlayerShow.vue?vue&type=template&id=61ea26ec&scoped=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/Operator/Player/PlayerShow.vue?vue&type=template&id=61ea26ec&scoped=true& ***!
+  \***********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerShow_vue_vue_type_template_id_61ea26ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./PlayerShow.vue?vue&type=template&id=61ea26ec&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Player/PlayerShow.vue?vue&type=template&id=61ea26ec&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerShow_vue_vue_type_template_id_61ea26ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerShow_vue_vue_type_template_id_61ea26ec_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -93658,8 +93850,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Weby\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Weby\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
