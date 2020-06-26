@@ -2123,11 +2123,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "GroupEdit",
   data: function data() {
     return {
-      group: {}
+      id: null,
+      name: null
     };
   },
   mounted: function mounted() {
@@ -2138,19 +2149,19 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/groups/' + this.$route.params.id).then(function (response) {
-        _this.group = response.data;
+        _this.id = response.data.id;
+        _this.name = response.data.name;
       });
     },
     submit: function submit() {
       var _this2 = this;
 
-      console.log('Storing role.');
-      axios.patch('/api/groups/' + this.group.id, {
-        name: this.role.name
+      axios.patch('/api/groups/' + this.id, {
+        name: this.name
       }).then(function (response) {
         console.log("Successfully updated.");
 
-        _this2.$router.push('/roles');
+        _this2.$router.push('/groups');
       });
     }
   }
@@ -2167,18 +2178,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2234,6 +2233,18 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -59165,46 +59176,54 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
+    _c(
+      "a",
+      { staticClass: "btn btn-primary float-right", on: { click: _vm.submit } },
+      [_vm._v("Uložit")]
+    ),
+    _vm._v(" "),
     _c("h4", [_vm._v("Úprava skupiny")]),
     _vm._v(" "),
-    _c(
-      "table",
-      { staticClass: "w-50 table table-bordered" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.roles, function(role) {
-          return _c("tr", { key: role.id }, [
-            _c(
-              "td",
-              [
-                _c("router-link", { attrs: { to: "#" } }, [
-                  _vm._v(_vm._s(role.name))
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(role.real_name))])
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-8" }, [
+        _c("div", { staticClass: "card my-2" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("\n                    Úprava skupiny\n                ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Jméno postavy")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.name,
+                    expression: "name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { title: "" },
+                domProps: { value: _vm.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.name = $event.target.value
+                  }
+                }
+              })
+            ])
           ])
-        })
-      ],
-      2
-    )
+        ])
+      ])
+    ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("Jméno")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Reálné jméno")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -59241,34 +59260,30 @@ var render = function() {
       _vm._v(" "),
       _c("h4", [_vm._v("Skupiny")]),
       _vm._v(" "),
-      _c("table", { staticClass: "w-50 table mt-4" }, [
-        _c(
-          "div",
-          { staticStyle: { padding: "10px 15px" } },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(_vm.groups, function(group) {
-              return _c("tr", { key: group.id }, [
-                _c(
-                  "td",
-                  [
-                    _c("router-link", { attrs: { to: "#" } }, [
-                      _vm._v(_vm._s(group.name))
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("td"),
-                _vm._v(" "),
-                _c("td")
-              ])
-            })
-          ],
-          2
-        )
-      ])
+      _c(
+        "table",
+        { staticClass: "w-50 table mt-4" },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.groups, function(group) {
+            return _c("tr", { key: group.id }, [
+              _c(
+                "td",
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: "/groups/" + group.id + "/edit" } },
+                    [_vm._v(_vm._s(group.name))]
+                  )
+                ],
+                1
+              )
+            ])
+          })
+        ],
+        2
+      )
     ],
     1
   )
@@ -59279,23 +59294,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", { staticClass: "w-100" }, [
-      _c(
-        "th",
-        {
-          staticClass: "w-55",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Jméno skupiny\n                ")]
-      ),
-      _vm._v(" "),
-      _c("th", { staticStyle: { border: "none" }, attrs: { scope: "col" } }),
-      _vm._v(" "),
-      _c("th", {
-        staticClass: "w-50",
-        staticStyle: { border: "none" },
-        attrs: { scope: "col" }
-      })
+      _c("th", [_vm._v("Jméno skupiny")])
     ])
   }
 ]
@@ -59321,12 +59320,34 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
-    _c("h3", [_vm._v(_vm._s(_vm.group.name))]),
-    _vm._v(" "),
-    _c("p", [_vm._v("Skupina hráčů")]),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c("h3", [_vm._v(_vm._s(_vm.group.name))]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Skupina hráčů")])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-6" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { to: "/groups/" + _vm.group.id + "/edit" }
+            },
+            [_vm._v("\n                Upravit skupinu\n            ")]
+          )
+        ],
+        1
+      )
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-7" }, [
+        _c("h5", [_vm._v("Členové skupiny")]),
+        _vm._v(" "),
         _c(
           "table",
           { staticClass: "table" },

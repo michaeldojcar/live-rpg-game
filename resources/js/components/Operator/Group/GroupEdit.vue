@@ -1,19 +1,29 @@
 <template>
     <div class="container-fluid mt-3">
+
+        <a class="btn btn-primary float-right"
+           @click="submit">Uložit</a>
+
         <h4>Úprava skupiny</h4>
 
-        <table class="w-50 table table-bordered">
-            <tr>
-                <th>Jméno</th>
-                <th>Reálné jméno</th>
-            </tr>
-            <tr v-for="role in roles" :key="role.id">
-                <td>
-                    <router-link to="#">{{role.name}}</router-link>
-                </td>
-                <td>{{role.real_name}}</td>
-            </tr>
-        </table>
+        <div class="row">
+            <div class="col-8">
+                <div class="card my-2">
+                    <div class="card-header">
+                        Úprava skupiny
+                    </div>
+
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Jméno postavy</label>
+                            <input class="form-control"
+                                   v-model="name"
+                                   title="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -23,7 +33,8 @@
 
         data: () => {
             return {
-                group: {},
+                id: null,
+                name: null,
             }
         },
 
@@ -36,21 +47,19 @@
                 axios
                     .get('/api/groups/' + this.$route.params.id)
                     .then(response => {
-
-                        this.group = response.data;
+                        this.id = response.data.id;
+                        this.name = response.data.name;
                     });
             },
 
             submit() {
-                console.log('Storing role.');
-
                 axios
-                    .patch('/api/groups/' + this.group.id, {
-                        name: this.role.name,
+                    .patch('/api/groups/' + this.id, {
+                        name: this.name,
                     })
                     .then(response => {
                         console.log("Successfully updated.");
-                        this.$router.push('/roles');
+                        this.$router.push('/groups');
                     });
 
 

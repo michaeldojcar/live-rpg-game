@@ -1,20 +1,32 @@
 <template>
     <div class="container-fluid mt-3">
-        <h3>{{group.name}}</h3>
-        <p>Skupina hráčů</p>
+        <div class="row">
+            <div class="col-6">
+                <h3>{{group.name}}</h3>
+                <p>Skupina hráčů</p>
+            </div>
+            <div class="col-6">
+                <router-link :to="'/groups/'+group.id+'/edit'" class="btn btn-primary">
+                    Upravit skupinu
+                </router-link>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="col-7">
-             <table class="table">
-                 <tr>
-                 <th>Jméno</th>
-                 </tr>
+                <h5>Členové skupiny</h5>
 
-                 <tr v-for="player in group.members">
-                     <td>{{player.name}}</td>
-                 </tr>
+                <table class="table">
+                    <tr>
+                        <th>Jméno</th>
+                    </tr>
 
-             </table>
+                    <tr v-for="player in group.members">
+                        <td>{{player.name}}</td>
+                    </tr>
+
+                </table>
             </div>
             <div class="col-5">
 
