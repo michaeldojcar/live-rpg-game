@@ -23,7 +23,10 @@
                 <div v-if="state.quest_selected.reward_cash">
                     <reward-cash :cash="state.quest_selected.reward_cash"/>
                 </div>
-                {{state.quest_selected.reward_knowledge}}
+                <div v-if="state.quest_selected.reward_knowledge">
+                    <b>Informace:</b> {{state.quest_selected.reward_knowledge}}
+                </div>
+
                 <p class="text-danger text-bold"
                    v-if="state.quest_selected.is_reward_public === 1">Sdělit odměnu dopředu!</p>
                 <p class="text-success text-bold"
@@ -76,7 +79,7 @@
 
         methods: {
             setPending() {
-                axios.post('/api/role/' + this.state.role.id + '/quest/' + this.state.quest_selected.id + '/pending')
+                axios.post('/api/player/' + this.state.person.id + '/quest/' + this.state.quest_selected.id + '/pending')
                     .then((response) => {
                         this.loadDataForPerson()
                         this.state.quest_selected = null;
@@ -84,7 +87,7 @@
             },
 
             setDone() {
-                axios.post('/api/role/' + this.state.role.id + '/quest/' + this.state.quest_selected.id + '/done')
+                axios.post('/api/player/' + this.state.person.id + '/quest/' + this.state.quest_selected.id + '/done')
                     .then((response) => {
                         this.loadDataForPerson()
                         this.state.quest_selected = null;
@@ -92,7 +95,7 @@
             },
 
             setFailed() {
-                axios.post('/api/role/' + this.state.role.id + '/quest/' + this.state.quest_selected.id + '/failed')
+                axios.post('/api/player/' + this.state.person.id + '/quest/' + this.state.quest_selected.id + '/failed')
                     .then((response) => {
                         this.loadDataForPerson()
                         this.state.quest_selected = null;

@@ -4013,6 +4013,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "QuestDetail",
@@ -4025,7 +4028,7 @@ __webpack_require__.r(__webpack_exports__);
     setPending: function setPending() {
       var _this = this;
 
-      axios.post('/api/role/' + this.state.role.id + '/quest/' + this.state.quest_selected.id + '/pending').then(function (response) {
+      axios.post('/api/player/' + this.state.person.id + '/quest/' + this.state.quest_selected.id + '/pending').then(function (response) {
         _this.loadDataForPerson();
 
         _this.state.quest_selected = null;
@@ -4034,7 +4037,7 @@ __webpack_require__.r(__webpack_exports__);
     setDone: function setDone() {
       var _this2 = this;
 
-      axios.post('/api/role/' + this.state.role.id + '/quest/' + this.state.quest_selected.id + '/done').then(function (response) {
+      axios.post('/api/player/' + this.state.person.id + '/quest/' + this.state.quest_selected.id + '/done').then(function (response) {
         _this2.loadDataForPerson();
 
         _this2.state.quest_selected = null;
@@ -4043,7 +4046,7 @@ __webpack_require__.r(__webpack_exports__);
     setFailed: function setFailed() {
       var _this3 = this;
 
-      axios.post('/api/role/' + this.state.role.id + '/quest/' + this.state.quest_selected.id + '/failed').then(function (response) {
+      axios.post('/api/player/' + this.state.person.id + '/quest/' + this.state.quest_selected.id + '/failed').then(function (response) {
         _this3.loadDataForPerson();
 
         _this3.state.quest_selected = null;
@@ -62256,11 +62259,18 @@ var render = function() {
               1
             )
           : _vm._e(),
-        _vm._v(
-          "\n            " +
-            _vm._s(_vm.state.quest_selected.reward_knowledge) +
-            "\n            "
-        ),
+        _vm._v(" "),
+        _vm.state.quest_selected.reward_knowledge
+          ? _c("div", [
+              _c("b", [_vm._v("Informace:")]),
+              _vm._v(
+                " " +
+                  _vm._s(_vm.state.quest_selected.reward_knowledge) +
+                  "\n            "
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         _vm.state.quest_selected.is_reward_public === 1
           ? _c("p", { staticClass: "text-danger text-bold" }, [
               _vm._v("Sdělit odměnu dopředu!")

@@ -15,12 +15,12 @@
  * NPC role routes
  */
 Route::get('/role/{role_id}/person/color_1/{c1}/color_2/{c2}/color_3/{c3}', 'RoleInterfaceController@show');
-Route::get('/role/{role_id}/person/by_id/{person_id}', 'RoleInterfaceController@show');
+Route::get('/role/{role_id}/person/by_id/{person_id}', 'RoleInterfaceController@showById');
 Route::post('/role/{role_id}/telemetries', 'RoleInterfaceController@telemetries');
 
-Route::post('/role/{role}/quest/{quest}/pending', 'RoleInterfaceController@setPending');
-Route::post('/role/{role}/quest/{quest}/done', 'RoleInterfaceController@setDone');
-Route::post('/role/{role}/quest/{quest}/failed', 'RoleInterfaceController@setFailed');
+Route::post('/player/{player}/quest/{quest}/pending', 'RoleInterfaceController@setPending');
+Route::post('/player/{player}/quest/{quest}/done', 'RoleInterfaceController@setDone');
+Route::post('/player/{player}/quest/{quest}/failed', 'RoleInterfaceController@setFailed');
 
 
 /*
