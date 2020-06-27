@@ -2966,6 +2966,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // import SinglePointMap from "../Components/SinglePointMap";
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PlayerShow",
@@ -9140,7 +9156,7 @@ module.exports = {
    * @returns {boolean}
    */
   isObject: function isObject(item) {
-    return (typeof item === 'undefined' ? 'undefined' : _typeof(item)) === 'object' && Array.isArray(item) === false && item !== null;
+    return (typeof item === 'undefined' ? 'undefined' : _typeof(item)) === 'object' && item !== null;
   },
 
   /**
@@ -9177,8 +9193,7 @@ module.exports = function nestedValue(mainObject, key) {
       return obj[property];
     }, mainObject);
   } catch (err) {
-    // If we end up here, we're not working with an object, and @var mainObject is the value itself
-    return mainObject;
+    return null;
   }
 };
 
@@ -9293,7 +9308,7 @@ Collection.prototype.toJSON = function toJSON() {
 
 Collection.prototype.all = __webpack_require__(/*! ./methods/all */ "./node_modules/collect.js/dist/methods/all.js");
 Collection.prototype.average = __webpack_require__(/*! ./methods/average */ "./node_modules/collect.js/dist/methods/average.js");
-Collection.prototype.avg = __webpack_require__(/*! ./methods/avg */ "./node_modules/collect.js/dist/methods/avg.js");
+Collection.prototype.avg = __webpack_require__(/*! ./methods/average */ "./node_modules/collect.js/dist/methods/average.js");
 Collection.prototype.chunk = __webpack_require__(/*! ./methods/chunk */ "./node_modules/collect.js/dist/methods/chunk.js");
 Collection.prototype.collapse = __webpack_require__(/*! ./methods/collapse */ "./node_modules/collect.js/dist/methods/collapse.js");
 Collection.prototype.combine = __webpack_require__(/*! ./methods/combine */ "./node_modules/collect.js/dist/methods/combine.js");
@@ -9366,11 +9381,9 @@ Collection.prototype.reverse = __webpack_require__(/*! ./methods/reverse */ "./n
 Collection.prototype.search = __webpack_require__(/*! ./methods/search */ "./node_modules/collect.js/dist/methods/search.js");
 Collection.prototype.shift = __webpack_require__(/*! ./methods/shift */ "./node_modules/collect.js/dist/methods/shift.js");
 Collection.prototype.shuffle = __webpack_require__(/*! ./methods/shuffle */ "./node_modules/collect.js/dist/methods/shuffle.js");
-Collection.prototype.skip = __webpack_require__(/*! ./methods/skip */ "./node_modules/collect.js/dist/methods/skip.js");
 Collection.prototype.slice = __webpack_require__(/*! ./methods/slice */ "./node_modules/collect.js/dist/methods/slice.js");
-Collection.prototype.some = __webpack_require__(/*! ./methods/some */ "./node_modules/collect.js/dist/methods/some.js");
+Collection.prototype.some = __webpack_require__(/*! ./methods/contains */ "./node_modules/collect.js/dist/methods/contains.js");
 Collection.prototype.sort = __webpack_require__(/*! ./methods/sort */ "./node_modules/collect.js/dist/methods/sort.js");
-Collection.prototype.sortDesc = __webpack_require__(/*! ./methods/sortDesc */ "./node_modules/collect.js/dist/methods/sortDesc.js");
 Collection.prototype.sortBy = __webpack_require__(/*! ./methods/sortBy */ "./node_modules/collect.js/dist/methods/sortBy.js");
 Collection.prototype.sortByDesc = __webpack_require__(/*! ./methods/sortByDesc */ "./node_modules/collect.js/dist/methods/sortByDesc.js");
 Collection.prototype.sortKeys = __webpack_require__(/*! ./methods/sortKeys */ "./node_modules/collect.js/dist/methods/sortKeys.js");
@@ -9400,8 +9413,6 @@ Collection.prototype.whereIn = __webpack_require__(/*! ./methods/whereIn */ "./n
 Collection.prototype.whereInstanceOf = __webpack_require__(/*! ./methods/whereInstanceOf */ "./node_modules/collect.js/dist/methods/whereInstanceOf.js");
 Collection.prototype.whereNotBetween = __webpack_require__(/*! ./methods/whereNotBetween */ "./node_modules/collect.js/dist/methods/whereNotBetween.js");
 Collection.prototype.whereNotIn = __webpack_require__(/*! ./methods/whereNotIn */ "./node_modules/collect.js/dist/methods/whereNotIn.js");
-Collection.prototype.whereNull = __webpack_require__(/*! ./methods/whereNull */ "./node_modules/collect.js/dist/methods/whereNull.js");
-Collection.prototype.whereNotNull = __webpack_require__(/*! ./methods/whereNotNull */ "./node_modules/collect.js/dist/methods/whereNotNull.js");
 Collection.prototype.wrap = __webpack_require__(/*! ./methods/wrap */ "./node_modules/collect.js/dist/methods/wrap.js");
 Collection.prototype.zip = __webpack_require__(/*! ./methods/zip */ "./node_modules/collect.js/dist/methods/zip.js");
 
@@ -9412,7 +9423,6 @@ var collect = function collect(collection) {
 module.exports = collect;
 module.exports.collect = collect;
 module.exports.default = collect;
-module.exports.Collection = Collection;
 
 /***/ }),
 
@@ -9449,22 +9459,6 @@ module.exports = function average(key) {
 
   return new this.constructor(this.items).pluck(key).sum() / this.items.length;
 };
-
-/***/ }),
-
-/***/ "./node_modules/collect.js/dist/methods/avg.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/collect.js/dist/methods/avg.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var average = __webpack_require__(/*! ./average */ "./node_modules/collect.js/dist/methods/average.js");
-
-module.exports = average;
 
 /***/ }),
 
@@ -10026,7 +10020,9 @@ var values = __webpack_require__(/*! ../helpers/values */ "./node_modules/collec
 module.exports = function every(fn) {
   var items = values(this.items);
 
-  return items.every(fn);
+  return items.map(function (item, index) {
+    return fn(item, index);
+  }).indexOf(false) === -1;
 };
 
 /***/ }),
@@ -11335,9 +11331,7 @@ module.exports = function pipe(fn) {
 "use strict";
 
 
-var _require = __webpack_require__(/*! ../helpers/is */ "./node_modules/collect.js/dist/helpers/is.js"),
-    isArray = _require.isArray,
-    isObject = _require.isObject;
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var nestedValue = __webpack_require__(/*! ../helpers/nestedValue */ "./node_modules/collect.js/dist/helpers/nestedValue.js");
 
@@ -11346,13 +11340,9 @@ var buildKeyPathMap = function buildKeyPathMap(items) {
 
   items.forEach(function (item, index) {
     function buildKeyPath(val, keyPath) {
-      if (isObject(val)) {
+      if ((typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object') {
         Object.keys(val).forEach(function (prop) {
           buildKeyPath(val[prop], keyPath + '.' + prop);
-        });
-      } else if (isArray(val)) {
-        val.forEach(function (v, i) {
-          buildKeyPath(v, keyPath + '.' + i);
         });
       }
 
@@ -11766,43 +11756,47 @@ module.exports = function reverse() {
 "use strict";
 
 
-/* eslint-disable eqeqeq */
-
 var _require = __webpack_require__(/*! ../helpers/is */ "./node_modules/collect.js/dist/helpers/is.js"),
-    isArray = _require.isArray,
-    isObject = _require.isObject,
     isFunction = _require.isFunction;
 
 module.exports = function search(valueOrFunction, strict) {
   var _this = this;
 
-  var result = void 0;
+  var valueFn = valueOrFunction;
 
-  var find = function find(item, key) {
-    if (isFunction(valueOrFunction)) {
-      return valueOrFunction(_this.items[key], key);
-    }
-
-    if (strict) {
-      return _this.items[key] === valueOrFunction;
-    }
-
-    return _this.items[key] == valueOrFunction;
-  };
-
-  if (isArray(this.items)) {
-    result = this.items.findIndex(find);
-  } else if (isObject(this.items)) {
-    result = Object.keys(this.items).find(function (key) {
-      return find(_this.items[key], key);
+  if (isFunction(valueOrFunction)) {
+    valueFn = this.items.find(function (value, key) {
+      return valueOrFunction(value, key);
     });
   }
 
-  if (result === undefined || result < 0) {
+  var index = false;
+
+  if (Array.isArray(this.items)) {
+    var itemKey = this.items.filter(function (item) {
+      if (strict === true) {
+        return item === valueFn;
+      }
+
+      return item === Number(valueFn) || item === String(valueFn);
+    })[0];
+
+    index = this.items.indexOf(itemKey);
+  } else {
+    return Object.keys(this.items).filter(function (prop) {
+      if (strict === true) {
+        return _this.items[prop] === valueFn;
+      }
+
+      return _this.items[prop] === Number(valueFn) || _this.items[prop] === valueFn.toString();
+    })[0] || false;
+  }
+
+  if (index === -1) {
     return false;
   }
 
-  return result;
+  return index;
 };
 
 /***/ }),
@@ -11868,37 +11862,6 @@ module.exports = function shuffle() {
 
 /***/ }),
 
-/***/ "./node_modules/collect.js/dist/methods/skip.js":
-/*!******************************************************!*\
-  !*** ./node_modules/collect.js/dist/methods/skip.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _require = __webpack_require__(/*! ../helpers/is */ "./node_modules/collect.js/dist/helpers/is.js"),
-    isObject = _require.isObject;
-
-module.exports = function skip(number) {
-  var _this = this;
-
-  if (isObject(this.items)) {
-    return new this.constructor(Object.keys(this.items).reduce(function (accumulator, key, index) {
-      if (index + 1 > number) {
-        accumulator[key] = _this.items[key];
-      }
-
-      return accumulator;
-    }, {}));
-  }
-
-  return new this.constructor(this.items.slice(number));
-};
-
-/***/ }),
-
 /***/ "./node_modules/collect.js/dist/methods/slice.js":
 /*!*******************************************************!*\
   !*** ./node_modules/collect.js/dist/methods/slice.js ***!
@@ -11918,22 +11881,6 @@ module.exports = function slice(remove, limit) {
 
   return new this.constructor(collection);
 };
-
-/***/ }),
-
-/***/ "./node_modules/collect.js/dist/methods/some.js":
-/*!******************************************************!*\
-  !*** ./node_modules/collect.js/dist/methods/some.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var contains = __webpack_require__(/*! ./contains */ "./node_modules/collect.js/dist/methods/contains.js");
-
-module.exports = contains;
 
 /***/ }),
 
@@ -12032,22 +11979,6 @@ module.exports = function sortBy(valueOrFunction) {
 
 module.exports = function sortByDesc(valueOrFunction) {
   return this.sortBy(valueOrFunction).reverse();
-};
-
-/***/ }),
-
-/***/ "./node_modules/collect.js/dist/methods/sortDesc.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/collect.js/dist/methods/sortDesc.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function sortDesc() {
-  return this.sort().reverse();
 };
 
 /***/ }),
@@ -12173,19 +12104,19 @@ module.exports = function sum(key) {
 
   if (key === undefined) {
     for (var i = 0, length = items.length; i < length; i += 1) {
-      total += parseFloat(items[i]);
+      total += items[i];
     }
   } else if (isFunction(key)) {
     for (var _i = 0, _length = items.length; _i < _length; _i += 1) {
-      total += parseFloat(key(items[_i]));
+      total += key(items[_i]);
     }
   } else {
     for (var _i2 = 0, _length2 = items.length; _i2 < _length2; _i2 += 1) {
-      total += parseFloat(items[_i2][key]);
+      total += items[_i2][key];
     }
   }
 
-  return parseFloat(total.toPrecision(12));
+  return total;
 };
 
 /***/ }),
@@ -12784,42 +12715,6 @@ module.exports = function whereNotIn(key, values) {
   });
 
   return new this.constructor(collection);
-};
-
-/***/ }),
-
-/***/ "./node_modules/collect.js/dist/methods/whereNotNull.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/collect.js/dist/methods/whereNotNull.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function whereNotNull() {
-  var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-  return this.where(key, '!==', null);
-};
-
-/***/ }),
-
-/***/ "./node_modules/collect.js/dist/methods/whereNull.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/collect.js/dist/methods/whereNull.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function whereNull() {
-  var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-  return this.where(key, '===', null);
 };
 
 /***/ }),
@@ -60424,7 +60319,109 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-6" }, [
+      _c("div", { staticClass: "col-1 my-auto" }, [
+        _vm.player.color_1 === 1
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-danger text-danger w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_1 === 2
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-primary text-primary w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_1 === 3
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-success text-success w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_1 === 4
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-warning text-warning w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _vm.player.color_2 === 1
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-danger text-danger  w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_2 === 2
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-primary text-primary w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_2 === 3
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-success text-success w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_2 === 4
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-warning text-warning w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _vm.player.color_3 === 1
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-danger text-danger  w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_3 === 2
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-primary text-primary w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_3 === 3
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-success text-success w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_3 === 4
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-warning text-warning w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6 my-auto" }, [
         _c("h3", [_vm._v(_vm._s(_vm.player.name))]),
         _vm._v(" "),
         _c("p", [_vm._v("Skupinka")])
@@ -60432,7 +60429,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-6 text-right" },
+        { staticClass: "col-5 text-right" },
         [
           _c(
             "router-link",
@@ -60440,14 +60437,14 @@ var render = function() {
               staticClass: "btn btn-primary",
               attrs: { to: "/players/" + _vm.player.id + "/edit" }
             },
-            [_vm._v("Upravit postavu\n                ")]
+            [_vm._v("Upravit hráče\n            ")]
           )
         ],
         1
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row mt-4" }, [
       _c("div", { staticClass: "col-sm-6" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
@@ -94547,8 +94544,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\micha\Documents\GIT\GIT - osobní\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Weby\live-rpg-game\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Weby\live-rpg-game\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
