@@ -1,10 +1,14 @@
 <template>
     <div class="container-fluid mt-3">
-
-        <a class="btn btn-primary float-right"
-           @click="submit">Uložit</a>
-
-        <h4>Úprava skupiny</h4>
+        <div class="row">
+            <div class="col-6">
+                <h4>Úprava skupiny</h4>
+            </div>
+            <div class="col-6">
+                <a class="btn btn-primary float-right"
+                   @click="submit">Uložit</a>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-8">

@@ -1,10 +1,15 @@
 <template>
     <div class="container-fluid mt-3">
-        <router-link to="/players/new"
-                     class="btn btn-success float-right">+ Nový hráč
-        </router-link>
-
-        <h4>Hráči</h4>
+        <div class="row">
+            <div class="col-6">
+                <h4>Hráči</h4>
+            </div>
+            <div class="col-6">
+                <router-link to="/players/new"
+                             class="btn btn-success float-righgt">+ Nový hráč
+                </router-link>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-6">
@@ -17,10 +22,12 @@
                     <tr v-for="player in players"
                         :key="player.id">
                         <td>
-                            <router-link :to="'/players/'+player.id">{{player.name}}</router-link>
+                            <router-link :to="'/players/' + player.id">
+                                {{player.name}}
+                            </router-link>
                         </td>
                         <td>
-                            <router-link to=""
+                            <router-link :to="'/groups/' + player.group.id"
                                          v-if="player.group">{{player.group.name}}
                             </router-link>
                         </td>

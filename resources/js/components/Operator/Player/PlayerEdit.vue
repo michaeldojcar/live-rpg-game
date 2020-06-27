@@ -1,37 +1,49 @@
 <template>
     <div class="container-fluid mt-3">
 
-        <a class="btn btn-primary float-right"
-           @click="submit">Uložit</a>
-        <a class="btn btn-primary float-right"
-           @click="discard">Smazat</a>
-
-        <h4>Úprava hráče</h4>
-
-        <div class="card">
-            <div class="card-body">
+        <div class="row">
+            <div class="col-6">
                 <h4>Úprava hráče</h4>
-                <div class="form-group">
-                    <label>Jméno</label>
-                    <input type="text"
-                           class="form-control"
-                           v-model="player.name">
-                </div>
+            </div>
 
-                <div class="form-group">
-                    <label>Datum narození</label>
-                    <input type="date"
-                           class="form-control"
-                           v-model="player.birth_date">
-                </div>
+            <div class="col-6 text-right">
+                <a class="btn btn-primary"
+                   @click="discard">Smazat</a>
 
-                <div class="form-group">
-                    <label>Skupinka</label>
-                    <select v-model="player.group_id">
-                        <option v-for="group in groups"
-                                :value="group.id">{{group.name}}
-                        </option>
-                    </select>
+                <a class="btn btn-primary ml-2"
+                   @click="submit">Uložit</a>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Úprava hráče</h4>
+                        <div class="form-group">
+                            <label>Jméno</label>
+                            <input type="text"
+                                   class="form-control"
+                                   v-model="player.name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Datum narození</label>
+                            <input type="date"
+                                   class="form-control"
+                                   v-model="player.birth_date">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Skupinka</label>
+                            <select v-model="player.group_id">
+                                <option v-for="group in groups"
+                                        :value="group.id">{{group.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,6 +102,10 @@
             },
 
             discard() {
+                if (!confirm('Opravdu chcete tohoto hráče odstranit ze hry?')) {
+                    return;
+                }
+
                 console.log('Deleting player.');
 
                 axios

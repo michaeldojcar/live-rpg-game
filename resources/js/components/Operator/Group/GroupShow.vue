@@ -5,8 +5,9 @@
                 <h3>{{group.name}}</h3>
                 <p>Skupina hráčů</p>
             </div>
-            <div class="col-6">
-                <router-link :to="'/groups/'+group.id+'/edit'" class="btn btn-primary">
+            <div class="col-6 text-right">
+                <router-link :to="'/groups/'+group.id+'/edit'"
+                             class="btn btn-primary">
                     Upravit skupinu
                 </router-link>
             </div>
@@ -22,10 +23,11 @@
                         <th>Jméno</th>
                     </tr>
 
-                    <tr v-for="player in group.members">
-                        <td>{{player.name}}</td>
+                    <tr v-for="player in group.players">
+                        <td>
+                            <router-link :to="'/players/' + player.id">{{player.name}}</router-link>
+                        </td>
                     </tr>
-
                 </table>
             </div>
             <div class="col-5">

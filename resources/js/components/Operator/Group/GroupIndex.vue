@@ -13,7 +13,7 @@
             <tr v-for="group in groups"
                 :key="group.id">
                 <td>
-                    <router-link :to="'/groups/'+group.id+'/edit'">{{group.name}}</router-link>
+                    <router-link :to="'/groups/' + group.id">{{group.name}}</router-link>
                 </td>
             </tr>
         </table>

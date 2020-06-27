@@ -2133,6 +2133,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "GroupEdit",
   data: function data() {
@@ -2233,6 +2237,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2737,6 +2743,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PlayerEdit",
   data: function data() {
@@ -2776,6 +2794,10 @@ __webpack_require__.r(__webpack_exports__);
     discard: function discard() {
       var _this3 = this;
 
+      if (!confirm('Opravdu chcete tohoto hráče odstranit ze hry?')) {
+        return;
+      }
+
       console.log('Deleting player.');
       axios["delete"]('/api/players/' + this.player.id, {}).then(function (response) {
         console.log("Successfully deleted.");
@@ -2797,6 +2819,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -59308,13 +59337,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
-    _c(
-      "a",
-      { staticClass: "btn btn-primary float-right", on: { click: _vm.submit } },
-      [_vm._v("Uložit")]
-    ),
-    _vm._v(" "),
-    _c("h4", [_vm._v("Úprava skupiny")]),
+    _c("div", { staticClass: "row" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-primary float-right",
+            on: { click: _vm.submit }
+          },
+          [_vm._v("Uložit")]
+        )
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-8" }, [
@@ -59355,7 +59391,16 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6" }, [
+      _c("h4", [_vm._v("Úprava skupiny")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -59403,11 +59448,9 @@ var render = function() {
               _c(
                 "td",
                 [
-                  _c(
-                    "router-link",
-                    { attrs: { to: "/groups/" + group.id + "/edit" } },
-                    [_vm._v(_vm._s(group.name))]
-                  )
+                  _c("router-link", { attrs: { to: "/groups/" + group.id } }, [
+                    _vm._v(_vm._s(group.name))
+                  ])
                 ],
                 1
               )
@@ -59461,7 +59504,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-6" },
+        { staticClass: "col-6 text-right" },
         [
           _c(
             "router-link",
@@ -59486,8 +59529,20 @@ var render = function() {
           [
             _vm._m(0),
             _vm._v(" "),
-            _vm._l(_vm.group.members, function(player) {
-              return _c("tr", [_c("td", [_vm._v(_vm._s(player.name))])])
+            _vm._l(_vm.group.players, function(player) {
+              return _c("tr", [
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: "/players/" + player.id } },
+                      [_vm._v(_vm._s(player.name))]
+                    )
+                  ],
+                  1
+                )
+              ])
             })
           ],
           2
@@ -60091,124 +60146,142 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
-    _c(
-      "a",
-      { staticClass: "btn btn-primary float-right", on: { click: _vm.submit } },
-      [_vm._v("Uložit")]
-    ),
-    _vm._v(" "),
-    _c(
-      "a",
-      {
-        staticClass: "btn btn-primary float-right",
-        on: { click: _vm.discard }
-      },
-      [_vm._v("Smazat")]
-    ),
-    _vm._v(" "),
-    _c("h4", [_vm._v("Úprava hráče")]),
-    _vm._v(" "),
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c("h4", [_vm._v("Úprava hráče")]),
+    _c("div", { staticClass: "row" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6 text-right" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-primary", on: { click: _vm.discard } },
+          [_vm._v("Smazat")]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Jméno")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.player.name,
-                expression: "player.name"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.player.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        _c(
+          "a",
+          { staticClass: "btn btn-primary ml-2", on: { click: _vm.submit } },
+          [_vm._v("Uložit")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", [_vm._v("Úprava hráče")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Jméno")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.player.name,
+                    expression: "player.name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.player.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.player, "name", $event.target.value)
+                  }
                 }
-                _vm.$set(_vm.player, "name", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Datum narození")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.player.birth_date,
-                expression: "player.birth_date"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "date" },
-            domProps: { value: _vm.player.birth_date },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Datum narození")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.player.birth_date,
+                    expression: "player.birth_date"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "date" },
+                domProps: { value: _vm.player.birth_date },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.player, "birth_date", $event.target.value)
+                  }
                 }
-                _vm.$set(_vm.player, "birth_date", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Skupinka")]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Skupinka")]),
+              _vm._v(" "),
+              _c(
+                "select",
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.player.group_id,
-                  expression: "player.group_id"
-                }
-              ],
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.player,
-                    "group_id",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                }
-              }
-            },
-            _vm._l(_vm.groups, function(group) {
-              return _c("option", { domProps: { value: group.id } }, [
-                _vm._v(_vm._s(group.name) + "\n                    ")
-              ])
-            }),
-            0
-          )
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.player.group_id,
+                      expression: "player.group_id"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.player,
+                        "group_id",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.groups, function(group) {
+                  return _c("option", { domProps: { value: group.id } }, [
+                    _vm._v(
+                      _vm._s(group.name) + "\n                            "
+                    )
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6" }, [
+      _c("h4", [_vm._v("Úprava hráče")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -60230,71 +60303,91 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container-fluid mt-3" },
-    [
+  return _c("div", { staticClass: "container-fluid mt-3" }, [
+    _c("div", { staticClass: "row" }, [
+      _vm._m(0),
+      _vm._v(" "),
       _c(
-        "router-link",
-        {
-          staticClass: "btn btn-success float-right",
-          attrs: { to: "/players/new" }
-        },
-        [_vm._v("+ Nový hráč\n    ")]
-      ),
-      _vm._v(" "),
-      _c("h4", [_vm._v("Hráči")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-6" }, [
+        "div",
+        { staticClass: "col-6" },
+        [
           _c(
-            "table",
-            { staticClass: "table mt-4" },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._l(_vm.players, function(player) {
-                return _c("tr", { key: player.id }, [
-                  _c(
-                    "td",
-                    [
-                      _c(
-                        "router-link",
-                        { attrs: { to: "/players/" + player.id } },
-                        [_vm._v(_vm._s(player.name))]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "td",
-                    [
-                      player.group
-                        ? _c("router-link", { attrs: { to: "" } }, [
+            "router-link",
+            {
+              staticClass: "btn btn-success float-righgt",
+              attrs: { to: "/players/new" }
+            },
+            [_vm._v("+ Nový hráč\n            ")]
+          )
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c(
+          "table",
+          { staticClass: "table mt-4" },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._l(_vm.players, function(player) {
+              return _c("tr", { key: player.id }, [
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: "/players/" + player.id } },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(player.name) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  [
+                    player.group
+                      ? _c(
+                          "router-link",
+                          { attrs: { to: "/groups/" + player.group.id } },
+                          [
                             _vm._v(
                               _vm._s(player.group.name) +
                                 "\n                        "
                             )
-                          ])
-                        : _vm._e()
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(player.age))])
-                ])
-              })
-            ],
-            2
-          )
-        ])
+                          ]
+                        )
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(player.age))])
+              ])
+            })
+          ],
+          2
+        )
       ])
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6" }, [_c("h4", [_vm._v("Hráči")])])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
