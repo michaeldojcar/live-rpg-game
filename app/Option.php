@@ -36,7 +36,13 @@ class Option extends Model
      */
     public static function setValue(string $key, ?string $value): bool
     {
-        $option = Option::where('key', $key)->firstOrNew();
+        $option = Option::where('key', $key)->first();
+
+        if ( ! $option)
+        {
+            $option      = new Option();
+            $option->key = $key;
+        }
 
         $option->value = $value;
         $option->save();
