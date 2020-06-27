@@ -2722,13 +2722,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PlayerEdit",
   data: function data() {
     return {
       // name: null,
       // birth_date: null
-      player: {}
+      player: {},
+      groups: []
     };
   },
   mounted: function mounted() {
@@ -2739,9 +2755,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/players/' + this.$route.params.id).then(function (response) {
-        // console.log(response.data);
-        _this.player = response.data; // this.name = response.data.name;
-        // this.birth_date = response.data.birth_date;
+        _this.player = response.data;
+      });
+      axios.get('/api/groups').then(function (response) {
+        _this.groups = response.data;
       });
     },
     submit: function submit() {
@@ -60030,6 +60047,47 @@ var render = function() {
               }
             }
           })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v("Skupinka")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.player.group_id,
+                  expression: "player.group_id"
+                }
+              ],
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.player,
+                    "group_id",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            _vm._l(_vm.groups, function(group) {
+              return _c("option", { domProps: { value: group.id } }, [
+                _vm._v(_vm._s(group.name) + "\n                    ")
+              ])
+            }),
+            0
+          )
         ])
       ])
     ])

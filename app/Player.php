@@ -45,7 +45,7 @@ class Player extends Model
 
     public function group()
     {
-        return $this->belongsToMany(Group::class)->first();
+        return $this->belongsTo(Group::class);
     }
 
     /**
