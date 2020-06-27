@@ -27,7 +27,7 @@ Route::post('/player/{player}/quest/{quest}/failed', 'RoleInterfaceController@se
  * Operator API routes
  */
 Route::get('/overview', 'OperatorController@overview');
-Route::get('/map', 'RoleController@mapIndex');
+Route::get('/map', 'MapController@mapIndex');
 
 Route::apiResource('roles', 'RoleController');
 Route::apiResource('players', 'PlayerController');

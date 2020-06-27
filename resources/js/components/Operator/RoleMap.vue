@@ -4,16 +4,28 @@
             <div class="col-2 mt-3">
                 <h4>Mapa hry</h4>
 
-                <a class="btn btn-outline-secondary btn-sm mb-2" @click="resetPosition">Zaměřit areál hry</a>
+                <a class="btn btn-outline-secondary btn-sm mb-2"
+                   @click="resetPosition">Zaměřit areál hry</a>
 
                 <br>
                 <h5 class="d-inline-block">Aktivní postavy</h5>
                 <span class="badge badge-success">{{roles.length}}</span>
 
-                <table>
-                    <tr v-for="role in roles" :key="role.id">
+                <table class="table">
+                    <tr v-for="role in roles"
+                        :key="role.id">
                         <td class="pr-3">{{role.name }}</td>
                         <td class="font-italic">{{role.real_name}}</td>
+                    </tr>
+                </table>
+
+                <h5 class="d-inline-block">Aktivní hráči</h5>
+                <span class="badge badge-success">{{players.length}}</span>
+
+                <table class="table">
+                    <tr v-for="player in players"
+                        :key="player.id">
+                        <td class="pr-3">{{player.name }}</td>
                     </tr>
                 </table>
             </div>
@@ -39,10 +51,18 @@
 
                     <l-marker v-if="roles.length"
                               v-for="role in roles"
-                              :latLng="role.latlong"
+                              :latLng="[role.latitude, role.longitude]"
                               :key="role.id"
                               name="sss">
-                        <l-popup>{{role.name }} - {{role.real_name}}</l-popup>
+                        <l-popup>Postava: {{role.name }} - {{role.real_name}}</l-popup>
+                    </l-marker>
+
+                    <l-marker v-if="player.length"
+                              v-for="player in players"
+                              :latLng="[player.latitude, player.longitude]"
+                              :key="player.id + 1000"
+                              name="s">
+                        <l-popup>Hráč {{player.name }}</l-popup>
                     </l-marker>
                 </l-map>
             </div>
@@ -51,7 +71,7 @@
 </template>
 
 <script>
-    import {LMap, LTileLayer, LMarker, LPopup, LControlLayers} from 'vue2-leaflet';
+    import {LControlLayers, LMap, LMarker, LPopup, LTileLayer} from 'vue2-leaflet';
 
 
     export default {
@@ -69,7 +89,7 @@
                 tileProviders: [
                     {
                         name: 'OpenStreetMap FR',
-                        visible: true,
+                        visible: false,
                         attribution: '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
                         url: 'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png'
                     },
@@ -81,7 +101,7 @@
                     },
                     {
                         name: 'OpenStreetMap.org',
-                        visible: false,
+                        visible: true,
                         attribution: '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
                         url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                     },
@@ -106,6 +126,7 @@
 
                 fetchInterval: null,
                 roles: [],
+                players: [],
             };
         },
 
@@ -135,7 +156,8 @@
                     .then(response => {
                         console.log(response.data);
 
-                        this.roles = response.data;
+                        this.roles = response.data.roles;
+                        this.players = response.data.players;
                     });
             },
 
@@ -146,7 +168,8 @@
     }
 </script>
 
-<style scoped lang="scss">
+<style scoped
+       lang="scss">
     .text-black {
         p, a {
             color: black !important;

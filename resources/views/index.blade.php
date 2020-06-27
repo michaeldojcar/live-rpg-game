@@ -25,7 +25,7 @@
 
 <body>
 <div class="container mt-5">
-    <h1>Rozhraní hry</h1>
+    <h1>Rozhraní LARP hry</h1>
 
     <div class="card mb-2">
         <div class="card-header">Přihlášení postavy</div>

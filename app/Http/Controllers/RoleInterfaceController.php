@@ -67,10 +67,11 @@ class RoleInterfaceController extends Controller
                         ->where('color_3', $color_3)
                         ->firstOrFail();
 
-        $player->refreshLastSeen();
-
         // Find role
         $role = Role::findOrFail($role_id);
+
+        $player->refreshLastSeen();
+        $player->refreshLocationAtRole($role);
 
         // Log player logged at the person
         $lr = new LogRepository();

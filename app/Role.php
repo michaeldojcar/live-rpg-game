@@ -48,7 +48,7 @@ class Role extends Model
      */
     public function getIsOnlineAttribute()
     {
-        return $this->last_seen > Carbon::now()->subSeconds(20);
+        return $this->last_seen > Carbon::now()->subSeconds(35);
     }
 
     public function quests()

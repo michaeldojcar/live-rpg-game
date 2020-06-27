@@ -10,7 +10,6 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class PlayerController extends Controller
@@ -22,7 +21,9 @@ class PlayerController extends Controller
 
     public function show($id)
     {
-        $player = Player::findOrFail($id);
+        $player = Player::findOrFail($id)
+                        ->load(['group'])
+                        ->append(['is_online']);
 
         return $player;
     }
@@ -100,7 +101,7 @@ class PlayerController extends Controller
 
         $player->name       = $request->input('name');
         $player->birth_date = $birth_date;
-        $player->group_id = $request->input('group_id');
+        $player->group_id   = $request->input('group_id');
         $player->save();
 
         return response($player, Response::HTTP_OK);

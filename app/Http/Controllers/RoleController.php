@@ -19,32 +19,6 @@ class RoleController extends Controller
         return Role::withCount(['quests'])->get()->values();
     }
 
-    /**
-     * Roles for OSM map view.
-     *
-     * @return string
-     */
-    public function mapIndex()
-    {
-        $roles = Role::all()->map(function ($role)
-        {
-            $role->latlong = [$role->latitude, $role->longitude];
-
-            return $role;
-        });
-
-        $roles = $roles->filter(function (Role $role)
-        {
-
-
-            $valid_coords = $role->latitude && $role->longitude;
-
-            return $valid_coords && $role->getIsOnlineAttribute();
-        });
-
-        return $roles->values();
-    }
-
     public function store(Request $request)
     {
         $role                    = new Role();

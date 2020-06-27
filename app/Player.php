@@ -10,8 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * Class Person
- * 1 hráč hry
+ * Class Player
  *
  * @package App
  * @property int $id
@@ -43,8 +42,11 @@ class Player extends Model
 {
     protected $dates = [
         'birth_date',
-        'last_seen'
+        'last_seen',
+
     ];
+
+    protected $appends = ['age', 'last_seen_string'];
 
     public function group()
     {
@@ -94,19 +96,40 @@ class Player extends Model
         return $this->birth_date->diffInYears();
     }
 
-    protected $appends = ['age'];
+    public function getLastSeenStringAttribute()
+    {
+        return $this->last_seen->diffForHumans();
+    }
+
 
     /**
      * Check if role is online.
      */
     public function isOnline()
     {
-        return $this->last_seen > Carbon::now()->subSeconds(20);
+        return $this->last_seen > Carbon::now()->subSeconds(120);
+    }
+
+    public function getIsOnlineAttribute()
+    {
+        return $this->last_seen > Carbon::now()->subSeconds(120);
     }
 
     public function refreshLastSeen()
     {
         $this->last_seen = Carbon::now();
+        $this->save();
+    }
+
+    public function refreshLocationAtRole(Role $role)
+    {
+        if ( ! $role->latitude || ! $role->longitude)
+        {
+            return;
+        }
+
+        $this->latitude  = $role->latitude;
+        $this->longitude = $role->longitude;
         $this->save();
     }
 
