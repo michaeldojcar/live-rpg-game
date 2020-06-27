@@ -98,6 +98,11 @@ class Player extends Model
 
     public function getLastSeenStringAttribute()
     {
+        if ( ! $this->last_seen)
+        {
+            return null;
+        }
+
         return $this->last_seen->diffForHumans();
     }
 
