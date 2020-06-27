@@ -4,7 +4,7 @@
             <div class="col-6">
                 <h4>Hráči</h4>
             </div>
-            <div class="col-6">
+            <div class="col-6 text-right">
                 <router-link to="/players/new"
                              class="btn btn-success float-righgt">+ Nový hráč
                 </router-link>

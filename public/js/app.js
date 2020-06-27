@@ -3301,6 +3301,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Role_RewardCash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Role/RewardCash */ "./resources/js/components/Role/RewardCash.vue");
 //
 //
 //
@@ -3331,19 +3332,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoleIndex",
+  components: {
+    RewardCash: _Role_RewardCash__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       quests: []
@@ -60395,7 +60389,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-6" },
+        { staticClass: "col-6 text-right" },
         [
           _c(
             "router-link",
@@ -61419,48 +61413,44 @@ var render = function() {
     _vm._v(" "),
     _c("h4", [_vm._v("Questy")]),
     _vm._v(" "),
-    _c("div", { staticClass: "alert alert-primary mt-3 w-50" }, [
-      _vm._v(
-        "\n        Zobrazeny jsou pouze mateřské questy, pod-questy lze načíst pod jednotlivými mateřskými questy.\n    "
-      )
-    ]),
-    _vm._v(" "),
-    _c("table", { staticClass: "w-50 table mt-4" }, [
-      _c(
-        "div",
-        { staticStyle: { padding: "10px 15px" } },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._l(_vm.quests, function(quest) {
-            return _c("tr", { key: quest.id }, [
-              _c(
-                "td",
-                [
-                  _c(
-                    "router-link",
-                    { attrs: { to: "/quests/" + quest.id + "/edit" } },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(quest.name) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("td"),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(quest.owner.name))])
-            ])
-          })
-        ],
-        2
-      )
-    ])
+    _c(
+      "table",
+      { staticClass: "table mt-4" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.quests, function(quest) {
+          return _c("tr", { key: quest.id }, [
+            _c(
+              "td",
+              [
+                _c(
+                  "router-link",
+                  { attrs: { to: "/quests/" + quest.id + "/edit" } },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(quest.name) +
+                        "\n                "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(quest.owner.name))]),
+            _vm._v(" "),
+            _c(
+              "td",
+              [_c("reward-cash", { attrs: { cash: quest.reward_cash } })],
+              1
+            )
+          ])
+        })
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = [
@@ -61468,28 +61458,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", { staticClass: "w-100" }, [
-      _c(
-        "th",
-        {
-          staticClass: "w-50",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Jméno\n                ")]
-      ),
+    return _c("tr", [
+      _c("th", [_vm._v("Jméno")]),
       _vm._v(" "),
-      _c("th", { staticStyle: { border: "none" }, attrs: { scope: "col" } }),
+      _c("th", [_vm._v("Postava")]),
       _vm._v(" "),
-      _c(
-        "th",
-        {
-          staticClass: "w-50",
-          staticStyle: { border: "none" },
-          attrs: { scope: "col" }
-        },
-        [_vm._v("Postava\n                ")]
-      )
+      _c("th", [_vm._v("Peníze")])
     ])
   }
 ]

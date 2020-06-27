@@ -6,43 +6,33 @@
 
         <h4>Questy</h4>
 
-        <div class="alert alert-primary mt-3 w-50">
-            Zobrazeny jsou pouze mateřské questy, pod-questy lze načíst pod jednotlivými mateřskými questy.
-        </div>
-
-        <table class="w-50 table mt-4">
-            <div style="padding: 10px 15px">
-                <tr class="w-100">
-                    <th scope="col"
-                        class="w-50"
-                        style="border: none">Jméno
-                    </th>
-                    <th scope="col"
-                        style="border: none"></th>
-                    <th scope="col"
-                        class="w-50"
-                        style="border: none">Postava
-                    </th>
-                </tr>
-                <tr v-for="quest in quests"
-                    :key="quest.id">
-                    <td>
-                        <router-link :to="'/quests/'+quest.id+'/edit'">
-                            {{quest.name}}
-                        </router-link>
-                    </td>
-                    <td></td>
-                    <td>{{quest.owner.name}}</td>
-                </tr>
-            </div>
+        <table class="table mt-4">
+            <tr>
+                <th>Jméno</th>
+                <th>Postava</th>
+                <th>Peníze</th>
+            </tr>
+            <tr v-for="quest in quests"
+                :key="quest.id">
+                <td>
+                    <router-link :to="'/quests/'+quest.id+'/edit'">
+                        {{quest.name}}
+                    </router-link>
+                </td>
+                <td>{{quest.owner.name}}</td>
+                <td>
+                    <reward-cash :cash="quest.reward_cash"></reward-cash>
+                </td>
+            </tr>
         </table>
     </div>
 </template>
 
 <script>
+    import RewardCash from "../../Role/RewardCash";
     export default {
         name: "RoleIndex",
-
+        components: {RewardCash},
         data: () => {
             return {
                 quests: [],

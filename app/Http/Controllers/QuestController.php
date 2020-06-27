@@ -14,7 +14,7 @@ class QuestController extends Controller
 {
     public function index()
     {
-        return Quest::with(['owner'])->where('parent_quest_id', null)->get();
+        return Quest::with(['owner'])->get()->each->append(['chain_quests']);
     }
 
     public function store(Request $request)
