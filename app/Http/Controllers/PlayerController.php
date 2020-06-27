@@ -17,7 +17,7 @@ class PlayerController extends Controller
 {
     public function index()
     {
-        return Player::all();
+        return Player::all()->load(['group']);
     }
 
     public function show($id)

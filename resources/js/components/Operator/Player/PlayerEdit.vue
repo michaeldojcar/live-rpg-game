@@ -82,9 +82,9 @@
                     .patch('/api/players/' + this.player.id, {
                         name: this.player.name,
                         birth_date: this.player.birth_date,
+                        group_id: this.player.group_id,
                     })
                     .then(response => {
-                        console.log("Successfully updated.");
                         this.$router.push('/players');
                     });
             },
