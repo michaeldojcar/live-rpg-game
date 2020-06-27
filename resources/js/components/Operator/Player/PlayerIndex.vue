@@ -13,7 +13,8 @@
                 </tr>
                 <tr v-for="player in players" :key="player.id">
                     <td>
-                        <router-link :to="'/players/'+player.id+'/edit'">{{player.name}}</router-link>
+<!--                        <router-link :to="'/players/'+player.id+'/edit'">{{player.name}}</router-link>-->
+                        <router-link :to="'/players/' + player.id">{{player.name}}</router-link>
                     </td>
                     <td></td>
                     <td>{{player.age}}</td>

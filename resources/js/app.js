@@ -48,6 +48,7 @@ import QuestGroupEdit from "./components/Operator/QuestGroup/QuestGroupEdit";
 import Options from "./components/Operator/Options";
 import RoleShow from "./components/Operator/Role/RoleShow";
 import GroupShow from "./components/Operator/Group/GroupShow";
+import PlayerShow from "./components/Operator/Player/PlayerShow";
 
 // this part resolve an issue where the markers would not appear
 delete Icon.Default.prototype._getIconUrl;
@@ -75,6 +76,7 @@ const router = new VueRouter({
 
         {path: '/players', component: PlayerIndex},
         {path: '/players/new', component: PlayerCreate},
+        {path: '/players/:id', component: PlayerShow},
         {path: '/players/:id/edit', component: PlayerEdit},
 
         {path: '/groups', component: GroupIndex},
