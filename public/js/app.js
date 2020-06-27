@@ -3218,6 +3218,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "QuestEdit",
   data: function data() {
@@ -3275,16 +3308,21 @@ __webpack_require__.r(__webpack_exports__);
     destroy: function destroy() {
       var _this4 = this;
 
-      if (!confirm("Do you really want to delete?")) {
+      if (!confirm("Opravdu chcete odstranit tento quest?")) {
         return false;
       }
 
       axios["delete"]('/api/quests/' + this.$route.params.id).then(function (response) {
-        console.log(response.data);
+        console.log(response.data); // Deleting sub-quest
 
-        _this4.$router.push('/quests/' + response.data.parent_quest_id + '/edit');
+        if (_this4.quest.parent_quest_id) {
+          _this4.$router.push('/quests/' + response.data.parent_quest_id + '/edit');
 
-        _this4.refresh();
+          _this4.refresh();
+        } // Deleting mother quest
+        else {
+            _this4.$router.push('/quests');
+          }
       });
     }
   }
@@ -60788,16 +60826,14 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
-    _vm.quest.parent_quest_id
-      ? _c(
-          "a",
-          {
-            staticClass: "btn btn-primary float-right",
-            on: { click: _vm.destroy }
-          },
-          [_vm._v("Odebrat")]
-        )
-      : _vm._e(),
+    _c(
+      "a",
+      {
+        staticClass: "btn btn-primary float-right",
+        on: { click: _vm.destroy }
+      },
+      [_vm._v("Odebrat")]
+    ),
     _vm._v(" "),
     _c(
       "a",
@@ -60832,7 +60868,7 @@ var render = function() {
                 [
                   !q.parent_quest_id
                     ? _c("div", { staticClass: "card-header" }, [
-                        _vm._v("Mateřský quest")
+                        _vm._v("Mateřský quest\n                    ")
                       ])
                     : _vm._e(),
                   _vm._v(" "),
@@ -61259,7 +61295,7 @@ var render = function() {
                 },
                 _vm._l(_vm.roles, function(role) {
                   return _c("option", { domProps: { value: role.id } }, [
-                    _vm._v(_vm._s(role.name))
+                    _vm._v(_vm._s(role.name) + "\n                            ")
                   ])
                 }),
                 0
@@ -61304,7 +61340,9 @@ var render = function() {
                     },
                     _vm._l(_vm.quest_groups, function(group) {
                       return _c("option", { domProps: { value: group.id } }, [
-                        _vm._v(_vm._s(group.name))
+                        _vm._v(
+                          _vm._s(group.name) + "\n                            "
+                        )
                       ])
                     }),
                     0

@@ -1,20 +1,26 @@
 <template>
     <div class="container-fluid mt-3">
-        <a class="btn btn-primary float-right" @click="destroy" v-if="quest.parent_quest_id">Odebrat</a>
+        <a class="btn btn-primary float-right"
+           @click="destroy">Odebrat</a>
 
         <a class="btn btn-primary float-right"
            @click="submit">Uložit</a>
 
-        <h4 class="mb-3" v-if="quest.parent_quest_id">Pod-quest: {{quest.name}}</h4>
-        <h4 class="mb-3" v-else>Quest: {{quest.name}}</h4>
+        <h4 class="mb-3"
+            v-if="quest.parent_quest_id">Pod-quest: {{quest.name}}</h4>
+        <h4 class="mb-3"
+            v-else>Quest: {{quest.name}}</h4>
 
 
         <div class="row">
             <div class="col-2">
-                <div v-for="q in quest.chain_quests" v-bind:key="q.id">
+                <div v-for="q in quest.chain_quests"
+                     v-bind:key="q.id">
                     <div class="card mb-2 mt-2"
                          :class="{'text-white bg-success': !q.parent_quest_id, 'text-white bg-light': q.parent_quest_id}">
-                        <div class="card-header" v-if="!q.parent_quest_id">Mateřský quest</div>
+                        <div class="card-header"
+                             v-if="!q.parent_quest_id">Mateřský quest
+                        </div>
                         <div class="card-body">
                             <small class="text-muted"></small>
                             <router-link
@@ -30,7 +36,8 @@
                 </div>
                 <div class="card my-2"
                      style="border: 1px dashed white !important; background-color: transparent!important;">
-                    <div class="card-body" @click="createSubRequest"
+                    <div class="card-body"
+                         @click="createSubRequest"
                          style="box-shadow: inset 0 0 0 transparent; padding: 10px">
                         Přidat nový pod-quest
                     </div>
@@ -45,12 +52,16 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Název</label>
-                            <input class="form-control" v-model="quest.name" title="">
+                            <input class="form-control"
+                                   v-model="quest.name"
+                                   title="">
                         </div>
 
                         <div class="form-group">
                             <label>Zadání</label>
-                            <textarea class="form-control" v-model="quest.description" title=""/>
+                            <textarea class="form-control"
+                                      v-model="quest.description"
+                                      title=""/>
                         </div>
 
 
@@ -100,17 +111,24 @@
 
                         <div class="form-group">
                             <label>Stříbrňáky</label>
-                            <input type="number" class="form-control" v-model="quest.reward_cash" title="">
+                            <input type="number"
+                                   class="form-control"
+                                   v-model="quest.reward_cash"
+                                   title="">
                         </div>
 
                         <div class="form-group">
                             <label>Informace</label>
-                            <textarea class="form-control" v-model="quest.reward_knowledge" title=""/>
+                            <textarea class="form-control"
+                                      v-model="quest.reward_knowledge"
+                                      title=""/>
                         </div>
 
                         <div class="form-group">
                             <label>Odemknutí tajného questu</label>
-                            <input class="form-control" v-model="quest.reward_quest_unlock_id" title="">
+                            <input class="form-control"
+                                   v-model="quest.reward_quest_unlock_id"
+                                   title="">
                         </div>
                     </div>
                 </div>
@@ -122,26 +140,41 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Postava</label>
-                            <select class="form-control" v-model="quest.quest_owner_id">
-                                <option v-for="role in roles" :value="role.id">{{role.name}}</option>
+                            <select class="form-control"
+                                    v-model="quest.quest_owner_id">
+                                <option v-for="role in roles"
+                                        :value="role.id">{{role.name}}
+                                </option>
                             </select>
                         </div>
 
-                        <div class="form-group" v-if="!quest.parent_quest_id">
+                        <div class="form-group"
+                             v-if="!quest.parent_quest_id">
                             <label>Větev questů</label>
-                            <select class="form-control" v-model="quest.quest_group_id">
-                                <option v-for="group in quest_groups" :value="group.id">{{group.name}}</option>
+                            <select class="form-control"
+                                    v-model="quest.quest_group_id">
+                                <option v-for="group in quest_groups"
+                                        :value="group.id">{{group.name}}
+                                </option>
                             </select>
                         </div>
 
-                        <div class="form-group" v-if="!quest.parent_quest_id">
+                        <div class="form-group"
+                             v-if="!quest.parent_quest_id">
                             <label>Minimální věk</label>
-                            <input type="number" class="form-control" v-model="quest.age_from" title="">
+                            <input type="number"
+                                   class="form-control"
+                                   v-model="quest.age_from"
+                                   title="">
                         </div>
 
-                        <div class="form-group" v-if="!quest.parent_quest_id">
+                        <div class="form-group"
+                             v-if="!quest.parent_quest_id">
                             <label>Maximální věk</label>
-                            <input type="number" class="form-control" v-model="quest.age_to" title="">
+                            <input type="number"
+                                   class="form-control"
+                                   v-model="quest.age_to"
+                                   title="">
                         </div>
                     </div>
                 </div>
@@ -216,7 +249,7 @@
             },
 
             destroy() {
-                if (!confirm("Do you really want to delete?")) {
+                if (!confirm("Opravdu chcete odstranit tento quest?")) {
                     return false;
                 }
 
@@ -225,9 +258,16 @@
                     .then(response => {
                         console.log(response.data);
 
-                        this.$router.push('/quests/' + response.data.parent_quest_id + '/edit')
+                        // Deleting sub-quest
+                        if (this.quest.parent_quest_id) {
+                            this.$router.push('/quests/' + response.data.parent_quest_id + '/edit')
 
-                        this.refresh();
+                            this.refresh();
+                        }
+                        // Deleting mother quest
+                        else {
+                            this.$router.push('/quests');
+                        }
                     });
             }
         }
