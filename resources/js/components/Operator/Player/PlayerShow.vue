@@ -2,11 +2,27 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-1 my-auto">
+                <button class="btn btn-color bg-danger text-danger w-100" v-if="player.color_1 === 1">.</button>
+                <button class="btn btn-color bg-primary text-primary w-100" v-if="player.color_1 === 2">.</button>
+                <button class="btn btn-color bg-success text-success w-100" v-if="player.color_1 === 3">.</button>
+                <button class="btn btn-color bg-warning text-warning w-100" v-if="player.color_1 === 4">.</button>
+                <br>
+                <button class="btn btn-color bg-danger text-danger  w-100" v-if="player.color_2 === 1">.</button>
+                <button class="btn btn-color bg-primary text-primary w-100" v-if="player.color_2 === 2">.</button>
+                <button class="btn btn-color bg-success text-success w-100" v-if="player.color_2 === 3">.</button>
+                <button class="btn btn-color bg-warning text-warning w-100" v-if="player.color_2 === 4">.</button>
+                <br>
+                <button class="btn btn-color bg-danger text-danger  w-100" v-if="player.color_3 === 1">.</button>
+                <button class="btn btn-color bg-primary text-primary w-100" v-if="player.color_3 === 2">.</button>
+                <button class="btn btn-color bg-success text-success w-100" v-if="player.color_3 === 3">.</button>
+                <button class="btn btn-color bg-warning text-warning w-100" v-if="player.color_3 === 4">.</button>
+            </div>
+            <div class="col-6 my-auto">
                 <h3>{{ player.name }}</h3>
                 <p>Skupinka</p>
             </div>
-            <div class="col-6 text-right">
+            <div class="col-5 text-right">
                 <router-link :to="'/players/' + player.id + '/edit'"
                              class="btn btn-primary">Upravit postavu
                 </router-link>
@@ -14,7 +30,7 @@
         </div>
 
 
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-header">Informace o hráči</div>
@@ -57,15 +73,15 @@
                 </div>
             </div>
 
-<!--            <div class="col-sm-6">-->
-<!--                <div class="card">-->
-<!--                    <div class="card-body">-->
-<!--                        <single-point-map v-if="role.latitude && role.longitude"-->
-<!--                                          :latitude="role.latitude"-->
-<!--                                          :longitude="role.longitude"/>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+            <!--            <div class="col-sm-6">-->
+            <!--                <div class="card">-->
+            <!--                    <div class="card-body">-->
+            <!--                        <single-point-map v-if="role.latitude && role.longitude"-->
+            <!--                                          :latitude="role.latitude"-->
+            <!--                                          :longitude="role.longitude"/>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
         </div>
     </div>
 </template>

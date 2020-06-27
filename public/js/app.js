@@ -2817,6 +2817,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // import SinglePointMap from "../Components/SinglePointMap";
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PlayerShow",
@@ -59952,7 +59968,109 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-6" }, [
+      _c("div", { staticClass: "col-1 my-auto" }, [
+        _vm.player.color_1 === 1
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-danger text-danger w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_1 === 2
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-primary text-primary w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_1 === 3
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-success text-success w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_1 === 4
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-warning text-warning w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _vm.player.color_2 === 1
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-danger text-danger  w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_2 === 2
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-primary text-primary w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_2 === 3
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-success text-success w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_2 === 4
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-warning text-warning w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _vm.player.color_3 === 1
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-danger text-danger  w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_3 === 2
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-primary text-primary w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_3 === 3
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-success text-success w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.player.color_3 === 4
+          ? _c(
+              "button",
+              { staticClass: "btn btn-color bg-warning text-warning w-100" },
+              [_vm._v(".")]
+            )
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6 my-auto" }, [
         _c("h3", [_vm._v(_vm._s(_vm.player.name))]),
         _vm._v(" "),
         _c("p", [_vm._v("Skupinka")])
@@ -59960,7 +60078,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-6 text-right" },
+        { staticClass: "col-5 text-right" },
         [
           _c(
             "router-link",
@@ -59968,14 +60086,14 @@ var render = function() {
               staticClass: "btn btn-primary",
               attrs: { to: "/players/" + _vm.player.id + "/edit" }
             },
-            [_vm._v("Upravit postavu\n                ")]
+            [_vm._v("Upravit postavu\n            ")]
           )
         ],
         1
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row mt-4" }, [
       _c("div", { staticClass: "col-sm-6" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
