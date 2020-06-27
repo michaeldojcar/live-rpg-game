@@ -17,7 +17,7 @@
                    :key="mother_quest.id">
 
             <tr v-for="quest in mother_quest.chain_quests" :key="quest.id">
-                <td>
+                <td :class="{'pl-5': quest.parent_quest_id}">
                     <router-link :to="'/quests/'+quest.id+'/edit'">
                         {{quest.name}}
                     </router-link>

@@ -61433,6 +61433,7 @@ var render = function() {
               return _c("tr", { key: quest.id }, [
                 _c(
                   "td",
+                  { class: { "pl-5": quest.parent_quest_id } },
                   [
                     _c(
                       "router-link",
