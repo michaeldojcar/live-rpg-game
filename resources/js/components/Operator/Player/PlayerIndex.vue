@@ -1,26 +1,35 @@
 <template>
     <div class="container-fluid mt-3">
-        <router-link to="/players/new" class="btn btn-success float-right">+ Nový hráč</router-link>
+        <router-link to="/players/new"
+                     class="btn btn-success float-right">+ Nový hráč
+        </router-link>
 
         <h4>Hráči</h4>
 
-        <table class="w-50 table mt-4">
-            <div style="padding: 10px 15px">
-                <tr class="w-100">
-                    <th scope="col" class="w-75" style="border: none">Jméno</th>
-                    <th scope="col" style="border: none"></th>
-                    <th scope="col" class="w-50" style="border: none">Věk</th>
-                </tr>
-                <tr v-for="player in players" :key="player.id">
-                    <td>
-<!--                        <router-link :to="'/players/'+player.id+'/edit'">{{player.name}}</router-link>-->
-                        <router-link :to="'/players/' + player.id">{{player.name}}</router-link>
-                    </td>
-                    <td></td>
-                    <td>{{player.age}}</td>
-                </tr>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table mt-4">
+                    <tr>
+                        <th>Jméno</th>
+                        <th>Skupina</th>
+                        <th>Věk</th>
+                    </tr>
+                    <tr v-for="player in players"
+                        :key="player.id">
+                        <td>
+                            <router-link :to="'/players/'+player.id">{{player.name}}</router-link>
+                        </td>
+                        <td>
+                            <router-link to=""
+                                         v-if="player.group">{{player.group.name}}
+                            </router-link>
+                        </td>
+                        <td>{{player.age}}</td>
+                    </tr>
+                </table>
             </div>
-        </table>
+        </div>
+
     </div>
 </template>
 

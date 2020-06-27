@@ -26,6 +26,6 @@ class Group extends Model
 {
     public function players()
     {
-       return $this->belongsToMany(Player::class);
+       return $this->hasMany(Player::class);
     }
 }

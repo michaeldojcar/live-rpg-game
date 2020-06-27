@@ -17,7 +17,7 @@ class PlayerController extends Controller
 {
     public function index()
     {
-        return Player::all();
+        return Player::all()->load(['group']);
     }
 
     public function show($id)
@@ -100,6 +100,7 @@ class PlayerController extends Controller
 
         $player->name       = $request->input('name');
         $player->birth_date = $birth_date;
+        $player->group_id = $request->input('group_id');
         $player->save();
 
         return response($player, Response::HTTP_OK);
