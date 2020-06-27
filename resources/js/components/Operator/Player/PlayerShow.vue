@@ -24,7 +24,7 @@
             </div>
             <div class="col-5 text-right">
                 <router-link :to="'/players/' + player.id + '/edit'"
-                             class="btn btn-primary">Upravit postavu
+                             class="btn btn-primary">Upravit hráče
                 </router-link>
             </div>
         </div>
