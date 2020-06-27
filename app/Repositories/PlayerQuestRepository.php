@@ -10,16 +10,36 @@ use App\Quest;
 
 class PlayerQuestRepository
 {
-    public function setUserQuestState(Quest $quest, Player $player, int $status)
+    /**
+     * Set status to player quest intermediate record.
+     *
+     * @param  Quest  $quest
+     * @param  Player  $player
+     * @param  int  $status
+     *
+     * @return PlayerQuest
+     */
+    public function setUserQuestState(Quest $quest, Player $player, int $status): PlayerQuest
     {
-        $player_quest         = $this->getQuestState($quest, $player);
-        $player_quest->status = $status;
-        $player_quest->save();
+        $quest_state         = $this->getQuestState($quest, $player);
+        $quest_state->status = $status;
+        $quest_state->save();
+
+        return $quest_state;
     }
 
     public function getQuestState(Quest $quest, Player $player): PlayerQuest
     {
-        return PlayerQuest::where('player_id', $player->id)->where('quest_id', $quest->id)->firstOrFail();
+        $quest_state = PlayerQuest::where('player_id', $player->id)->where('quest_id', $quest->id)->first();
+
+        if(! $quest_state)
+        {
+            $quest_state = new PlayerQuest();
+            $quest_state->player_id = $player->id;
+            $quest_state->quest_id = $quest->id;
+        }
+
+        return  $quest_state;
     }
 
     /**

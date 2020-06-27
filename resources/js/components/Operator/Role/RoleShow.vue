@@ -26,11 +26,6 @@
                             </tr>
 
                             <tr>
-                                <td>Stav</td>
-                                <td>{{role.is_online}}</td>
-                            </tr>
-
-                            <tr>
                                 <td>Příběh</td>
                                 <td>{{role.story}}</td>
                             </tr>
@@ -75,6 +70,20 @@
             <div class="col-sm-5">
                 <div class="card">
                     <div class="card-body">
+                        <table class="table">
+                            <tr>
+                                <td>Stav hráče:
+                                    <span v-if="role.is_online"
+                                          class="text-success font-weight-bold">Online</span>
+                                    <span v-else
+                                          class="text-danger font-weight-bold">Offline</span>
+                                </td>
+                                <td>
+                                    Kontakt {{role.last_seen_string}}
+                                </td>
+                            </tr>
+                        </table>
+
                         <single-point-map v-if="role.latitude && role.longitude"
                                           :latitude="role.latitude"
                                           :longitude="role.longitude"/>

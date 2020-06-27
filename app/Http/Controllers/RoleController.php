@@ -10,7 +10,7 @@ class RoleController extends Controller
     public function show($id)
     {
         return Role::findOrFail($id)
-                   ->append(['is_online'])
+                   ->append(['is_online', 'last_seen_string'])
                    ->load(['quests']);
     }
 

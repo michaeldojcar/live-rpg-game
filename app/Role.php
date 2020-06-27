@@ -43,6 +43,11 @@ class Role extends Model
 
     protected $dates = ['last_seen'];
 
+    public function quests()
+    {
+        return $this->hasMany(Quest::class, 'quest_owner_id');
+    }
+
     /**
      * Check if role is online.
      */
@@ -51,8 +56,13 @@ class Role extends Model
         return $this->last_seen > Carbon::now()->subSeconds(35);
     }
 
-    public function quests()
+    public function getLastSeenStringAttribute()
     {
-        return $this->hasMany(Quest::class, 'quest_owner_id');
+        if ( ! $this->last_seen)
+        {
+            return null;
+        }
+
+        return $this->last_seen->diffForHumans();
     }
 }

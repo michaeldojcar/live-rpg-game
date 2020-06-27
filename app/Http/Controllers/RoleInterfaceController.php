@@ -224,13 +224,14 @@ class RoleInterfaceController extends Controller
         /* @var PlayerQuest */
         $quest_record = $this->player_quest_repository->getQuestState($quest, $player);
 
-        if ($quest_record->status == PlayerQuest::STATUS_AVAILABLE)
+        // Validate current quest state
+        if ($quest_record->status != PlayerQuest::STATUS_AVAILABLE)
         {
-            $quest_record->status = PlayerQuest::STATUS_PENDING;
-            $quest_record->save();
-
-            return response($quest_record, Response::HTTP_OK);
+            return response('Quest must be set as available.', Response::HTTP_PRECONDITION_FAILED);
         }
+
+        // Set quest pending
+        $this->player_quest_repository->setUserQuestState($quest, $player, PlayerQuest::STATUS_PENDING);
 
         // If there is related sub-quest, make it available
         if ($quest->sub_quest)
@@ -239,7 +240,7 @@ class RoleInterfaceController extends Controller
                 PlayerQuest::STATUS_AVAILABLE);
         }
 
-        return response('Quest must be set as available.', Response::HTTP_PRECONDITION_FAILED);
+        return response($quest_record, Response::HTTP_OK);
     }
 
     public function setDone($player_id, $quest_id)

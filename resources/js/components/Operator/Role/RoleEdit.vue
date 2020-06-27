@@ -22,7 +22,7 @@
                             <input class="form-control" v-model="role.real_name" title="">
                         </div>
                         <div class="form-group">
-                            <label>Charakteristika</label>
+                            <label>Příběh</label>
                             <textarea class="form-control" v-model="role.story" title=""/>
                         </div>
                         <div class="form-group">

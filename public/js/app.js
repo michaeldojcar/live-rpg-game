@@ -3968,6 +3968,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoleShow",
@@ -61488,7 +61497,17 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(quest.owner.name))]),
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: "/roles/" + quest.owner.id } },
+                      [_vm._v(_vm._s(quest.owner.name))]
+                    )
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _c(
                   "td",
@@ -62281,7 +62300,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Charakteristika")]),
+              _c("label", [_vm._v("Příběh")]),
               _vm._v(" "),
               _c("textarea", {
                 directives: [
@@ -62525,12 +62544,6 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("tr", [
-                _c("td", [_vm._v("Stav")]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(_vm.role.is_online))])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
                 _c("td", [_vm._v("Příběh")]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(_vm.role.story))])
@@ -62597,6 +62610,33 @@ var render = function() {
             "div",
             { staticClass: "card-body" },
             [
+              _c("table", { staticClass: "table" }, [
+                _c("tr", [
+                  _c("td", [
+                    _vm._v("Stav hráče:\n                                "),
+                    _vm.role.is_online
+                      ? _c(
+                          "span",
+                          { staticClass: "text-success font-weight-bold" },
+                          [_vm._v("Online")]
+                        )
+                      : _c(
+                          "span",
+                          { staticClass: "text-danger font-weight-bold" },
+                          [_vm._v("Offline")]
+                        )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      "\n                                Kontakt " +
+                        _vm._s(_vm.role.last_seen_string) +
+                        "\n                            "
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
               _vm.role.latitude && _vm.role.longitude
                 ? _c("single-point-map", {
                     attrs: {
