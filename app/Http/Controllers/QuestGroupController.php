@@ -33,7 +33,7 @@ class QuestGroupController extends Controller
     public function store(QuestGroupStoreRequest $request)
     {
         $quest_group         = new QuestGroup();
-        $quest_group->name   = $request->input('name');
+        $quest_group->name   = 'nová větev';
         $quest_group->active = false;
         $quest_group->save();
 
