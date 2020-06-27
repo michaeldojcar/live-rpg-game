@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid mt-3">
-        <a href="#" @click="createNew" class="btn btn-success float-right">+ Nový úkol</a>
+        <button @click="createNew" class="btn btn-success float-right">+ Nový úkol</button>
 
         <h4>Větve questů</h4>
 
@@ -15,15 +15,15 @@
                 <th style="border: none">Počet questů</th>
                 <th style="border: none">Stav</th>
             </tr>
-            <tr v-for="quest in quest_groups" :key="quest.id">
+            <tr v-for="quest_group in quest_groups" :key="quest_group.id">
                 <td>
-                    <router-link :to="'/quests/' + quest.id + '/edit'">
-                        {{quest.name}}
+                    <router-link :to="'/quest-groups/' + quest_group.id + '/edit'">
+                        {{quest_group.name}}
                     </router-link>
                 </td>
-                <td>{{quest.quests_count}}</td>
+                <td>{{quest_group.quests_count}}</td>
                 <td>
-                    <span v-if="quest.active" class="text-success font-weight-bold">Aktivní</span>
+                    <span v-if="quest_group.active" class="text-success font-weight-bold">Aktivní</span>
                     <span v-else class="text-danger">Neaktivní</span>
                 </td>
             </tr>
@@ -61,7 +61,7 @@
                         let id = response.data.id;
                         console.log(id);
 
-                        this.$router.push('/quests/' + id + '/edit')
+                        this.$router.push('/quest-groups/' + id + '/edit')
                     });
             }
         }
