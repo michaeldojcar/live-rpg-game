@@ -22,12 +22,17 @@ class PlayerQuestRepository
         return PlayerQuest::where('player_id', $player->id)->where('quest_id', $quest->id)->firstOrFail();
     }
 
+    /**
+     * Set quest and all its sub-quests done.
+     *
+     * @param  Quest  $quest
+     * @param  Player  $player
+     *
+     * @return bool
+     */
     public function setQuestWithAllChildsDone(Quest $quest, Player $player)
     {
-        if ($quest)
-        {
-            $this->setUserQuestState($quest, $player, PlayerQuest::STATUS_DONE);
-        }
+        $this->setUserQuestState($quest, $player, PlayerQuest::STATUS_DONE);
 
         while ($quest->sub_quest)
         {
@@ -41,10 +46,7 @@ class PlayerQuestRepository
 
     public function setQuestWithAllChildsFailed(Quest $quest, Player $player)
     {
-        if ($quest)
-        {
-            $this->setUserQuestState($quest, $player, PlayerQuest::STATUS_FAILED);
-        }
+        $this->setUserQuestState($quest, $player, PlayerQuest::STATUS_FAILED);
 
         while ($quest->sub_quest)
         {

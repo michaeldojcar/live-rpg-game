@@ -18,11 +18,11 @@
 
             <tr v-for="quest in mother_quest.chain_quests" :key="quest.id">
                 <td :class="{'pl-5': quest.parent_quest_id}">
-                    <router-link :to="'/quests/'+quest.id+'/edit'">
+                    <router-link :to="'/quests/' + quest.id + '/edit'">
                         {{quest.name}}
                     </router-link>
                 </td>
-                <td>{{quest.owner.name}}</td>
+                <td><router-link :to="'/roles/' + quest.owner.id">{{quest.owner.name}}</router-link></td>
                 <td>
                     <reward-cash :cash="quest.reward_cash"></reward-cash>
                 </td>
