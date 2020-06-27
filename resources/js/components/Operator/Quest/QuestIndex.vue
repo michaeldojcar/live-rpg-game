@@ -12,8 +12,11 @@
                 <th>Postava</th>
                 <th>Peníze</th>
             </tr>
-            <tr v-for="quest in quests"
-                :key="quest.id">
+
+            <tbody v-for="mother_quest in quests"
+                   :key="mother_quest.id">
+
+            <tr v-for="quest in mother_quest.chain_quests" :key="quest.id">
                 <td>
                     <router-link :to="'/quests/'+quest.id+'/edit'">
                         {{quest.name}}
@@ -24,12 +27,16 @@
                     <reward-cash :cash="quest.reward_cash"></reward-cash>
                 </td>
             </tr>
+
+            </tbody>
+
         </table>
     </div>
 </template>
 
 <script>
     import RewardCash from "../../Role/RewardCash";
+
     export default {
         name: "RoleIndex",
         components: {RewardCash},

@@ -3332,6 +3332,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoleIndex",
@@ -61419,34 +61425,41 @@ var render = function() {
       [
         _vm._m(0),
         _vm._v(" "),
-        _vm._l(_vm.quests, function(quest) {
-          return _c("tr", { key: quest.id }, [
-            _c(
-              "td",
-              [
+        _vm._l(_vm.quests, function(mother_quest) {
+          return _c(
+            "tbody",
+            { key: mother_quest.id },
+            _vm._l(mother_quest.chain_quests, function(quest) {
+              return _c("tr", { key: quest.id }, [
                 _c(
-                  "router-link",
-                  { attrs: { to: "/quests/" + quest.id + "/edit" } },
+                  "td",
                   [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(quest.name) +
-                        "\n                "
+                    _c(
+                      "router-link",
+                      { attrs: { to: "/quests/" + quest.id + "/edit" } },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(quest.name) +
+                            "\n                "
+                        )
+                      ]
                     )
-                  ]
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(quest.owner.name))]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  [_c("reward-cash", { attrs: { cash: quest.reward_cash } })],
+                  1
                 )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(quest.owner.name))]),
-            _vm._v(" "),
-            _c(
-              "td",
-              [_c("reward-cash", { attrs: { cash: quest.reward_cash } })],
-              1
-            )
-          ])
+              ])
+            }),
+            0
+          )
         })
       ],
       2

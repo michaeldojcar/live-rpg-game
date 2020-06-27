@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use function foo\func;
 
 /**
  * 1 quest
@@ -170,6 +171,10 @@ class Quest extends Model
                 $chain_collection->add($subquest);
             }
         }
+
+         $chain_collection->each(function (Quest $quest){
+             $quest->role = $quest->owner;
+         });
 
         return $chain_collection;
     }
