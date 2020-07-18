@@ -142,6 +142,7 @@
         data: () => {
             return {
                 player: {},
+
             }
         },
 

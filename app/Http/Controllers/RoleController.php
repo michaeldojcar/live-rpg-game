@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RoleController extends Controller
 {
@@ -38,5 +39,16 @@ class RoleController extends Controller
         $role->save();
 
         return $role;
+    }
+
+    public function destroy($id)
+    {
+        $role = Role::findOrFail($id);
+
+        $role->quests()->delete();
+
+        $role->delete();
+
+        return response('', Response::HTTP_NO_CONTENT);
     }
 }

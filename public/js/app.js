@@ -3669,6 +3669,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoleEdit",
   data: function data() {
@@ -3702,6 +3715,20 @@ __webpack_require__.r(__webpack_exports__);
         console.log("Successfully updated.");
 
         _this2.$router.push('/roles');
+      });
+    },
+    destroy: function destroy() {
+      var _this3 = this;
+
+      if (!confirm('Opravdu chcete tuto postavu odstranit ze hry?')) {
+        return;
+      }
+
+      console.log('Deleting player.');
+      axios["delete"]('/api/roles/' + this.role.id, {}).then(function (response) {
+        console.log("Successfully deleted.");
+
+        _this3.$router.push('/roles');
       });
     }
   }
@@ -12970,7 +12997,7 @@ exports.push([module.i, ".btn-color {\n  width: 23%;\n  padding: 0;\n  display: 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css?66f3":
 /*!*******************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/leaflet/dist/leaflet.css ***!
   \*******************************************************************************************************************************/
@@ -37962,7 +37989,7 @@ window.L = exports;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./leaflet.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./leaflet.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css?66f3");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -61760,6 +61787,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-3" }, [
+    _c(
+      "a",
+      { staticClass: "btn btn-danger float-right", on: { click: _vm.destroy } },
+      [_vm._v("Smazat")]
+    ),
+    _vm._v(" "),
     _c(
       "a",
       { staticClass: "btn btn-primary float-right", on: { click: _vm.submit } },
