@@ -71,6 +71,11 @@ class Quest extends Model
 {
     protected $guarded = [];
 
+    public function quest_group()
+    {
+        return $this->belongsTo(QuestGroup::class);
+    }
+
     public function parent_quest()
     {
         return $this->belongsTo(Quest::class, 'parent_quest_id');
@@ -187,7 +192,7 @@ class Quest extends Model
                              ->wherePivot('status', PlayerQuest::STATUS_DONE)
                              ->count();
 
-        return $spread_count / $player_count;
+        return ($spread_count / $player_count) * 100;
     }
 
     public function getParentRoleAttribute(): ?string

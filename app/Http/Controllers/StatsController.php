@@ -20,9 +20,12 @@ class StatsController extends Controller
         return Group::all();
     }
 
-    public function questWithKnowledge()
+    public function questsWithKnowledge()
     {
         return Quest::where('reward_knowledge', '!=', null)
-                    ->get()->each->append(['spread']);
+            ->orderBy('quest_group_id')
+            ->with('quest_group')
+                    ->get()
+            ->each->append(['spread']);
     }
 }

@@ -50,6 +50,7 @@ import Options from "./components/Operator/Options";
 import RoleShow from "./components/Operator/Role/RoleShow";
 import GroupShow from "./components/Operator/Group/GroupShow";
 import PlayerShow from "./components/Operator/Player/PlayerShow";
+import QuestsWithKnowledge from "./components/Operator/Stats/QuestsWithKnowledge";
 
 // this part resolve an issue where the markers would not appear
 delete Icon.Default.prototype._getIconUrl;
@@ -69,6 +70,7 @@ const router = new VueRouter({
         {path: '/map', component: RoleMap},
         {path: '/stats/players', component: RoleMap},
         {path: '/stats/groups', component: RoleMap},
+        {path: '/stats/quests-knowledge', component: QuestsWithKnowledge},
         {path: '/game-health', component: RoleMap},
 
         {path: '/roles', component: RoleIndex},

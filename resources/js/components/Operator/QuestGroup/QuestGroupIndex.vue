@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid mt-3">
-        <button @click="createNew" class="btn btn-success float-right">+ Nový úkol</button>
+        <button @click="createNew" class="btn btn-success float-right">+ Nová větev</button>
 
         <h4>Větve questů</h4>
 

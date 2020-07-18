@@ -2546,7 +2546,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Navbar"
 });
@@ -4122,6 +4121,65 @@ __webpack_require__.r(__webpack_exports__);
     resetPosition: function resetPosition() {
       this.center = [49.4836, 17.6842];
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "QuestsWithKnowledge",
+  data: function data() {
+    return {
+      quests: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/api/stats/knowledge-quests').then(function (response) {
+      console.log(response.data);
+      _this.quests = response.data;
+    });
   }
 });
 
@@ -59881,7 +59939,44 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-            _vm._m(1),
+            _c("li", { staticClass: "nav-item dropdown" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link dropdown-toggle",
+                  attrs: {
+                    href: "#",
+                    id: "navbarDropdown",
+                    role: "button",
+                    "data-toggle": "dropdown",
+                    "aria-haspopup": "true",
+                    "aria-expanded": "false"
+                  }
+                },
+                [_vm._v("\n                    Statistiky\n                ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "dropdown-menu",
+                  attrs: { "aria-labelledby": "navbarDropdown" }
+                },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "dropdown-item",
+                      attrs: { to: "/stats/quests-knowledge" }
+                    },
+                    [_vm._v("Rozšíření informací")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dropdown-divider" })
+                ],
+                1
+              )
+            ]),
             _vm._v(" "),
             _c(
               "li",
@@ -59995,51 +60090,6 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item dropdown" }, [
-      _c(
-        "a",
-        {
-          staticClass: "nav-link dropdown-toggle",
-          attrs: {
-            href: "#",
-            id: "navbarDropdown",
-            role: "button",
-            "data-toggle": "dropdown",
-            "aria-haspopup": "true",
-            "aria-expanded": "false"
-          }
-        },
-        [_vm._v("\n                    Statistiky\n                ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "dropdown-menu",
-          attrs: { "aria-labelledby": "navbarDropdown" }
-        },
-        [
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _vm._v("Žebříček hráčů")
-          ]),
-          _vm._v(" "),
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _vm._v("Žebříček skupinek")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "dropdown-divider" }),
-          _vm._v(" "),
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _vm._v("Potenciální problémy")
-          ])
-        ]
-      )
-    ])
   }
 ]
 render._withStripped = true
@@ -61668,7 +61718,7 @@ var render = function() {
         staticClass: "btn btn-success float-right",
         on: { click: _vm.createNew }
       },
-      [_vm._v("+ Nový úkol")]
+      [_vm._v("+ Nová větev")]
     ),
     _vm._v(" "),
     _c("h4", [_vm._v("Větve questů")]),
@@ -62435,6 +62485,92 @@ var render = function() {
   ])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue?vue&type=template&id=0263d752&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue?vue&type=template&id=0263d752&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container-fluid mt-3" }, [
+    _c("h4", [_vm._v("Statistika")]),
+    _vm._v(" "),
+    _c("p", [_vm._v("Questy s informacemi")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "alert alert-primary mt-3 w-75" }, [
+      _vm._v(
+        "\n        Tato statistika ukazuje, jak jsou rozšířené questy s informacemi.\n    "
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "table",
+      { staticClass: "table w-75 mt-4" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.quests, function(quest) {
+          return _c("tr", { key: quest.id }, [
+            _c("td", [_vm._v(_vm._s(quest.quest_group.name))]),
+            _vm._v(" "),
+            _c(
+              "td",
+              [
+                _c(
+                  "router-link",
+                  { attrs: { to: "/quest-groups/" + quest.id + "/edit" } },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(quest.name) +
+                        "\n                "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(quest.reward_knowledge))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(quest.spread) + " %")])
+          ])
+        })
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("Větev")]),
+      _vm._v(" "),
+      _c("th", { staticStyle: { border: "none" } }, [_vm._v("Název")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Informace")]),
+      _vm._v(" "),
+      _c("th", { staticStyle: { border: "none" } }, [_vm._v("Stav")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -96873,6 +97009,7 @@ var map = {
 	"./components/Operator/Role/RoleIndex.vue": "./resources/js/components/Operator/Role/RoleIndex.vue",
 	"./components/Operator/Role/RoleShow.vue": "./resources/js/components/Operator/Role/RoleShow.vue",
 	"./components/Operator/RoleMap.vue": "./resources/js/components/Operator/RoleMap.vue",
+	"./components/Operator/Stats/QuestsWithKnowledge.vue": "./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue",
 	"./components/Role/PersonColorPicker.vue": "./resources/js/components/Role/PersonColorPicker.vue",
 	"./components/Role/PersonDetail.vue": "./resources/js/components/Role/PersonDetail.vue",
 	"./components/Role/QuestDetail.vue": "./resources/js/components/Role/QuestDetail.vue",
@@ -96938,6 +97075,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Operator_Role_RoleShow__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/Operator/Role/RoleShow */ "./resources/js/components/Operator/Role/RoleShow.vue");
 /* harmony import */ var _components_Operator_Group_GroupShow__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/Operator/Group/GroupShow */ "./resources/js/components/Operator/Group/GroupShow.vue");
 /* harmony import */ var _components_Operator_Player_PlayerShow__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/Operator/Player/PlayerShow */ "./resources/js/components/Operator/Player/PlayerShow.vue");
+/* harmony import */ var _components_Operator_Stats_QuestsWithKnowledge__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/Operator/Stats/QuestsWithKnowledge */ "./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue");
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -96988,6 +97126,7 @@ files.keys().map(function (key) {
 
 
 
+
  // this part resolve an issue where the markers would not appear
 
 delete leaflet__WEBPACK_IMPORTED_MODULE_1__["Icon"].Default.prototype._getIconUrl;
@@ -97011,6 +97150,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
   }, {
     path: '/stats/groups',
     component: _components_Operator_RoleMap__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, {
+    path: '/stats/quests-knowledge',
+    component: _components_Operator_Stats_QuestsWithKnowledge__WEBPACK_IMPORTED_MODULE_23__["default"]
   }, {
     path: '/game-health',
     component: _components_Operator_RoleMap__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -98875,6 +99017,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RoleMap_vue_vue_type_template_id_c4917134_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RoleMap_vue_vue_type_template_id_c4917134_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _QuestsWithKnowledge_vue_vue_type_template_id_0263d752_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./QuestsWithKnowledge.vue?vue&type=template&id=0263d752&scoped=true& */ "./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue?vue&type=template&id=0263d752&scoped=true&");
+/* harmony import */ var _QuestsWithKnowledge_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestsWithKnowledge.vue?vue&type=script&lang=js& */ "./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _QuestsWithKnowledge_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _QuestsWithKnowledge_vue_vue_type_template_id_0263d752_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _QuestsWithKnowledge_vue_vue_type_template_id_0263d752_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "0263d752",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Operator/Stats/QuestsWithKnowledge.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestsWithKnowledge_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./QuestsWithKnowledge.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestsWithKnowledge_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue?vue&type=template&id=0263d752&scoped=true&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue?vue&type=template&id=0263d752&scoped=true& ***!
+  \*******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestsWithKnowledge_vue_vue_type_template_id_0263d752_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./QuestsWithKnowledge.vue?vue&type=template&id=0263d752&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Operator/Stats/QuestsWithKnowledge.vue?vue&type=template&id=0263d752&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestsWithKnowledge_vue_vue_type_template_id_0263d752_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuestsWithKnowledge_vue_vue_type_template_id_0263d752_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

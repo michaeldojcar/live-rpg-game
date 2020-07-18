@@ -42,5 +42,6 @@ Route::get('/options', 'OptionController@index');
 Route::get('/stats/players');
 Route::get('/stats/groups');
 Route::get('/stats/users');
+Route::get('/stats/knowledge-quests', 'StatsController@questsWithKnowledge');
 
 Route::resource('quest_groups', 'QuestGroupController');

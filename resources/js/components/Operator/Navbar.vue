@@ -22,11 +22,10 @@
                         Statistiky
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Žebříček hráčů</a>
-                        <a class="dropdown-item" href="#">Žebříček skupinek</a>
+                        <router-link class="dropdown-item" to="/stats/quests-knowledge">Rozšíření informací</router-link>
 
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Potenciální problémy</a>
+
                     </div>
                 </li>
 
