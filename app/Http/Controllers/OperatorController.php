@@ -56,7 +56,7 @@ class OperatorController extends Controller
     private function getTodayCompletedQuests()
     {
         return PlayerQuest::where('status', PlayerQuest::STATUS_DONE)
-                          ->whereDate('created_at', Carbon::today())
+                          ->whereDate('updated_at', Carbon::today())
                           ->count();
     }
 
