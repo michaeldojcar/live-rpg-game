@@ -4477,10 +4477,10 @@ __webpack_require__.r(__webpack_exports__);
   props: ['cash'],
   computed: {
     gold: function gold() {
-      return Math.floor(this.cash / 5);
+      return Math.floor(this.cash / 2);
     },
     silver: function silver() {
-      return this.cash % 5;
+      return this.cash % 2;
     }
   }
 });

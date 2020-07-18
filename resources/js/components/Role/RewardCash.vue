@@ -13,11 +13,11 @@
 
         computed: {
             gold: function () {
-                return Math.floor(this.cash / 5);
+                return Math.floor(this.cash / 2);
             },
 
             silver: function () {
-                return this.cash % 5;
+                return this.cash % 2;
             }
         }
     }
