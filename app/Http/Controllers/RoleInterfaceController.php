@@ -129,8 +129,8 @@ class RoleInterfaceController extends Controller
         // Response array
         return [
             'person'                  => $player,
-            'quests_pending'          => $role_pending_quests->get(),
-            'external_quests_pending' => $player->pendingSubQuestsForRole($role)->get(),
+            'quests_pending'          => $role_pending_quests->get()->each->append(['parent_role', 'subquest_role']),
+            'external_quests_pending' => $player->pendingSubQuestsForRole($role)->get()->each->append(['parent_role', 'subquest_role']),
         ];
     }
 

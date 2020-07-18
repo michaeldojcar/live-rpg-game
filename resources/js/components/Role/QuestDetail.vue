@@ -3,9 +3,11 @@
         <!--        <a class="btn btn-outline-secondary float-right" @click="state.quest_selected = null">Zpět</a>-->
 
         <h4>{{state.quest_selected.name}}</h4>
+
         <div class="card my-3">
             <div class="card-header">
                 Zadání
+                <span v-if="state.quest_selected.parent_role" class="text-muted small">(posílá <b>{{state.quest_selected.parent_role}}</b>)</span>
             </div>
             <div class="card-body">
                 <p>{{state.quest_selected.description}}</p>
@@ -13,6 +15,9 @@
                    v-if="state.quest_selected.is_dumb === 1">Bez úkolu</p>
                 <p class="text-danger text-bold"
                    v-if="!state.quest_selected.allow_more_attempts">Pouze jeden pokus!</p>
+            </div>
+            <div class="card-footer" v-if="state.quest_selected.subquest_role">
+                <span class="text-primary">Poslat na pod-quest → <b>{{state.quest_selected.subquest_role}}</b></span>
             </div>
         </div>
 

@@ -20,7 +20,7 @@
         </div>
 
         <div class="mb-3" v-if="!state.quests_external_pending.length && !state.quests_pending.length">
-            <p>Hráč aktuálně u Tebe nemá nic, co by mohl dělat.</p>
+            <p>Hráč aktuálně u Tebe nemá nic, co by mohl dělat. Popovídej si s nim.</p>
 
             <hr>
         </div>

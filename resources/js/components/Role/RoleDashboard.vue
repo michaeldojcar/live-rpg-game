@@ -19,8 +19,10 @@
         <div class="container"
              style="margin-top: 80px;">
 
-            <div class="alert alert-warning"
-                 v-if="admin_message"><b>Zpráva z ústředí hry:</b> {{admin_message}}
+            <div class="text-primary"
+                 v-if="admin_message">
+                <b>Zpráva od admina:</b> {{admin_message}}
+                <hr>
             </div>
 
 

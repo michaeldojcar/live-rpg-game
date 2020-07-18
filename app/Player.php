@@ -142,5 +142,4 @@ class Player extends Model
     {
         return $this->quests()->wherePivot('status', PlayerQuest::STATUS_DONE);
     }
-
 }

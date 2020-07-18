@@ -4360,6 +4360,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "QuestDetail",
@@ -4497,6 +4502,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PersonDetail__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PersonDetail */ "./resources/js/components/Role/PersonDetail.vue");
 /* harmony import */ var _QuestDetail__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./QuestDetail */ "./resources/js/components/Role/QuestDetail.vue");
 /* harmony import */ var _mobile_state__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./mobile_state */ "./resources/js/components/Role/mobile_state.js");
+//
+//
 //
 //
 //
@@ -62716,7 +62723,11 @@ var render = function() {
     !_vm.state.quests_external_pending.length &&
     !_vm.state.quests_pending.length
       ? _c("div", { staticClass: "mb-3" }, [
-          _c("p", [_vm._v("Hráč aktuálně u Tebe nemá nic, co by mohl dělat.")]),
+          _c("p", [
+            _vm._v(
+              "Hráč aktuálně u Tebe nemá nic, co by mohl dělat. Popovídej si s nim."
+            )
+          ]),
           _vm._v(" "),
           _c("hr")
         ])
@@ -62750,7 +62761,14 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "card my-3" }, [
       _c("div", { staticClass: "card-header" }, [
-        _vm._v("\n            Zadání\n        ")
+        _vm._v("\n            Zadání\n            "),
+        _vm.state.quest_selected.parent_role
+          ? _c("span", { staticClass: "text-muted small" }, [
+              _vm._v("(posílá "),
+              _c("b", [_vm._v(_vm._s(_vm.state.quest_selected.parent_role))]),
+              _vm._v(")")
+            ])
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
@@ -62767,7 +62785,16 @@ var render = function() {
               _vm._v("Pouze jeden pokus!")
             ])
           : _vm._e()
-      ])
+      ]),
+      _vm._v(" "),
+      _vm.state.quest_selected.subquest_role
+        ? _c("div", { staticClass: "card-footer" }, [
+            _c("span", { staticClass: "text-primary" }, [
+              _vm._v("Poslat na pod-quest → "),
+              _c("b", [_vm._v(_vm._s(_vm.state.quest_selected.subquest_role))])
+            ])
+          ])
+        : _vm._e()
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card mb-3" }, [
@@ -63008,9 +63035,10 @@ var render = function() {
       { staticClass: "container", staticStyle: { "margin-top": "80px" } },
       [
         _vm.admin_message
-          ? _c("div", { staticClass: "alert alert-warning" }, [
-              _c("b", [_vm._v("Zpráva z ústředí hry:")]),
-              _vm._v(" " + _vm._s(_vm.admin_message) + "\n        ")
+          ? _c("div", { staticClass: "text-primary" }, [
+              _c("b", [_vm._v("Zpráva od admina:")]),
+              _vm._v(" " + _vm._s(_vm.admin_message) + "\n            "),
+              _c("hr")
             ])
           : _vm._e(),
         _vm._v(" "),

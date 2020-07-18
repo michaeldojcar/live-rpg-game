@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use function foo\func;
 
 /**
  * 1 quest
@@ -172,9 +171,10 @@ class Quest extends Model
             }
         }
 
-         $chain_collection->each(function (Quest $quest){
-             $quest->role = $quest->owner;
-         });
+        $chain_collection->each(function (Quest $quest)
+        {
+            $quest->role = $quest->owner;
+        });
 
         return $chain_collection;
     }
@@ -189,4 +189,25 @@ class Quest extends Model
 
         return $spread_count / $player_count;
     }
+
+    public function getParentRoleAttribute(): ?string
+    {
+        if ($this->parent_quest)
+        {
+            return $this->parent_quest->owner->name;
+        }
+
+        return null;
+    }
+
+    public function getSubquestRoleAttribute(): ?string
+    {
+        if ($this->sub_quest)
+        {
+            return $this->sub_quest->owner->name;
+        }
+
+        return null;
+    }
+
 }
