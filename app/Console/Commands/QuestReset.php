@@ -2,16 +2,17 @@
 
 namespace App\Console\Commands;
 
+use App\PlayerQuest;
 use Illuminate\Console\Command;
 
-class CheckQuests extends Command
+class QuestReset extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'quest:reset';
 
     /**
      * The console command description.
@@ -37,6 +38,8 @@ class CheckQuests extends Command
      */
     public function handle()
     {
-        //
+        $this->confirm('Pozor! Opravdu chcete zresetovat všechny sehrávky questů?');
+
+        PlayerQuest::truncate();
     }
 }
