@@ -63019,7 +63019,10 @@ var render = function() {
           },
           [
             _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-              _vm._v(_vm._s(_vm.state.person.name))
+              _vm._v(_vm._s(_vm.state.person.name) + " "),
+              _c("span", { staticClass: "small text-muted" }, [
+                _vm._v(_vm._s(_vm.state.person.age) + " let")
+              ])
             ]),
             _vm._v(" "),
             _c(

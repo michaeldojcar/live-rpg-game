@@ -9,7 +9,7 @@
         <nav v-else
              class="navbar navbar-expand-md navbar-dark bg-dark fixed-top text-white">
             <a class="navbar-brand"
-               href="#">{{state.person.name}}</a>
+               href="#">{{state.person.name}} <span class="small text-muted">{{state.person.age}} let</span></a>
 
             <a class="nav-link"
                @click="wipePerson">Zrušit</a>
