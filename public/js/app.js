@@ -4262,6 +4262,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -62670,7 +62671,7 @@ var render = function() {
           { staticClass: "mb-3" },
           [
             _c("h4", { staticClass: "font-weight-bold mb-2 d-inline-block" }, [
-              _vm._v("Má zadané ")
+              _vm._v("Úkoly ")
             ]),
             _vm._v(" "),
             _c("p", [_vm._v("(ode mě)")]),
@@ -62701,6 +62702,8 @@ var render = function() {
             _c("h4", { staticClass: "font-weight-bold mb-2 d-inline-block" }, [
               _vm._v("Chce u mě vyřešit")
             ]),
+            _vm._v(" "),
+            _c("p", [_vm._v("(od jiných postav)")]),
             _vm._v(" "),
             _vm._l(_vm.state.quests_external_pending, function(quest) {
               return _c("quest-icon", {
@@ -62924,15 +62927,19 @@ var render = function() {
         _c("td", [
           _vm._v("\n                -\n                "),
           _vm.quest.pivot.status === 3
-            ? _c("span", { staticClass: "text-warning font-weight-bold" }, [
-                _vm._v("probíhá")
-              ])
+            ? _c(
+                "span",
+                { staticClass: "text-success font-weight-bold text-uppercase" },
+                [_vm._v("probíhá")]
+              )
             : _vm._e(),
           _vm._v(" "),
           _vm.quest.pivot.status === 2
-            ? _c("span", { staticClass: "text-primary font-weight-bold" }, [
-                _vm._v("k dispozici")
-              ])
+            ? _c(
+                "span",
+                { staticClass: "text-primary font-weight-bold text-uppercase" },
+                [_vm._v("k dispozici")]
+              )
             : _vm._e()
         ])
       ])

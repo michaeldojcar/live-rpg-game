@@ -9,9 +9,9 @@
                 <td>
                     -
                     <span v-if="quest.pivot.status === 3"
-                          class="text-warning font-weight-bold">probíhá</span>
+                          class="text-success font-weight-bold text-uppercase">probíhá</span>
                     <span v-if="quest.pivot.status === 2"
-                          class="text-primary font-weight-bold">k dispozici</span>
+                          class="text-primary font-weight-bold text-uppercase">k dispozici</span>
                 </td>
             </tr>
         </table>
