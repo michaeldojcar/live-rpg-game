@@ -18,7 +18,7 @@
                 :key="quest.id">
                 <td>{{quest.quest_group.name}}</td>
                 <td>
-                    <router-link :to="'/quest-groups/' + quest.id + '/edit'">
+                    <router-link :to="'/quests/' + quest.id + '/edit'">
                         {{quest.name}}
                     </router-link>
                 </td>

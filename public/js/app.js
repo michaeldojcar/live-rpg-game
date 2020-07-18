@@ -62532,7 +62532,7 @@ var render = function() {
               [
                 _c(
                   "router-link",
-                  { attrs: { to: "/quest-groups/" + quest.id + "/edit" } },
+                  { attrs: { to: "/quests/" + quest.id + "/edit" } },
                   [
                     _vm._v(
                       "\n                    " +
