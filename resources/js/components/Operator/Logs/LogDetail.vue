@@ -6,7 +6,7 @@
                 hráč
                 <player-link :player="log.player" />
                 přihlášen u
-                <router-link :to="'/roles/' + log.role.id">{{log.role.name}}</router-link>
+                <role-link :role="log.role" />
             </td>
         </tr>
     </tbody>
@@ -14,9 +14,10 @@
 
 <script>
     import PlayerLink from "../Components/PlayerLink";
+    import RoleLink from "../Components/RoleLink";
     export default {
         name: "LogDetail",
-        components: {PlayerLink},
+        components: {RoleLink, PlayerLink},
         props: ['log']
     }
 </script>
