@@ -2,9 +2,6 @@
     <div class="quest">
         <table>
             <tr>
-                <td>
-                    <span></span>
-                </td>
                 <td>{{quest.name}}</td>
                 <td>
                     -

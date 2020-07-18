@@ -4365,7 +4365,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "QuestDetail",
@@ -4430,9 +4429,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -62792,7 +62788,7 @@ var render = function() {
       _vm._v(" "),
       _vm.state.quest_selected.subquest_role
         ? _c("div", { staticClass: "card-footer" }, [
-            _c("span", { staticClass: "text-primary" }, [
+            _c("span", {}, [
               _vm._v("Poslat na pod-quest → "),
               _c("b", [_vm._v(_vm._s(_vm.state.quest_selected.subquest_role))])
             ])
@@ -62920,8 +62916,6 @@ var render = function() {
   return _c("div", { staticClass: "quest" }, [
     _c("table", [
       _c("tr", [
-        _vm._m(0),
-        _vm._v(" "),
         _c("td", [_vm._v(_vm._s(_vm.quest.name))]),
         _vm._v(" "),
         _c("td", [
@@ -62946,14 +62940,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [_c("span")])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

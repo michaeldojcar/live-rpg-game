@@ -17,10 +17,9 @@
                    v-if="!state.quest_selected.allow_more_attempts">Pouze jeden pokus!</p>
             </div>
             <div class="card-footer" v-if="state.quest_selected.subquest_role">
-                <span class="text-primary">Poslat na pod-quest → <b>{{state.quest_selected.subquest_role}}</b></span>
+                <span class="">Poslat na pod-quest → <b>{{state.quest_selected.subquest_role}}</b></span>
             </div>
         </div>
-
 
         <div class="card mb-3">
             <div class="card-header">Odměna</div>
