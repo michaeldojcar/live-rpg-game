@@ -21,6 +21,7 @@ Route::post('/role/{role_id}/telemetries', 'RoleInterfaceController@telemetries'
 Route::post('/player/{player}/quest/{quest}/pending', 'RoleInterfaceController@setPending');
 Route::post('/player/{player}/quest/{quest}/done', 'RoleInterfaceController@setDone');
 Route::post('/player/{player}/quest/{quest}/failed', 'RoleInterfaceController@setFailed');
+Route::post('/player/{player}/role/{role}/reset', 'RoleInterfaceController@resetQuests');
 
 
 /*

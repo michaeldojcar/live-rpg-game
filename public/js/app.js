@@ -4423,6 +4423,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "QuestDetail",
@@ -4459,18 +4463,27 @@ __webpack_require__.r(__webpack_exports__);
         _this3.state.quest_selected = null;
       });
     },
+    resetQuest: function resetQuest() {
+      var _this4 = this;
+
+      axios.post('/api/player/' + this.state.person.id + '/role/' + this.state.role.id + '/reset').then(function (response) {
+        _this4.loadDataForPerson();
+
+        _this4.state.quest_selected = null;
+      });
+    },
 
     /**
      * Load data and quests for person.
      */
     loadDataForPerson: function loadDataForPerson() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get('/api/role/' + this.state.role.id + '/person/by_id/' + this.state.person.id).then(function (response) {
         console.log(response.data);
-        _this4.state.person = response.data.person;
-        _this4.state.quests_pending = response.data.quests_pending;
-        _this4.state.quests_external_pending = response.data.external_quests_pending;
+        _this5.state.person = response.data.person;
+        _this5.state.quests_pending = response.data.quests_pending;
+        _this5.state.quests_external_pending = response.data.external_quests_pending;
       });
     }
   }
@@ -13085,7 +13098,7 @@ exports.push([module.i, ".btn-color {\n  width: 23%;\n  padding: 0;\n  display: 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css?66f3":
 /*!*******************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/leaflet/dist/leaflet.css ***!
   \*******************************************************************************************************************************/
@@ -38077,7 +38090,7 @@ window.L = exports;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./leaflet.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./leaflet.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/leaflet/dist/leaflet.css?66f3");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -63022,7 +63035,16 @@ var render = function() {
               },
               [_vm._v("Nesplněno\n            ")]
             )
-          : _vm._e()
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-danger w-100 text-center mt-3",
+            on: { click: _vm.resetQuest }
+          },
+          [_vm._v("Vyměnit za jiný quest\n            ")]
+        )
       ])
     ])
   ])

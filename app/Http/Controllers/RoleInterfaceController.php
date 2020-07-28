@@ -130,7 +130,9 @@ class RoleInterfaceController extends Controller
         return [
             'person'                  => $player,
             'quests_pending'          => $role_pending_quests->get()->each->append(['parent_role', 'subquest_role']),
-            'external_quests_pending' => $player->pendingSubQuestsForRole($role)->get()->each->append(['parent_role', 'subquest_role']),
+            'external_quests_pending' => $player->pendingSubQuestsForRole($role)->get()->each->append([
+                'parent_role', 'subquest_role'
+            ]),
         ];
     }
 
@@ -174,6 +176,7 @@ class RoleInterfaceController extends Controller
                        ->where('quest_owner_id', $role->id) // Owner of quest is selected role
                        ->where('age_from', '<=', $player_age)
                        ->where('age_to', '>=', $player_age)
+                       ->where('quest_group_id', '=', 1)
                        ->get();
 
         // Filter only quests that user never played
@@ -280,5 +283,29 @@ class RoleInterfaceController extends Controller
         }
 
         return response('Quest must be set as pending.', Response::HTTP_PRECONDITION_FAILED);
+    }
+
+    /**
+     * Reset quests for role and player.
+     *
+     * @param $role_id
+     * @param $player_id
+     */
+    public function resetQuests($player_id, $role_id)
+    {
+        // Reset pending quests
+        $player = Player::findOrFail($player_id);
+        $role   = Role::findOrFail($role_id);
+
+        $pending_quests = $player->pendingQuestsForRole($role)->get();
+
+        foreach ($pending_quests as $quest)
+        {
+            /* @var $quest Quest */
+            $player->quests()->detach($quest);
+        }
+
+        // Assign new quest
+        $this->tryToAssignNewQuest($role, $player);
     }
 }

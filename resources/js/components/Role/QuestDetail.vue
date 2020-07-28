@@ -56,6 +56,10 @@
                         v-if="!state.quest_selected.allow_more_attempts && state.quest_selected.pivot.status === 3"
                         @click="setFailed">Nesplněno
                 </button>
+
+                <button class="btn btn-danger w-100 text-center mt-3"
+                        @click="resetQuest">Vyměnit za jiný quest
+                </button>
             </div>
         </div>
 
@@ -100,6 +104,14 @@
 
             setFailed() {
                 axios.post('/api/player/' + this.state.person.id + '/quest/' + this.state.quest_selected.id + '/failed')
+                    .then((response) => {
+                        this.loadDataForPerson()
+                        this.state.quest_selected = null;
+                    })
+            },
+
+            resetQuest() {
+                axios.post('/api/player/' + this.state.person.id + '/role/' + this.state.role.id + '/reset')
                     .then((response) => {
                         this.loadDataForPerson()
                         this.state.quest_selected = null;
